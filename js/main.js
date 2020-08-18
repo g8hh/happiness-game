@@ -9,29 +9,37 @@ player={
 	hCost: 10,
 	upgrades: {
 		one: 0,
-		oneCost: 5
+		oneCost: 5,
+		two: false,
+		twoCost: 100
+	},
+	visible: {
+		happiness: false,
+		upgrades: false,
+		upgrade2: false,
+		upgrade3: false
 	}
 }
 
+
+
 function increment(){
 	player.serotonin+=player.gain;
-	u(g("serotonin"),"you have "+player.serotonin+" serotonin")
+	uH()
 }
 
 function convert(x){
 	if(player.serotonin>=10){
 		player.serotonin-=player.hCost
 		player.happiness+=player.hGain
-		u(g("serotonin"),"you have "+player.serotonin+" serotonin")
-		u(g("happiness"),"you have "+player.happiness+" happiness")
+		uH()
 	}
 	if(x==1){
 		if(player.serotonin>=10){
 			while(player.serotonin>10){
 				player.serotonin-=player.hCost
 				player.happiness+=player.hGain
-				u(g("serotonin"),"you have "+player.serotonin+" serotonin")
-				u(g("happiness"),"you have "+player.happiness+" happiness")
+				uH()
 			}
 		}
 	}
@@ -42,11 +50,16 @@ function upgrade(x){
 		case 1:
 			if(player.happiness>=5 && player.upgrades.one<5){
 				player.happiness-=5
-				player.gain*=2
+				player.gain*=1.3
 				player.upgrades.one+=1
 				player.upgrades.oneCost+=(Math.ceil(player.upgrades.oneCost/2))
-				if(player.upgrades.one<5){u(g("upgrade1"), "double serotonin gain: "+player.upgrades.oneCost+" happiness ["+player.upgrades.one+"/5]")} else {u(g("upgrade1"), "double serotonin gain: MAX ["+player.upgrades.one+"/5]")}
-				u(g("happiness"),"you have "+player.happiness+" happiness")
+				uH()
+			}
+		case 2:
+			if(player.happiness>=100){
+				player.happiness-=100
+				player.upgrades.two=true
+				uH()
 			}
 	}
 }

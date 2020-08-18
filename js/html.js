@@ -19,6 +19,11 @@ main.id="main"
 a2(container,main)
 
 text=c("div")
+text.innerHTML="you"
+text.id="subtitle"
+a2(main,text)
+
+text=c("div")
 text.innerHTML="you have 0 serotonin"
 text.id="serotonin"
 a2(main,text)
@@ -53,7 +58,7 @@ upgrades.style.display="none"
 a2(container,upgrades)
 
 text=c("div")
-text.id="title"
+text.id="subtitle"
 text.innerHTML="upgrades"
 a2(upgrades,text)
 
@@ -61,6 +66,22 @@ text=c("div")
 text.id="upgrade1"
 text.className="upgrade"
 text.onclick=function(){upgrade(1)}
-text.innerHTML="double serotonin gain: 5 happiness [0/5]"
+text.innerHTML="serotonin gain -> x1.3: 5 happiness [0/5]"
+a2(upgrades, text)
+
+text=c("div")
+text.id="upgrade2"
+text.className="upgrade"
+text.style.display="none"
+text.onclick=function(){upgrade(2)}
+text.innerHTML="auto convert serotonin -> happiness: 100 happiness"
+a2(upgrades, text)
+
+text=c("div")
+text.id="upgrade3"
+text.className="upgrade"
+text.style.display="none"
+text.onclick=function(){upgrade(3)}
+text.innerHTML="unlock friends: 150 happiness"
 a2(upgrades, text)
 
