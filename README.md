@@ -11,3 +11,5 @@ Update 1 - Intial commit
 Update 1.001 - Tidied up js/css into folders, added update.js for main game loop, added happiness
 
 Update 1.002>1.003 - Added saving, 2 more upgrades, and the foundation for the first layer. Some stylistic changes
+
+Update 1.1 - First day done, decent progress made. Will see how much further this idea goes. working on experience later [18/8/2020]
