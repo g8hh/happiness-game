@@ -2,8 +2,11 @@
 // runs game loop (game updates 50x per second)
 
 function loop(){
-	if(player.serotonin>=10){
+	if(player.happiness>0){
 		g("happiness").style.display="block"
+	}
+	if(player.happiness>=5){
+		g("upgrades").style.display="block"
 	}
 }
 
