@@ -1,0 +1,9 @@
+/* style.css - AnteSocial */
+body{
+	background-color:lightgrey;
+}
+
+#title{
+	text-decoration: underline;
+}
+
