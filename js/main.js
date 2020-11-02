@@ -1,107 +1,128 @@
-// main.js v1 - AnteSocial
-// all the code for now
-
 player={
-	serotonin: 0,
-	happiness: 0,
-	gain: 1,
-	hGain: 1,
-	hCost: 10,
+	serotonin: {
+		amount: new Decimal(0),
+		gain: new Decimal(2)
+	},
+	dopamine: {
+		amount: new Decimal(0),
+		gain: new Decimal(1)
+	},
+	happiness: {
+		amount: new Decimal(0),
+		gain: new Decimal(1)
+	},
 	upgrades: {
-		one: 0,
-		oneCost: 5,
-		two: false,
-		three: false,
-		four: false,
-		five: false,
+		one: {
+			level: new Decimal(0),
+			maxLevel: new Decimal(4),
+			cost: new Decimal(10)
+		},
+		two: {
+			level: new Decimal(0),
+			maxLevel: new Decimal(4),
+			cost: new Decimal(100)
+		},
+		three: {
+			level: new Decimal(0),
+			maxLevel: new Decimal(3),
+			cost: new Decimal(100)
+		},
+		four: {
+			bought: false,
+			cost: new Decimal(250),
+			boost: new Decimal(1)
+		},
+		five: {
+			bought: false,
+			cost: new Decimal(1000)
+		}
 	},
 	friends: {
-		friends: 0,
-		friendsBoost: 1,
-		friendsCost: 125,
-		memories: 1,
-		mGain: 1,
+		amount: new Decimal(0)
 	},
-	visible: {
-		happiness: false,
-		upgrades: false,
-		upgrade2: false,
-		upgrade3: false,
-		upgrade4: false,
-		upgrade5: false,
-		upgrade6: false,
-		friends: false,
-		memories: false
+	memories: {
+		amount: new Decimal(0),
+		gain: new Decimal(0)
 	}
 }
 
-
-function increment(){
-	player.serotonin+=player.gain;
-	
-	uH()
+function updateHTML(){
+	u("serotonin","serotonin: "+player.serotonin.amount.toFixed(1)+" (+"+player.serotonin.gain.times(player.upgrades.four.boost).toFixed(1)+"/s)")
+	u("dopamine","dopamine: "+player.dopamine.amount.toFixed(1)+" (+"+player.dopamine.gain.toFixed(1)+"/c)")
+	u("happiness","happiness: "+player.happiness.amount.toFixed(1)+" (+"+player.happiness.gain.toFixed(1)+"/c)")
+	u("friends","you have "+player.friends.amount+" friends")
+	u("memories","you have "+player.memories.amount.toFixed(1)+" memories (+"+player.memories.gain.toFixed(1)+"/s)")
 }
 
-function convert(x){
-	if(player.serotonin>=10){
-		player.serotonin-=player.hCost
-		player.happiness+=player.hGain*player.friends.friendsBoost
-		uH()
-	}
-	if(x==1){
-		if(player.serotonin>=10){
-			while(player.serotonin>=10){
-				player.serotonin-=player.hCost
-				player.happiness+=player.hGain*player.friends.friendsBoost
-				uH()
+function gain(x){
+	switch(x){
+		case 0:
+			player.dopamine.amount=player.dopamine.amount.add(player.dopamine.gain)
+			break
+
+		case 1:
+			if(player.serotonin.amount.gte(5) && player.dopamine.amount.gte(5)){
+				player.serotonin.amount=player.serotonin.amount.minus(5)
+				player.dopamine.amount=player.dopamine.amount.minus(5)
+				player.happiness.amount=player.happiness.amount.add(player.happiness.gain)
 			}
-		}
+			break
 	}
 }
 
 function upgrade(x){
 	switch(x){
 		case 1:
-			if(player.happiness>=5 && player.upgrades.one<5){
-				player.happiness-=5
-				player.gain*=1.3
-				player.upgrades.one+=1
-				player.upgrades.oneCost+=(Math.ceil(player.upgrades.oneCost/2))
-				uH()
+			if(player.happiness.amount.gte(player.upgrades.one.cost) && player.upgrades.one.level.lt(player.upgrades.one.maxLevel)){
+				player.happiness.amount=player.happiness.amount.minus(player.upgrades.one.cost)
+				player.upgrades.one.level=player.upgrades.one.level.add(1)
+				player.upgrades.one.cost=player.upgrades.one.cost.times(2)
+				player.dopamine.gain=player.dopamine.gain.times(1.5)
+				u("upgrade1","["+player.upgrades.one.level+"/"+player.upgrades.one.maxLevel+"] ["+player.upgrades.one.cost.toFixed(1)+" happiness]")
+				if(player.upgrades.one.level.eq(player.upgrades.one.maxLevel)){
+					u("upgrade1","["+player.upgrades.one.level+"/"+player.upgrades.one.maxLevel+"]")
+				}
 			}
+			break
 		case 2:
-			if(player.happiness>=100){
-				player.happiness-=100
-				player.upgrades.two=true
-				uH()
+			if(player.dopamine.amount.gte(player.upgrades.two.cost) && player.upgrades.two.level.lt(player.upgrades.two.maxLevel)){
+				player.dopamine.amount=player.dopamine.amount.minus(player.upgrades.two.cost)
+				player.upgrades.two.level=player.upgrades.two.level.plus(1)
+				player.upgrades.two.cost=player.upgrades.two.cost.times(2)
+				player.serotonin.gain=player.serotonin.gain.times(1.5)
+				u("upgrade2","["+player.upgrades.two.level+"/"+player.upgrades.two.maxLevel+"] ["+player.upgrades.two.cost.toFixed(1)+" dopamine]")
+				if(player.upgrades.two.level.eq(player.upgrades.two.maxLevel)){
+					u("upgrade2","["+player.upgrades.two.level+"/"+player.upgrades.two.maxLevel+"]")
+				}
 			}
+			break
 		case 3:
-			if(player.happiness>=200){
-				player.happiness-=200
-				player.upgrades.three=true
-				player.friends.friends+=1
-				uH()
+			if(player.serotonin.amount.gte(player.upgrades.three.cost) && player.upgrades.three.level.lt(player.upgrades.three.maxLevel)){
+				player.serotonin.amount=player.serotonin.amount.minus(player.upgrades.three.cost)
+				player.upgrades.three.level=player.upgrades.three.level.plus(1)
+				player.upgrades.three.cost=player.upgrades.three.cost.times(2)
+				player.happiness.gain=player.happiness.gain.times(1.5)
+				u("upgrade3","["+player.upgrades.three.level+"/"+player.upgrades.three.maxLevel+"] ["+player.upgrades.three.cost.toFixed(1)+" serotonin]")
+				if(player.upgrades.three.level.eq(player.upgrades.three.maxLevel)){
+					u("upgrade3","["+player.upgrades.three.level+"/"+player.upgrades.three.maxLevel+"]")
+				}
 			}
+			break
 		case 4:
-			if(player.happiness>=500){
-				player.happiness-=500
-				player.upgrades.four=true
-				player.friends.mGain=2
+			if(player.happiness.amount.gte(player.upgrades.four.cost) && !player.upgrades.four.bought){
+				player.happiness.amount=player.happiness.amount.minus(player.upgrades.four.cost)
+				player.upgrades.four.bought=true;
+				u("upgrade4","[1/1]")
 			}
+			break
 		case 5:
-			if(player.happiness>=500){
-				player.happiness-=500
-				player.upgrades.five=true
+			if(player.happiness.amount.gte(player.upgrades.five.cost) && player.serotonin.amount.gte(player.upgrades.five.cost) && player.dopamine.amount.gte(player.upgrades.five.cost)){
+				player.upgrades.five.bought=true
+				player.serotonin.amount=player.serotonin.amount.minus(1000)
+				player.dopamine.amount=player.dopamine.amount.minus(1000)
+				player.happiness.amount=player.happiness.amount.minus(1000)
+				player.friends.amount=player.friends.amount.plus(1)
+				u("upgrade5","[1/1]")
 			}
-	}
-}
-
-function addFriend(){
-	if(player.happiness>=player.friends.friendsCost){
-		player.happiness-=player.friends.friendsCost
-		player.friends.friendsCost*=2
-		player.friends.friends+=1
-		u(g("addfriend"),"+1 friend: "+player.friends.friendsCost+" happiness")
-		uH()
 	}
 }
