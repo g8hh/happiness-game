@@ -72,10 +72,15 @@ window.onload = function(){
 		memories: {
 			amount: new Decimal(player.memories.amount),
 			gain: new Decimal(player.memories.gain)
+		},
+		options: {
+			bg: player.options.bg
 		}
 	}
 
 	g("body").style.backgroundColor="lightgrey"
-	g("body").style.backgroundImage="url(img/image2.png)"
+	if(player.options.bg){
+		g("body").style.backgroundImage="url(img/image2.png)"
+	}
 	g("body").style.backgroundSize="130px 93px"
 }

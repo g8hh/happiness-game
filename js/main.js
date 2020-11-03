@@ -45,6 +45,9 @@ player={
 	memories: {
 		amount: new Decimal(0),
 		gain: new Decimal(0)
+	},
+	options: {
+		bg: true
 	}
 }
 
@@ -54,6 +57,7 @@ function updateHTML(){
 	u("happiness","happiness: "+player.happiness.amount.toFixed(1)+" (+"+player.happiness.gain.toFixed(1)+"/c)")
 	if(player.friends.amount.eq(1)) {u("friends","you have "+player.friends.amount+" friend")} else {u("friends","you have "+player.friends.amount+" friends")}
 	u("memories","you have "+player.memories.amount.toFixed(1)+" memories (+"+player.memories.gain.toFixed(1)+"/s)")
+	u("gainfriend", "["+player.friends.cost.toFixed(1)+" happiness]")
 
 	u("upgrade1","["+player.upgrades.one.level+"/"+player.upgrades.one.maxLevel+"] ["+player.upgrades.one.cost.toFixed(1)+" happiness]")
 	if(player.upgrades.one.level.eq(player.upgrades.one.maxLevel)){
@@ -93,6 +97,11 @@ function gain(x){
 			}
 			break
 		case 2:
+			if(player.happiness.amount.gte(player.friends.cost)){
+				player.happiness.amount=player.happiness.amount.minus(player.friends.cost)
+				player.friends.amount=player.friends.amount.plus(1)
+				player.friends.cost=player.friends.cost.times(1.5)
+			}
 	}
 }
 

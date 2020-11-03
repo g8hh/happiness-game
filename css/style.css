@@ -83,6 +83,7 @@ button{
 }
 f:hover{
 	text-decoration: underline;
+	cursor: pointer;
 }
 div{
 	font-family: monospace;
