@@ -38,7 +38,9 @@ player={
 		}
 	},
 	friends: {
-		amount: new Decimal(0)
+		amount: new Decimal(0),
+		gain: new Decimal(1),
+		cost: new Decimal(100)
 	},
 	memories: {
 		amount: new Decimal(0),
@@ -50,14 +52,32 @@ function updateHTML(){
 	u("serotonin","serotonin: "+player.serotonin.amount.toFixed(1)+" (+"+player.serotonin.gain.times(player.upgrades.four.boost).toFixed(1)+"/s)")
 	u("dopamine","dopamine: "+player.dopamine.amount.toFixed(1)+" (+"+player.dopamine.gain.toFixed(1)+"/c)")
 	u("happiness","happiness: "+player.happiness.amount.toFixed(1)+" (+"+player.happiness.gain.toFixed(1)+"/c)")
-	u("friends","you have "+player.friends.amount+" friends")
+	if(player.friends.amount.eq(1)) {u("friends","you have "+player.friends.amount+" friend")} else {u("friends","you have "+player.friends.amount+" friends")}
 	u("memories","you have "+player.memories.amount.toFixed(1)+" memories (+"+player.memories.gain.toFixed(1)+"/s)")
+
+	u("upgrade1","["+player.upgrades.one.level+"/"+player.upgrades.one.maxLevel+"] ["+player.upgrades.one.cost.toFixed(1)+" happiness]")
+	if(player.upgrades.one.level.eq(player.upgrades.one.maxLevel)){
+		u("upgrade1","["+player.upgrades.one.level+"/"+player.upgrades.one.maxLevel+"]")
+	}
+	u("upgrade2","["+player.upgrades.two.level+"/"+player.upgrades.two.maxLevel+"] ["+player.upgrades.two.cost.toFixed(1)+" dopamine]")
+	if(player.upgrades.two.level.eq(player.upgrades.two.maxLevel)){
+		u("upgrade2","["+player.upgrades.two.level+"/"+player.upgrades.two.maxLevel+"]")
+	}
+	u("upgrade3","["+player.upgrades.three.level+"/"+player.upgrades.three.maxLevel+"] ["+player.upgrades.three.cost.toFixed(1)+" serotonin]")
+	if(player.upgrades.three.level.eq(player.upgrades.three.maxLevel)){
+		u("upgrade3","["+player.upgrades.three.level+"/"+player.upgrades.three.maxLevel+"]")
+	}
 }
 
 function gain(x){
 	switch(x){
 		case 0:
 			player.dopamine.amount=player.dopamine.amount.add(player.dopamine.gain)
+			float=document.createElement("div")
+			float.id="floatingText"
+			float.innerHTML="+"+player.dopamine.gain.toFixed(1)
+			g("dopaminegain").appendChild(float)
+			window.setTimeout(function(){g("dopaminegain").removeChild(g("dopaminegain").childNodes[1])},1000)
 			break
 
 		case 1:
@@ -65,8 +85,14 @@ function gain(x){
 				player.serotonin.amount=player.serotonin.amount.minus(5)
 				player.dopamine.amount=player.dopamine.amount.minus(5)
 				player.happiness.amount=player.happiness.amount.add(player.happiness.gain)
+				float=document.createElement("div")
+				float.id="floatingText"
+				float.innerHTML="+"+player.happiness.gain.toFixed(1)
+				g("convertdopamine").appendChild(float)
+				window.setTimeout(function(){g("convertdopamine").removeChild(g("convertdopamine").childNodes[1])},1000)
 			}
 			break
+		case 2:
 	}
 }
 
@@ -124,5 +150,15 @@ function upgrade(x){
 				player.friends.amount=player.friends.amount.plus(1)
 				u("upgrade5","[1/1]")
 			}
+			break
+		case "m1":
+			console.log("m1 bought")
+			break
+		case "m2":
+			console.log("m2 bought")
+			break
+		case "m3":
+			console.log("m3 bought")
+			break
 	}
 }

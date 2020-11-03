@@ -1,11 +1,24 @@
+function options(){
+	if(g("options").style.display==""){
+		g("options").style.display="block"
+	} else {
+		g("options").style.display=""
+	}
+}
+
 function save(){
+	g("sub1").innerHTML="saved!"
 	psave = JSON.stringify(player)
 	localStorage.setItem("save", btoa(psave));
+	window.setTimeout(function(){g("sub1").innerHTML="save"},2500)
 }
 
 function reset(){
-	localStorage.clear()
-	window.location.reload()
+	x = confirm("Are you sure?")
+	if(x){
+		localStorage.clear()
+		window.location.reload()
+	}
 }
 
 window.setInterval(save,10000)
@@ -52,7 +65,9 @@ window.onload = function(){
 			}
 		},
 		friends: {
-			amount: new Decimal(player.friends.amount)
+			amount: new Decimal(player.friends.amount),
+			gain: new Decimal(player.friends.gain),
+			cost: new Decimal(player.friends.cost)
 		},
 		memories: {
 			amount: new Decimal(player.memories.amount),
@@ -60,16 +75,7 @@ window.onload = function(){
 		}
 	}
 
-	u("upgrade1","["+player.upgrades.one.level+"/"+player.upgrades.one.maxLevel+"] ["+player.upgrades.one.cost.toFixed(1)+" happiness]")
-	if(player.upgrades.one.level.eq(player.upgrades.one.maxLevel)){
-		u("upgrade1","["+player.upgrades.one.level+"/"+player.upgrades.one.maxLevel+"]")
-	}
-	u("upgrade2","["+player.upgrades.two.level+"/"+player.upgrades.two.maxLevel+"] ["+player.upgrades.two.cost.toFixed(1)+" dopamine]")
-	if(player.upgrades.two.level.eq(player.upgrades.two.maxLevel)){
-		u("upgrade2","["+player.upgrades.two.level+"/"+player.upgrades.two.maxLevel+"]")
-	}
-	u("upgrade3","["+player.upgrades.three.level+"/"+player.upgrades.three.maxLevel+"] ["+player.upgrades.three.cost.toFixed(1)+" serotonin]")
-	if(player.upgrades.three.level.eq(player.upgrades.three.maxLevel)){
-		u("upgrade3","["+player.upgrades.three.level+"/"+player.upgrades.three.maxLevel+"]")
-	}
+	g("body").style.backgroundColor="lightgrey"
+	g("body").style.backgroundImage="url(img/image2.png)"
+	g("body").style.backgroundSize="130px 93px"
 }

@@ -11,6 +11,7 @@ function loop(){
 		g("friend").style.display="block"
 		player.memories.amount=player.memories.amount.add(player.memories.gain.div(50))
 		player.memories.gain=player.friends.amount.pow(2)
+		u("upgrade5", "[1/1]")
 	}
 }
 

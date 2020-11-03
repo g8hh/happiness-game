@@ -1,10 +1,39 @@
+*{
+	user-select: none;
+}
 body{
-	background-image: url("../img/image2.png");
+	/*background-image: url("../img/image2.png");
 	background-color: lightgrey;
-	background-size: 130px 93px;
+	background-size: 130px 93px;*/
 }
 button{
 	margin:5px;
+}
+#headContainer{
+	margin:5px;
+	margin-top:10px;
+	padding:0px;
+}
+#head{
+	padding:5px;
+	margin-right:5px;
+	display:inline;
+	background-color:white;
+	border: 2px solid black;
+	border-radius: 5px;
+	text-decoration: underline;
+}
+#sub,#sub1{
+	padding:5px;
+	margin-right:5px;
+	display:inline;
+	background-color:white;
+	border: 2px solid black;
+	border-radius: 5px;
+	cursor: pointer;
+}
+#sub:hover,#sub1:hover{
+	text-decoration: underline;
 }
 #you{
 	margin:5px;
@@ -37,6 +66,21 @@ button{
 	background: white;
 	display:none;
 }
+#options{
+	position:absolute;
+	display: none;
+	padding:10px;
+	width:400px;
+	height:200px;
+	top:30%;
+	bottom: 50%;
+	left:40%;
+	right:40%;
+	border: 2px solid black;
+	border-radius: 5px;
+	background-color:white;
+	margin:auto;
+}
 f:hover{
 	text-decoration: underline;
 }
@@ -52,10 +96,32 @@ div{
 #friends,#memories{
 	margin-top:3px;
 }
+.click:hover{
+	text-decoration: underline;
+}
 .upgrade{
 	margin-top:2px;
 	margin-bottom: 2px;
 }
 #u5{
 	display:none;
+}
+#dopaminegain,#convertdopamine{
+	position:relative;
+}
+#floatingText {
+    display: inline;
+    position:absolute;
+    animation: float 1s infinite;
+    color: green;
+    opacity: 1;
+    font-family:monospace;
+    font: "Courier";
+    bottom:0px;
+}
+
+@keyframes float {
+    0% { opacity: 0;bottom:0px;}
+    50% { opacity: 1; bottom: 10px;}
+    100% { opacity: 0;bottom:20px;}
 }

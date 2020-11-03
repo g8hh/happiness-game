@@ -5,15 +5,23 @@
 		<link rel="stylesheet" type='text/css' href='css/style.css'/>
 		<link rel="icon" type="image/png" href="img/favicon.png"/>
 	</head>
-	<body>
+	<body id="body">
+		<div id="headContainer">
+			<div id="head">happiness game</div>
+			<div id="sub" onclick="options()">options</div>
+			<div id="sub1" onclick="save()">save</div>
+			<div id="sub" onclick="reset()">reset</div>
+		</div>
 		<div id="you">
 			<div><h id="header">you</h> (make happy chemicals)</div>
 			<div id="serotonin">serotonin: 1</div>
 			<div id="dopamine">dopamine: 0</div>
 			<div id="happiness">happiness: 0</div>
 
-			<button id="dopaminegain" onclick="gain(0)">gain dopamine</button><br>
-			<button id="convertdopamine" onclick="gain(1)">gain happiness (5d+5s)</button>
+			<br>
+
+			<div id="dopaminegain" class="click" onclick="gain(0)">gain dopamine</div>
+			<div id="convertdopamine" class="click" onclick="gain(1)">gain happiness (5d+5s)</div>
 		</div>	
 
 		<div id="upgrades">
@@ -29,12 +37,19 @@
 			<div><h id="header">friends</h> (make memories for more happy chemicals)</div>
 
 			<div id="friends">you have 0 friends</div>
+			<div id="makefriend"><f onclick="gain(2)">make another friend</f> <h id="gainfriend">[100 happiness]</h></div>
 			<div id="memories">you have 0 memories (+0/s)</div><br>
 
 			<div id="header">memories upgrades</div>
-			<div id="mupgrade">increase max level of u1,u2,u3</div>
+			<div id="mupgrade"><f onclick="upgrade('m1')">increase max level of u1,2,3 -> +1</f> <h id="mupgrade1">[0/10] [100 memories]</h></div>
+			<div id="mupgrade"><f onclick="upgrade('m2')">divide upgrade costs of u1,2,3 -> +1</f> <h id="mupgrade2">[0/5] [250 memories]</h></div>
+			<div id="mupgrade"><f onclick="upgrade('m3')">increase memories production -> +0.5 to power</f> <h id="mupgrade3">[0/∞] [500 memories]</h></div>
 		</div>
-		<script src="https://raw.githubusercontent.com/MikeMcl/decimal.js/master/decimal.js"></script>
+		<div id="options">
+			<div id="header" style="text-align:center">options box</div>
+			<div onclick="toggleBackground()"><f>toggle background image</f></div>
+		</div>
+		<script src="js/decimal.js"></script>
 		<script src="js/helper.js"></script>
 		<script src="js/save.js"></script>
 		<script src="js/loop.js"></script>
