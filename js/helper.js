@@ -13,12 +13,19 @@ function toggleBackground(){
 		g("body").style.backgroundImage="url(img/image2.png)"
 	}
 }
-function floatText(target,text,timeout){
+function floatText(target,text){
 	float=document.createElement("div")
 	float.id="floatingText"
 	float.innerHTML="+"+text
 	g(target).appendChild(float)
-	window.setTimeout(function(){g(target).removeChild(g(target).childNodes[1])},timeout)
+	window.setTimeout(function(){g(target).removeChild(g(target).childNodes[1])},1000)
+}
+function floatText2(target,text){
+	float=document.createElement("div")
+	float.id="floatingText2"
+	float.innerHTML="-"+text
+	g(target).appendChild(float)
+	window.setTimeout(function(){g(target).removeChild(g(target).childNodes[3])},1000)
 }
 function checkGfUnlock(){
 	if(player.upgrades.one.level.eq(player.upgrades.one.maxLevel) &&

@@ -14,9 +14,16 @@
 		</div>
 		<div id="you">
 			<div><h id="header">you</h> (make happy chemicals)</div>
-			<div id="serotonin">serotonin: 1</div>
-			<div id="dopamine">dopamine: 0</div>
-			<div id="happiness">happiness: 0</div>
+
+			<div id="serotoninContainer">
+				<div id="serotonin">serotonin: 1</div>
+			</div><br>
+			<div id="dopamineContainer">
+				<div id="dopamine">dopamine: 0</div>
+			</div><br>
+			<div id="happinessContainer">
+				<div id="happiness">happiness: 0</div>
+			</div><br>
 
 			<br>
 
@@ -27,9 +34,9 @@
 
 		<div id="upgrades">
 			<div><h id="header">upgrades</h> (make more happy chemicals)</div>
-			<div class="upgrade"><f onclick="upgrade(1)">gain more dopamine per click -> x1.5</f> <h id="upgrade1">[0/4] [10 happiness]</h></div>
+			<div class="upgrade"><f onclick="upgrade(1)">gain more dopamine per click -> x1.8</f> <h id="upgrade1">[0/4] [10 happiness]</h></div>
 			<div class="upgrade"><f onclick="upgrade(2)">gain more serotonin per second -> x1.5</f> <h id="upgrade2">[0/4] [100 dopamine]</h></div>
-			<div class="upgrade"><f onclick="upgrade(3)">gain more happiness per convert -> x1.5</f> <h id="upgrade3">[0/3] [100 serotonin]</h></div>
+			<div class="upgrade"><f onclick="upgrade(3)">gain more happiness per convert -> x1.5</f> <h id="upgrade3">[0/4] [100 serotonin]</h></div>
 			<div class="upgrade"><f onclick="upgrade(4)">happiness boosts serotonin gain -> ln(x)/2</f> <h id="upgrade4">[0/1] [250 happiness]</h></div>
 			<div class="upgrade" id="u5"><f onclick="upgrade(5)">get a friend</f> <h id="upgrade5">[0/1] [1e3 serotonin, dopamine & happiness]</h></div>
 		</div>
@@ -39,7 +46,10 @@
 
 			<div id="friends">you have 0 friends</div>
 			<div id="makefriend"><f onclick="gain(2)">make another friend</f> <h id="gainfriend">[100 happiness]</h></div>
-			<div id="memories">you have 0 memories (+0/s)</div><br>
+
+			<div id="memoriesContainer">
+				<div id="memories">you have 0 memories (+0/s)</div>
+			</div><br><br>
 
 			<div id="header">memories upgrades</div>
 			<div id="mupgrade"><f onclick="upgrade('m1')">increase max level of u1,2,3 -> +1</f> <h id="mupgrade1">[0/10] [100 memories]</h></div>

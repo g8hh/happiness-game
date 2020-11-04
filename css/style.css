@@ -35,6 +35,7 @@ button{
 	text-decoration: underline;
 }
 #you{
+	position:relative;
 	margin:5px;
 	padding: 5px;
 	width:15%;
@@ -106,9 +107,6 @@ button:hover{
 #friends,#memories{
 	margin-top:3px;
 }
-#makefriend{
-	position:relative;
-}
 .click:hover{
 	text-decoration: underline;
 }
@@ -119,7 +117,10 @@ button:hover{
 #u5{
 	display:none;
 }
-#dopaminegain,#convertdopamine{
+#serotonin,#dopamine,#happiness,#memories{
+	float:left;
+}
+#dopaminegain,#convertdopamine,#serotoninContainer,#dopamineContainer,#happinessContainer,#memoriesContainer{
 	position:relative;
 }
 #floatingText {
@@ -127,6 +128,16 @@ button:hover{
     position:absolute;
     animation: float 1s infinite;
     color: green;
+    opacity: 1;
+    font-family:monospace;
+    font: "Courier";
+    bottom:0px;
+}
+#floatingText2 {
+	display: inline;
+    position:absolute;
+    animation: floatdown 1s infinite;
+    color: red;
     opacity: 1;
     font-family:monospace;
     font: "Courier";
@@ -157,4 +168,10 @@ button:hover{
     0% { opacity: 0;bottom:0px;}
     50% { opacity: 1; bottom: 10px;}
     100% { opacity: 0;bottom:20px;}
+}
+
+@keyframes floatdown {
+	0% { opacity: 0; top:0px;}
+    50% { opacity: 1; top: 10px;}
+    100% { opacity: 0; top:20px;}
 }

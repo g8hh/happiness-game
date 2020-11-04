@@ -24,8 +24,8 @@ player={
 		},
 		three: {
 			level: new Decimal(0),
-			maxLevel: new Decimal(3),
-			cost: new Decimal(100)
+			maxLevel: new Decimal(4),
+			cost: new Decimal(50)
 		},
 		four: {
 			bought: false,
@@ -94,7 +94,7 @@ function updateHTML(){
 	if(player.memories.upgrades.one.level.eq(player.memories.upgrades.one.maxLevel)){
 		u("mupgrade1","["+player.memories.upgrades.one.level+"/"+player.memories.upgrades.one.maxLevel+"]")
 	}
-	u("mupgrade2","["+player.memories.upgrades.two.level+"/5] ["+format(player.memories.upgrades.two.cost)+" memories]")
+	u("mupgrade2","["+player.memories.upgrades.two.level+"/10] ["+format(player.memories.upgrades.two.cost)+" memories]")
 	if(player.memories.upgrades.two.level.eq(player.memories.upgrades.two.maxLevel)){
 		u("mupgrade2","["+player.memories.upgrades.two.level+"/"+player.memories.upgrades.two.maxLevel+"]")
 	}
@@ -108,20 +108,23 @@ function gain(x){
 	switch(x){
 		case 0:
 			player.dopamine.amount=player.dopamine.amount.add(player.dopamine.gain)
-			floatText("dopaminegain",format(player.dopamine.gain),1000)
+			floatText("dopaminegain",format(player.dopamine.gain))
 			break
 
 		case 1:
 			if(player.serotonin.amount.gte(5) && player.dopamine.amount.gte(5)){
 				player.serotonin.amount=player.serotonin.amount.minus(5)
+				floatText2("serotoninContainer","5")
 				player.dopamine.amount=player.dopamine.amount.minus(5)
+				floatText2("dopamineContainer","5")
 				player.happiness.amount=player.happiness.amount.add(player.happiness.gain)
-				floatText("convertdopamine",format(player.happiness.gain),1000)
+				floatText("convertdopamine",format(player.happiness.gain))
 			}
 			break
 		case 2:
 			if(player.happiness.amount.gte(player.friends.cost)){
 				player.happiness.amount=player.happiness.amount.minus(player.friends.cost)
+				floatText2("happinessContainer",format(player.friends.cost))
 				player.friends.amount=player.friends.amount.plus(1)
 				player.friends.cost=player.friends.cost.times(1.5)
 			}
@@ -130,8 +133,10 @@ function gain(x){
 				gained=Decimal.min(player.dopamine.amount,player.serotonin.amount).div(5).floor()
 				player.happiness.amount=player.happiness.amount.plus(gained.times(player.happiness.gain))
 				player.dopamine.amount=player.dopamine.amount.minus(gained*5)
+				floatText2("dopamineContainer",format(new Decimal(gained*5)))
 				player.serotonin.amount=player.serotonin.amount.minus(gained*5)
-				floatText("convertmaxbutton",format(gained.times(player.happiness.gain)),1000)
+				floatText2("serotoninContainer",format(new Decimal(gained*5)))
+				floatText("convertmaxbutton",format(gained.times(player.happiness.gain)))
 			}
 			break
 		case 4:
@@ -147,14 +152,16 @@ function upgrade(x){
 		case 1:
 			if(player.happiness.amount.gte(player.upgrades.one.cost.div(player.memories.upgrades.two.level.plus(1))) && player.upgrades.one.level.lt(player.upgrades.one.maxLevel)){
 				player.happiness.amount=player.happiness.amount.minus(player.upgrades.one.cost.div(player.memories.upgrades.two.level.plus(1)))
+				floatText2("happinessContainer",player.upgrades.one.cost.div(player.memories.upgrades.two.level.plus(1)))
 				player.upgrades.one.level=player.upgrades.one.level.add(1)
 				player.upgrades.one.cost=player.upgrades.one.cost.times(2)
-				player.dopamine.gain=player.dopamine.gain.times(1.5)
+				player.dopamine.gain=player.dopamine.gain.times(1.8)
 			}
 			break
 		case 2:
 			if(player.dopamine.amount.gte(player.upgrades.two.cost.div(player.memories.upgrades.two.level.plus(1))) && player.upgrades.two.level.lt(player.upgrades.two.maxLevel)){
 				player.dopamine.amount=player.dopamine.amount.minus(player.upgrades.two.cost.div(player.memories.upgrades.two.level.plus(1)))
+				floatText2("dopamineContainer",player.upgrades.two.cost.div(player.memories.upgrades.two.level.plus(1)))
 				player.upgrades.two.level=player.upgrades.two.level.plus(1)
 				player.upgrades.two.cost=player.upgrades.two.cost.times(2)
 				player.serotonin.gain=player.serotonin.gain.times(1.5)
@@ -163,6 +170,7 @@ function upgrade(x){
 		case 3:
 			if(player.serotonin.amount.gte(player.upgrades.three.cost.div(player.memories.upgrades.two.level.plus(1))) && player.upgrades.three.level.lt(player.upgrades.three.maxLevel)){
 				player.serotonin.amount=player.serotonin.amount.minus(player.upgrades.three.cost.div(player.memories.upgrades.two.level.plus(1)))
+				floatText2("serotoninContainer",player.upgrades.three.cost.div(player.memories.upgrades.two.level.plus(1)))
 				player.upgrades.three.level=player.upgrades.three.level.plus(1)
 				player.upgrades.three.cost=player.upgrades.three.cost.times(2)
 				player.happiness.gain=player.happiness.gain.times(1.5)
@@ -171,6 +179,7 @@ function upgrade(x){
 		case 4:
 			if(player.happiness.amount.gte(player.upgrades.four.cost) && !player.upgrades.four.bought){
 				player.happiness.amount=player.happiness.amount.minus(player.upgrades.four.cost)
+				floatText2("happinessContainer",player.upgrades.four.cost)
 				player.upgrades.four.bought=true;
 			}
 			break
@@ -180,12 +189,16 @@ function upgrade(x){
 				player.serotonin.amount=player.serotonin.amount.minus(1000)
 				player.dopamine.amount=player.dopamine.amount.minus(1000)
 				player.happiness.amount=player.happiness.amount.minus(1000)
+				floatText2("serotoninContainer","1e3")
+				floatText2("dopamineContainer","1e3")
+				floatText2("happinessContainer","1e3")
 				player.friends.amount=player.friends.amount.plus(1)
 			}
 			break
 		case "m1":
 			if(player.memories.amount.gte(player.memories.upgrades.one.cost) && player.memories.upgrades.one.level.lt(player.memories.upgrades.one.maxLevel)){
 				player.memories.amount=player.memories.amount.minus(player.memories.upgrades.one.cost)
+				floatText2("memoriesContainer",player.memories.upgrades.one.cost)
 				player.memories.upgrades.one.cost=player.memories.upgrades.one.cost.times(1.8)
 				player.memories.upgrades.one.level=player.memories.upgrades.one.level.plus(1)
 
@@ -197,6 +210,7 @@ function upgrade(x){
 		case "m2":
 			if(player.memories.amount.gte(player.memories.upgrades.two.cost) && player.memories.upgrades.two.level.lt(player.memories.upgrades.two.maxLevel)){
 				player.memories.amount=player.memories.amount.minus(player.memories.upgrades.two.cost)
+				floatText2("memoriesContainer",player.memories.upgrades.two.cost)
 				player.memories.upgrades.two.cost=player.memories.upgrades.two.cost.times(1.5)
 				player.memories.upgrades.two.level=player.memories.upgrades.two.level.plus(1)
 			}
@@ -204,6 +218,7 @@ function upgrade(x){
 		case "m3":
 			if(player.memories.amount.gte(player.memories.upgrades.three.cost) && player.memories.upgrades.three.level.lt(player.memories.upgrades.three.maxLevel)){
 				player.memories.amount=player.memories.amount.minus(player.memories.upgrades.three.cost)
+				floatText2("memoriesContainer",player.memories.upgrades.three.cost)
 				player.memories.upgrades.three.cost=player.memories.upgrades.three.cost.times(2)
 				player.memories.upgrades.three.level=player.memories.upgrades.three.level.plus(1)
 			}

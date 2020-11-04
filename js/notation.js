@@ -13,6 +13,6 @@ function format(value){
     formatted=decimal1+"."+decimal2+"e"+exponent
     return formatted
   } else {
-    return value.toFixed(2)
+    return value.toFixed(1)
   }
 }
