@@ -2,9 +2,8 @@
 	user-select: none;
 }
 body{
-	/*background-image: url("../img/image2.png");
 	background-color: lightgrey;
-	background-size: 130px 93px;*/
+	background-size: 130px 93px;
 }
 button{
 	margin:5px;
@@ -97,6 +96,9 @@ div{
 #friends,#memories{
 	margin-top:3px;
 }
+#makefriend{
+	position:relative;
+}
 .click:hover{
 	text-decoration: underline;
 }
@@ -119,6 +121,25 @@ div{
     font-family:monospace;
     font: "Courier";
     bottom:0px;
+}
+#head:hover{
+	animation: hover ease 5s infinite;
+}
+
+/* roygbiv */
+
+/* #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3 */
+
+@keyframes hover{
+	0% {border: 2px solid #ff2400}
+	12% {border: 2px solid #e81d1d;}
+	24% {border: 2px solid #e8b71d;}
+	36% {border: 2px solid #e3e81d;}
+	48% {border: 2px solid #1de840;}
+	60% {border: 2px solid #1ddde8;}
+	72% {border: 2px solid #2b1de8;}
+	84% {border: 2px solid #dd00f3;}
+	100% {border: 2px solid #ff2400;}
 }
 
 @keyframes float {

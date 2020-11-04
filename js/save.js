@@ -24,6 +24,12 @@ function reset(){
 window.setInterval(save,10000)
 
 window.onload = function(){
+	g("body").style.backgroundColor="lightgrey"
+	if(player.options.bg){
+		g("body").style.backgroundImage="url(img/image2.png)"
+	}
+	g("body").style.backgroundSize="130px 93px"
+	
 	player=JSON.parse(atob(localStorage.getItem("save")))
 	player={
 		serotonin: {
@@ -94,10 +100,4 @@ window.onload = function(){
 			bg: player.options.bg
 		}
 	}
-
-	g("body").style.backgroundColor="lightgrey"
-	if(player.options.bg){
-		g("body").style.backgroundImage="url(img/image2.png)"
-	}
-	g("body").style.backgroundSize="130px 93px"
 }
