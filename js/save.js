@@ -10,7 +10,7 @@ function save(){
 	g("sub1").innerHTML="saved!"
 	psave = JSON.stringify(player)
 	localStorage.setItem("save", btoa(psave));
-	window.setTimeout(function(){g("sub1").innerHTML="save"},2500)
+	window.setTimeout(function(){g("sub1").innerHTML="save"},1500)
 }
 
 function reset(){
@@ -71,7 +71,24 @@ window.onload = function(){
 		},
 		memories: {
 			amount: new Decimal(player.memories.amount),
-			gain: new Decimal(player.memories.gain)
+			gain: new Decimal(player.memories.gain),
+			upgrades: {
+				one: {
+					cost: new Decimal(player.memories.upgrades.one.cost),
+					level: new Decimal(player.memories.upgrades.one.level),
+					maxLevel: new Decimal(player.memories.upgrades.one.maxLevel)
+				},
+				two: {
+					cost: new Decimal(player.memories.upgrades.two.cost),
+					level: new Decimal(player.memories.upgrades.two.level),
+					maxLevel: new Decimal(player.memories.upgrades.two.maxLevel)
+				},
+				three: {
+					cost: new Decimal(player.memories.upgrades.three.cost),
+					level: new Decimal(player.memories.upgrades.three.level),
+					maxLevel: new Decimal(player.memories.upgrades.three.maxLevel)
+				}
+			}
 		},
 		options: {
 			bg: player.options.bg

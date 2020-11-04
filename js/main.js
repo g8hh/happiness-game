@@ -44,7 +44,24 @@ player={
 	},
 	memories: {
 		amount: new Decimal(0),
-		gain: new Decimal(0)
+		gain: new Decimal(0),
+		upgrades: {
+			one: {
+				cost: new Decimal(100),
+				level: new Decimal(0),
+				maxLevel: new Decimal(10)
+			},
+			two: {
+				cost: new Decimal(250),
+				level: new Decimal(0),
+				maxLevel: new Decimal(5)
+			},
+			three: {
+				cost: new Decimal(500),
+				level: new Decimal(0),
+				maxLevel: new Decimal(10)
+			}
+		}
 	},
 	options: {
 		bg: true
