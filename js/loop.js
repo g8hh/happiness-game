@@ -13,6 +13,9 @@ function loop(){
 		player.memories.gain=player.friends.amount.pow(player.memories.upgrades.three.level.div(10).plus(2))
 		u("upgrade5", "[1/1]")
 	}
+	if(checkGfUnlock()){
+		g("girlfriend").style.display="block"
+	}
 }
 
 window.setInterval(loop,20)

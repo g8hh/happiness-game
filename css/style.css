@@ -84,10 +84,20 @@ f:hover{
 	text-decoration: underline;
 	cursor: pointer;
 }
-div{
+div, button{
 	font-family: monospace;
 	font: "Courier";
 	padding:1px;
+}
+button{
+	border: 0px solid black;
+	background-color:white;
+	outline: none;
+	position:relative;
+	cursor:pointer;
+}
+button:hover{
+	text-decoration: underline;
 }
 #header{
 	text-decoration: underline;
@@ -122,24 +132,25 @@ div{
     font: "Courier";
     bottom:0px;
 }
-#head:hover{
-	animation: hover ease 5s infinite;
+#girlfriend{
+	border:2px solid black;
+	background-color:white;
+	float:left;
+	margin:5px;
+	padding:5px;
+	border-radius:5px;
+	display: none;
+}
+#girlfriend:hover{
+	animation: 5s ease danger infinite;
+
 }
 
-/* roygbiv */
-
-/* #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3 */
-
-@keyframes hover{
-	0% {border: 2px solid #ff2400}
-	12% {border: 2px solid #e81d1d;}
-	24% {border: 2px solid #e8b71d;}
-	36% {border: 2px solid #e3e81d;}
-	48% {border: 2px solid #1de840;}
-	60% {border: 2px solid #1ddde8;}
-	72% {border: 2px solid #2b1de8;}
-	84% {border: 2px solid #dd00f3;}
-	100% {border: 2px solid #ff2400;}
+@keyframes danger{
+	0% {border: 2px solid black;}
+	33% {border:2px solid red;}
+	66% {border: 2px solid darkred;}
+	100% {border: 2px solid black;}
 }
 
 @keyframes float {

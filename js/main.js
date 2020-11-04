@@ -69,35 +69,36 @@ player={
 }
 
 function updateHTML(){
-	u("serotonin","serotonin: "+player.serotonin.amount.toFixed(1)+" (+"+player.serotonin.gain.times(player.upgrades.four.boost).toFixed(1)+"/s)")
-	u("dopamine","dopamine: "+player.dopamine.amount.toFixed(1)+" (+"+player.dopamine.gain.toFixed(1)+"/c)")
-	u("happiness","happiness: "+player.happiness.amount.toFixed(1)+" (+"+player.happiness.gain.toFixed(1)+"/c)")
+	u("serotonin","serotonin: "+format(player.serotonin.amount)+" (+"+format(player.serotonin.gain.times(player.upgrades.four.boost))+"/s)")
+	u("dopamine","dopamine: "+format(player.dopamine.amount)+" (+"+format(player.dopamine.gain)+"/c)")
+	u("convertmax","gain max happiness (+"+format(Decimal.min(player.dopamine.amount,player.serotonin.amount).div(5).floor().times(player.happiness.gain))+")")
+	u("happiness","happiness: "+format(player.happiness.amount)+" (+"+format(player.happiness.gain)+"/c)")
 	if(player.friends.amount.eq(1)) {u("friends","you have "+player.friends.amount+" friend")} else {u("friends","you have "+player.friends.amount+" friends")}
-	u("memories","you have "+player.memories.amount.toFixed(1)+" memories (+"+player.memories.gain.toFixed(1)+"/s)")
-	u("gainfriend", "["+player.friends.cost.toFixed(1)+" happiness]")
+	u("memories","you have "+format(player.memories.amount)+" memories (+"+format(player.memories.gain)+"/s)")
+	u("gainfriend", "["+format(player.friends.cost)+" happiness]")
 
-	u("upgrade1","["+player.upgrades.one.level+"/"+player.upgrades.one.maxLevel+"] ["+player.upgrades.one.cost.div(player.memories.upgrades.two.level.plus(1)).toFixed(1)+" happiness]")
+	u("upgrade1","["+player.upgrades.one.level+"/"+player.upgrades.one.maxLevel+"] ["+format(player.upgrades.one.cost.div(player.memories.upgrades.two.level.plus(1)))+" happiness]")
 	if(player.upgrades.one.level.eq(player.upgrades.one.maxLevel)){
 		u("upgrade1","["+player.upgrades.one.level+"/"+player.upgrades.one.maxLevel+"]")
 	}
-	u("upgrade2","["+player.upgrades.two.level+"/"+player.upgrades.two.maxLevel+"] ["+player.upgrades.two.cost.div(player.memories.upgrades.two.level.plus(1)).toFixed(1)+" dopamine]")
+	u("upgrade2","["+player.upgrades.two.level+"/"+player.upgrades.two.maxLevel+"] ["+format(player.upgrades.two.cost.div(player.memories.upgrades.two.level.plus(1)))+" dopamine]")
 	if(player.upgrades.two.level.eq(player.upgrades.two.maxLevel)){
 		u("upgrade2","["+player.upgrades.two.level+"/"+player.upgrades.two.maxLevel+"]")
 	}
-	u("upgrade3","["+player.upgrades.three.level+"/"+player.upgrades.three.maxLevel+"] ["+player.upgrades.three.cost.div(player.memories.upgrades.two.level.plus(1)).toFixed(1)+" serotonin]")
+	u("upgrade3","["+player.upgrades.three.level+"/"+player.upgrades.three.maxLevel+"] ["+format(player.upgrades.three.cost.div(player.memories.upgrades.two.level.plus(1)))+" serotonin]")
 	if(player.upgrades.three.level.eq(player.upgrades.three.maxLevel)){
 		u("upgrade3","["+player.upgrades.three.level+"/"+player.upgrades.three.maxLevel+"]")
 	}
 
-	u("mupgrade1","["+player.memories.upgrades.one.level+"/10] ["+player.memories.upgrades.one.cost.toFixed(1)+" memories]")
+	u("mupgrade1","["+player.memories.upgrades.one.level+"/10] ["+format(player.memories.upgrades.one.cost)+" memories]")
 	if(player.memories.upgrades.one.level.eq(player.memories.upgrades.one.maxLevel)){
 		u("mupgrade1","["+player.memories.upgrades.one.level+"/"+player.memories.upgrades.one.maxLevel+"]")
 	}
-	u("mupgrade2","["+player.memories.upgrades.two.level+"/5] ["+player.memories.upgrades.two.cost.toFixed(1)+" memories]")
+	u("mupgrade2","["+player.memories.upgrades.two.level+"/5] ["+format(player.memories.upgrades.two.cost)+" memories]")
 	if(player.memories.upgrades.two.level.eq(player.memories.upgrades.two.maxLevel)){
 		u("mupgrade2","["+player.memories.upgrades.two.level+"/"+player.memories.upgrades.two.maxLevel+"]")
 	}
-	u("mupgrade3","["+player.memories.upgrades.three.level+"/5] ["+player.memories.upgrades.three.cost.toFixed(1)+" memories]")
+	u("mupgrade3","["+player.memories.upgrades.three.level+"/5] ["+format(player.memories.upgrades.three.cost)+" memories]")
 	if(player.memories.upgrades.three.level.eq(player.memories.upgrades.three.maxLevel)){
 		u("mupgrade3","["+player.memories.upgrades.three.level+"/"+player.memories.upgrades.three.maxLevel+"]")
 	}
@@ -107,7 +108,7 @@ function gain(x){
 	switch(x){
 		case 0:
 			player.dopamine.amount=player.dopamine.amount.add(player.dopamine.gain)
-			floatText("dopaminegain",player.dopamine.gain.toFixed(1),1000)
+			floatText("dopaminegain",format(player.dopamine.gain),1000)
 			break
 
 		case 1:
@@ -115,7 +116,7 @@ function gain(x){
 				player.serotonin.amount=player.serotonin.amount.minus(5)
 				player.dopamine.amount=player.dopamine.amount.minus(5)
 				player.happiness.amount=player.happiness.amount.add(player.happiness.gain)
-				floatText("convertdopamine",player.happiness.gain.toFixed(1),1000)
+				floatText("convertdopamine",format(player.happiness.gain),1000)
 			}
 			break
 		case 2:
@@ -124,6 +125,20 @@ function gain(x){
 				player.friends.amount=player.friends.amount.plus(1)
 				player.friends.cost=player.friends.cost.times(1.5)
 			}
+		case 3:
+			if(player.dopamine.amount.gte(5) && player.dopamine.amount.gte(5)){
+				gained=Decimal.min(player.dopamine.amount,player.serotonin.amount).div(5).floor()
+				player.happiness.amount=player.happiness.amount.plus(gained.times(player.happiness.gain))
+				player.dopamine.amount=player.dopamine.amount.minus(gained*5)
+				player.serotonin.amount=player.serotonin.amount.minus(gained*5)
+				floatText("convertmaxbutton",format(gained.times(player.happiness.gain)),1000)
+			}
+			break
+		case 4:
+			if(checkGfUnlock()){
+				alert("hey! you've reached the end of the content i was arsed to implement. don't worry, more coming soon maybe hopefully")
+			}
+			break
 	}
 }
 
@@ -135,10 +150,6 @@ function upgrade(x){
 				player.upgrades.one.level=player.upgrades.one.level.add(1)
 				player.upgrades.one.cost=player.upgrades.one.cost.times(2)
 				player.dopamine.gain=player.dopamine.gain.times(1.5)
-				u("upgrade1","["+player.upgrades.one.level+"/"+player.upgrades.one.maxLevel+"] ["+player.upgrades.one.cost.div(player.memories.upgrades.two.level.plus(1)).toFixed(1)+" happiness]")
-				if(player.upgrades.one.level.eq(player.upgrades.one.maxLevel)){
-					u("upgrade1","["+player.upgrades.one.level+"/"+player.upgrades.one.maxLevel+"]")
-				}
 			}
 			break
 		case 2:
@@ -147,10 +158,6 @@ function upgrade(x){
 				player.upgrades.two.level=player.upgrades.two.level.plus(1)
 				player.upgrades.two.cost=player.upgrades.two.cost.times(2)
 				player.serotonin.gain=player.serotonin.gain.times(1.5)
-				u("upgrade2","["+player.upgrades.two.level+"/"+player.upgrades.two.maxLevel+"] ["+player.upgrades.two.cost.div(player.memories.upgrades.two.level.plus(1)).toFixed(1)+" dopamine]")
-				if(player.upgrades.two.level.eq(player.upgrades.two.maxLevel)){
-					u("upgrade2","["+player.upgrades.two.level+"/"+player.upgrades.two.maxLevel+"]")
-				}
 			}
 			break
 		case 3:
@@ -159,17 +166,12 @@ function upgrade(x){
 				player.upgrades.three.level=player.upgrades.three.level.plus(1)
 				player.upgrades.three.cost=player.upgrades.three.cost.times(2)
 				player.happiness.gain=player.happiness.gain.times(1.5)
-				u("upgrade3","["+player.upgrades.three.level+"/"+player.upgrades.three.maxLevel+"] ["+player.upgrades.three.cost.div(player.memories.upgrades.two.level.plus(1)).toFixed(1)+" serotonin]")
-				if(player.upgrades.three.level.eq(player.upgrades.three.maxLevel)){
-					u("upgrade3","["+player.upgrades.three.level+"/"+player.upgrades.three.maxLevel+"]")
-				}
 			}
 			break
 		case 4:
 			if(player.happiness.amount.gte(player.upgrades.four.cost) && !player.upgrades.four.bought){
 				player.happiness.amount=player.happiness.amount.minus(player.upgrades.four.cost)
 				player.upgrades.four.bought=true;
-				u("upgrade4","[1/1]")
 			}
 			break
 		case 5:
@@ -179,7 +181,6 @@ function upgrade(x){
 				player.dopamine.amount=player.dopamine.amount.minus(1000)
 				player.happiness.amount=player.happiness.amount.minus(1000)
 				player.friends.amount=player.friends.amount.plus(1)
-				u("upgrade5","[1/1]")
 			}
 			break
 		case "m1":
