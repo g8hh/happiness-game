@@ -7,10 +7,10 @@ happiness game
 free dopamine !!! antesocial.github.io
 
 TO-DO List - (i'm lazy)
--Dark theme / themes
--Rework html so its more consistent/works
--Rework css cause i hate how messy it is
--Maybe improve that codefactor, maybe not
+-Dark theme / themes \n
+-Rework html so its more consistent/works \n
+-Rework css cause i hate how messy it is \n
+-Maybe improve that codefactor, maybe not \n
 -Highlighting when you can buy upgrades
 -less clicks, more stuff
 -game pacing slightly slower maybe? or just add more stuff to compensate
