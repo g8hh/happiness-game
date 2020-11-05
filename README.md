@@ -7,7 +7,10 @@ happiness game
 free dopamine !!! antesocial.github.io
 
 TO-DO List - (i'm lazy)
+
 -Dark theme / themes 
+
+-Background opacity tings
 
 -Rework html so its more consistent/works 
 
