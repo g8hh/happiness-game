@@ -11,6 +11,13 @@ function float(a,b){
 	g(a).appendChild(c)
 	window.setTimeout(function(){g(a).removeChild(g(a).childNodes[0])},1000)
 }
+function floatdown(a,b){
+	c=document.createElement("div")
+	c.id="floatred"
+	c.innerHTML="-"+b
+	g(a).appendChild(c)
+	window.setTimeout(function(){g(a).removeChild(g(a).childNodes[0])},1000)
+}
 function rng(a,b) {
   return Math.floor(Math.random()*(b-a+1))+a;
 }

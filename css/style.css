@@ -1,5 +1,6 @@
 * {
 	font-family: monospace;
+  user-select: none;
 }
 body{
 	background-color: lightgrey;
@@ -29,26 +30,55 @@ div {
 
 #gain{display:block;margin:auto;margin-bottom:5px;}
 #head{margin:auto;}
-#content{float:left;}
+#upgrades{float:left;}
 #header{width:100%;}
+#box{width:10px;height:10px;}
 
-#a {width:10px;height:10px;background-color:#8cff9e;}
-#b {width:10px;height:10px;background-color:#89cff0;}
-#c {width:10px;height:10px;background-color:pink;}
-#d {width:10px;height:10px;background-color:#f8e5b7;}
-#serotonin,#sfloat {background-color:#8cff9e;width:20%;}
-#dopamine,#dfloat {background-color:#89cff0;width:20%;}
-#oxytocin,#ofloat {background-color:pink;width:20%;}
-#endorphins,#efloat {background-color:#f8e5b7;width:20%;}
+#a,#b,#c,#d {width:10px;height:10px;}
+
+#serotonin,#sfloat,#dopamine,#dfloat,#oxytocin,#ofloat,#endorphins,#efloat{width:20%;}
+ 
+.serotonin{background-color:#8cff9e;}
+.dopamine{background-color:#89cff0;}
+.oxytocin{background-color:pink;}
+.endorphins{background-color:#f8e5b7;}
+
+#upgrades td {
+  width: 25%;
+}
+
+#upgrades {
+  width:30%;
+}
+
+.hover {
+  border-right: 1px solid #dddddd;
+}
+
+.hover:hover {
+  text-decoration:underline;
+  cursor: pointer;
+}
 
 #float {
   position:absolute;
   color:green;
-  animation: float 1s linear infinite;
+  animation: float 1s infinite;
+}
+
+#floatred {
+  position:absolute;
+  color:red;
+  animation: floatdown 1s infinite;
 }
 
 @keyframes float {
   0% {opacity:0;bottom:0px;}
   50% {opacity:1;bottom:10px;}
   100% {opacity:0;bottom:20px;}
+}
+@keyframes floatdown {
+  0% {opacity:0;top:0px;}
+  50% {opacity:1;top:10px;}
+  100% {opacity:0;top:20px;}
 }
