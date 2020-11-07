@@ -21,7 +21,6 @@ th {
   text-decoration: underline;
 }
 td {
-  width: 8.3%;
   position:relative;
 }
 div {
@@ -37,10 +36,10 @@ div {
 #b {width:10px;height:10px;background-color:#89cff0;}
 #c {width:10px;height:10px;background-color:pink;}
 #d {width:10px;height:10px;background-color:#f8e5b7;}
-#serotonin,#sfloat {background-color:#8cff9e;}
-#dopamine,#dfloat {background-color:#89cff0;}
-#oxytocin,#ofloat {background-color:pink;}
-#endorphins,#efloat {background-color:#f8e5b7;}
+#serotonin,#sfloat {background-color:#8cff9e;width:20%;}
+#dopamine,#dfloat {background-color:#89cff0;width:20%;}
+#oxytocin,#ofloat {background-color:pink;width:20%;}
+#endorphins,#efloat {background-color:#f8e5b7;width:20%;}
 
 #float {
   position:absolute;

@@ -15,19 +15,15 @@ g("gain").onclick=function(){
 	a=rng(1,4)
 	if(a==1){
 		player.chemicals.serotonin=player.chemicals.serotonin.plus(1)
-		u("serotonin",player.chemicals.serotonin)
 		float("sfloat",1)
 	} else if (a==2){
 		player.chemicals.dopamine=player.chemicals.dopamine.plus(1)
-		u("dopamine",player.chemicals.dopamine)
 		float("dfloat",1)
 	} else if (a==3){
 		player.chemicals.oxytocin=player.chemicals.oxytocin.plus(1)
-		u("oxytocin",player.chemicals.oxytocin)
 		float("ofloat",1)
 	} else if (a==4){
 		player.chemicals.endorphins=player.chemicals.endorphins.plus(1)
-		u("endorphins",player.chemicals.endorphins)
 		float("efloat",1)
 	} else {
 	}
