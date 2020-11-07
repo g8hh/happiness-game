@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>happiness game</title>
+		<link rel="stylesheet" type='text/css' href='css/style.css'/>
+		<link rel="icon" type="image/png" href="img/favicon.png"/>
+	</head>
+	<body id="body">
+		<div id="headContainer">
+			<div id="head">happiness game</div>
+			<div id="sub" onclick="options()">options</div>
+			<div id="sub1" onclick="save()">save</div>
+			<div id="sub" onclick="reset()">reset</div>
+		</div>
+		<div id="you">
+			<div><h id="header">you</h> (make happy chemicals)</div>
+
+			<div id="serotoninContainer">
+				<div id="serotonin">serotonin: 1</div>
+			</div><br>
+			<div id="dopamineContainer">
+				<div id="dopamine">dopamine: 0</div>
+			</div><br>
+			<div id="happinessContainer">
+				<div id="happiness">happiness: 0</div>
+			</div><br>
+
+			<br>
+
+			<button id="dopaminegain" class="click" onclick="gain(0)">gain dopamine</button>
+			<button id="convertdopamine" class="click" onclick="gain(1)">gain happiness (5d+5s)</button>
+			<button id="convertmaxbutton" class="click" onclick="gain(3)"><f id="convertmax">gain max happiness</f></button>
+		</div>	
+
+		<div id="upgrades">
+			<div><h id="header">upgrades</h> (make more happy chemicals)</div>
+			<div class="upgrade"><f onclick="upgrade(1)">gain more dopamine per click -> x1.8</f> <h id="upgrade1">[0/4] [10 happiness]</h></div>
+			<div class="upgrade"><f onclick="upgrade(2)">gain more serotonin per second -> x1.5</f> <h id="upgrade2">[0/4] [100 dopamine]</h></div>
+			<div class="upgrade"><f onclick="upgrade(3)">gain more happiness per convert -> x1.5</f> <h id="upgrade3">[0/4] [100 serotonin]</h></div>
+			<div class="upgrade"><f onclick="upgrade(4)">happiness boosts serotonin gain -> ln(x)/2</f> <h id="upgrade4">[0/1] [250 happiness]</h></div>
+			<div class="upgrade" id="u5"><f onclick="upgrade(5)">get a friend</f> <h id="upgrade5">[0/1] [1e3 serotonin, dopamine & happiness]</h></div>
+		</div>
+
+		<div id="friend">
+			<div><h id="header">friends</h> (make memories for more happy chemicals)</div>
+
+			<div id="friends">you have 0 friends</div>
+			<div id="makefriend"><f onclick="gain(2)">make another friend</f> <h id="gainfriend">[100 happiness]</h></div>
+
+			<div id="memoriesContainer">
+				<div id="memories">you have 0 memories (+0/s)</div>
+			</div><br><br>
+
+			<div id="header">memories upgrades</div>
+			<div id="mupgrade"><f onclick="upgrade('m1')">increase max level of u1,2,3 -> +1</f> <h id="mupgrade1">[0/10] [100 memories]</h></div>
+			<div id="mupgrade"><f onclick="upgrade('m2')">divide upgrade costs of u1,2,3 -> +1</f> <h id="mupgrade2">[0/10] [250 memories]</h></div>
+			<div id="mupgrade"><f onclick="upgrade('m3')">boost memory gain -> +0.1 to power</f> <h id="mupgrade3">[0/5] [500 memories]</h></div>
+		</div>
+		<div id="girlfriend">
+			<button onclick="gain(4)">sacrifice your friends and happiness for a girlfriend?</button>
+		</div>
+		<div id="options">
+			<div id="header" style="text-align:center">options box</div>
+			<div onclick="toggleBackground()"><f>toggle background image</f></div>
+		</div>
+		<script src="js/decimal.min.js"></script>
+		<script src="js/notation.js"></script>
+		<script src="js/helper.js"></script>
+		<script src="js/save.js"></script>
+		<script src="js/loop.js"></script>
+		<script src="js/main.js"></script>
+	</body>
+</html>
