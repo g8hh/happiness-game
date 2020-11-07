@@ -1,55 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>test</title>
-	<style>
-		* {
-			font-family: monospace;
-			font: "Courier";
-		}
-		body{
-			background-color: lightgrey;
-		}
-		table{
-			border: 2px solid black;
-			border-collapse: collapse;
-			width: 24%;
-			margin: 5px;
-			background-color:white;
-			text-align:center;
-		}
-		
-		td,th {
-  			padding: 8px;
-  		}
-  		th {
-  			border: 1px solid #dddddd;
-  			text-decoration: underline;
-  		}
-  		td {
-  			width: 8.3%;
-  			position:relative;
-  		}
-  		div {
-  			display:inline-table;
-  		}
-  		
-  		#head{margin:auto;}
-		#content{float:left;}	
-		#header{width:100%;}
-
-  		#a {width:10px;height:10px;background-color:#8cff9e;}
-  		#b {width:10px;height:10px;background-color:#89cff0;}
-  		#c {width:10px;height:10px;background-color:pink;}
-  		#d {width:10px;height:10px;background-color:#f8e5b7;}
-  		#serotonin {background-color:#8cff9e;}
-  		#dopamine {background-color:#89cff0;}
-  		#oxytocin {background-color:pink;}
-  		#endorphins{background-color:#f8e5b7;}
-	</style>
+	<title>happiness game</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
 	<div id="header">
+		<button id="gain">gain random chemical</button>
 		<table id="head">
 			<tr>
 				<th colspan="4">you</th>
@@ -57,24 +14,32 @@
 			<tr>
 				<td><div id="a"></div> serotonin</td>
 				<td id="serotonin">0</td>
+				<td id="sfloat"></td>
 				<td>(+1/s)</td>
 			</tr>
 			<tr>
 				<td><div id="b"></div> dopamine</td>
 				<td id="dopamine">0</td>
+				<td id="dfloat"></td>
 				<td>(+1/s)</td>
 			</tr>
 			<tr>
 				<td><div id="c"></div> oxytocin</td>
 				<td id="oxytocin">0</td>
+				<td id="ofloat"></td>
 				<td>(+1/s)</td>
 			</tr>
 			<tr>
 				<td><div id="d"></div> endorphins</td>
 				<td id="endorphins">0</td>
+				<td id="efloat"></td>
 				<td>(+1/s)</td>
 			</tr>
 		</table>
 	</div>
+	<script src="js/decimal.min.js"></script>
+	<script src="js/helper.js"></script>
+	<script src="js/loop.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>

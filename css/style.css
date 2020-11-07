@@ -1,0 +1,55 @@
+* {
+	font-family: monospace;
+}
+body{
+	background-color: lightgrey;
+}
+table{
+  border: 2px solid black;
+	border-collapse: collapse;
+	width: 24%;
+	margin: 5px;
+	background-color:white;
+	text-align:center;
+}
+		
+td,th {
+  padding: 8px;
+}
+th {
+  border: 1px solid #dddddd;
+  text-decoration: underline;
+}
+td {
+  width: 8.3%;
+  position:relative;
+}
+div {
+  display:inline-table;
+}
+
+#gain{display:block;margin:auto;margin-bottom:5px;}
+#head{margin:auto;}
+#content{float:left;}
+#header{width:100%;}
+
+#a {width:10px;height:10px;background-color:#8cff9e;}
+#b {width:10px;height:10px;background-color:#89cff0;}
+#c {width:10px;height:10px;background-color:pink;}
+#d {width:10px;height:10px;background-color:#f8e5b7;}
+#serotonin,#sfloat {background-color:#8cff9e;}
+#dopamine,#dfloat {background-color:#89cff0;}
+#oxytocin,#ofloat {background-color:pink;}
+#endorphins,#efloat {background-color:#f8e5b7;}
+
+#float {
+  position:absolute;
+  color:green;
+  animation: float 1s linear infinite;
+}
+
+@keyframes float {
+  0% {opacity:0;bottom:0px;}
+  50% {opacity:1;bottom:10px;}
+  100% {opacity:0;bottom:20px;}
+}
