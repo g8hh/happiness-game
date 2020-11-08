@@ -7,64 +7,75 @@
 <body>
 	<div id="header">
 		<button id="gain">gain a random chemical</button>
-		<table id="head">
-			<tr>
-				<th colspan="4">you</th>
-			</tr>
-			<tr>
-				<td><div class="serotonin" id="box"></div> serotonin</td>
-				<td id="serotonin" class="serotonin">0</td>
-				<td id="sfloat" class="serotonin"></td>
-				<td id="sgain">(+1/s)</td>
-			</tr>
-			<tr>
-				<td><div class="dopamine" id="box"></div> dopamine</td>
-				<td id="dopamine" class="dopamine">0</td>
-				<td id="dfloat" class="dopamine"></td>
-				<td id="dgain">(+1/s)</td>
-			</tr>
-			<tr>
-				<td><div class="oxytocin" id="box"></div> oxytocin</td>
-				<td id="oxytocin" class="oxytocin">0</td>
-				<td id="ofloat" class="oxytocin"></td>
-				<td id="ogain">(+1/s)</td>
-			</tr>
-			<tr>
-				<td><div class="endorphins" id="box"></div> endorphins</td>
-				<td id="endorphins" class="endorphins">0</td>
-				<td id="efloat" class="endorphins"></td>
-				<td id="egain">(+1/s)</td>
-			</tr>
+		<table id="head" align="center">
+				<tr>
+					<th colspan="4">you</th>
+				</tr>
+				<tr>
+					<td><div class="serotonin" id="box"></div> serotonin</td>
+					<td id="serotonin" class="serotonin">0</td>
+					<td id="sfloat" class="serotonin"></td>
+					<td id="sgain">(+1/s)</td>
+				</tr>
+				<tr>
+					<td><div class="dopamine" id="box"></div> dopamine</td>
+					<td id="dopamine" class="dopamine">0</td>
+					<td id="dfloat" class="dopamine"></td>
+					<td id="dgain">(+1/s)</td>
+				</tr>
+				<tr>
+					<td><div class="oxytocin" id="box"></div> oxytocin</td>
+					<td id="oxytocin" class="oxytocin">0</td>
+					<td id="ofloat" class="oxytocin"></td>
+					<td id="ogain">(+1/s)</td>
+				</tr>
+				<tr>
+					<td><div class="endorphins" id="box"></div> endorphins</td>
+					<td id="endorphins" class="endorphins">0</td>
+					<td id="efloat" class="endorphins"></td>
+					<td id="egain">(+1/s)</td>
+				</tr>
 		</table>
 	</div>
-	<table id="upgrades">
+
+	<table id="upgrades" class="content">
 		<tr>
 			<th colspan="4">upgrades</th>
 		</tr>
 		<tr>
-			<td id="upgrade1s" class="hover" onclick="upgrade(1)">upgrade 1.1</td>
+			<td id="upgrade1" class="hover" onclick="upgrade(1)">upgrade 1</td>
 			<td>double all chemical gain</td>
-			<td id="u1ps" class="serotonin">100 serotonin</td>
-			<td id="u1bs">0 bought</td>
+			<td id="u1p" class="serotonin">100 s/d/o/e</td>
+			<td id="u1b">0 bought</td>
+		</tr>
+	</table>
+
+	<table id="hobbies" class="content">
+		<tr>
+			<th>hobbies</th>
 		</tr>
 		<tr>
-			<td id="upgrade1d" class="hover" onclick="upgrade(2)">upgrade 1.2</td>
-			<td>double all chemical gain</td>
-			<td id="u1pd" class="dopamine">100 dopamine</td>
-			<td id="u1bd">0 bought</td>
+			<td>todo - implement some epic hobbies</td>
+		</tr>
+	</table>
+
+	<table id="friends" class="content">
+		<tr>
+			<th>friends</th>
 		</tr>
 		<tr>
-			<td id="upgrade1o" class="hover" onclick="upgrade(3)">upgrade 1.3</td>
-			<td>double all chemical gain</td>
-			<td id="u1po" class="oxytocin">100 oxytocin</td>
-			<td id="u1bo">0 bought</td>
+			<td>todo - get some</td>
+		</tr>
+	</table>
+
+	<table id="experiences" class="content">
+		<tr>
+			<th>experiences</th>
 		</tr>
 		<tr>
-			<td id="upgrade1e" class="hover" onclick="upgrade(4)">upgrade 1.4</td>
-			<td>double all chemical gain</td>
-			<td id="u1pe" class="endorphins">100 endorphins</td>
-			<td id="u1be">0 bought</td>
+			<td>basically more numbers for you to watch go up!!</td>
 		</tr>
+
 	</table>
 	
 	<script src="js/decimal.min.js"></script>

@@ -12,10 +12,11 @@ table{
 	margin: 5px;
 	background-color:white;
 	text-align:center;
+  box-shadow:3px 3px #aaaaaa;
 }
 		
 td,th {
-  padding: 8px;
+  padding: 5px;
 }
 th {
   border: 1px solid #dddddd;
@@ -28,15 +29,16 @@ div {
   display:inline-table;
 }
 
-#gain{display:block;margin:auto;margin-bottom:5px;}
 #head{margin:auto;}
-#upgrades{float:left;}
 #header{width:100%;}
+
+.content{float:left; width:24%;}
+#gain{display:block;margin:auto;margin-bottom:5px;}
 #box{width:10px;height:10px;}
 
-#a,#b,#c,#d {width:10px;height:10px;}
-
 #serotonin,#sfloat,#dopamine,#dfloat,#oxytocin,#ofloat,#endorphins,#efloat{width:20%;}
+
+#u1p{background:linear-gradient(90deg,#8cff9e 25%,#89cff0 25%,#89cff0 50%,pink 50%,pink 75%,#f8e5b7 75%);}
  
 .serotonin{background-color:#8cff9e;}
 .dopamine{background-color:#89cff0;}
@@ -45,10 +47,6 @@ div {
 
 #upgrades td {
   width: 25%;
-}
-
-#upgrades {
-  width:30%;
 }
 
 .hover {

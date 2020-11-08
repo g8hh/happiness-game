@@ -15,15 +15,8 @@ function loop(){
 	u("ogain","(+"+player.chemicals.gain[2]+"/s)")
 	u("egain","(+"+player.chemicals.gain[3]+"/s)")
 
-	u("u1ps",player.upgrades.one.price+" serotonin")
-	u("u1pd",player.upgrades.one.price+" dopamine")
-	u("u1po",player.upgrades.one.price+" oxytocin")
-	u("u1pe",player.upgrades.one.price+" endorphins")
-
-	u("u1bs",player.upgrades.one.level[0]+" bought")
-	u("u1bd",player.upgrades.one.level[1]+" bought")
-	u("u1bo",player.upgrades.one.level[2]+" bought")
-	u("u1be",player.upgrades.one.level[3]+" bought")
+	u("u1p",player.upgrades.one.price+" s/d/o/e")
+	u("u1b",player.upgrades.one.level+" bought")
 }	
 
 window.setInterval(loop,50)

@@ -8,7 +8,7 @@ player = {
 	},
 	upgrades:{
 		one: {
-			level: [0,0,0,0],
+			level: 0,
 			price: new Decimal(100)
 		}
 	}
@@ -35,38 +35,10 @@ g("gain").onclick=function(){
 
 function upgrade(x){
 	if(x==1){
-		if(player.chemicals.serotonin.gte(player.upgrades.one.price)){
-			player.chemicals.serotonin=player.chemicals.serotonin.minus(player.upgrades.one.price)
-			player.upgrades.one.price=player.upgrades.one.price.times(3)
-			player.upgrades.one.level[0]+=1
+		if(checkUpgrade1()){
+			player.upgrades.one.level+=1
 			doubleGain()
-		}
-	} else if (x==2){
-		if(player.chemicals.dopamine.gte(player.upgrades.one.price)){
-			player.chemicals.dopamine=player.chemicals.dopamine.minus(player.upgrades.one.price)
 			player.upgrades.one.price=player.upgrades.one.price.times(3)
-			player.upgrades.one.level[1]+=1
-			doubleGain()
 		}
-	} else if (x==3){
-		if(player.chemicals.oxytocin.gte(player.upgrades.one.price)){
-			player.chemicals.oxytocin=player.chemicals.oxytocin.minus(player.upgrades.one.price)
-			player.upgrades.one.price=player.upgrades.one.price.times(3)
-			player.upgrades.one.level[2]+=1
-			doubleGain()
-		}
-	} else if (x==4){
-		if(player.chemicals.endorphins.gte(player.upgrades.one.price)){
-			player.chemicals.endorphins=player.chemicals.endorphins.minus(player.upgrades.one.price)
-			player.upgrades.one.price=player.upgrades.one.price.times(3)
-			player.upgrades.one.level[3]+=1
-			doubleGain()
-		}
-	}
-}
-
-function doubleGain(){
-	for(i=0;i<player.chemicals.gain.length;i++){
-		player.chemicals.gain[i]=player.chemicals.gain[i].times(2)
 	}
 }
