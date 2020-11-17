@@ -34,12 +34,16 @@ function checkUpgrade1(){
 function doubleGain(){
 	if(player.chemicals.serotonin.gte(player.upgrades.one.price)){
 		player.chemicals.serotonin=player.chemicals.serotonin.minus(player.upgrades.one.price)
+		floatdown("sfloat",player.upgrades.one.price)
 	} else if (player.chemicals.dopamine.gte(player.upgrades.one.price)){
 		player.chemicals.dopamine=player.chemicals.dopamine.minus(player.upgrades.one.price)
+		floatdown("dfloat",player.upgrades.one.price)
 	} else if (player.chemicals.oxytocin.gte(player.upgrades.one.price)){
 		player.chemicals.oxytocin=player.chemicals.oxytocin.minus(player.upgrades.one.price)
+		floatdown("ofloat",player.upgrades.one.price)
 	} else if (player.chemicals.endorphins.gte(player.upgrades.one.price)){
 		player.chemicals.endorphins=player.chemicals.endorphins.minus(player.upgrades.one.price)
+		floatdown("efloat",player.upgrades.one.price)
 	} else {
 		console.log("i fucked up")
 	}
