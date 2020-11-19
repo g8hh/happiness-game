@@ -5,32 +5,32 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
+	<div class="title"><h1>happiness game</h1></div>
 	<div id="header">
-		<button id="gain">gain a random chemical</button>
 		<table id="head" align="center">
 				<tr>
 					<th colspan="4">you</th>
 				</tr>
 				<tr>
-					<td><div class="serotonin" id="box"></div> serotonin</td>
+					<td class="chemTitle"><div class="serotonin" id="box"></div> serotonin</td>
 					<td id="serotonin" class="serotonin">0</td>
 					<td id="sfloat" class="serotonin"></td>
 					<td id="sgain">(+1/s)</td>
 				</tr>
 				<tr>
-					<td><div class="dopamine" id="box"></div> dopamine</td>
+					<td class="chemTitle"><div class="dopamine" id="box"></div> dopamine</td>
 					<td id="dopamine" class="dopamine">0</td>
 					<td id="dfloat" class="dopamine"></td>
 					<td id="dgain">(+1/s)</td>
 				</tr>
 				<tr>
-					<td><div class="oxytocin" id="box"></div> oxytocin</td>
+					<td class="chemTitle"><div class="oxytocin" id="box"></div> oxytocin</td>
 					<td id="oxytocin" class="oxytocin">0</td>
 					<td id="ofloat" class="oxytocin"></td>
 					<td id="ogain">(+1/s)</td>
 				</tr>
 				<tr>
-					<td><div class="endorphins" id="box"></div> endorphins</td>
+					<td class="chemTitle"><div class="endorphins" id="box"></div> endorphins</td>
 					<td id="endorphins" class="endorphins">0</td>
 					<td id="efloat" class="endorphins"></td>
 					<td id="egain">(+1/s)</td>
@@ -38,69 +38,114 @@
 		</table>
 	</div>
 
-	<div id="left">
-		<table id="upgrades" class="content">
+	<div id="navigation">
+		<ul>
+			<li onclick="tab(0)">Upgrades</li>
+			<li onclick="tab(1)">Hobbies</li>
+			<li onclick="tab(2)">Friends</li>
+			<li onclick="tab(3)">Experiences</li>
+			<li onclick="tab(4)">Options</li>
+		</ul>
+	</div>
+
+	<div id="upgrades" class="content">
+		<table>
 			<tr>
 				<th colspan="4">upgrades</th>
 			</tr>
 			<tr>
-				<td id="upgrade1" class="hover" onclick="upgrade(1)">upgrade 1</td>
-				<td>double all chemical gain</td>
-				<td id="u1p" class="serotonin">100 s/d/o/e</td>
-				<td id="u1b">0 bought</td>
+				<td>upgrade 1</td>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
 			</tr>
+			<tr>
+				<td>upgrade 2</td>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+			</tbody>
 		</table>
 	</div>
 
-	<div id="right">
-	<table id="hobbies" class="content">
-		<tr>
-			<th colspan="2">hobbies</th>
-		</tr>
-		<tr>
-			<td class="hobbyHover">clean your room</td>
-			<td>0%</td>
-		</tr>
-		<tr>
-			<td class="hobbyHover">go for a run</td>
-			<td>0%</td>
-		</tr>
-	</table>
+	<div id="hobbies" class="content">
+		<table>
+			<tr>
+				<th colspan="4">hobbies</th>
+			</tr>
+			<tr>
+				<td>upgrade 1</td>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+			<tr>
+				<td>upgrade 2</td>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+			</tbody>
+		</table>
 	</div>
 
-	<div id="left">
-	<table id="friends" class="content">
-		<tr>
-			<th>friends</th>
-		</tr>
-		<tr>
-			<td>todo - get some</td>
-		</tr>
-	</table>
+	<div id="friends" class="content">
+		<table>
+			<tr>
+				<th colspan="4">friends</th>
+			</tr>
+			<tr>
+				<td>upgrade 1</td>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+			<tr>
+				<td>upgrade 2</td>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+			</tbody>
+		</table>
 	</div>
 
-	<div id="right">
-	<table id="experiences" class="content">
-		<tr>
-			<th>experiences</th>
-		</tr>
-		<tr>
-			<td>basically more numbers for you to watch go up!!</td>
-		</tr> 
-	</table>
+	<div id="experiences" class="content">
+		<table>
+			<tr>
+				<th colspan="4">experiences</th>
+			</tr>
+			<tr>
+				<td>upgrade 1</td>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+			<tr>
+				<td>upgrade 2</td>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+			</tbody>
+		</table>
 	</div>
 
-	<div id="title">
+	<div id="options">
+		options cunt
+	</div>
+<!--
+	<div id="optionsTile">
 		<div id="save" onclick="save()">save</div>
-		<div onclick="options()">options</div>
 		<div onclick="reset()">reset</div>
 	</div>
+-->
 
 	<script src="js/decimal.min.js"></script>
 	<script src="js/helper.js"></script>
 	<script src="js/loop.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/save.js"></script>
-	<script src="js/animations.js"></script>
 </body>
 </html>

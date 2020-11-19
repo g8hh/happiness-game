@@ -29,7 +29,7 @@ window.onload=function(){
 	},
 	upgrades:{
 		one: {
-			level: 0,
+			level: s.upgrades.one.level,
 			price: new Decimal(s.upgrades.one.price)
 		}
 	}
