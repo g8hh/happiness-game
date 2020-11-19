@@ -21,8 +21,8 @@ function floatdown(a,b){
 function rng(a,b) {
   return Math.floor(Math.random()*(b-a+1))+a;
 }
-function hideAll(){
-	console.log(tabs)
+
+function hideTabs(){
 	for(x=0;x<tabs.length;x++){
 		tabs[x].style.display="none"
 	}

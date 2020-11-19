@@ -40,107 +40,109 @@
 
 	<div id="navigation">
 		<ul>
-			<li onclick="tab(0)">Upgrades</li>
-			<li onclick="tab(1)">Hobbies</li>
-			<li onclick="tab(2)">Friends</li>
-			<li onclick="tab(3)">Experiences</li>
-			<li onclick="tab(4)">Options</li>
+			<li onclick="tab('you',player.tab)">You</li>
+			<li onclick="tab('options')">Options</li>
 		</ul>
 	</div>
 
-	<div id="upgrades" class="content">
-		<table>
-			<tr>
-				<th colspan="4">upgrades</th>
-			</tr>
-			<tr>
-				<td>upgrade 1</td>
-				<td>a</td>
-				<td>b</td>
-				<td>c</td>
-			</tr>
-			<tr>
-				<td>upgrade 2</td>
-				<td>a</td>
-				<td>b</td>
-				<td>c</td>
-			</tr>
-			</tbody>
-		</table>
+	<div id="you">
+		<div id="subnavigation">
+			<ul>
+				<li onclick="tab('you','upgrades')">Upgrades</li>
+				<li onclick="tab('you','hobbies')">Hobbies</li>
+				<li onclick="tab('you','friends')">Friends</li>
+				<li onclick="tab('you','experiences')">Experiences</li>
+			</ul>
+		</div>
+
+		<div id="upgrades" class="content">
+			<table>
+				<tr>
+					<th colspan="4">upgrades</th>
+				</tr>
+				<tr>
+					<td>upgrade 1</td>
+					<td>a</td>
+					<td>b</td>
+					<td>c</td>
+				</tr>
+				<tr>
+					<td>upgrade 2</td>
+					<td>a</td>
+					<td>b</td>
+					<td>c</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div id="hobbies" class="content">
+			<table>
+				<tr>
+					<th colspan="4">hobbies</th>
+				</tr>
+				<tr>
+					<td>upgrade 1</td>
+					<td>a</td>
+					<td>b</td>
+					<td>c</td>
+				</tr>
+				<tr>
+					<td>upgrade 2</td>
+					<td>a</td>
+					<td>b</td>
+					<td>c</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div id="friends" class="content">
+			<table>
+				<tr>
+					<th colspan="4">friends</th>
+				</tr>
+				<tr>
+					<td>upgrade 1</td>
+					<td>a</td>
+					<td>b</td>
+					<td>c</td>
+				</tr>
+				<tr>
+					<td>upgrade 2</td>
+					<td>a</td>
+					<td>b</td>
+					<td>c</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div id="experiences" class="content">
+			<table>
+				<tr>
+					<th colspan="4">experiences</th>
+				</tr>
+				<tr>
+					<td>upgrade 1</td>
+					<td>a</td>
+					<td>b</td>
+					<td>c</td>
+				</tr>
+				<tr>
+					<td>upgrade 2</td>
+					<td>a</td>
+					<td>b</td>
+					<td>c</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 
-	<div id="hobbies" class="content">
-		<table>
-			<tr>
-				<th colspan="4">hobbies</th>
-			</tr>
-			<tr>
-				<td>upgrade 1</td>
-				<td>a</td>
-				<td>b</td>
-				<td>c</td>
-			</tr>
-			<tr>
-				<td>upgrade 2</td>
-				<td>a</td>
-				<td>b</td>
-				<td>c</td>
-			</tr>
-			</tbody>
-		</table>
+	<div id="options" class="content">
+		options
 	</div>
-
-	<div id="friends" class="content">
-		<table>
-			<tr>
-				<th colspan="4">friends</th>
-			</tr>
-			<tr>
-				<td>upgrade 1</td>
-				<td>a</td>
-				<td>b</td>
-				<td>c</td>
-			</tr>
-			<tr>
-				<td>upgrade 2</td>
-				<td>a</td>
-				<td>b</td>
-				<td>c</td>
-			</tr>
-			</tbody>
-		</table>
-	</div>
-
-	<div id="experiences" class="content">
-		<table>
-			<tr>
-				<th colspan="4">experiences</th>
-			</tr>
-			<tr>
-				<td>upgrade 1</td>
-				<td>a</td>
-				<td>b</td>
-				<td>c</td>
-			</tr>
-			<tr>
-				<td>upgrade 2</td>
-				<td>a</td>
-				<td>b</td>
-				<td>c</td>
-			</tr>
-			</tbody>
-		</table>
-	</div>
-
-	<div id="options">
-		options cunt
-	</div>
-<!--
-	<div id="optionsTile">
-		<div id="save" onclick="save()">save</div>
-		<div onclick="reset()">reset</div>
-	</div>
--->
 
 	<script src="js/decimal.min.js"></script>
 	<script src="js/helper.js"></script>

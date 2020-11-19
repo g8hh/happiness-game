@@ -56,43 +56,58 @@ div {
   width: 100%;
   margin-bottom: 10px;
 }
-#navigation{
+
+#navigation{-webkit-box-sizing:border-box;position: relative;display:block;width:1180px;margin: 10px 0 10px 0;}
+#navigation ul {width:100%;padding: 10px;margin:auto;text-align:center;}
+#navigation li {display:inline;margin-right:5px;font-size: 20px;border: 2px solid black;border-radius: 3px;padding: 5px;background: white;}
+#navigation li:hover {background: gray;color:white;cursor:pointer;box-shadow: 3px 3px gray;transition: 0.2s;}
+
+#subnavigation{
+  -webkit-box-sizing:border-box;
   position: relative;
-  width:100%;
+  display:block;
+  width:1180px;
   margin: 10px 0 10px 0;
 }
-#navigation ul {
+#subnavigation ul {
   width:100%;
   padding: 10px;
   margin:auto;
   text-align:center;
 }
-#navigation li {
+#subnavigation li {
   display:inline;
-  margin: 0 30px 0 30px;
-  font-size: 20px;
+  margin-right:5px;
+  font-size: 14px;
   border: 2px solid black;
   border-radius: 3px;
   padding: 5px;
   background: white;
 }
-#navigation li:hover {
+#subnavigation li:hover {
   background: gray;
   color:white;
   cursor:pointer;
   box-shadow: 3px 3px gray;
   transition: 0.2s;
 }
+
 #box{
   width: 10px;
   height: 10px;
 }
+#you {
+  width:1180px;
+}
 .content, .content table {
-  width: 100%;
+  width: 1180px;
 }
 .content td {
   width: 25%;
   border-right: 1px solid #dddddd;
+}
+#options{
+  text-align:center;
 }
 
 
