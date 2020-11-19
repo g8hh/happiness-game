@@ -24,6 +24,7 @@ function reset(){
 window.setInterval(save,10000)
 
 window.onload = function(){
+	alert("reset save if your game is broken!")
 	g("body").style.backgroundColor="lightgrey"
 	if(player.options.bg){
 		g("body").style.backgroundImage="url(img/image2.png)"
