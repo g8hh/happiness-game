@@ -128,6 +128,7 @@ function gain(x){
 				player.friends.amount=player.friends.amount.plus(1)
 				player.friends.cost=player.friends.cost.times(1.5)
 			}
+			break
 		case 3:
 			if(player.dopamine.amount.gte(5) && player.dopamine.amount.gte(5)){
 				gained=Decimal.min(player.dopamine.amount,player.serotonin.amount).div(5).floor()
@@ -184,15 +185,17 @@ function upgrade(x){
 			}
 			break
 		case 5:
-			if(player.happiness.amount.gte(player.upgrades.five.cost) && player.serotonin.amount.gte(player.upgrades.five.cost) && player.dopamine.amount.gte(player.upgrades.five.cost)){
-				player.upgrades.five.bought=true
-				player.serotonin.amount=player.serotonin.amount.minus(1000)
-				player.dopamine.amount=player.dopamine.amount.minus(1000)
-				player.happiness.amount=player.happiness.amount.minus(1000)
-				floatText2("serotoninContainer","1e3")
-				floatText2("dopamineContainer","1e3")
-				floatText2("happinessContainer","1e3")
-				player.friends.amount=player.friends.amount.plus(1)
+			if(!player.upgrades.five.bought){
+				if(player.happiness.amount.gte(player.upgrades.five.cost) && player.serotonin.amount.gte(player.upgrades.five.cost) && player.dopamine.amount.gte(player.upgrades.five.cost)){
+					player.upgrades.five.bought=true
+					player.serotonin.amount=player.serotonin.amount.minus(1000)
+					player.dopamine.amount=player.dopamine.amount.minus(1000)
+					player.happiness.amount=player.happiness.amount.minus(1000)
+					floatText2("serotoninContainer","1e3")
+					floatText2("dopamineContainer","1e3")
+					floatText2("happinessContainer","1e3")
+					player.friends.amount=player.friends.amount.plus(1)
+				}
 			}
 			break
 		case "m1":

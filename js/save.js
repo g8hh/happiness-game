@@ -14,13 +14,6 @@ function reset(){
 }
 
 window.onload=function(){
-	if(window.location.host=="antesocial.github.io"){
-		if(confirm("Do you want the original game?")){
-			window.location.href="https://antesocial.github.io/classic/index.html"
-		} else {
-			alert("This version is very bad, subject to many change and your save will almost definitely break. discretion advised.")
-		}
-	}
 	hideTabs()
 	tab('you','upgrades')
 
