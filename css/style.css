@@ -34,13 +34,13 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 #options{position:relative;background:#444;width:50%;margin:auto;display:none;text-align:center;padding:10px;}
 #options li{list-style-type:none;text-align:left;margin:5px;}
 #options option, select{background-color:grey;}
-#options input{margin:0px;margin-top:5px;}
-#closeOptions{cursor:pointer;position:absolute;top:10px;right:10px;border: 2px solid black;padding:0px 4px;transition:0.2s;}
+#options input{margin:0;margin-top:5px;}
+#closeOptions{cursor:pointer;position:absolute;top:10px;right:10px;border: 2px solid black;padding:0 4px;transition:0.2s;}
 #closeOptions:hover{background-color:grey;transition: 0.2s;}
 
 .transition{transition:0.3s;}
 .float{text-shadow:none;width:200px;display:inline;position:absolute;color:chartreuse;margin-left:10px;animation: 1s float infinite;}
 .floatdown{text-shadow:none;width:200px;display:inline;position:absolute;color:lightcoral;margin-left:10px;animation: 1s floatdown infinite;}
 
-@keyframes float {0%{opacity:0%;bottom:0px;} 50%{opacity:100%;bottom:10px;} 100%{opacity:0%;bottom:20px;}}
-@keyframes floatdown {0%{opacity:0%;top:0px;} 50%{opacity:100%;top:10px;} 100%{opacity:0%;top:20px;}}
+@keyframes float {0%{opacity:0;bottom:0;} 50%{opacity:100%;bottom:10px;} 100%{opacity:0;bottom:20px;}}
+@keyframes floatdown {0%{opacity:0;top:0;} 50%{opacity:100%;top:10px;} 100%{opacity:0;top:20px;}}

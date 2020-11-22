@@ -55,6 +55,8 @@ g("reset").onclick=function(){
 window.onload=function(){
 	if(localStorage.getItem("save")!==null){
 		player=JSON.parse(atob(localStorage.getItem("save")))
+	} else {
+		save()
 	}
 	render()
 	if(player.options.tooltips==false){
