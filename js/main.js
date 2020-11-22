@@ -3,15 +3,18 @@ player = {
 		serotonin:0,
 		dGain: 1,
 		dopamine:0,
-		sGain: 1,
+		sGainBase: 1,
+		sGainMult: 1,
 		happiness:0,
 		hGain: 1
 	},
 	automation: {
-		auto1: false
+		auto1: false,
+		auto2: false
 	},
 	options: {
-		tooltips: true
+		tooltips: true,
+		animations: true
 	}
 }
 
@@ -19,7 +22,7 @@ function g(x){
 	return document.getElementById(x)
 }
 function render(){
-	g("serotonin").innerText="serotonin: "+player.chems.serotonin.toFixed(1)+" (+"+player.chems.sGain+"/s)"
+	g("serotonin").innerText="serotonin: "+player.chems.serotonin.toFixed(1)+" (+"+player.chems.sGainBase*player.chems.sGainMult+"/s)"
 	g("dopamine").innerText="dopamine: "+player.chems.dopamine.toFixed(1)+" (+"+player.chems.dGain+"/c)"
 	g("happiness").innerText="happiness: "+player.chems.happiness.toFixed(1)+" (+"+player.chems.hGain+"/c)"
 }
@@ -62,9 +65,15 @@ window.onload=function(){
 	if(player.options.tooltips==false){
 		g("tooltipOption").checked=true
 	}
+	if(player.options.animations==false){
+		g("animationsOption").checked=true
+	}
 	if(player.automation.auto1){
 		window.setInterval(automation,500)
 		g("auto1row").style.display="none"
+	}
+	if(player.automation.auto2){
+		g("auto2row").style.display="none"
 	}
 
 	g("html").style.display="block"
@@ -83,11 +92,17 @@ options(false)
 function automation(){
 	if(player.automation.auto1){
 		g("gainDopamine").click()
+	} 
+	if(player.automation.auto2){
+		setTimeout(function(){
+			g("gainDopamine").click()
+		}, 250)
 	}
 }
 function loop(){
 	render()
-	player.chems.serotonin+=player.chems.sGain/20
+	player.chems.serotonin+=(player.chems.sGainBase*player.chems.sGainMult)/20
+
 
 	if(g("tooltipOption").checked){
 		g("tooltip").style.display="none"
@@ -95,6 +110,13 @@ function loop(){
 	} else {
 		g("tooltip").style.display="block"
 		player.options.tooltips=true
+	}
+	if(g("animationsOption").checked){
+		player.options.animations=false
+		g("anims").href=""
+	} else {
+		player.options.animations=true
+		g("anims").href="css/animation.css"
 	}
 }
  
@@ -111,7 +133,7 @@ g("gainHappiness").onclick=function(){
 		player.chems.serotonin-=5
 		player.chems.happiness+=player.chems.hGain
 		floatText("gainHappiness",player.chems.hGain,"happiness")
-		floatTextDown("s",5,"serotnin")
+		floatTextDown("s",5,"serotonin")
 		floatTextDown("d",5,"dopamine")
 	}
 }
@@ -124,6 +146,16 @@ g("auto1").onclick=function(){
 		window.setInterval(automation,500)
 	}
 }
+g("auto2").onclick=function(){
+	if(player.chems.happiness>=100){
+		player.chems.happiness-=100
+		floatTextDown("h",100,"happiness")
+		g("auto2row").style.display="none"
+		player.automation.auto2=true;
+	}
+}
+
+
 g("auto1").onmouseover=function(){
 	if(player.chems.serotonin>=100){
 		g("auto1price").style.backgroundColor="lightgreen"
@@ -133,4 +165,14 @@ g("auto1").onmouseover=function(){
 }
 g("auto1").onmouseout=function(){
 	g("auto1price").style.backgroundColor="transparent"
+}
+g("auto2").onmouseover=function(){
+	if(player.chems.happiness>=100){
+		g("auto2price").style.backgroundColor="lightgreen"
+	} else {
+		g("auto2price").style.backgroundColor="lightcoral"
+	}
+}
+g("auto2").onmouseout=function(){
+	g("auto2price").style.backgroundColor="transparent"
 }
