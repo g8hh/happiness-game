@@ -18,9 +18,6 @@ player = {
 function g(x){
 	return document.getElementById(x)
 }
-function rng(a,b) {
-  return Math.floor(Math.random()*(b-a+1))+a;
-}
 function render(){
 	g("serotonin").innerText="serotonin: "+player.chems.serotonin.toFixed(1)+" (+"+player.chems.sGain+"/s)"
 	g("dopamine").innerText="dopamine: "+player.chems.dopamine.toFixed(1)+" (+"+player.chems.dGain+"/c)"
@@ -58,8 +55,6 @@ g("reset").onclick=function(){
 window.onload=function(){
 	if(localStorage.getItem("save")!==null){
 		player=JSON.parse(atob(localStorage.getItem("save")))
-	} else {
-		player=player
 	}
 	render()
 	if(player.options.tooltips==false){
@@ -82,6 +77,7 @@ function options(x){
 		g("options").style.display="none"
 	}
 }
+options(false)
 function automation(){
 	if(player.automation.auto1){
 		g("gainDopamine").click()
