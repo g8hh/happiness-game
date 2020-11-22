@@ -1,170 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>happiness game</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-</head>
-<body>
-	<div>There will be something here eventually. <br> for the time being, please feel free to check out the original game at <a href="https://antesocial.github.io/classic/index.html">antesocial.github.io/classic/index.html</a>
-</body>
-<!--
-<body style="display:none;">
-	<div class="title"><h1>happiness game</h1></div>
-	<div id="header">
-		<table id="head" align="center">
-				<tr>
-					<th colspan="4">you</th>
-				</tr>
-				<tr>
-					<td class="chemTitle"><div class="s" id="box"></div> serotonin</td>
-					<td id="serotonin" class="s">0</td>
-					<td id="sfloat" class="s"></td>
-					<td id="sgain">(+1/s)</td>
-				</tr>
-				<tr>
-					<td class="chemTitle"><div class="d" id="box"></div> dopamine</td>
-					<td id="dopamine" class="d">0</td>
-					<td id="dfloat" class="d"></td>
-					<td id="dgain">(+1/s)</td>
-				</tr>
-				<tr>
-					<td class="chemTitle"><div class="o" id="box"></div> oxytocin</td>
-					<td id="oxytocin" class="o">0</td>
-					<td id="ofloat" class="o"></td>
-					<td id="ogain">(+1/s)</td>
-				</tr>
-				<tr>
-					<td class="chemTitle"><div class="e" id="box"></div> endorphins</td>
-					<td id="endorphins" class="e">0</td>
-					<td id="efloat" class="e"></td>
-					<td id="egain">(+1/s)</td>
-				</tr>
-		</table>
-	</div>
+	<head>
+		<title>happiness game</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<link rel="icon" type="image/png" href="img/favicon.png"/>
+	</head>
+	<body id="html">
+		<div id="header">
+			<span>happiness game</span>
+			<span class="span" onclick="options(true)">options</span>
+			<span class="span" id="save">save</span>
+			<span class="span" id="reset">reset</span>
+		</div>
+		<div id="main">
+			<div id="you">
+				<b>you</b>
+				<ul>
+					<li id="s"><span id="serotonin">serotonin: 0</span></li>
+					<li id="d"><span id="dopamine">dopamine: 0</span></li>
+					<li id="h"><span id="happiness">happiness: 0</span></li>
+					<br>
+					<li id="gainDopamine"><button>gain dopamine</button></li>
+					<li id="gainHappiness"><button>gain happiness<br><span id="tooltip">5 dopamine + 5 serotonin</span></button></li>
 
-	<div id="navigation">
-		<ul>
-			<li onclick="tab('you',player.tab)">You</li>
-			<li onclick="tab('options')">Options</li>
-		</ul>
-	</div>
-
-	<div id="you">
-		<div id="subnavigation">
+				</ul>
+			</div>
+			<div id="upgrades">
+				<b>upgrades</b>
+			</div>
+			<div id="automation">
+				<b>automation</b>
+				<table>
+					<thead>
+						<tr colspan="3">
+							<td>upgrade</td>
+							<td>effect</td>
+							<td>price</td>
+						</tr>
+					</thead>
+					<tr id="auto1row">
+						<td id="auto1" class="auto">automate dopamine clicking</td>
+						<td>x2/s</td>
+						<td id="auto1price" class="transition">100 serotonin</td>
+					</tr>
+					<tr id="auto2row">
+						<td id="auto2" class="auto">increase dopamine click speed</td>
+						<td>x2</td>
+						<td id="auto2price" class="transition">100 happiness</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="options">
+			<div id="closeOptions" onclick="options(false)">X</div>
+			<b>options</b>
 			<ul>
-				<li onclick="tab('you','upgrades')">Upgrades</li>
-				<li onclick="tab('you','hobbies')">Hobbies</li>
-				<li onclick="tab('you','friends')">Friends</li>
-				<li onclick="tab('you','experiences')">Experiences</li>
+				<li>theme: <select><option>Dark</option><option>Light (coming soon)</option></select></li>
+				<li>notation: <select><option>Scientific</option><option>idk</option></select></li>
+				<li>disable tooltips: <input type="checkbox" id="tooltipOption"></input></li>
 			</ul>
 		</div>
-
-		<div id="upgrades" class="content">
-			<table>
-				<tr>
-					<th colspan="6">upgrades</th>
-				</tr>
-				<tr>
-					<td class="u">upgrade 1</td>
-					<td>double <div id="box" class="s"></div> production</td>
-					<td class="e">50 endorphins</td>
-					<td class="u">upgrade 2</td>
-					<td>double <div id="box" class="d"></div> production</td>
-					<td class="o">50 oxytocin</td>
-				</tr>
-				<tr>
-					<td class="u">upgrade 3</td>
-					<td>double <div id="box" class="o"></div> production</td>
-					<td class="d">50 dopamine</td>
-					<td class="u">upgrade 4</td>
-					<td>double <div id="box" class="e"></div> production</td>
-					<td class="s">50 serotonin</td>
-				</tr>
-				<tr class="spacer"><td><br></td><td></td><td></td><td></td><td></td><td></td></tr>
-				<tr>
-					<td class="u">upgrade 5</td>
-					<td></td>
-					<td></td>
-					<td class="u">upgrade 6</td>
-					<td></td>
-					<td></td>
-				</tr>
-			</table>
-		</div>
-
-		<div id="hobbies" class="content">
-			<table>
-				<tr>
-					<th colspan="4">hobbies</th>
-				</tr>
-				<tr>
-					<td>upgrade 1</td>
-					<td>a</td>
-					<td>b</td>
-					<td>c</td>
-				</tr>
-				<tr>
-					<td>upgrade 2</td>
-					<td>a</td>
-					<td>b</td>
-					<td>c</td>
-				</tr>
-				</tbody>
-			</table>
-		</div>
-
-		<div id="friends" class="content">
-			<table>
-				<tr>
-					<th colspan="4">friends</th>
-				</tr>
-				<tr>
-					<td>upgrade 1</td>
-					<td>a</td>
-					<td>b</td>
-					<td>c</td>
-				</tr>
-				<tr>
-					<td>upgrade 2</td>
-					<td>a</td>
-					<td>b</td>
-					<td>c</td>
-				</tr>
-				</tbody>
-			</table>
-		</div>
-
-		<div id="experiences" class="content">
-			<table>
-				<tr>
-					<th colspan="4">experiences</th>
-				</tr>
-				<tr>
-					<td>upgrade 1</td>
-					<td>a</td>
-					<td>b</td>
-					<td>c</td>
-				</tr>
-				<tr>
-					<td>upgrade 2</td>
-					<td>a</td>
-					<td>b</td>
-					<td>c</td>
-				</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-
-	<div id="options" class="content">
-		<h1> options </h1>
-	</div>
-
-	<script src="js/decimal.min.js"></script>
-	<script src="js/helper.js"></script>
-	<script src="js/loop.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/save.js"></script>
-</body>
--->
+		<script src="js/main.js"></script>
+	</body>
 </html>
