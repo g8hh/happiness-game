@@ -65,17 +65,6 @@ window.onload=function(){
 	g("html").style.display="block"
 }
 
-function options(x){
-	if(x){
-		g("main").style.display="none"
-		g("options").style.display="block"
-	} else {
-		g("main").style.display="block"
-		g("options").style.display="none"
-	}
-}
-options(false)
-
 function automation(){
 	if(player.automation.auto1){
 		g("gainDopamine").click()
@@ -86,3 +75,13 @@ function automation(){
 		}, 250)
 	}
 }
+function options(x){
+	if(x){
+		g("main").style.display="none"
+		g("options").style.display="block"
+	} else {
+		g("main").style.display="block"
+		g("options").style.display="none"
+	}
+}
+options(false)
