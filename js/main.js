@@ -12,6 +12,16 @@ player = {
 		auto1: false,
 		auto2: false
 	},
+	upgrades: {
+		one: {
+			level:0,
+			price:10
+		},
+		two: {
+			level:0,
+			price:50
+		}
+	},
 	options: {
 		tooltips: true,
 		animations: true
@@ -153,26 +163,4 @@ g("auto2").onclick=function(){
 		g("auto2row").style.display="none"
 		player.automation.auto2=true;
 	}
-}
-
-
-g("auto1").onmouseover=function(){
-	if(player.chems.serotonin>=100){
-		g("auto1price").style.backgroundColor="lightgreen"
-	} else {
-		g("auto1price").style.backgroundColor="lightcoral"
-	}
-}
-g("auto1").onmouseout=function(){
-	g("auto1price").style.backgroundColor="transparent"
-}
-g("auto2").onmouseover=function(){
-	if(player.chems.happiness>=100){
-		g("auto2price").style.backgroundColor="lightgreen"
-	} else {
-		g("auto2price").style.backgroundColor="lightcoral"
-	}
-}
-g("auto2").onmouseout=function(){
-	g("auto2price").style.backgroundColor="transparent"
 }

@@ -14,66 +14,72 @@
 			<span class="span" id="reset">reset</span>
 		</div>
 		<div id="main">
-			<div id="you">
-				<b>you</b>
-				<ul>
-					<li id="s"><span id="serotonin">serotonin: 0</span></li>
-					<li id="d"><span id="dopamine">dopamine: 0</span></li>
-					<li id="h"><span id="happiness">happiness: 0</span></li>
-					<br>
-					<li id="gainDopamine"><button>gain dopamine</button></li>
-					<li id="gainHappiness"><button>gain happiness<br><span id="tooltip">5 dopamine + 5 serotonin</span></button></li>
-
-				</ul>
-			</div>
-			<div id="upgrades">
-				<b>upgrades</b>
-				<table>
-					<thead>
-						<tr colspan="4">
-							<td>upgrade</td>
-							<td>effect</td>
-							<td>price</td>
-							<td>bought</td>
+			<div id="leftColumn">
+				<div id="you">
+					<b>you</b>
+					<ul>
+						<li id="s"><span id="serotonin">serotonin: 0</span></li>
+						<li id="d"><span id="dopamine">dopamine: 0</span></li>
+						<li id="h"><span id="happiness">happiness: 0</span></li>
+						<br>
+						<li id="gainDopamine"><button>gain dopamine</button></li>
+						<li id="gainHappiness"><button>gain happiness<br><span id="tooltip">5 dopamine + 5 serotonin</span></button></li>
+					</ul>
+				</div>
+				<div id="automation">
+					<b>automation</b>
+					<table>
+						<thead>
+							<tr colspan="3">
+								<td>upgrade</td>
+								<td>effect</td>
+								<td>price</td>
+							</tr>
+						</thead>
+						<tr id="auto1row">
+							<td id="auto1" class="auto">automate dopamine clicking</td>
+							<td>x2/s</td>
+							<td id="auto1price" class="transition">100 serotonin</td>
 						</tr>
-					</thead>
-					<tbody>
-						<tr id="upgrade1row">
-							<td id="upgrade1" class="upgrade">boost serotonin production</td>
+						<tr id="auto2row">
+							<td id="auto2" class="auto">increase dopamine click speed</td>
 							<td>x2</td>
-							<td id="upgrade1price">10 happiness</td>
-							<td>0/5</td>
+							<td id="auto2price" class="transition">100 happiness</td>
 						</tr>
-						<tr id="upgrade2row" >
-							<td id="upgrade2" class="upgrade">boost dopamine gain</td>
-							<td>x2</td>
-							<td id="upgrade2price">50 serotonin</td>
-							<td>0/5</td>
-						</tr>
-					</tbody>
-				</table>
+					</table>
+				</div>
 			</div>
-			<div id="automation">
-				<b>automation</b>
-				<table>
-					<thead>
-						<tr colspan="3">
-							<td>upgrade</td>
-							<td>effect</td>
-							<td>price</td>
-						</tr>
-					</thead>
-					<tr id="auto1row">
-						<td id="auto1" class="auto">automate dopamine clicking</td>
-						<td>x2/s</td>
-						<td id="auto1price" class="transition">100 serotonin</td>
-					</tr>
-					<tr id="auto2row">
-						<td id="auto2" class="auto">increase dopamine click speed</td>
-						<td>x2</td>
-						<td id="auto2price" class="transition">100 happiness</td>
-					</tr>
-				</table>
+			<div id="rightColumn">
+				<div id="upgrades">
+					<b>upgrades</b>
+					<table>
+						<thead>
+							<tr colspan="4">
+								<td>upgrade</td>
+								<td>effect</td>
+								<td>price</td>
+								<td>bought</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr id="upgrade1row">
+								<td id="upgrade1" class="upgrade">boost serotonin production</td>
+								<td>x2</td>
+								<td id="upgrade1price" class="transition">10 happiness</td>
+								<td>0/5</td>
+							</tr>
+							<tr id="upgrade2row" >
+								<td id="upgrade2" class="upgrade">boost dopamine gain</td>
+								<td>x2</td>
+								<td id="upgrade2price" class="transition">50 serotonin</td>
+								<td>0/5</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>			
+				<div id="friends">
+					<b>friends</b>
+				</div>
 			</div>
 		</div>
 		<div id="options">
@@ -87,5 +93,6 @@
 			</ul>
 		</div>
 		<script src="js/main.js"></script>
+		<script src="js/animation.js"></script>
 	</body>
 </html>

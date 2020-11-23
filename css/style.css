@@ -9,7 +9,10 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 #header .span{text-decoration:none;}
 #header .span:hover{text-decoration:underline;cursor:pointer;}
 
-#you{background:#444;padding-bottom:5px;margin-bottom:10px;width:595px;float:left;}
+#leftColumn{float:left;}
+#rightColumn{float:right;}
+
+#you{background:#444;padding-bottom:5px;margin-bottom:10px;width:595px;display:inline-block;}
 #you ul{margin-top:5px;padding-left:20px;list-style-type:none;}
 #you li{position:relative;}
 
@@ -20,7 +23,7 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 #you button{border:2px solid black;background:grey;outline:none;cursor:pointer;transition:0.5s;padding:4px;}
 #you button:hover{color:blue;text-shadow:0 0 5px aqua;transition:0.5s;}
 
-#upgrades{background:#444;padding-bottom:10px;width:595px;float:left;margin-left:10px;}
+#upgrades{background:#444;padding-bottom:10px;width:595px;margin-left:10px;margin-bottom:10px;}
 #upgrades table{width:550px;margin:auto;margin-top:10px;border-collapse: collapse}
 #upgrades td{border:1px solid #666;margin:0;width:33%;padding:3px;}
 #upgrades thead td{font-weight:bold;}
@@ -30,7 +33,7 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 #upgrades td:nth-child(3){width:150px;}
 #upgrades td:nth-child(4){width:75px;}
 
-#automation{float:left;clear:left;background-color:#444;width:595px;padding-bottom:10px;position:relative;}
+#automation{background-color:#444;width:595px;padding-bottom:10px;position:relative;}
 #automation table{width:550px;margin:auto;margin-top:10px;border-collapse: collapse}
 #automation td{border:1px solid #666;margin:0;width:33%;padding:3px;}
 #automation thead td{font-weight:bold;}
@@ -38,6 +41,8 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 #automation td:nth-child(1){width:325px;}
 #automation td:nth-child(2){width:75px;}
 #automation td:nth-child(3){width:150px;}
+
+#friends{background:#444;width:595px;margin-left:10px;padding-bottom:10px;}
 
 .auto{cursor:pointer;transition:0.4s;}
 .auto:hover{color:aqua;text-shadow:0 0 2px black;transition:0.4s;}
