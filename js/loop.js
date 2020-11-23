@@ -1,13 +1,3 @@
-function automation(){
-	if(player.automation.auto1){
-		g("gainDopamine").click()
-	} 
-	if(player.automation.auto2){
-		setTimeout(function(){
-			g("gainDopamine").click()
-		}, 250)
-	}
-}
 function loop(){
 	render()
 	player.chems.serotonin+=(player.chems.sGainBase*player.chems.sGainMult)/20

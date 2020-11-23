@@ -1,3 +1,18 @@
+function floatText(elm,value,curr){
+	float=document.createElement('span')
+	float.className="float"
+	float.innerText="+"+value+" "+curr
+	g(elm).appendChild(float)
+	window.setTimeout(function(){g(elm).removeChild(g(elm).childNodes[1])},1000)
+}
+function floatTextDown(elm,value,curr){
+	float=document.createElement('span')
+	float.className="floatdown"
+	float.innerText="-"+value+" "+curr
+	g(elm).appendChild(float)
+	window.setTimeout(function(){g(elm).removeChild(g(elm).childNodes[1])},1000)
+}
+
 g("upgrade1").onclick=function(){
 	if(player.chems.dopamine>=player.upgrades.one.price && player.upgrades.one.level<5){
 		player.chems.dopamine-=player.upgrades.one.price

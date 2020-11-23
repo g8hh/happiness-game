@@ -12,7 +12,6 @@ function update(){
 		g("animationsOption").checked=true
 	}
 	if(player.automation.auto1){
-		window.setInterval(automation,500)
 		g("auto1row").style.display="none"
 	}
 	if(player.automation.auto2){
@@ -59,6 +58,10 @@ window.onload=function(){
 	render()
 	update()
 
+	if(player.automation.auto1){
+		window.setInterval(automation,500)
+	}
+
 	g("html").style.display="block"
 }
 
@@ -72,3 +75,14 @@ function options(x){
 	}
 }
 options(false)
+
+function automation(){
+	if(player.automation.auto1){
+		g("gainDopamine").click()
+	} 
+	if(player.automation.auto2){
+		setTimeout(function(){
+			g("gainDopamine").click()
+		}, 250)
+	}
+}

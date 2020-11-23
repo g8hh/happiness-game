@@ -1,18 +1,3 @@
-function floatText(elm,value,curr){
-	float=document.createElement('span')
-	float.className="float"
-	float.innerText="+"+value+" "+curr
-	g(elm).appendChild(float)
-	window.setTimeout(function(){g(elm).removeChild(g(elm).childNodes[1])},1000)
-}
-function floatTextDown(elm,value,curr){
-	float=document.createElement('span')
-	float.className="floatdown"
-	float.innerText="-"+value+" "+curr
-	g(elm).appendChild(float)
-	window.setTimeout(function(){g(elm).removeChild(g(elm).childNodes[1])},1000)
-}
-
 g("auto1").onmouseover=function(){
 	bg=window.setInterval(function(){
 		if(player.chems.serotonin>=100){
