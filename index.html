@@ -23,7 +23,7 @@
 						<li id="h"><span id="happiness">happiness: 0</span></li>
 						<br>
 						<li id="gainDopamine"><button>gain dopamine</button></li>
-						<li id="gainHappiness"><button>gain happiness<br><span id="tooltip">5 dopamine + 5 serotonin</span></button></li>
+						<li id="gainHappiness"><button>gain happiness<br><span class="tooltip">5 dopamine + 5 serotonin</span></button></li>
 					</ul>
 				</div>
 				<div id="automation">
@@ -46,6 +46,16 @@
 							<td>x2</td>
 							<td id="auto2price" class="transition">100 happiness</td>
 						</tr>
+						<tr id="auto3row">
+							<td id="auto3" class="auto">unlock convert max for happiness</td>
+							<td>N/A</td>
+							<td id="auto3price" class="transition">1000 happiness</td>
+						</tr>
+						<tr id="auto4row">
+							<td id="auto4" class="auto">automate happiness conversion</td>
+							<td>x1/s</td>
+							<td id="auto4price" class="transition">10k serotonin</td>
+						</tr>
 					</table>
 				</div>
 			</div>
@@ -63,7 +73,7 @@
 						</thead>
 						<tbody>
 							<tr id="upgrade1row">
-								<td id="upgrade1" class="upgrade">boost serotonin production</td>
+								<td id="upgrade1" class="upgrade">boost serotonin gain</td>
 								<td>x2</td>
 								<td id="upgrade1price" class="transition">50 dopamine</td>
 								<td id="upgrade1bought">0/5</td>
@@ -80,12 +90,18 @@
 								<td id="upgrade3price" class="transition">50 serotonin</td>
 								<td id="upgrade3bought">0/5</td>
 							</tr>
+							<tr id="upgrade4row">
+								<td id="upgrade4" class="upgrade">boost serotonin gain <span class="tooltip">ln(happiness)/2</span></td>
+								<td id="upgrade4boost">x</td>
+								<td id="upgrade4price" class="transition">5000 serotonin</td>
+								<td id="upgrade4bought">0/1</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>			
 				<div id="friends">
 					<b>friends</b>
-					<div id="friendsUnlock"><button>make a friend</button><span id="tooltip">10k happiness</span></div>
+					<div id="friendsUnlock"><button>make a friend</button><span class="tooltip">10k happiness</span></div>
 				</div>
 			</div>
 		</div>

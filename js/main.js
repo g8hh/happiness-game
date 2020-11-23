@@ -10,7 +10,9 @@ player = {
 	},
 	automation: {
 		auto1: false,
-		auto2: false
+		auto2: false,
+		auto3: false,
+		auto4: false
 	},
 	upgrades: {
 		one: {
@@ -24,6 +26,10 @@ player = {
 		three: {
 			level:0,
 			price:50
+		},
+		four: {
+			bought:false,
+			price:5000
 		}
 	},
 	options: {
@@ -66,7 +72,7 @@ g("auto1").onclick=function(){
 		player.chems.serotonin-=100
 		floatTextDown("s",100,"serotonin")
 		g("auto1row").style.display="none"
-		player.automation.auto1=true;
+		player.automation.auto1=true
 		window.setInterval(automation,500)
 	}
 }
@@ -75,6 +81,22 @@ g("auto2").onclick=function(){
 		player.chems.happiness-=100
 		floatTextDown("h",100,"happiness")
 		g("auto2row").style.display="none"
-		player.automation.auto2=true;
+		player.automation.auto2=true
+	}
+}
+g("auto3").onclick=function(){
+	if(player.chems.happiness>=1000){
+		player.chems.happiness-=1000
+		floatTextDown("h",1000,"happiness")
+		g("auto3row").style.display="none"
+		player.automation.auto3=true
+	}
+}
+g("auto4").onclick=function(){
+	if(player.chems.serotonin>=10000){
+		player.chems.serotonin-=10000
+		floatTextDown("s","10k","happiness")
+		g("auto4row").style.display="none"
+		player.automation.auto4=true
 	}
 }

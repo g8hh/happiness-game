@@ -38,3 +38,12 @@ g("upgrade3").onclick=function(){
 		update()
 	}
 }
+
+g("upgrade4").onclick=function(){
+	if(player.chems.serotonin>=player.upgrades.four.price && !player.upgrades.four.bought){
+		player.chems.serotonin-=player.upgrades.four.price
+		floatTextDown("s",player.upgrades.four.price," serotonin")
+		player.upgrades.four.bought=true
+		update()
+	}
+}

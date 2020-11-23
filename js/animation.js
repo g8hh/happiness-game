@@ -11,7 +11,6 @@ g("auto1").onmouseover=function(){
 		clearInterval(bg)
 	}
 }
-
 g("auto2").onmouseover=function(){
 	bg=window.setInterval(function(){
 		if(player.chems.happiness>=100){
@@ -25,7 +24,32 @@ g("auto2").onmouseover=function(){
 		clearInterval(bg)
 	}
 }
-
+g("auto3").onmouseover=function(){
+	bg=window.setInterval(function(){
+		if(player.chems.happiness>=1000){
+			g("auto3price").style.backgroundColor="lightgreen"
+		} else {
+			g("auto3price").style.backgroundColor="lightcoral"
+		}
+	},100)
+	g("auto3").onmouseout=function(){
+		g("auto3price").style.backgroundColor="transparent"
+		clearInterval(bg)
+	}
+}
+g("auto4").onmouseover=function(){
+	bg=window.setInterval(function(){
+		if(player.chems.serotonin>=10000){
+			g("auto4price").style.backgroundColor="lightgreen"
+		} else {
+			g("auto4price").style.backgroundColor="lightcoral"
+		}
+	},100)
+	g("auto4").onmouseout=function(){
+		g("auto4price").style.backgroundColor="transparent"
+		clearInterval(bg)
+	}
+}
 g("upgrade1").onmouseover=function(){
 	bg=window.setInterval(function(){
 		if(player.chems.dopamine>=player.upgrades.one.price){
@@ -39,7 +63,6 @@ g("upgrade1").onmouseover=function(){
 		clearInterval(bg)
 	}
 }
-
 g("upgrade2").onmouseover=function(){
 	bg=window.setInterval(function(){
 		if(player.chems.happiness>=player.upgrades.two.price){
@@ -53,7 +76,6 @@ g("upgrade2").onmouseover=function(){
 		clearInterval(bg)
 	}
 }
-
 g("upgrade3").onmouseover=function(){
 	bg=window.setInterval(function(){
 		if(player.chems.serotonin>=player.upgrades.three.price){
@@ -64,6 +86,19 @@ g("upgrade3").onmouseover=function(){
 	},100)
 	g("upgrade3").onmouseout=function(){
 		g("upgrade3price").style.backgroundColor="transparent"
+		clearInterval(bg)
+	}
+}
+g("upgrade4").onmouseover=function(){
+	bg=window.setInterval(function(){
+		if(player.chems.serotonin>=player.upgrades.four.price){
+			g("upgrade4price").style.backgroundColor="lightgreen"
+		} else {
+			g("upgrade4price").style.backgroundColor="lightcoral"
+		}
+	},100)
+	g("upgrade4").onmouseout=function(){
+		g("upgrade4price").style.backgroundColor="transparent"
 		clearInterval(bg)
 	}
 }
