@@ -35,6 +35,13 @@ player = {
 function g(x){
 	return document.getElementById(x)
 }
+function floatText(elm,value,curr){
+	float=document.createElement('span')
+	float.className="float"
+	float.innerText="+"+value+" "+curr
+	g(elm).appendChild(float)
+	window.setTimeout(function(){g(elm).removeChild(g(elm).childNodes[1])},1000)
+}
 
 // Gain Buttons
 g("gainDopamine").onclick=function(){
