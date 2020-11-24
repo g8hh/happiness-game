@@ -91,7 +91,7 @@ g("upgrade3").onmouseover=function(){
 }
 g("upgrade4hover").onmouseover=function(){
 	bg=window.setInterval(function(){
-		if(player.chems.serotonin>=player.upgrades.four.price){
+		if(player.chems.happiness>=player.upgrades.four.price){
 			g("upgrade4price").style.backgroundColor="lightgreen"
 		} else {
 			g("upgrade4price").style.backgroundColor="lightcoral"

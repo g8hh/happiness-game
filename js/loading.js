@@ -21,6 +21,7 @@ function update(){
 	}
 	if(player.automation.auto3){
 		g("auto3row").style.display="none"
+		g("gainMaxH").style.display="block"
 	}
 	if(player.automation.auto4){
 		g("auto4row").style.display="none"
@@ -32,6 +33,7 @@ function update(){
 	g("upgrade2price").innerText=Math.ceil(player.upgrades.two.price)+" happiness"
 	g("upgrade3bought").innerText=player.upgrades.three.level+"/5"
 	g("upgrade3price").innerText=Math.ceil(player.upgrades.three.price)+" serotonin"
+
 	if(player.upgrades.one.level==5){
 		g("upgrade1row").style.display="none"
 	}
@@ -66,7 +68,7 @@ function automation(){
 }
 function getSerotoninGain(){
 	mult=player.chems.sGainBase*player.chems.sGainMult
-	if(player.upgrades.four.bought){ mult*=Math.log(happiness)/2 }
+	if(player.upgrades.four.bought){ mult*=Math.log(player.chems.happiness)/2 }
 
 	return mult
 }

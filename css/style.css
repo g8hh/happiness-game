@@ -18,7 +18,7 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 #you li{position:relative;}
 #gainDopamine{padding:0;position:relative;float:left;}
 #gainHappiness{margin-top:10px;margin-bottom:5px;position:relative;clear:both;float:left;}
-#gainMaxH{float:left;clear:both;position:relative;margin-top:5px;margin-bottom:5px;}
+#gainMaxH{display:none;float:left;clear:both;position:relative;margin-top:5px;margin-bottom:5px;}
 
 #gainHappiness .tooltip{width:250px;top:35px;}
 #gainHappiness:hover .tooltip{display:block !important;transition:0.3s;}

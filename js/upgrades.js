@@ -40,9 +40,9 @@ g("upgrade3").onclick=function(){
 }
 
 g("upgrade4").onclick=function(){
-	if(player.chems.serotonin>=player.upgrades.four.price && !player.upgrades.four.bought){
-		player.chems.serotonin-=player.upgrades.four.price
-		floatTextDown("s",player.upgrades.four.price," serotonin")
+	if(player.chems.happiness>=player.upgrades.four.price && !player.upgrades.four.bought){
+		player.chems.happiness-=player.upgrades.four.price
+		floatTextDown("h",player.upgrades.four.price,"happiness")
 		player.upgrades.four.bought=true
 		update()
 	}

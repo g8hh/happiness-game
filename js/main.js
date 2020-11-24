@@ -29,7 +29,7 @@ player = {
 		},
 		four: {
 			bought:false,
-			price:5000
+			price:50000
 		}
 	},
 	options: {
@@ -68,13 +68,13 @@ g("gainHbtn").onclick=function(){
 }
 g("gainMaxH").onclick=function(){
 	if(player.chems.dopamine>=5 && player.chems.serotonin>=5){
-		gained=Math.floor(Math.min(player.chems.dopamine,player.chems.serotonin)/5)
-		player.chems.dopamine-=gained*5
-		player.chems.serotonin-=gained*5
-		floatTextDown("s",gained*5,"serotonin")
-		floatTextDown("d",gained*5,"dopamine")
+		gained=Math.floor(Math.min(player.chems.dopamine,player.chems.serotonin)/5)*player.chems.hGain
+		player.chems.dopamine-=gained*5/player.chems.hGain
+		player.chems.serotonin-=gained*5/player.chems.hGain
+		floatTextDown("s",gained*5/player.chems.hGain,"serotonin")
+		floatTextDown("d",gained*5/player.chems.hGain,"dopamine")
 		player.chems.happiness+=gained
-		floatText("gainH",gained,"happiness")
+		floatText("convertMax",gained,"happiness")
 	}
 }
 
@@ -103,6 +103,7 @@ g("auto3").onclick=function(){
 		player.chems.happiness-=1000
 		floatTextDown("h",1000,"happiness")
 		g("auto3row").style.display="none"
+		g("gainMaxH").style.display="block"
 		player.automation.auto3=true
 		update()
 	}
