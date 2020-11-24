@@ -48,8 +48,13 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 #automation td:nth-child(2){width:75px;}
 #automation td:nth-child(3){width:150px;}
 
+#automation label{margin:10px;padding:10px;display:inline-block;}
+#automation input{margin:0;}
+#happinessConvertBox{display:none;}
+
+
 #friends{background:#444;width:595px;margin-left:10px;padding-bottom:10px;}
-#friends button{position:relative;margin:auto;display:block;background:#666;color:white;outline:none;cursor:pointer;transition:0.4s;}
+#friends button{cursor:pointer;position:relative;margin:auto;display:block;background:#666;color:white;outline:none;transition:0.4s;}
 #friends button:hover{color:blue;text-shadow:0 0 5px aqua;transition:0.4s;}
 #friendsUnlock{width:150px;position:relative;display:inline-block;left:222.5px;}
 #friendsUnlock .tooltip{width:150px;top:30px;}

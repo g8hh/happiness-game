@@ -34,7 +34,8 @@ player = {
 	},
 	options: {
 		tooltips: true,
-		animations: true
+		animations: true,
+		autoConvertH: true
 	}
 }
 
@@ -47,6 +48,12 @@ function floatText(elm,value,curr){
 	float.innerText="+"+value+" "+curr
 	g(elm).appendChild(float)
 	window.setTimeout(function(){g(elm).removeChild(g(elm).childNodes[1])},1000)
+}
+function getSerotoninGain(){
+	mult=player.chems.sGainBase*player.chems.sGainMult
+	if(player.upgrades.four.bought){ mult*=Math.log(happiness)/2 }
+
+	return mult
 }
 
 // Gain Buttons
@@ -74,6 +81,7 @@ g("auto1").onclick=function(){
 		g("auto1row").style.display="none"
 		player.automation.auto1=true
 		window.setInterval(automation,500)
+		update()
 	}
 }
 g("auto2").onclick=function(){
@@ -82,6 +90,7 @@ g("auto2").onclick=function(){
 		floatTextDown("h",100,"happiness")
 		g("auto2row").style.display="none"
 		player.automation.auto2=true
+		update()
 	}
 }
 g("auto3").onclick=function(){
@@ -90,6 +99,7 @@ g("auto3").onclick=function(){
 		floatTextDown("h",1000,"happiness")
 		g("auto3row").style.display="none"
 		player.automation.auto3=true
+		update()
 	}
 }
 g("auto4").onclick=function(){
@@ -98,5 +108,6 @@ g("auto4").onclick=function(){
 		floatTextDown("s","10k","happiness")
 		g("auto4row").style.display="none"
 		player.automation.auto4=true
+		update()
 	}
 }

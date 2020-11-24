@@ -13,11 +13,7 @@ function toolTips(x){
 
 function loop(){
 	render()
-	if(!player.upgrades.four.bought){
-		player.chems.serotonin+=(player.chems.sGainBase*player.chems.sGainMult)/20
-	} else if(player.upgrades.four.bought){
-		player.chems.serotonin+=(player.chems.sGainBase*(player.chems.sGainMult*Math.log(player.chems.happiness)/2))/20
-	}
+	player.chems.serotonin+=getSerotoninGain()/20
 
 	if(g("tooltipOption").checked){
 		toolTips(false)
@@ -32,6 +28,11 @@ function loop(){
 	} else {
 		player.options.animations=true
 		g("anims").href="css/animation.css"
+	}
+	if(g("autoConvertHappiness").checked){
+		player.options.autoConvertH=false
+	} else {
+		player.options.autoConvertH=true
 	}
 	g("upgrade4boost").innerHTML="x"+((Math.log(player.chems.happiness+1)/2)+1).toFixed(1)
 }

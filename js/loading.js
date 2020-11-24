@@ -1,5 +1,5 @@
 function render(){
-	g("serotonin").innerText="serotonin: "+player.chems.serotonin.toFixed(1)+" (+"+player.chems.sGainBase*player.chems.sGainMult+"/s)"
+	g("serotonin").innerText="serotonin: "+player.chems.serotonin.toFixed(1)+" (+"+getSerotoninGain().toFixed(1)+"/s)"
 	g("dopamine").innerText="dopamine: "+player.chems.dopamine.toFixed(1)+" (+"+player.chems.dGain+"/c)"
 	g("happiness").innerText="happiness: "+player.chems.happiness.toFixed(1)+" (+"+player.chems.hGain+"/c)"
 }
@@ -9,6 +9,9 @@ function update(){
 	}
 	if(player.options.animations==false){
 		g("animationsOption").checked=true
+	}
+	if(player.options.autoConvertH=false){
+		g("autoConvertHappiness").checked=true
 	}
 	if(player.automation.auto1){
 		g("auto1row").style.display="none"
@@ -21,6 +24,7 @@ function update(){
 	}
 	if(player.automation.auto4){
 		g("auto4row").style.display="none"
+		g("happinessConvertBox").style.display="block"
 	}
 	g("upgrade1bought").innerText=player.upgrades.one.level+"/5"
 	g("upgrade1price").innerText=Math.ceil(player.upgrades.one.price)+" dopamine"
@@ -51,8 +55,7 @@ function automation(){
 			g("gainDopamine").click()
 		}, 250)
 	}
-	if(player.automation.auto4){
-		console.log("auto4")
+	if(player.automation.auto4 && player.options.autoConvertH){
 		if(toggle){
 			g("gainHappiness").click()
 			toggle=false
