@@ -23,7 +23,11 @@
 						<li id="h"><span id="happiness">happiness: 0</span></li>
 						<br>
 						<li id="gainDopamine"><button>gain dopamine</button></li>
-						<li id="gainHappiness"><button>gain happiness<br><span class="tooltip">5 dopamine + 5 serotonin</span></button></li>
+						<li id="gainHappiness">
+							<span id="gainH"><button id="gainHbtn">gain happiness</button></span>
+							<span class="tooltip">5 dopamine + 5 serotonin</span>
+						</li>
+						<li id="gainMaxH"><button>convert max</button></li>
 					</ul>
 				</div>
 				<div id="automation">
@@ -95,7 +99,11 @@
 								<td id="upgrade3bought">0/5</td>
 							</tr>
 							<tr id="upgrade4row">
-								<td id="upgrade4" class="upgrade">boost serotonin gain <span class="tooltip">ln(happiness)/2</span></td>
+								<td id="upgrade4">
+									<span id="upgrade4hover" class="upgrade">boost serotonin gain</span>
+									<span class="tooltip">ln(happiness)/2</span>
+								</td> 
+								
 								<td id="upgrade4boost">x</td>
 								<td id="upgrade4price" class="transition">5000 serotonin</td>
 								<td id="upgrade4bought">0/1</td>

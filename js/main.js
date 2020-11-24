@@ -56,14 +56,25 @@ g("gainDopamine").onclick=function(){
 	floatText("gainDopamine",player.chems.dGain,'dopamine')
 	render()
 }
-g("gainHappiness").onclick=function(){
+g("gainHbtn").onclick=function(){
 	if(player.chems.dopamine>=5 && player.chems.serotonin>=5){
 		player.chems.dopamine-=5
 		player.chems.serotonin-=5
 		player.chems.happiness+=player.chems.hGain
-		floatText("gainHappiness",player.chems.hGain,"happiness")
+		floatText("gainH",player.chems.hGain,"happiness")
 		floatTextDown("s",5,"serotonin")
 		floatTextDown("d",5,"dopamine")
+	}
+}
+g("gainMaxH").onclick=function(){
+	if(player.chems.dopamine>=5 && player.chems.serotonin>=5){
+		gained=Math.floor(Math.min(player.chems.dopamine,player.chems.serotonin)/5)
+		player.chems.dopamine-=gained*5
+		player.chems.serotonin-=gained*5
+		floatTextDown("s",gained*5,"serotonin")
+		floatTextDown("d",gained*5,"dopamine")
+		player.chems.happiness+=gained
+		floatText("gainH",gained,"happiness")
 	}
 }
 

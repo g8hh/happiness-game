@@ -89,7 +89,7 @@ g("upgrade3").onmouseover=function(){
 		clearInterval(bg)
 	}
 }
-g("upgrade4").onmouseover=function(){
+g("upgrade4hover").onmouseover=function(){
 	bg=window.setInterval(function(){
 		if(player.chems.serotonin>=player.upgrades.four.price){
 			g("upgrade4price").style.backgroundColor="lightgreen"
@@ -97,7 +97,7 @@ g("upgrade4").onmouseover=function(){
 			g("upgrade4price").style.backgroundColor="lightcoral"
 		}
 	},100)
-	g("upgrade4").onmouseout=function(){
+	g("upgrade4hover").onmouseout=function(){
 		g("upgrade4price").style.backgroundColor="transparent"
 		clearInterval(bg)
 	}

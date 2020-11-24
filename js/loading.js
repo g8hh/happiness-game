@@ -103,9 +103,9 @@ window.onload=function(){
 	} else {
 		save()
 	}
+	update()
 	render()
 	loop()
-	update()
 
 	if(player.automation.auto1 || player.automation.auto4){
 		window.setInterval(automation,500)

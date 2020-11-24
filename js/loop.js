@@ -2,11 +2,11 @@ tooltips=document.getElementsByClassName("tooltip")
 function toolTips(x){
 	if(x){
 		for(i=0;i<tooltips.length;i++){
-			tooltips[i].style.display="block"
+			tooltips[i].style.opacity="100%"
 		}
 	} else if (!x){
 		for(i=0;i<tooltips.length;i++){
-			tooltips[i].style.display="none"
+			tooltips[i].style.opacity="0%"
 		}
 	}
 }
@@ -18,7 +18,7 @@ function loop(){
 	if(g("tooltipOption").checked){
 		toolTips(false)
 		player.options.tooltips=false
-	} else {
+	} else if(!g("tooltipOption").checked) {
 		toolTips(true)
 		player.options.tooltips=true
 	}
