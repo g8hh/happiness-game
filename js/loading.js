@@ -10,7 +10,7 @@ function update(){
 	if(player.options.animations==false){
 		g("animationsOption").checked=true
 	}
-	if(player.options.autoConvertH=false){
+	if(player.options.autoConvertH==false){
 		g("autoConvertHappiness").checked=true
 	}
 	if(player.automation.auto1){
@@ -63,6 +63,12 @@ function automation(){
 			toggle=true
 		}
 	}
+}
+function getSerotoninGain(){
+	mult=player.chems.sGainBase*player.chems.sGainMult
+	if(player.upgrades.four.bought){ mult*=Math.log(happiness)/2 }
+
+	return mult
 }
 g("save").onclick=function(){
 	localStorage.setItem("save",btoa(JSON.stringify(player)))

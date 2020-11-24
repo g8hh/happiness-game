@@ -49,12 +49,6 @@ function floatText(elm,value,curr){
 	g(elm).appendChild(float)
 	window.setTimeout(function(){g(elm).removeChild(g(elm).childNodes[1])},1000)
 }
-function getSerotoninGain(){
-	mult=player.chems.sGainBase*player.chems.sGainMult
-	if(player.upgrades.four.bought){ mult*=Math.log(happiness)/2 }
-
-	return mult
-}
 
 // Gain Buttons
 g("gainDopamine").onclick=function(){
