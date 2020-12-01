@@ -1,8 +1,6 @@
 # AnteSocial.github.io
 
 [![CodeFactor](https://www.codefactor.io/repository/github/antesocial/antesocial.github.io/badge)](https://www.codefactor.io/repository/github/antesocial/antesocial.github.io)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AnteSocial/AnteSocial.github.io/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/AnteSocial/AnteSocial.github.io/?branch=master)
-
 
 happiness game
 
