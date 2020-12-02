@@ -88,6 +88,7 @@ function floatText(elm,value,curr){
 	window.setTimeout(function(){g(elm).removeChild(g(elm).childNodes[1])},1000)
 }
 function floatTextDown(elm,value,curr){
+	let float;
 	float=document.createElement('span')
 	float.className="floatdown"
 	float.innerText="-"+value+" "+curr
@@ -390,6 +391,9 @@ function update(){
 	}
 	if(player.upgrades.four.bought){
 		g("upgrade4row").style.display="none"
+	}
+	if(player.friends){
+		console.log("Yay!")
 	}
 }
 function automation(){
