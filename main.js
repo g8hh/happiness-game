@@ -39,7 +39,7 @@ player = {
 	},
 	friends: false,
 	friend: {
-		timer:15
+		timer:0
 	}
 }
 var bplayer = player;
@@ -239,12 +239,13 @@ g("upgrade4").onclick=function(){
 	}
 }
 g("friendsUnlock").onclick=function(){
-	//if(player.chems.happiness>=100000){
-		//player.chems.happiness-=100000
+	if(player.chems.happiness>=100000){
+		player.chems.happiness-=100000
 		player.friends=true
-		//floatTextDown("h",100000,"happiness")
+		floatTextDown("h",100000,"happiness")
+		setInterval(friendBar,20)
 		update()
-	//}
+	}
 }
 
 // Upgrade Hovers

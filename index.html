@@ -103,7 +103,7 @@
 							<tr id="upgrade4row">
 								<td id="upgrade4">
 									<span id="upgrade4hover" class="upgrade">boost serotonin gain</span>
-									<span class="tooltip">ln(happiness)/2</span>
+									<span class="tooltip math">ln(happiness)/2</span>
 								</td> 
 								
 								<td id="upgrade4boost">x</td>
@@ -123,17 +123,17 @@
 							<tr>
 								<td>happy memories <span class="tooltip">boost serotonin gain</span></td>
 								<td>0</td>
-								<td>boost: 1x</td>
+								<td>boost: 1x <span class="tooltip"><math><msqrt><mn>memories</mn></msqrt></math> + 1</span></td>
 							</tr>
 							<tr>
 								<td>sad memories <span class="tooltip">boost dopamine gain</span></td>
 								<td>0</td>
-								<td>boost: 1x</td>
+								<td>boost: 1x <span class="tooltip math"><math><msqrt><mn>memories</mn></msqrt></math> + 1</span></td>
 							</tr>
 							<tr>
 								<td>special memories <span class="tooltip">boost happiness gain</span></td>
 								<td>0</td>
-								<td>boost: 1x</td>
+								<td>boost: 1x <span class="tooltip math"><math><msqrt><mn>memories</mn></msqrt></math> + 1</span></td>
 							</tr>
 						</table>
 					</div>
@@ -151,5 +151,6 @@
 			</ul>
 		</div>
 		<script src="main.js"></script>
+		<script src="https://fred-wang.github.io/mathjax.js/mpadded-min.js"></script>
 	</body>
 </html>

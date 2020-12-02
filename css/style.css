@@ -1,6 +1,12 @@
 * {user-select:none;font-size:16px;font-family:monospace;}
 *, *::before, *::after{box-sizing:border-box;}
 
+@namespace url('http://www.w3.org/1999/xhtml');
+@namespace m url('http://www.w3.org/1998/Math/MathML');
+
+body, m|mtext {font-family: Latin Modern;}
+m|math, .math {font-family: Latin Modern Math;}
+
 html{background-color:grey;}
 b{display:block;text-decoration:underline;padding-top:10px;padding-left:20px;}
 body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
@@ -68,7 +74,7 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 
 #friendBar{color:black;width:95%;display:block;margin:auto;margin-top:5px;text-align:center;background:linear-gradient(90deg, #666,#666 40%,white 0%,white 100%);}
 
-#friendsContent .tooltip{width:200px;left:0px;top:25px;text-align:center;}
+#friendsContent .tooltip{width:200px;left:0;top:25px;text-align:center;}
 #friendsContent table td:hover .tooltip{display:block;}
 #friendsContent table td .tooltip:hover{display:none;}
 #friendsContent table td:nth-child(1){width:33%;}
