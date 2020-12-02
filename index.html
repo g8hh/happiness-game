@@ -5,6 +5,8 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 		<link rel="icon" type="image/png" href="img/favicon.png"/>
 		<link rel="stylesheet" type="text/css" href="css/animation.css" id="anims"/>
+		<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 	</head>
 	<body id="html">
 		<div id="header">
@@ -103,7 +105,7 @@
 							<tr id="upgrade4row">
 								<td id="upgrade4">
 									<span id="upgrade4hover" class="upgrade">boost serotonin gain</span>
-									<span class="tooltip math">ln(happiness)/2</span>
+									<span class="tooltip math"><math><mn>ln(happiness)/2</mn></math></span>
 								</td> 
 								
 								<td id="upgrade4boost">x</td>
@@ -123,7 +125,7 @@
 							<tr>
 								<td>happy memories <span class="tooltip">boost serotonin gain</span></td>
 								<td>0</td>
-								<td>boost: 1x <span class="tooltip"><math><msqrt><mn>memories</mn></msqrt></math> + 1</span></td>
+								<td>boost: 1x <span class="tooltip math"><math><msqrt><mn>memories</mn></msqrt></math> + 1</span></td>
 							</tr>
 							<tr>
 								<td>sad memories <span class="tooltip">boost dopamine gain</span></td>
@@ -150,7 +152,7 @@
 				<li>disable animations: <input type="checkbox" id="animationsOption"></li>
 			</ul>
 		</div>
+
 		<script src="main.js"></script>
-		<script src="https://fred-wang.github.io/mathjax.js/mpadded-min.js"></script>
 	</body>
 </html>

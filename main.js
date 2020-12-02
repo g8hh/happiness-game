@@ -62,7 +62,7 @@ window.onload=function(){
 		friendBar()
 		window.setInterval(friendBar,20)
 	}
-
+	
 	g("html").style.display="block"
 }
 g("save").onclick=function(){
