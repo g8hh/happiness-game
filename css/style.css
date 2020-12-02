@@ -1,4 +1,5 @@
 * {user-select:none;font-size:16px;font-family:monospace;}
+*, *::before, *::after{box-sizing:border-box;}
 
 html{background-color:grey;}
 b{display:block;text-decoration:underline;padding-top:10px;padding-left:20px;}
@@ -11,7 +12,7 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 
 #leftColumn{float:left;}
 #rightColumn{float:right;}
-.tooltip{display:none !important;background-color:black;color:#fff;text-align:center;padding:5px 0;border-radius:6px;position:absolute;z-index:1;}
+.tooltip{display:none;background-color:black;color:#fff;text-align:center;padding:5px 0;border-radius:6px;position:absolute;z-index:1;}
 
 #you{background:#444;padding-bottom:5px;margin-bottom:10px;width:595px;display:inline-block;}
 #you ul{margin-top:5px;padding-left:20px;list-style-type:none;}
@@ -53,13 +54,26 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 #automation input{margin:0;}
 #happinessConvertBox{display:none;}
 
-
 #friends{background:#444;width:595px;margin-left:10px;padding-bottom:10px;}
 #friends button{cursor:pointer;position:relative;margin:auto;display:block;background:#666;color:white;outline:none;}
 #friends button:hover{color:black;background:#888;}
 #friendsUnlock{width:150px;position:relative;display:inline-block;left:222.5px;}
 #friendsUnlock .tooltip{display:none;width:150px;top:30px;}
 #friendsUnlock:hover .tooltip{display:block !important;}
+#friendsContent{display:none;margin-top:5px;}
+
+#friendsContent #friend{padding-left:20px;}
+#friendsContent table{width:95%;margin:auto;border-collapse:collapse;position:relative;margin-top:10px;}
+#friendsContent table td{padding:4px;border:1px solid #666;position:relative;}
+
+#friendBar{color:black;width:95%;display:block;margin:auto;margin-top:5px;text-align:center;background:linear-gradient(90deg, #666,#666 40%,white 0%,white 100%);}
+
+#friendsContent .tooltip{width:200px;left:0px;top:25px;text-align:center;}
+#friendsContent table td:hover .tooltip{display:block;}
+#friendsContent table td .tooltip:hover{display:none;}
+#friendsContent table td:nth-child(1){width:33%;}
+#friendsContent table td:nth-child(2){width:15%;}
+#friendsContent table td:nth-child(3){width:15%;}
 
 .auto{cursor:pointer;}
 .auto:hover{color:aqua;text-shadow:0 0 2px black;}

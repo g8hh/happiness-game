@@ -37,7 +37,10 @@ player = {
 		animations: true,
 		autoConvertH: true
 	},
-	friends: false
+	friends: false,
+	friend: {
+		timer:15
+	}
 }
 var bplayer = player;
 var tooltips = document.getElementsByClassName("tooltip")
@@ -54,6 +57,10 @@ window.onload=function(){
 
 	if(player.automation.auto1 || player.automation.auto4){
 		window.setInterval(automation,500)
+	}
+	if(player.friends){
+		friendBar()
+		window.setInterval(friendBar,20)
 	}
 
 	g("html").style.display="block"
@@ -232,12 +239,12 @@ g("upgrade4").onclick=function(){
 	}
 }
 g("friendsUnlock").onclick=function(){
-	if(player.chems.happiness>=100000){
-		player.chems.happiness-=100000
+	//if(player.chems.happiness>=100000){
+		//player.chems.happiness-=100000
 		player.friends=true
-		floatTextDown("h",100000,"happiness")
+		//floatTextDown("h",100000,"happiness")
 		update()
-	}
+	//}
 }
 
 // Upgrade Hovers
@@ -393,7 +400,8 @@ function update(){
 		g("upgrade4row").style.display="none"
 	}
 	if(player.friends){
-		console.log("Yay!")
+		g("friendsContent").style.display="block"
+		g("friendsUnlock").style.display="none"
 	}
 }
 function automation(){
@@ -410,4 +418,14 @@ function automation(){
 			g("gainHbtn").click()
 		}
 	}
+}
+function friendBar(){
+	player.friend.timer+=(1/50)*(10/3)
+	g("friendBar").style.background="linear-gradient(90deg, #666,#666 "+ player.friend.timer +"%,white 0%,white 100%)"
+	g("friendBar").innerText=((player.friend.timer/100)*30).toFixed(1)+" / 30"
+	if(player.friend.timer>=100) {player.friend.timer=0; gainMemory()}
+}
+function gainMemory(){
+	let gain = Math.random()
+	console.log(gain)
 }
