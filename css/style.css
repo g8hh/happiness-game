@@ -1,4 +1,4 @@
-* {user-select:none;font-size:16px;font-family:monospace;}
+*{user-select:none;font-size:16px;font-family:monospace;}
 *, *::before, *::after{box-sizing:border-box;}
 
 @namespace url('http://www.w3.org/1999/xhtml');
@@ -70,7 +70,7 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 
 #friendsContent #friend{padding-left:20px;}
 #friendsContent table{width:95%;margin:auto;border-collapse:collapse;position:relative;margin-top:10px;}
-#friendsContent table td{padding:4px;border:1px solid #666;position:relative;}
+#friendsContent table td{padding:4px;position:relative;}
 
 #friendBar{color:black;width:95%;display:block;margin:auto;margin-top:5px;text-align:center;background:linear-gradient(90deg, #666,#666 40%,white 0%,white 100%);}
 
