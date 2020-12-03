@@ -442,6 +442,7 @@ function update(){
 	}
 	if(player.automation.auto1){
 		g("auto1row").style.display="none"
+		g("dopamineClickBox").style.display="block"
 	}
 	if(player.automation.auto2){
 		g("auto2row").style.display="none"

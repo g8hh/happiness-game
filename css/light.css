@@ -3,5 +3,7 @@ div{background-color:#ddd !important;}
 #leftColumn,#rightColumn{background-color:white !important;}
 select, option{background-color:#ccc !important;}
 button{background-color:#bbb !important; color:black !important;}
-.float{color:black;}
-.floatdown{color:black;}
+.float{color:green;}
+.floatdown{color:lightcoral;}
+.auto:hover{color:grey !important;text-shadow: none;}
+.upgrade:hover{color:grey !important;text-shadow: none;}

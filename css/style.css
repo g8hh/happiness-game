@@ -61,6 +61,7 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 #automation label{margin:10px;padding:10px;display:inline-block;}
 #automation input{margin:0;}
 
+#automation .disableBox{display:none;}
 #automation .disableBox div{display:inline;padding-left:25px;}
 #automation .check{display:inline;}
 
@@ -89,10 +90,10 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 #friendsContent table td:nth-child(3){width:15%;}
 
 .auto{cursor:pointer;}
-.auto:hover{color:aqua;text-shadow:0 0 2px black;}
+.auto:hover{color:aqua;}
 
 .upgrade{cursor:pointer;}
-.upgrade:hover{color:#ffdead;text-shadow:0 0 2px black;}
+.upgrade:hover{color:#ffdead;}
 
 #options{position:relative;background:#444;width:50%;margin:auto;display:none;text-align:center;padding:10px;}
 #options li{list-style-type:none;text-align:left;margin:5px;}
