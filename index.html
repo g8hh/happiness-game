@@ -5,6 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 		<link rel="icon" type="image/png" href="img/favicon.png"/>
 		<link rel="stylesheet" type="text/css" href="css/animation.css" id="anims"/>
+		<link rel="stylesheet" type="text/css" href="light.css" id="theme1"/>
 		<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 	</head>
@@ -65,9 +66,14 @@
 							<td id="auto4price" class="transition">1e4 serotonin</td>
 						</tr>
 					</table>
-					<div id="happinessConvertBox">
-						<label>disable auto happiness convert</label>
-						<input type="checkbox" id="autoConvertHappiness"></input>
+					<br>
+					<div id="dopamineClickBox" class="disableBox">
+						<div>disable auto dopamine clicking</div>
+						<input class="check" type="checkbox" id="autoClickDopamine">
+					</div>
+					<div id="happinessConvertBox" class="disableBox">
+						<div>disable auto happiness convert</div>
+						<input class="check" type="checkbox" id="autoConvertHappiness">
 					</div>
 				</div>
 			</div>
@@ -119,7 +125,7 @@
 					<b>friends</b>
 					<div id="friendsUnlock"><button>make a friend</button><span class="tooltip">1e5 happiness</span></div>
 					<div id="friendsContent">
-						<span id="friend">You have 1 friend</span>
+						<span class="fhover"><span id="friend">You have 1 friend</span><span class="tooltip">each gives +1 memories gain</span></span>
 						<span id="friendBar">15</span>
 						<table>
 							<tr>
@@ -146,7 +152,7 @@
 			<div id="closeOptions" onclick="options(false)">X</div>
 			<b>options</b>
 			<ul>
-				<li>theme: <select><option>Dark</option><option>Light (coming soon)</option></select></li>
+				<li>theme: <select id="theme" onchange="theme(this.value)"><option>Dark</option><option>Light</option></select></li>
 				<li>notation: <select><option>Scientific</option><option>Others (coming soon)</option></select></li><br>
 				<li>disable tooltips: <input type="checkbox" id="tooltipOption"></li>
 				<li>disable animations: <input type="checkbox" id="animationsOption"></li>

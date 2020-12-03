@@ -35,7 +35,9 @@ player = {
 	options: {
 		tooltips: true,
 		animations: true,
-		autoConvertH: true
+		autoClickDopamine: true,
+		autoConvertH: true,
+		theme: "Dark"
 	},
 	friends: false,
 	friend: {
@@ -59,6 +61,7 @@ window.onload=function(){
 	} else {
 		save()
 	}
+	theme(player.options.theme)
 	update()
 	render()
 	loop()
@@ -94,7 +97,19 @@ function reset(){
 function g(x){
 	return document.getElementById(x)
 }
-function floatText(elm,value,curr){
+function theme(x){
+	if(x==="Dark"){
+		player.options.theme=x
+		g("theme").value="Dark"
+		g("theme1").href=""
+	} else if (x==="Light"){
+		player.options.theme=x
+		g("theme").value="Light"
+		g("theme1").href="css/light.css"
+
+	}
+}
+function floatText(elm,value){
 	let float;
 	float=document.createElement('span')
 	float.className="float"
@@ -102,7 +117,7 @@ function floatText(elm,value,curr){
 	g(elm).appendChild(float)
 	window.setTimeout(function(){g(elm).removeChild(g(elm).childNodes[1])},1000)
 }
-function floatMemory(elm,value,curr){
+function floatMemory(elm,value){
 	let float;
 	float=document.createElement('span')
 	float.className="float"
@@ -110,7 +125,7 @@ function floatMemory(elm,value,curr){
 	elm.appendChild(float)
 	window.setTimeout(function(){elm.removeChild(elm.childNodes[1])},1000)
 }
-function floatTextDown(elm,value,curr){
+function floatTextDown(elm,value){
 	let float;
 	float=document.createElement('span')
 	float.className="floatdown"
@@ -183,7 +198,7 @@ function getHappinessGain(){
 // Gain Buttons
 g("gainDopamine").onclick=function(){
 	player.chems.dopamine+=getDopamineGain()
-	floatText("gainDopamine",getDopamineGain(),'dopamine')
+	floatText("gainDopamine",getDopamineGain())
 	render()
 }
 g("gainHbtn").onclick=function(){
@@ -191,9 +206,9 @@ g("gainHbtn").onclick=function(){
 		player.chems.dopamine-=5
 		player.chems.serotonin-=5
 		player.chems.happiness+=getHappinessGain()
-		floatText("gainH",getHappinessGain(),"happiness")
-		floatTextDown("s",5,"serotonin")
-		floatTextDown("d",5,"dopamine")
+		floatText("gainH",getHappinessGain())
+		floatTextDown("s",5)
+		floatTextDown("d",5)
 	}
 }
 g("gainMaxH").onclick=function(){
@@ -202,10 +217,10 @@ g("gainMaxH").onclick=function(){
 		gained=Math.floor(Math.min(player.chems.dopamine,player.chems.serotonin)/5)*getHappinessGain()
 		player.chems.dopamine-=gained*5/getHappinessGain()
 		player.chems.serotonin-=gained*5/getHappinessGain()
-		floatTextDown("s",gained*5/getHappinessGain(),"serotonin")
-		floatTextDown("d",gained*5/getHappinessGain(),"dopamine")
+		floatTextDown("s",gained*5/getHappinessGain())
+		floatTextDown("d",gained*5/getHappinessGain())
 		player.chems.happiness+=gained
-		floatText("convertMax",gained,"happiness")
+		floatText("convertMax",gained)
 	}
 }
 
@@ -213,7 +228,7 @@ g("gainMaxH").onclick=function(){
 g("auto1").onclick=function(){
 	if(player.chems.serotonin>=100){
 		player.chems.serotonin-=100
-		floatTextDown("s",100,"serotonin")
+		floatTextDown("s",100)
 		g("auto1row").style.display="none"
 		player.automation.auto1=true
 		window.setInterval(automation,500)
@@ -223,7 +238,7 @@ g("auto1").onclick=function(){
 g("auto2").onclick=function(){
 	if(player.chems.happiness>=100){
 		player.chems.happiness-=100
-		floatTextDown("h",100,"happiness")
+		floatTextDown("h",100)
 		g("auto2row").style.display="none"
 		player.automation.auto2=true
 		update()
@@ -232,7 +247,7 @@ g("auto2").onclick=function(){
 g("auto3").onclick=function(){
 	if(player.chems.happiness>=1000){
 		player.chems.happiness-=1000
-		floatTextDown("h",1000,"happiness")
+		floatTextDown("h",1000)
 		g("auto3row").style.display="none"
 		g("gainMaxH").style.display="block"
 		player.automation.auto3=true
@@ -242,7 +257,7 @@ g("auto3").onclick=function(){
 g("auto4").onclick=function(){
 	if(player.chems.serotonin>=10000){
 		player.chems.serotonin-=10000
-		floatTextDown("s","10k","happiness")
+		floatTextDown("s","10k")
 		g("auto4row").style.display="none"
 		player.automation.auto4=true
 		update()
@@ -253,7 +268,7 @@ g("auto4").onclick=function(){
 g("upgrade1").onclick=function(){
 	if(player.chems.dopamine>=player.upgrades.one.price && player.upgrades.one.level<5){
 		player.chems.dopamine-=player.upgrades.one.price
-		floatTextDown("d",player.upgrades.one.price,"dopamine")
+		floatTextDown("d",player.upgrades.one.price)
 		player.upgrades.one.price=Math.ceil(player.upgrades.one.price*2.5)
 		player.upgrades.one.level+=1
 		player.chems.sGainMult*=2
@@ -263,7 +278,7 @@ g("upgrade1").onclick=function(){
 g("upgrade2").onclick=function(){
 	if(player.chems.happiness>=player.upgrades.two.price && player.upgrades.two.level<5){
 		player.chems.happiness-=player.upgrades.two.price
-		floatTextDown("h",player.upgrades.two.price,"happiness")
+		floatTextDown("h",player.upgrades.two.price)
 		player.upgrades.two.price=Math.ceil(player.upgrades.two.price*2.5)
 		player.upgrades.two.level+=1
 		player.chems.dGain*=2
@@ -273,7 +288,7 @@ g("upgrade2").onclick=function(){
 g("upgrade3").onclick=function(){
 	if(player.chems.serotonin>=player.upgrades.three.price && player.upgrades.three.level<5){
 		player.chems.serotonin-=player.upgrades.three.price
-		floatTextDown("s",player.upgrades.three.price,"serotonin")
+		floatTextDown("s",player.upgrades.three.price)
 		player.upgrades.three.price=Math.ceil(player.upgrades.three.price*2.5)
 		player.upgrades.three.level+=1
 		player.chems.hGain*=2
@@ -283,7 +298,7 @@ g("upgrade3").onclick=function(){
 g("upgrade4").onclick=function(){
 	if(player.chems.happiness>=player.upgrades.four.price && !player.upgrades.four.bought){
 		player.chems.happiness-=player.upgrades.four.price
-		floatTextDown("h",player.upgrades.four.price,"happiness")
+		floatTextDown("h",player.upgrades.four.price)
 		player.upgrades.four.bought=true
 		update()
 	}
@@ -292,7 +307,7 @@ g("friendsUnlock").onclick=function(){
 	if(player.chems.happiness>=100000){
 		player.chems.happiness-=100000
 		player.friends=true
-		floatTextDown("h",100000,"happiness")
+		floatTextDown("h",100000)
 		setInterval(friendBar,20)
 		update()
 	}
@@ -394,6 +409,11 @@ function loop(){
 		player.options.animations=true
 		g("anims").href="css/animation.css"
 	}
+	if(g("autoClickDopamine").checked){
+		player.options.autoClickDopamine=false
+	} else {
+		player.options.autoClickDopamine=true
+	}
 	if(g("autoConvertHappiness").checked){
 		player.options.autoConvertH=false
 	} else {
@@ -416,6 +436,9 @@ function update(){
 	}
 	if(player.options.autoConvertH===false){
 		g("autoConvertHappiness").checked=true
+	}
+	if(player.options.autoClickDopamine===false){
+		g("autoClickDopamine").checked=true
 	}
 	if(player.automation.auto1){
 		g("auto1row").style.display="none"
@@ -459,13 +482,15 @@ function update(){
 	for(x=0;x<memoryBoosts.length;x++){memoryBoosts[x].innerText="boost: "+format(Math.sqrt(player.memories.amounts[x]+1))+"x"}
 }
 function automation(){
-	if(player.automation.auto1){
-		g("gainDopamine").click()
-	}
-	if(player.automation.auto2){
-		setTimeout(function(){
+	if(player.options.autoClickDopamine){
+		if(player.automation.auto1){
 			g("gainDopamine").click()
-		}, 250)
+		}
+		if(player.automation.auto2){
+			setTimeout(function(){
+				g("gainDopamine").click()
+			}, 250)
+		}
 	}
 	if(player.automation.auto4){
 		if(player.options.autoConvertH){

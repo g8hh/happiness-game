@@ -11,6 +11,8 @@ html{background-color:grey;}
 b{display:block;text-decoration:underline;padding-top:10px;padding-left:20px;}
 body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 
+.tooltip:hover{display:none;}
+
 #header{text-align:center;padding:10px;margin-bottom:10px;background:#444;}
 #header span{margin-right:50px;text-decoration:underline;}
 #header .span{text-decoration:none;}
@@ -58,7 +60,9 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 
 #automation label{margin:10px;padding:10px;display:inline-block;}
 #automation input{margin:0;}
-#happinessConvertBox{display:none;}
+
+#automation .disableBox div{display:inline;padding-left:25px;}
+#automation .check{display:inline;}
 
 #friends{background:#444;width:595px;margin-left:10px;padding-bottom:10px;}
 #friends button{cursor:pointer;position:relative;margin:auto;display:block;background:#666;color:white;outline:none;}
@@ -74,6 +78,9 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 
 #friendBar{color:black;width:95%;display:block;margin:auto;margin-top:5px;text-align:center;background:linear-gradient(90deg, #666,#666 40%,white 0%,white 100%);}
 
+#friendsContent .fhover{position:relative;}
+#friendsContent .fhover .tooltip{width:250px;left:15px;}
+#friendsContent .fhover:hover .tooltip{display:block;}
 #friendsContent .tooltip{width:200px;left:0;top:25px;text-align:center;}
 #friendsContent table td:hover .tooltip{display:block;}
 #friendsContent table td .tooltip:hover{display:none;}
@@ -91,7 +98,7 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 #options li{list-style-type:none;text-align:left;margin:5px;}
 #options option, select{background-color:grey;outline:none;}
 #options input{margin:0;margin-top:5px;}
-#closeOptions{cursor:pointer;position:absolute;top:10px;right:10px;border: 2px solid black;padding:0 4px;border-radius:10px;}
+#closeOptions{cursor:pointer;position:absolute;top:10px;right:10px;border: 2px solid black;padding:0 4px;}
 #closeOptions:hover{background-color:grey;}
 
 .float,.floatdown{display:none;}
