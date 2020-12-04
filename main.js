@@ -46,13 +46,18 @@ player = {
 	},
 	memories: {
 		amounts: [0,0,0]
+	},
+	experiences: {
+		amount: 0,
+		rare: 0
 	}
 }
 var bplayer = player;
 var tooltips = document.getElementsByClassName("tooltip")
 
 var memoryDisplays = document.getElementsByClassName("mdisplay")
-var memoryFloats = document.getElementsByClassName("memory")
+var mfloats = document.getElementsByClassName("memory")
+var memoryFloats = Array.from(mfloats)
 var memoryBoosts = document.getElementsByClassName("mboost")
 
 window.onload=function(){
@@ -120,6 +125,14 @@ function floatText(elm,value){
 	g(elm).appendChild(float)
 	window.setTimeout(function(){g(elm).removeChild(g(elm).childNodes[1])},1000)
 }
+function floatTextDown(elm,value){
+	let float;
+	float=document.createElement('span')
+	float.className="floatdown"
+	float.innerText="-"+format(value)
+	g(elm).appendChild(float)
+	window.setTimeout(function(){g(elm).removeChild(g(elm).childNodes[1])},1000)
+}
 function floatMemory(elm,value){
 	let float;
 	float=document.createElement('span')
@@ -128,13 +141,13 @@ function floatMemory(elm,value){
 	elm.appendChild(float)
 	window.setTimeout(function(){elm.removeChild(elm.childNodes[1])},1000)
 }
-function floatTextDown(elm,value){
+function floatDownMemory(elm,value){
 	let float;
 	float=document.createElement('span')
 	float.className="floatdown"
 	float.innerText="-"+format(value)
-	g(elm).appendChild(float)
-	window.setTimeout(function(){g(elm).removeChild(g(elm).childNodes[1])},1000)
+	elm.appendChild(float)
+	window.setTimeout(function(){elm.removeChild(elm.childNodes[1])},1000)
 }
 function toolTips(x){
 	if(x){
@@ -178,6 +191,7 @@ function options(x){
 	}
 }
 options(false)
+
 function getSerotoninGain(){
 	mult=player.chems.sGainBase*player.chems.sGainMult
 	if(player.upgrades.four.bought){ mult*=Math.log(player.chems.happiness)/2 }
@@ -319,6 +333,25 @@ function upgradeHover(){
 	}
 }
 upgradeHover()
+g("experiencegain").onmouseover=function(){
+	let y = this;
+	if(player.memories.amounts.every(x => x>0)){
+		this.style.backgroundColor="lightgreen"
+	} else {
+		this.style.backgroundColor="lightcoral"
+	}
+	let bg = setInterval(function(){
+		if(player.memories.amounts.every(x => x>0)){
+			y.style.backgroundColor="lightgreen"
+		} else {
+			y.style.backgroundColor="lightcoral"
+		}
+	},100)
+	this.onmouseout=function(){
+		this.style.backgroundColor="#333"
+		clearInterval(bg)
+	}
+}
 
 // Gain Buttons
 g("gainDopamine").onclick=function(){
@@ -348,6 +381,20 @@ g("gainMaxH").onclick=function(){
 		floatText("convertMax",gained)
 	}
 }
+g("experiencegain").onclick=function(){
+	if(player.memories.amounts.every(x => x>0)){
+		for(n=0;n<player.memories.amounts.length;n++) player.memories.amounts[n]-=1
+		player.experiences.amount+=1
+		update()
+		memoryFloats.forEach(elm => floatDownMemory(elm,1))
+	}
+	n=Math.random()
+	if(n>0.995){
+		player.experiences.rare+=1
+		update()
+	}
+}
+
 
 // Automation Upgrades
 g("auto1").onclick=function(){
@@ -502,6 +549,13 @@ function update(){
 		g("auto4row").style.display="none"
 		g("happinessConvertBox").style.display="block"
 	}
+	if(player.experiences.rare>0){
+		g("rareexperience").style.display="block"
+		g("rareexperience").innerText="rare experiences: "+player.experiences.rare
+	} else {
+		g("rareexperience").style.display="none"
+	}
+
 	g("upgrade1bought").innerText=player.upgrades.one.level+"/5"
 	g("upgrade1price").innerText=Math.ceil(format(player.upgrades.one.price))+" dopamine"
 	g("upgrade2bought").innerText=player.upgrades.two.level+"/5"
@@ -528,6 +582,7 @@ function update(){
 	}
 	for(x=0;x<memoryDisplays.length;x++){memoryDisplays[x].innerText=player.memories.amounts[x]}
 	for(x=0;x<memoryBoosts.length;x++){memoryBoosts[x].innerText="boost: "+format(Math.sqrt(player.memories.amounts[x]+1))+"x"}
+	g("experienceamount").innerText="experiences: "+player.experiences.amount
 }
 function automation(){
 	if(player.options.autoClickDopamine){
