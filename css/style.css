@@ -81,7 +81,7 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 #friendsContent .fhover{position:relative;}
 #friendsContent .fhover .tooltip{width:250px;left:15px;}
 #friendsContent .fhover:hover .tooltip{display:block;}
-#friendsContent .tooltip{width:200px;left:0;top:25px;text-align:center;}
+#friendsContent .tooltip{width:200px;left:0;top:30px;text-align:center;}
 #friendsContent table td:hover .tooltip{display:block;}
 #friendsContent table td .tooltip:hover{display:none;}
 #friendsContent table td:nth-child(1){width:33%;}
@@ -95,13 +95,13 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 
 #friendsContent #mupgrade.left {float:left;position:relative;}
 
-#friendsContent #experiencegain {border:1px solid #555; width:90%;margin:auto;margin-top:8px;margin-bottom:8px;text-align: center;background-color:#333;cursor:pointer;border-radius:3px; transition: 0.2s}
+#friendsContent #experiencegain {border:1px solid #555; width:90%;margin:auto;margin-top:8px;margin-bottom:8px;text-align: center;background-color:#333;cursor:pointer;border-radius:3px;transition: 0.2s}
 #friendsContent #experiencegain:hover{transition: 0.2s;color:black;}
+#friendsContent #experiencegain:active{transition: 0.2s;border: 1px #555 inset;}
 #friendsContent #rareexperience{display:none;}
 #friendsContent #rareexperience:hover.tooltip{display:block;}
 
 #friendsContent #mupgrade.right{float:right;position: relative;}
-#friendsContent .tooltip{top:30px;}
 #friendsContent #mupgrade.right table {border-collapse:collapse;width:100%;margin:auto;margin-top:8px;}
 #friendsContent #mupgrade.right table td{border:1px solid #666;}
 #friendsContent #mupgrade.right table td:nth-child(1){width:10%;}
