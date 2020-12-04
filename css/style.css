@@ -7,7 +7,6 @@
 body, m|mtext {font-family: Latin Modern;}
 m|math, .math {font-family: Latin Modern Math;}
 
-html{background-color:grey;}
 b{display:block;text-decoration:underline;padding-top:10px;padding-left:20px;}
 body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 

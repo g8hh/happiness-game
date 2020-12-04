@@ -9,6 +9,7 @@
 		<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 	</head>
+	<button id="reset" onclick="reset()">Game Not Loading?</button>
 	<body id="html">
 		<div id="header">
 			<span>happiness game</span>
@@ -48,22 +49,22 @@
 						<tr id="auto1row">
 							<td id="auto1" class="auto">automate dopamine clicking</td>
 							<td>x2/s</td>
-							<td id="auto1price" class="transition">100 serotonin</td>
+							<td id="auto1price">100 serotonin</td>
 						</tr>
 						<tr id="auto2row">
 							<td id="auto2" class="auto">increase dopamine click speed</td>
 							<td>x2</td>
-							<td id="auto2price" class="transition">100 happiness</td>
+							<td id="auto2price">100 happiness</td>
 						</tr>
 						<tr id="auto3row">
 							<td id="auto3" class="auto">unlock convert max for happiness</td>
 							<td>N/A</td>
-							<td id="auto3price" class="transition">1e3 happiness</td>
+							<td id="auto3price">1e3 happiness</td>
 						</tr>
 						<tr id="auto4row">
 							<td id="auto4" class="auto">automate happiness conversion</td>
 							<td>x1/s</td>
-							<td id="auto4price" class="transition">1e4 serotonin</td>
+							<td id="auto4price">1e4 serotonin</td>
 						</tr>
 					</table>
 					<br>
@@ -93,19 +94,19 @@
 							<tr id="upgrade1row">
 								<td id="upgrade1" class="upgrade">boost serotonin gain</td>
 								<td>x2</td>
-								<td id="upgrade1price" class="transition">50 dopamine</td>
+								<td id="upgrade1price" class="upgradeprice">50 dopamine</td>
 								<td id="upgrade1bought">0/5</td>
 							</tr>
 							<tr id="upgrade2row">
 								<td id="upgrade2" class="upgrade">boost dopamine gain</td>
 								<td>x2</td>
-								<td id="upgrade2price" class="transition">10 happiness</td>
+								<td id="upgrade2price" class="upgradeprice">10 happiness</td>
 								<td id="upgrade2bought">0/5</td>
 							</tr>
 							<tr id="upgrade3row">
 								<td id="upgrade3" class="upgrade">boost happiness gain</td>
 								<td>x2</td>
-								<td id="upgrade3price" class="transition">50 serotonin</td>
+								<td id="upgrade3price" class="upgradeprice">50 serotonin</td>
 								<td id="upgrade3bought">0/5</td>
 							</tr>
 							<tr id="upgrade4row">
@@ -115,7 +116,7 @@
 								</td> 
 								
 								<td id="upgrade4boost">x</td>
-								<td id="upgrade4price" class="transition">5e4 happiness</td>
+								<td id="upgrade4price" class="upgradeprice">5e4 happiness</td>
 								<td id="upgrade4bought">0/1</td>
 							</tr>
 						</tbody>

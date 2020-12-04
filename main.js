@@ -50,6 +50,7 @@ player = {
 }
 var bplayer = player;
 var tooltips = document.getElementsByClassName("tooltip")
+
 var memoryDisplays = document.getElementsByClassName("mdisplay")
 var memoryFloats = document.getElementsByClassName("memory")
 var memoryBoosts = document.getElementsByClassName("mboost")
@@ -74,6 +75,7 @@ window.onload=function(){
 		window.setInterval(friendBar,20)
 	}
 
+	g("reset").style.display="none"
 	g("html").style.display="block"
 }
 g("save").onclick=function(){
@@ -92,7 +94,8 @@ g("reset").onclick=function(){
 	}
 }
 function reset(){
-	loaclStorage.clear()
+	localStorage.clear()
+	window.location.reload()
 }
 function g(x){
 	return document.getElementById(x)
@@ -194,6 +197,128 @@ function getHappinessGain(){
 
 	return mult
 }
+
+function hoverInit(){
+	var p=[100,100,1000,10000]
+	var c=["s","h","h","s"]
+	var e=[]
+	var f=[]
+
+	for(x=1;x<=4;x++){
+		e.push(g("auto"+x))
+	}
+	for(x=1;x<=4;x++){
+		f.push(g("auto"+x+"price"))
+	}
+	for(x=0;x<4;x++){
+		e[x].onmouseover=function(){
+			let y = this;
+			n=y.id.substring(y.id.length-1,y.id.length)-1
+			if(c[n]==="s"){
+				if(player.chems.serotonin>=p[n]){
+					f[n].style.backgroundColor="lightgreen"
+				} else {
+					f[n].style.backgroundColor="lightcoral"
+				}
+			} else if(c[n]==="h"){
+				if(player.chems.happiness>=p[n]){
+					f[n].style.backgroundColor="lightgreen"
+				} else {
+					f[n].style.backgroundColor="lightcoral"
+				}
+			}
+			let bg = setInterval(function(){
+				n=y.id.substring(y.id.length-1,y.id.length)-1
+				if(c[n]==="s"){
+					if(player.chems.serotonin>=p[n]){
+						f[n].style.backgroundColor="lightgreen"
+					} else {
+						f[n].style.backgroundColor="lightcoral"
+					}
+				} else if(c[n]==="h"){
+					if(player.chems.happiness>=p[n]){
+						f[n].style.backgroundColor="lightgreen"
+					} else {
+						f[n].style.backgroundColor="lightcoral"
+					}
+				}
+			},100)
+			this.onmouseout=function(){
+				clearInterval(bg)
+				g(this.id+"price").style.backgroundColor="transparent"
+			}
+		}
+		
+	}
+}
+hoverInit()
+function upgradeHover(){
+	var c=["d","h","s","h"]
+	var e=[]
+	var f=[]
+
+	for(x=1;x<=4;x++){
+		e.push(g("upgrade"+x))
+	}
+	for(x=1;x<=4;x++){
+		f.push(g("upgrade"+x+"price"))
+	}
+	for(x=0;x<4;x++){
+		e[x].onmouseover=function(){
+			let y = this;
+			var p = [player.upgrades.one.price,player.upgrades.two.price,player.upgrades.three.price,player.upgrades.four.price]
+			n=y.id.substring(y.id.length-1,y.id.length)-1
+			if(c[n]==="s"){
+				if(player.chems.serotonin>=p[n]){
+					f[n].style.backgroundColor="lightgreen"
+				} else {
+					f[n].style.backgroundColor="lightcoral"
+				}
+			} else if(c[n]==="h"){
+				if(player.chems.happiness>=p[n]){
+					f[n].style.backgroundColor="lightgreen"
+				} else {
+					f[n].style.backgroundColor="lightcoral"
+				}
+			} else if(c[n]==="d"){
+				if(player.chems.dopamine>=p[n]){
+					f[n].style.backgroundColor="lightgreen"
+				} else {
+					f[n].style.backgroundColor="lightcoral"
+				}
+			}
+			let bg=setInterval(function(){
+				var p = [player.upgrades.one.price,player.upgrades.two.price,player.upgrades.three.price,player.upgrades.four.price]
+				n=y.id.substring(y.id.length-1,y.id.length)-1
+				if(c[n]==="s"){
+					if(player.chems.serotonin>=p[n]){
+						f[n].style.backgroundColor="lightgreen"
+					} else {
+						f[n].style.backgroundColor="lightcoral"
+					}
+				} else if(c[n]==="h"){
+					if(player.chems.happiness>=p[n]){
+						f[n].style.backgroundColor="lightgreen"
+					} else {
+						f[n].style.backgroundColor="lightcoral"
+					}
+				} else if(c[n]==="d"){
+					if(player.chems.dopamine>=p[n]){
+						f[n].style.backgroundColor="lightgreen"
+					} else {
+						f[n].style.backgroundColor="lightcoral"
+					}
+				}
+			},100)
+			this.onmouseout=function(){
+				g(this.id+"price").style.backgroundColor="transparent"
+				clearInterval(bg)
+			}
+		}
+		
+	}
+}
+upgradeHover()
 
 // Gain Buttons
 g("gainDopamine").onclick=function(){
@@ -312,84 +437,6 @@ g("friendsUnlock").onclick=function(){
 		update()
 	}
 }
-
-// Upgrade Hovers
-function hoverInit(){
-	var p=[100,100,1000,10000]
-	var c=["s","h","h","s"]
-	var e=[]
-	var f=[]
-
-	for(x=1;x<=4;x++){
-		e.push(g("auto"+x))
-	}
-	for(x=1;x<=4;x++){
-		f.push(g("auto"+x+"price"))
-	}
-	for(x=0;x<4;x++){
-		e[x].onmouseover=function(){
-			n=this.id.substring(this.id.length-1,this.id.length)-1
-			if(c[n]==="s"){
-				if(player.chems.serotonin>=p[n]){
-					f[n].style.backgroundColor="lightgreen"
-				} else {
-					f[n].style.backgroundColor="lightcoral"
-				}
-			} else if(c[n]==="h"){
-				if(player.chems.happiness>=p[n]){
-					f[n].style.backgroundColor="lightgreen"
-				} else {
-					f[n].style.backgroundColor="lightcoral"
-				}
-			}
-		}
-		e[x].onmouseout=function(){
-			g(this.id+"price").style.backgroundColor="transparent"
-		}
-	}
-}
-hoverInit()
-function upgradeHover(){
-	var c=["d","h","s","h"]
-	var e=[]
-	var f=[]
-
-	for(x=1;x<=4;x++){
-		e.push(g("upgrade"+x))
-	}
-	for(x=1;x<=4;x++){
-		f.push(g("upgrade"+x+"price"))
-	}
-	for(x=0;x<4;x++){
-		e[x].onmouseover=function(){
-			var p = [player.upgrades.one.price,player.upgrades.two.price,player.upgrades.three.price,player.upgrades.four.price]
-			n=this.id.substring(this.id.length-1,this.id.length)-1
-			if(c[n]==="s"){
-				if(player.chems.serotonin>=p[n]){
-					f[n].style.backgroundColor="lightgreen"
-				} else {
-					f[n].style.backgroundColor="lightcoral"
-				}
-			} else if(c[n]==="h"){
-				if(player.chems.happiness>=p[n]){
-					f[n].style.backgroundColor="lightgreen"
-				} else {
-					f[n].style.backgroundColor="lightcoral"
-				}
-			} else if(c[n]==="d"){
-				if(player.chems.dopamine>=p[n]){
-					f[n].style.backgroundColor="lightgreen"
-				} else {
-					f[n].style.backgroundColor="lightcoral"
-				}
-			}
-		}
-		e[x].onmouseout=function(){
-			g(this.id+"price").style.backgroundColor="transparent"
-		}
-	}
-}
-upgradeHover()
 
 function loop(){
 	render()
