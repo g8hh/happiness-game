@@ -5,5 +5,6 @@ select, option{background-color:#ccc !important;}
 button{background-color:#bbb !important; color:black !important;}
 .float{color:green;}
 .floatdown{color:lightcoral;}
+#experiencegain{background-color: #ddd !important;}
 .auto:hover{color:grey !important;text-shadow: none;}
 .upgrade:hover{color:grey !important;text-shadow: none;}

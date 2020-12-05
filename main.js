@@ -92,15 +92,11 @@ function save(){
 	localStorage.setItem("save",btoa(JSON.stringify(player)))
 }
 window.setInterval(save,15000)
-g("reset").onclick=function(){
+function reset(){
 	if(confirm("Are you sure?")){
 		localStorage.clear()
 		window.location.reload()
 	}
-}
-function reset(){
-	localStorage.clear()
-	window.location.reload()
 }
 function g(x){
 	return document.getElementById(x)
@@ -336,19 +332,19 @@ upgradeHover()
 g("experiencegain").onmouseover=function(){
 	let y = this;
 	if(player.memories.amounts.every(x => x>0)){
-		this.style.backgroundColor="lightgreen"
+		this.setAttribute("style","background-color:lightgreen !important;")
 	} else {
-		this.style.backgroundColor="lightcoral"
+		this.setAttribute("style","background-color:lightcoral !important;")
 	}
 	let bg = setInterval(function(){
 		if(player.memories.amounts.every(x => x>0)){
-			y.style.backgroundColor="lightgreen"
+			y.setAttribute("style","background-color:lightgreen !important;")
 		} else {
-			y.style.backgroundColor="lightcoral"
+			y.setAttribute("style","background-color:lightcoral !important;")
 		}
 	},100)
 	this.onmouseout=function(){
-		this.style.backgroundColor="#333"
+		this.removeAttribute("style")
 		clearInterval(bg)
 	}
 }
@@ -610,6 +606,6 @@ function friendBar(){
 function gainMemory(){
 	let gain = Math.floor(Math.random()*3)
 	player.memories.amounts[gain]+=1
-	floatMemory(memoryFloats[gain],1,"")
+	floatMemory(memoryFloats[gain],1)
 	update()
 }
