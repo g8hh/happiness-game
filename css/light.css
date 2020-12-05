@@ -8,3 +8,4 @@ button{background-color:#bbb !important; color:black !important;}
 #experiencegain{background-color: #ddd !important;}
 .auto:hover{color:grey !important;text-shadow: none;}
 .upgrade:hover{color:grey !important;text-shadow: none;}
+#you button:hover{background-color:white !important;}

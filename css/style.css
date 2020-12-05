@@ -31,8 +31,8 @@ body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
 #gainHappiness .tooltip{width:250px;top:35px;}
 #gainHappiness:hover .tooltip{display:block !important;}
 
-#you button{background:#666;outline:none;cursor:pointer;padding:4px;color:white;}
-#you button:hover{color:black;background:#888;}
+#you button{border:1px solid #555;transition:0.2s;background:#333;outline:none;cursor:pointer;padding:4px;color:white;}
+#you button:hover{color:black;background:#666;}
 
 #upgrades{background:#444;padding-bottom:10px;width:595px;margin-left:10px;margin-bottom:10px;}
 #upgrades table{width:550px;margin:auto;margin-top:10px;border-collapse: collapse}
