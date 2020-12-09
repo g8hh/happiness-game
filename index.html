@@ -7,15 +7,6 @@
 		<link rel="stylesheet" type="text/css" href="css/animation.css" id="anims"/>
 		<link rel="stylesheet" type="text/css" href="css/light.css" id="theme1"/>
 		<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-S93YYHNS1B"></script>
-		<script>
-			  window.dataLayer = window.dataLayer || [];
-			  function gtag(){dataLayer.push(arguments);}
-			  gtag('js', new Date());
-
-			  gtag('config', 'G-S93YYHNS1B');
-		</script>
 </script>
 	</head>
 	<button id="reset" onclick="reset()">Game Not Loading?</button>
@@ -38,7 +29,7 @@
 						<li id="gainDopamine"><button>gain dopamine</button></li>
 						<li id="gainHappiness">
 							<span id="gainH"><button id="gainHbtn">gain happiness</button></span>
-							<span class="tooltip">5 dopamine + 5 serotonin</span>
+							<span class="tooltip" id="htooltip">5 dopamine + 5 serotonin</span>
 						</li>
 						<li id="gainMaxH">
 							<span id="convertMax"><button>convert max</button></span>
@@ -136,6 +127,8 @@
 					<div id="friendsUnlock"><button>make a friend</button><span class="tooltip">1e5 happiness</span></div>
 					<div id="friendsContent">
 						<span class="fhover"><span id="friend">You have 1 friend</span><span class="tooltip">each gives +1 memories gain</span></span>
+						<span id="makefriend">+1 friend (2e5 happiness)</span>
+						
 						<span id="friendBar">15</span>
 						<table>
 							<tr>
@@ -158,34 +151,24 @@
 							<div id="mupgrade" class="left">
 								<span class="header">experiences</span>
 								<div id="experiencegain">convert one of each memory to an experience</div>
-								<div id="experienceamount">experiences: 0</div>
-								<div id="rareexperience">rare experiences: 0 <span class="tooltip"><span class="math">1/200</span> change to obtain</span></div>
+								<div id="experiencefloat"><span id="experienceamount">experiences: 0</span></div>
+								<div id="rareexperiencefloat"><span id="rareexperience">rare experiences: 0</span> <span class="tooltip math">0.05% chance</span></div>
 							</div>
 							<div id="mupgrade" class="right">
 								<span class="header">experience upgrades</span>
 								<table>
 									<tr id="mrow1">
 										<td>upgrade 1 <span class="tooltip">boost memories speed based on experiences</span></td>
-										<td>10 experiences</td>
+										<td>5 experiences</td>
 									</tr>
-									<!--
 									<tr id="mrow2">
-										<td>upgrade 2 <span class="tooltip">placeholder text</span></td>
-										<td>10 experiences</td>
+										<td>upgrade 2 <span class="tooltip"></span></td>
+										<td>50 experiences</td>
 									</tr>
 									<tr id="mrow3">
-										<td>upgrade 3 <span class="tooltip">placeholder text</span></td>
-										<td>10 experiences</td>
+										<td>upgrade 3 <span class="tooltip"></span></td>
+										<td>200 experiences</td>
 									</tr>
-									<tr id="mrow4">
-										<td>upgrade 4 <span class="tooltip">placeholder text</span></td>
-										<td>10 experiences</td>
-									</tr>
-									<tr id="mrow5">
-										<td>upgrade 5 <span class="tooltip">placeholder text</span></td>
-										<td>10 experiences</td>
-									</tr>
-									-->
 								</table>
 							</div>
 						</div>
@@ -205,6 +188,9 @@
 			</ul>
 		</div>
 
-		<script src="main.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/loading.js"></script>
+		<script src="js/functions.js"></script>
+		<script src="js/experiences.js"></script>
 	</body>
 </html>
