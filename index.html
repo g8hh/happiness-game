@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title>Happiness Game</title>
 		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<link rel="icon" type="img" href="src/favicon.png"/>
 	</head>
 	<body>
 		<div id="head">
@@ -11,7 +12,7 @@
 		</div>
 		<br>
 		<div id="tabs">
-			<div> <button>Main</button> <button>Upgrades</button> </div>
+			<div> <button>Main</button> </div>
 		</div>
 		<br>
 		<div class="tab">
@@ -24,7 +25,7 @@
 					Gain dopamine <br>
 					(+<span id="e13">1.00</span>)
 				</button>
-				<button onclick="Happiness.gain()">
+				<button id="e15" onclick="Happiness.gain()">
 					Gain happiness <br>
 					(+<span id="e14">0.00</span>)
 				</button>
