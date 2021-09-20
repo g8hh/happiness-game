@@ -6,7 +6,32 @@
 		<link rel="stylesheet" type="text/css" href="style.css"/>
 	</head>
 	<body>
-		<div> You have <span id="e1">0.00</span> serotonin, <span id="e2">0.00</span> dopamine and <span id="e3">0.00</span> happiness. </div>
-		<div> You are gaining <span id="e4">0.00</span> serotonin per second and <span id="e5">0.00</span> dopamine per click. </div>
+		<div id="head">
+			You have <span id="e1">0.00</span> serotonin, <span id="e2">0.00</span> dopamine, and <span id="e3">0.00</span> happiness. 
+		</div>
+		<br>
+		<div id="tabs">
+			<div> <button>Main</button> <button>Upgrades</button> </div>
+		</div>
+		<br>
+		<div class="tab">
+			<div> You have <span id="e4">0.00</span> serotonin, and you are gaining <span id="e5">1.00</span> serotonin per second. </div>
+			<div> You have <span id="e6">0.00</span> dopamine, and you are making <span id="e7">1.00</span> dopamine per click. </div>
+			<div> You have <span id="e8">0.00</span> happiness, and you will make <span id="e9">1.00</span> happiness per conversion. </div> <br>
+			<div> (Currently it takes <span id="e10">5.00</span> serotonin and <span id="e11">10.00</span> dopamine to make <span id="e12">1.00</span> happiness) </div> <br>
+			<div>
+				<button onclick="Dopamine.gain()"> 
+					Gain dopamine <br>
+					(+<span id="e13">1.00</span>)
+				</button>
+				<button onclick="Happiness.gain()">
+					Gain happiness <br>
+					(+<span id="e14">0.00</span>)
+				</button>
+			</div>
+		</div>
+
+		<script src="decimal.min.js"></script>
+		<script src="core.js"></script>
 	</body>
 </html>
