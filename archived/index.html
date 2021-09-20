@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>happiness game</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<link rel="icon" type="image/png" href="img/favicon.png"/>
+		<link rel="stylesheet" type="text/css" href="css/animation.css" id="anims"/>
+		<link rel="stylesheet" type="text/css" href="css/light.css" id="theme1"/>
+		<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+	</head>
+	<button id="reset" onclick="reset()">Game Not Loading?</button>
+	<body id="html">
+		<div id="header">
+			<span>happiness game</span>
+			<span class="span" onclick="options(true)">options</span>
+			<span class="span" id="save">save</span>
+			<span class="span" onclick="reset()">reset</span>
+		</div>
+		<div id="main">
+			<div id="leftColumn">
+				<div id="you">
+					<b>you</b>
+					<ul>
+						<li id="s"><span id="serotonin">serotonin: 0</span></li>
+						<li id="d"><span id="dopamine">dopamine: 0</span></li>
+						<li id="h"><span id="happiness">happiness: 0</span></li>
+						<br>
+						<li id="gainDopamine"><button>gain dopamine</button></li>
+						<li id="gainHappiness">
+							<span id="gainH"><button id="gainHbtn">gain happiness</button></span>
+							<span class="tooltip" id="htooltip">5 dopamine + 5 serotonin</span>
+						</li>
+						<li id="gainMaxH">
+							<span id="convertMax"><button>convert max</button></span>
+						</li>
+					</ul>
+				</div>
+				<div id="automation">
+					<b>automation</b>
+					<table>
+						<thead>
+							<tr>
+								<td>upgrade</td>
+								<td>effect</td>
+								<td>price</td>
+							</tr>
+						</thead>
+						<tr id="auto1row">
+							<td id="auto1" class="auto">automate dopamine clicking</td>
+							<td>x2/s</td>
+							<td id="auto1price">100 serotonin</td>
+						</tr>
+						<tr id="auto2row">
+							<td id="auto2" class="auto">increase dopamine click speed</td>
+							<td>x2</td>
+							<td id="auto2price">100 happiness</td>
+						</tr>
+						<tr id="auto3row">
+							<td id="auto3" class="auto">unlock convert max for happiness</td>
+							<td>N/A</td>
+							<td id="auto3price">1e3 happiness</td>
+						</tr>
+						<tr id="auto4row">
+							<td id="auto4" class="auto">automate happiness conversion</td>
+							<td>x2/s</td>
+							<td id="auto4price">1e4 serotonin</td>
+						</tr>
+					</table>
+					<br>
+					<div id="dopamineClickBox" class="disableBox">
+						<div>disable auto dopamine clicking</div>
+						<input class="check" type="checkbox" id="autoClickDopamine">
+					</div>
+					<div id="happinessConvertBox" class="disableBox">
+						<div>disable auto happiness convert</div>
+						<input class="check" type="checkbox" id="autoConvertHappiness">
+					</div>
+				</div>
+			</div>
+			<div id="rightColumn">
+				<div id="upgrades">
+					<b>upgrades</b>
+					<table>
+						<thead>
+							<tr>
+								<td>upgrade</td>
+								<td>effect</td>
+								<td>price</td>
+								<td>bought</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr id="upgrade1row">
+								<td id="upgrade1" class="upgrade">boost serotonin gain</td>
+								<td>x2</td>
+								<td id="upgrade1price" class="upgradeprice">50 dopamine</td>
+								<td id="upgrade1bought">0/5</td>
+							</tr>
+							<tr id="upgrade2row">
+								<td id="upgrade2" class="upgrade">boost dopamine gain</td>
+								<td>x2</td>
+								<td id="upgrade2price" class="upgradeprice">10 happiness</td>
+								<td id="upgrade2bought">0/5</td>
+							</tr>
+							<tr id="upgrade3row">
+								<td id="upgrade3" class="upgrade">boost happiness gain</td>
+								<td>x2</td>
+								<td id="upgrade3price" class="upgradeprice">50 serotonin</td>
+								<td id="upgrade3bought">0/5</td>
+							</tr>
+							<tr id="upgrade4row">
+								<td id="upgrade4">
+									<span id="upgrade4hover" class="upgrade">boost serotonin gain</span>
+									<span class="tooltip math"><math><mn>ln(happiness)/2</mn></math></span>
+								</td> 
+								
+								<td id="upgrade4boost">x</td>
+								<td id="upgrade4price" class="upgradeprice">5e4 happiness</td>
+								<td id="upgrade4bought">0/1</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>			
+				<div id="friends">
+					<b>friends</b>
+					<div id="friendsUnlock"><button>make a friend</button><span class="tooltip">1e5 happiness</span></div>
+					<div id="friendsContent">
+						<span class="fhover"><span id="friend">You have 1 friend</span><span class="tooltip">each gives +1 memories gain</span></span>
+						<span id="makefriend">+1 friend (2e5 happiness)</span>
+						
+						<span id="friendBar">15</span>
+						<table>
+							<tr>
+								<td>happy memories <span class="tooltip">boost serotonin gain</span></td>
+								<td class="memory"><span class="mdisplay">0</span></td>
+								<td><span class="mboost">boost: 1x</span><span class="tooltip math"><math><msqrt><mn>memories + 1</mn></msqrt></math></span></td>
+							</tr>
+							<tr>
+								<td>sad memories <span class="tooltip">boost dopamine gain</span></td>
+								<td  class="memory"><span class="mdisplay">0</span></td>
+								<td><span class="mboost">boost: 1x</span><span class="tooltip math"><math><msqrt><mn>memories + 1</mn></msqrt></math></span></td>
+							</tr>
+							<tr>
+								<td>special memories <span class="tooltip">boost happiness gain</span></td>
+								<td  class="memory"><span class="mdisplay">0</span></td>
+								<td><span class="mboost">boost: 1x</span><span class="tooltip math"><math><msqrt><mn>memories + 1</mn></msqrt></math></span></td>
+							</tr>
+						</table>
+						<div id="memoryupgrades">
+							<div id="mupgrade" class="left">
+								<span class="header">experiences</span>
+								<div id="experiencegain">convert one of each memory to an experience</div>
+								<div id="experiencefloat"><span id="experienceamount">experiences: 0</span></div>
+								<div id="rareexperiencefloat"><span id="rareexperience">rare experiences: 0</span> <span class="tooltip math">0.05% chance</span></div>
+							</div>
+							<div id="mupgrade" class="right">
+								<span class="header">experience upgrades</span>
+								<table>
+									<tr id="mrow1">
+										<td>upgrade 1 <span class="tooltip">boost memories speed based on experiences</span></td>
+										<td>5 experiences</td>
+									</tr>
+									<tr id="mrow2">
+										<td>upgrade 2 <span class="tooltip"></span></td>
+										<td>50 experiences</td>
+									</tr>
+									<tr id="mrow3">
+										<td>upgrade 3 <span class="tooltip"></span></td>
+										<td>200 experiences</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+			</div>
+		</div>
+		<div id="options">
+			<div id="closeOptions" onclick="options(false)">X</div>
+			<b>options</b>
+			<ul>
+				<li>theme: <select id="theme" onchange="theme(this.value)"><option>Dark</option><option>Light</option></select></li>
+				<li>notation: <select><option>Scientific</option><option>Others (coming soon)</option></select></li><br>
+				<li>disable tooltips: <input type="checkbox" id="tooltipOption"></li>
+				<li>disable animations: <input type="checkbox" id="animationsOption"></li>
+			</ul>
+		</div>
+
+		<script src="js/main.js"></script>
+		<script src="js/loading.js"></script>
+		<script src="js/functions.js"></script>
+		<script src="js/experiences.js"></script>
+	</body>
+</html>
