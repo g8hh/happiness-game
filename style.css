@@ -1,0 +1,18 @@
+:root {
+	--background-color: black;
+	--text-color: white;
+}
+
+html {
+	font-family: monospace;
+	font-size: 14px;
+}
+
+body {
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+div {
+	text-align: center;
+}
