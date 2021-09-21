@@ -53,24 +53,22 @@ button:focus {
 	font-size: 16px;
 }
 
-#tabs > div > #btn-main {
-	background-color: #f0f;
+.serotonin {
+	color: #f0f;
 }
 
-.container {
-	display: grid;
-	margin: auto;
-	font-size: 12px;
-	grid-template-columns: repeat(3, 500px);
-	justify-content: center;
+.dopamine {
+	color: #ff0;
 }
 
-.container > div {
-	width: 500px;
-	float: left;
+.happiness {
+	color: #0ff;
 }
 
-.container > div > button {
-	font-size: 12px;
+#upgrades > div {
+	display: inline;
 }
 
+#upgrades button {
+	background: #444;
+}
