@@ -25,7 +25,7 @@ body {
 
 div {
 	text-align: center;
-	margin-bottom: 4px;
+	margin-bottom: 5px;
 }
 
 button {
@@ -70,7 +70,7 @@ button:focus {
 }
 
 #upgrades > div {
-	display: inline;
+	margin-bottom: 0;
 }
 
 .options-btns button {

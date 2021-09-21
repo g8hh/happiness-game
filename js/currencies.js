@@ -51,9 +51,9 @@ let Happiness = {
 		return new Decimal(Upgrade(2).currentEffect());
 	},
 	serotoninRequirement() {
-		return new Decimal(5);
+		return new Decimal(Upgrade(3).currentEffect());
 	},
 	dopamineRequirement() {
-		return new Decimal(10);
+		return new Decimal(Upgrade(4).currentEffect());
 	},
 };

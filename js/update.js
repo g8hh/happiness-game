@@ -29,8 +29,20 @@ let update = function(){
 	g("e28").innerText = Upgrade(0).buttonText();
 	g("e29").innerText = Upgrade(1).buttonText();
 	g("e30").innerText = Upgrade(2).buttonText();
+	g("e31").style.backgroundColor = Upgrade(3).canBuy() ? '#aaa' : '#444';
+	g("e32").innerText = Upgrade(3).currentEffect().toFixed(2);
+	g("e33").innerText = Upgrade(3).nextEffect().toFixed(2);
+	g("e34").innerText = Upgrade(3).cost().toFixed(2);
+	g("e35").innerText = Upgrade(3).buttonText();
+	g("e36").style.backgroundColor = Upgrade(4).canBuy() ? '#aaa' : '#444';
+	g("e37").innerText = Upgrade(4).currentEffect().toFixed(2);
+	g("e38").innerText = Upgrade(4).nextEffect().toFixed(2);
+	g("e39").innerText = Upgrade(4).cost().toFixed(2);
+	g("e40").innerText = Upgrade(4).buttonText();
 
 	g("e25").style.display = Upgrade(0).atMaxLevel() ? 'none' : 'inline-block';
 	g("e26").style.display = Upgrade(1).atMaxLevel() ? 'none' : 'inline-block';
 	g("e27").style.display = Upgrade(2).atMaxLevel() ? 'none' : 'inline-block';
+	g("e31").style.display = Upgrade(3).atMaxLevel() ? 'none' : 'inline-block';
+	g("e36").style.display = Upgrade(4).atMaxLevel() ? 'none' : 'inline-block';
 };
