@@ -1,10 +1,10 @@
 let Upgrade = function (i) {
 	return {
 		baseCost() {
-			return [5, 20, 50][i];
+			return [10, 20, 30][i];
 		},
 		costIncrease() {
-			return [10, 20, 25][i];
+			return [15, 10, 30][i];
 		},
 		level() {
 			return player.upgrades[i];

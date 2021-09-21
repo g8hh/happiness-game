@@ -67,13 +67,13 @@
 				<div class="tab-header"> Options </div>
 				<br>
 				<div class="options-btns">
-					<button> Save </button>
+					<button onclick="Saving.save()"> Save </button>
 					<button> Import </button>
 					<button> Export </button>
 				</div>
 				<div class="options-btns">
-					<button> Reset </button>
-					<button> Theme: Dark </button>
+					<button onclick="Saving.reset()"> Reset </button>
+					<button onclick="Theme.toggle()"> Theme: Dark </button>
 				</div>
 			</div>
 		</div>
@@ -87,7 +87,7 @@
 		<script src="js/saving.js"></script>
 		<script src="js/tabs.js"></script>
 		<script src="js/theme.js"></script>
-		
+
 		<script src="js/update.js"></script>
 	</body>
 </html>

@@ -1,5 +1,4 @@
-var blocked = false;
-var speed = 1;
+var blocked = true;
 var g = (x => document.getElementById(x));
 
 let player = {
@@ -10,6 +9,7 @@ let player = {
 	upgrades: [0, 0, 0],
 
 	tab: 0,
+	theme: 'Dark',
 
 	lastUpdate: Date.now(),
 };
