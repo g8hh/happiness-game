@@ -9,7 +9,7 @@
 	<body>
 		<div id="body">
 			<div id="head">
-				You have <span id="e1">0.00</span> serotonin, <span id="e2">0.00</span> dopamine, and <span id="e3">0.00</span> happiness. 
+				You have <span id="e1" class="serotonin">0.00</span> serotonin, <span id="e2" class="dopamine">0.00</span> dopamine, and <span id="e3" class="happiness">0.00</span> happiness. 
 			</div>
 			<br>
 			<div id="tabs">
@@ -55,7 +55,7 @@
 							Cost: <span id="e24" class="dopamine">50</span> dopamine <br>
 							<span id="e30">(0 / 10)</span>
 						</button>
-					</div> <br>
+					</div>
 					<div>
 						<button id="e31" class="clickable" onclick="Upgrade(3).buy()">
 							Decrease serotonin requirement for happiness by 0.50 <br>
@@ -69,11 +69,11 @@
 							Cost: <span id="e39" class="happiness">500</span> happiness <br>
 							<span id="e40">(0 / 10)</span>
 						</button>
-					</div> <br> 
+					</div> 
 					<div>
 						<button id="e41" class="clickable">
-							Automatically gain dopamine per second <br>
-							<span id="e42" class="dopamine">0%</span> ⟶ <span id="e43" class="dopamine">10%</span> of click per second <br>
+							Automatically gain dopamine without clicking <br>
+							<span id="e42">0</span>% ⟶ <span id="e43">10</span>% of click every second <br>
 							Cost: <span id="e44" class="serotonin">1.00e3</span> serotonin <br>
 							<span id="e45">(0 / 10)</span>
 						</button>

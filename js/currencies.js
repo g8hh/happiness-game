@@ -20,6 +20,9 @@ let Dopamine = {
 	addAmount(n) {
 		player.dopamine = player.dopamine.plus(n);
 	},
+	produce(diff) {
+		this.addAmount(this.gainAmount().times(Upgrade(5).currentEffect()/100).times(diff/1000))
+	},
 	gain() {
 		this.addAmount(this.gainAmount());
 	},

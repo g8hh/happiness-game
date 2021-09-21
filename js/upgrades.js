@@ -1,10 +1,10 @@
 let Upgrade = function (i) {
 	return {
 		baseCost() {
-			return [10, 20, 30, 200, 200][i];
+			return [10, 20, 30, 200, 200, 1e3][i];
 		},
 		costIncrease() {
-			return [15, 10, 30, 150, 150][i];
+			return [15, 10, 30, 150, 150, 1e3][i];
 		},
 		level() {
 			return player.upgrades[i];
@@ -13,7 +13,7 @@ let Upgrade = function (i) {
 			return this.baseCost() + (this.costIncrease() * this.level());
 		},
 		getCurrency() {
-			currency = ['h', 's', 'd', 'h', 'h'][i];
+			currency = ['h', 's', 'd', 'h', 'h', 's'][i];
 			if (currency == 'h') {
 				return Happiness;
 			} else if (currency == 's') {
@@ -23,19 +23,19 @@ let Upgrade = function (i) {
 			};
 		},
 		baseEffect() {
-			return [1,1,1,5,10][i];
+			return [1,1,1,5,10,0][i];
 		},
 		effectPer() {
-			return [1,1,1,-0.5,-1][i];
+			return [1,1,1,-0.5,-1,10][i];
+		},
+		maxLevel() {
+			return [10,10,10,10,10,10][i];
 		},
 		currentEffect() {
 			return this.baseEffect() + (this.effectPer() * this.level());
 		},
 		nextEffect() {
 			return this.currentEffect() + this.effectPer();
-		},
-		maxLevel() {
-			return [10,10,10,10,10][i];
 		},
 		atMaxLevel() {
 			return this.level() == this.maxLevel();

@@ -39,6 +39,11 @@ let update = function(){
 	g("e38").innerText = Upgrade(4).nextEffect().toFixed(2);
 	g("e39").innerText = Upgrade(4).cost().toFixed(2);
 	g("e40").innerText = Upgrade(4).buttonText();
+	g("e41").style.backgroundColor = Upgrade(5).canBuy() ? '#aaa' : '#444';
+	g("e42").innerText = Upgrade(5).currentEffect();
+	g("e43").innerText = Upgrade(5).nextEffect();
+	g("e44").innerText = new Decimal(Upgrade(5).cost()).format(true);
+	g("e45").innerText = Upgrade(5).buttonText();
 
 	g("e25").style.display = Upgrade(0).atMaxLevel() ? 'none' : 'inline-block';
 	g("e26").style.display = Upgrade(1).atMaxLevel() ? 'none' : 'inline-block';

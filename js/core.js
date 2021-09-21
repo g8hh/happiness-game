@@ -6,7 +6,7 @@ let player = {
 	dopamine: new Decimal(0),
 	happiness: new Decimal(0),
 
-	upgrades: [0, 0, 0, 0, 0],
+	upgrades: [0, 0, 0, 0, 0, 0],
 
 	tab: 0,
 	theme: 'Dark',
@@ -24,10 +24,12 @@ let gameLoop = function(){
 	update();
 
 	Serotonin.gain(diff);
+	Dopamine.produce(diff);
 };
 
 let offlineLoop = function(diff) {
 	Serotonin.gain(diff);
+	Dopamine.produce(diff);
 };
 
 window.onload = function() {
