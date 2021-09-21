@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Typewriter;
+  src: url('MonospaceTypewriter.ttf');
+}
+
 :root {
 	--background-color: black;
 	--text-color: white;
@@ -5,10 +10,11 @@
 
 * {
 	box-sizing: border-box;
+	user-select: none;
 }
 
 html {
-	font-family: monospace;
+	font-family: Typewriter;
 	font-size: 14px;
 }
 
@@ -24,14 +30,47 @@ div {
 
 button {
 	border: none;
-	background: #ddd;
 	padding: 2px 8px;
 	margin: 0 5px;
 	cursor: pointer;
-	font-family: monospace;
+	font-family: Typewriter;
 }
 
 button:focus {
 	outline: 1px auto black;
+}
+
+#body {
+	display: none;
+}
+
+.tab-row {
+	margin-bottom: 10px;
+}
+
+.tab-header {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#tabs > div > #btn-main {
+	background-color: #f0f;
+}
+
+.container {
+	display: grid;
+	margin: auto;
+	font-size: 12px;
+	grid-template-columns: repeat(3, 500px);
+	justify-content: center;
+}
+
+.container > div {
+	width: 500px;
+	float: left;
+}
+
+.container > div > button {
+	font-size: 12px;
 }
 

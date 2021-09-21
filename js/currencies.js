@@ -1,0 +1,59 @@
+let Serotonin = {
+	amount() {
+		return player.serotonin;
+	},
+	addAmount(n) {
+		player.serotonin = player.serotonin.plus(n);
+	},
+	gain(diff) {
+		this.addAmount(this.gainAmount().times(diff/1000));
+	},
+	gainAmount() {
+		return new Decimal(1);
+	},
+};
+
+let Dopamine = {
+	amount() {
+		return player.dopamine;
+	},
+	addAmount(n) {
+		player.dopamine = player.dopamine.plus(n);
+	},
+	gain() {
+		this.addAmount(this.gainAmount());
+	},
+	gainAmount() {
+		return new Decimal(1);
+	},
+};
+
+let Happiness = {
+	amount() {
+		return player.happiness;
+	},
+	addAmount(n) {
+		player.happiness = player.happiness.plus(n);
+	},
+	gain() {
+		if (!this.canGain()) return;
+		this.addAmount(this.gainAmount());
+		Dopamine.addAmount(this.dopamineRequirement()*-1);
+		Serotonin.addAmount(this.serotoninRequirement()*-1);
+	},
+	canGain() {
+		return Dopamine.amount().gte(this.dopamineRequirement()) && Serotonin.amount().gte(this.serotoninRequirement());
+	},
+	buttonAmount() {
+		return this.canGain() ? this.gainAmount() : new Decimal(0);
+	},
+	gainAmount() {
+		return new Decimal(1);
+	},
+	serotoninRequirement() {
+		return new Decimal(5);
+	},
+	dopamineRequirement() {
+		return new Decimal(10);
+	},
+};

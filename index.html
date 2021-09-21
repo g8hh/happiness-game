@@ -7,32 +7,52 @@
 		<link rel="icon" type="img" href="src/favicon.png"/>
 	</head>
 	<body>
-		<div id="head">
-			You have <span id="e1">0.00</span> serotonin, <span id="e2">0.00</span> dopamine, and <span id="e3">0.00</span> happiness. 
-		</div>
-		<br>
-		<div id="tabs">
-			<div> <button>Main</button> </div>
-		</div>
-		<br>
-		<div class="tab">
-			<div> You have <span id="e4">0.00</span> serotonin, and you are gaining <span id="e5">1.00</span> serotonin per second. </div>
-			<div> You have <span id="e6">0.00</span> dopamine, and you are gaining <span id="e7">1.00</span> dopamine per click. </div>
-			<div> You have <span id="e8">0.00</span> happiness, and you are gaining <span id="e9">1.00</span> happiness per conversion. </div> <br>
-			<div> (Currently it takes <span id="e10">5.00</span> serotonin and <span id="e11">10.00</span> dopamine to make <span id="e12">1.00</span> happiness) </div> <br>
-			<div>
-				<button onclick="Dopamine.gain()"> 
-					Gain dopamine <br>
-					(+<span id="e13">1.00</span>)
-				</button>
-				<button id="e15" onclick="Happiness.gain()">
-					Gain happiness <br>
-					(+<span id="e14">0.00</span>)
-				</button>
+		<div id="body">
+			<div id="head">
+				You have <span id="e1">0.00</span> serotonin, <span id="e2">0.00</span> dopamine, and <span id="e3">0.00</span> happiness. 
+			</div>
+			<br>
+			<div id="tabs">
+				<div class="tab-row"> <button id="btn-main" onclick="Tabs.showTab(0)"> Main </button> </div>
+				<div class="tab-row"> <button id="btn-options" onclick="Tabs.showTab(1)"> Options </button> </div>
+			</div>
+			<br>
+			<div class="tab">
+				<div class="container"> 
+					<div> 
+						You have <span id="e4">0.00</span> serotonin, and you are gaining <span id="e5">1.00</span> serotonin per second. 
+					</div>
+					<div> 
+						You have <span id="e6">0.00</span> dopamine, and you are gaining <span id="e7">1.00</span> dopamine per click. <br> <br>
+						<button onclick="Dopamine.gain()"> 
+							Gain dopamine <br>
+							(+<span id="e13">1.00</span>)
+						</button>
+					</div>
+					<div> 
+						<div> You have <span id="e8">0.00</span> happiness, and you are gaining <span id="e9">1.00</span> happiness per conversion. </div> <br>
+						<div>
+							<button id="e15" onclick="Happiness.gain()">
+								Gain happiness <br>
+								(+<span id="e14">0.00</span>)
+							</button>
+						</div> <br>
+						<div> (Currently it takes <span id="e10">5.00</span> serotonin and <span id="e11">10.00</span> dopamine to make <span id="e12">1.00</span> happiness) </div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab">
+				<div class="tab-header"> Options </div>
+
 			</div>
 		</div>
 
-		<script src="decimal.min.js"></script>
-		<script src="core.js"></script>
+		<script src="js/decimal.min.js"></script>
+		<script src="js/core.js"></script>
+		<script src="js/currencies.js"></script>
+		<script src="js/saving.js"></script>
+		<script src="js/tabs.js"></script>
+		<script src="js/update.js"></script>
 	</body>
 </html>
