@@ -9,7 +9,7 @@ let Serotonin = {
 		this.addAmount(this.gainAmount().times(diff/1000));
 	},
 	gainAmount() {
-		return new Decimal(1);
+		return new Decimal(Upgrade(0).currentEffect());
 	},
 };
 
@@ -24,7 +24,7 @@ let Dopamine = {
 		this.addAmount(this.gainAmount());
 	},
 	gainAmount() {
-		return new Decimal(1);
+		return new Decimal(Upgrade(1).currentEffect());
 	},
 };
 
@@ -48,7 +48,7 @@ let Happiness = {
 		return this.canGain() ? this.gainAmount() : new Decimal(0);
 	},
 	gainAmount() {
-		return new Decimal(1);
+		return new Decimal(Upgrade(2).currentEffect());
 	},
 	serotoninRequirement() {
 		return new Decimal(5);

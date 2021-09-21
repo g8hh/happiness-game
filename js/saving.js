@@ -7,7 +7,7 @@ let Saving = {
 		try {
 			player = JSON.parse(atob(localStorage.getItem('happiness-save')));
 		} catch (e) {
-			return;
+			// just json errors
 		}
 		this.fixDecimals();
 		this.doOfflineTime(function() {
@@ -18,10 +18,18 @@ let Saving = {
 			return;
 		});
 	},
+	reset() {
+		if(confirm("Are you sure?")) {
+			localStorage.clear();
+			location.reload();
+		};
+	},
 	fixDecimals() {
 		player.serotonin = new Decimal(player.serotonin);
 		player.dopamine = new Decimal(player.dopamine);
 		player.happiness = new Decimal(player.happiness);
+
+		player.upgrades = player.upgrades || [0, 0, 0];
 
 		player.tab = player.tab || 0;
 	},

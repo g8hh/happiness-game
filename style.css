@@ -36,6 +36,10 @@ button {
 	font-family: Typewriter;
 }
 
+.clickable {
+	background: #aaa;
+}
+
 button:focus {
 	outline: 1px auto black;
 }
@@ -69,6 +73,8 @@ button:focus {
 	display: inline;
 }
 
-#upgrades button {
-	background: #444;
+.options-btns button {
+	width: 150px;
+	height: 75px;
+	margin: 5px;
 }
