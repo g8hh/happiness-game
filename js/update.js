@@ -44,10 +44,27 @@ let update = function(){
 	g("e43").innerText = Upgrade(5).nextEffect();
 	g("e44").innerText = new Decimal(Upgrade(5).cost()).format(true);
 	g("e45").innerText = Upgrade(5).buttonText();
+	g("e46").style.backgroundColor = Upgrade(6).canBuy() ? '#aaa' : '#444';
+	g("e47").innerText = Upgrade(6).currentEffect();
+	g("e48").innerText = Upgrade(6).nextEffect();
+	g("e49").innerText = new Decimal(Upgrade(6).cost()).format(true);
+	g("e50").innerText = Upgrade(6).buttonText();
+	g("e51").innerText = Serotonin.netPerSecond().format(true);
+	g("e52").innerText = Dopamine.netPerSecond().format(true);
+	g("e53").innerText = Happiness.netPerSecond().format(true);
+	g("e54").style.display = Upgrade(6).level() == 0 ? 'none' : 'inline-block';
+	g("e55").style.display = Dopamine.netPerSecond().eq(0) ? 'none' : 'inline-block';
+	g("e56").style.display = Upgrade(6).level() == 0 ? 'none' : 'inline-block';
+	g("e57").innerText = Happiness.produceable().format(true);
+	g("e58").style.display = Upgrade(6).level() == 0 ? 'none' : 'block';
+	g("e59").style.display = Upgrade(4).atMaxLevel() && Upgrade(5).atMaxLevel() ? 'none' : 'inline-block';
+	g("e60").style.display = Upgrade(4).atMaxLevel() && Upgrade(5).atMaxLevel() ? 'none' : 'inline-block';
 
 	g("e25").style.display = Upgrade(0).atMaxLevel() ? 'none' : 'inline-block';
 	g("e26").style.display = Upgrade(1).atMaxLevel() ? 'none' : 'inline-block';
 	g("e27").style.display = Upgrade(2).atMaxLevel() ? 'none' : 'inline-block';
 	g("e31").style.display = Upgrade(3).atMaxLevel() ? 'none' : 'inline-block';
 	g("e36").style.display = Upgrade(4).atMaxLevel() ? 'none' : 'inline-block';
+	g("e41").style.display = Upgrade(5).atMaxLevel() ? 'none' : 'inline-block';
+	g("e46").style.display = Upgrade(6).atMaxLevel() ? 'none' : 'inline-block';
 };

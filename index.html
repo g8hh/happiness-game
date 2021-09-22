@@ -19,10 +19,23 @@
 			<br>
 			<div class="tab">
 				<div> 
-					<div> You have <span id="e4" class="serotonin">0.00</span> serotonin, and you are gaining <span id="e5" class="serotonin">1.00</span> serotonin per second. </div>
-					<div> You have <span id="e6" class="dopamine">0.00</span> dopamine, and you are gaining <span id="e7" class="dopamine">1.00</span> dopamine per click. </div>
-					<div> You have <span id="e8" class="happiness">0.00</span> happiness, and you are gaining <span id="e9" class="happiness">1.00</span> happiness per conversion. </div>
-					<div> (Currently it takes <span id="e10" class="serotonin">5.00</span> serotonin and <span id="e11" class="dopamine">10.00</span> dopamine to make <span id="e12" class="happiness">1.00</span> happiness) </div> <br>
+					<div> 
+						You have <span id="e4" class="serotonin">0.00</span> serotonin, and you are gaining <span id="e5" class="serotonin">1.00</span> serotonin per second.
+						<span id="e54"> (<span id="e51" class="serotonin">+0.50</span>/s total) </span>
+					</div>
+					<div> 
+						You have <span id="e6" class="dopamine">0.00</span> dopamine, and you are gaining <span id="e7" class="dopamine">1.00</span> dopamine per click. 
+						<span id="e55"> (<span id="e52" class="dopamine">+0.50</span>/s total) </span>
+					</div>
+					<div> 
+						You have <span id="e8" class="happiness">0.00</span> happiness, and you are gaining <span id="e9" class="happiness">1.00</span> happiness per conversion. 
+						<span id="e56"> (<span id="e53" class="happiness">+0.50</span>/s total) </span>
+					</div>
+					<div> 
+						(Currently it takes <span id="e10" class="serotonin">5.00</span> serotonin and <span id="e11" class="dopamine">10.00</span> dopamine to make <span id="e12" class="happiness">1.00</span> happiness) </div> 
+					<div id="e58"> 
+						(With your current serotonin and dopamine supply you are able to make <span id="e57" class="happiness">0.00</span> happiness)
+					</div> <br>
 					<div>
 						<button onclick="Dopamine.gain()" class="clickable"> 
 							Gain dopamine <br>
@@ -71,13 +84,23 @@
 						</button>
 					</div> 
 					<div>
-						<button id="e41" class="clickable">
+						<button id="e41" class="clickable" onclick="Upgrade(5).buy()">
 							Automatically gain dopamine without clicking <br>
 							<span id="e42">0</span>% ⟶ <span id="e43">10</span>% of click every second <br>
 							Cost: <span id="e44" class="serotonin">1.00e3</span> serotonin <br>
 							<span id="e45">(0 / 10)</span>
 						</button>
+						<button id="e46" class="clickable" onclick="Upgrade(6).buy()">
+							Automatically gain happiness without clicking <br>
+							<span id="e47">0</span>% ⟶ <span id="e48">10</span>% of click every second <br>
+							Cost <span id="e49" class="dopamine">1.00e4</span> dopamine <br>
+							<span id="e50">(0 / 10)</span>
+						</button>
 					</div>
+				</div>
+				<div>
+					<span id="e59">(Maxing upgrades 4 and 5 means that happiness can be produced for free)</span> <br>
+					<span id="e60">(Upgrade 7 will take dopamine and serotonin until upgrade 4 and 5 are maxed)</span>
 				</div>
 			</div>
 

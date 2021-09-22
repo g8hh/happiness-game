@@ -30,7 +30,7 @@ let Saving = {
 		player.dopamine = new Decimal(player.dopamine);
 		player.happiness = new Decimal(player.happiness);
 
-		player.upgrades = player.upgrades || [0, 0, 0, 0, 0, 0];
+		player.upgrades = player.upgrades || [0, 0, 0, 0, 0, 0, 0];
 
 		player.tab = player.tab || 0;
 		player.theme = player.theme || 'Dark';
