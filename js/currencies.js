@@ -9,7 +9,11 @@ let Serotonin = {
 		this.addAmount(this.gainAmount().times(diff/1000));
 	},
 	gainAmount() {
-		return new Decimal(Upgrade(0).currentEffect());
+		let factors = [
+			Emotion.multiplier(),
+			Upgrade(0).currentEffect(),
+		]
+		return factors.reduce((a,b) => (a.times(b)));
 	},
 	netPerSecond() {
 		return this.gainAmount().plus(Happiness.serotoninPerSecond());
@@ -33,7 +37,11 @@ let Dopamine = {
 		this.addAmount(this.gainAmount());
 	},
 	gainAmount() {
-		return new Decimal(Upgrade(1).currentEffect());
+		let factors = [
+			Emotion.multiplier(),
+			Upgrade(1).currentEffect(),
+		]
+		return factors.reduce((a,b) => (a.times(b)));
 	},
 	netPerSecond() {
 		return this.produceAmount().plus(Happiness.dopaminePerSecond());
@@ -54,7 +62,12 @@ let Happiness = {
 		Serotonin.addAmount(this.serotoninPerSecond().times(diff/1000));
 	},
 	produceable() {
-		return Decimal.min(Dopamine.amount().div(this.dopamineRequirement()), Serotonin.amount().div(this.serotoninRequirement())).times(this.gainAmount());
+		return Decimal.min(Dopamine.amount().div(this.dopamineRequirement().max(1)), Serotonin.amount().div(this.serotoninRequirement().max(1))).times(this.gainAmount());
+	},
+	shouldDisplayProduceable() {
+		if (Upgrade(3).atMaxLevel() && Upgrade(4).atMaxLevel()) return false
+		if (Upgrade(6).level() == 0) return false
+		return true
 	},
 	dopaminePerSecond() {
 		return this.dopamineRequirement().times(Upgrade(6).effect()/100).neg()
@@ -80,7 +93,11 @@ let Happiness = {
 		return this.canGain() ? this.gainAmount() : new Decimal(0);
 	},
 	gainAmount() {
-		return new Decimal(Upgrade(2).currentEffect());
+		let factors = [
+			Emotion.multiplier(),
+			Upgrade(2).currentEffect(),
+		]
+		return factors.reduce((a,b) => (a.times(b)))
 	},
 	serotoninRequirement() {
 		return new Decimal(Upgrade(3).currentEffect());
@@ -90,5 +107,29 @@ let Happiness = {
 	},
 	netPerSecond() {
 		return this.gainAmount().times(Upgrade(6).effect()/100);
+	},
+};
+
+let Emotion = {
+	amount() {
+		let factors = [
+			Serotonin.amount().max(1).log2(),
+			Dopamine.amount().max(1).log2(),
+			Happiness.amount().max(1).log2(),
+		];
+		return new Decimal(factors.reduce((a,b) => (a+b)));
+	},
+	bestAmount() {
+		return player.bestEmotion;
+	},
+	multiplier() {
+		if(Upgrade(6).level() == 0) return new Decimal(1);
+		return new Decimal(1).plus(Emotion.amount().log2()/4);
+	},
+	updateBest() {
+		player.bestEmotion = player.bestEmotion.max(this.amount());
+	},
+	canSee() {
+		return Upgrade(6).level() > 0;
 	},
 };

@@ -9,12 +9,22 @@
 	<body>
 		<div id="body">
 			<div id="head">
-				You have <span id="e1" class="serotonin">0.00</span> serotonin, <span id="e2" class="dopamine">0.00</span> dopamine, and <span id="e3" class="happiness">0.00</span> happiness. 
+				<div> You have <span id="e1" class="serotonin">0.00</span> serotonin, <span id="e2" class="dopamine">0.00</span> dopamine, and <span id="e3" class="happiness">0.00</span> happiness. </div>
+				<div>
+					<span id="e61"> You need 40 emotion to prestige. </span> <br>
+					<button id="e64" class="clickable"> 
+							Prestige: gain <span id="e65">1.00</span> experience <br>
+							<span id="e69">10.4 seconds</span> (x<span id="e66">1.00</span> total, <span id="e67">1.00</span> experience/sec)
+					</button>
+				</div>
 			</div>
 			<br>
 			<div id="tabs">
-				<div class="tab-row"> <button id="btn-main" onclick="Tabs.showTab(0)"> Main </button> </div>
-				<div class="tab-row"> <button id="btn-options" onclick="Tabs.showTab(1)"> Options </button> </div>
+				<div class="tab-row"> 
+					<button id="btn-main" onclick="Tabs.showTab(0)"> Main </button> 
+					<button id="btn-experiences" onclick="Tabs.showTab(1)"> Experiences </button>
+				</div>
+				<div class="tab-row"> <button id="btn-options" onclick="Tabs.showTab(2)"> Options </button> </div>
 			</div>
 			<br>
 			<div class="tab">
@@ -35,7 +45,11 @@
 						(Currently it takes <span id="e10" class="serotonin">5.00</span> serotonin and <span id="e11" class="dopamine">10.00</span> dopamine to make <span id="e12" class="happiness">1.00</span> happiness) </div> 
 					<div id="e58"> 
 						(With your current serotonin and dopamine supply you are able to make <span id="e57" class="happiness">0.00</span> happiness)
-					</div> <br>
+					</div> 
+					<div id="e62">
+						(You have <span id="e63" class="emotion">0.00</span> emotion, multiplying all gains by <span id="e68"></span>)
+					</div>
+					<br>
 					<div>
 						<button onclick="Dopamine.gain()" class="clickable"> 
 							Gain dopamine <br>
@@ -100,8 +114,12 @@
 				</div>
 				<div>
 					<span id="e59">(Maxing upgrades 4 and 5 means that happiness can be produced for free)</span> <br>
-					<span id="e60">(Upgrade 7 will take dopamine and serotonin until upgrade 4 and 5 are maxed)</span>
+					<span id="e60">(Upgrade 7 will take dopamine and serotonin until upgrade 4 and 5 are maxed)</span> <br> 
 				</div>
+			</div>
+
+			<div class="tab">
+				<div class="tab-header"> Experiences </div>
 			</div>
 
 			<div class="tab">
@@ -111,10 +129,7 @@
 					<button onclick="Saving.save()"> Save </button>
 					<button> Import </button>
 					<button> Export </button>
-				</div>
-				<div class="options-btns">
 					<button onclick="Saving.reset()"> Reset </button>
-					<button onclick="Theme.toggle()"> Theme: Dark </button>
 				</div>
 			</div>
 		</div>
@@ -124,10 +139,10 @@
 		<script src="js/core.js"></script>
 		<script src="js/currencies.js"></script>
 		<script src="js/upgrades.js"></script>
+		<script src="js/prestige.js"></script>
 
 		<script src="js/saving.js"></script>
 		<script src="js/tabs.js"></script>
-		<script src="js/theme.js"></script>
 
 		<script src="js/update.js"></script>
 	</body>

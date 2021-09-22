@@ -29,18 +29,21 @@ let Saving = {
 		player.serotonin = new Decimal(player.serotonin);
 		player.dopamine = new Decimal(player.dopamine);
 		player.happiness = new Decimal(player.happiness);
+		player.bestEmotion = new Decimal(player.bestEmotion) || new Decimal(0);
+		player.experiences = new Decimal(player.experiences) || new Decimal(0);
 
 		player.upgrades = player.upgrades || [0, 0, 0, 0, 0, 0, 0];
 
+		player.stats.timeInExperience = player.stats.timeInExperience || 0;
+
 		player.tab = player.tab || 0;
-		player.theme = player.theme || 'Dark';
 	},
 	doOfflineTime(callback) {
 		let now = Date.now();
 		offlineTime = (now - player.lastUpdate)/1000;
 		if (offlineTime < 120) callback();
 
-		console.info("Offline time: " + offlineTime + " seconds.");
+		console.info("Offline time: " + offlineTime + " seconds");
 
 		let ticks = 2048;
 		let tick = 0;

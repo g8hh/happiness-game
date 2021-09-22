@@ -32,12 +32,12 @@ let update = function(){
 	g("e31").style.backgroundColor = Upgrade(3).canBuy() ? '#aaa' : '#444';
 	g("e32").innerText = Upgrade(3).currentEffect().toFixed(2);
 	g("e33").innerText = Upgrade(3).nextEffect().toFixed(2);
-	g("e34").innerText = Upgrade(3).cost().toFixed(2);
+	g("e34").innerText = new Decimal(Upgrade(3).cost()).format(true);
 	g("e35").innerText = Upgrade(3).buttonText();
 	g("e36").style.backgroundColor = Upgrade(4).canBuy() ? '#aaa' : '#444';
 	g("e37").innerText = Upgrade(4).currentEffect().toFixed(2);
 	g("e38").innerText = Upgrade(4).nextEffect().toFixed(2);
-	g("e39").innerText = Upgrade(4).cost().toFixed(2);
+	g("e39").innerText = new Decimal(Upgrade(4).cost()).format(true);
 	g("e40").innerText = Upgrade(4).buttonText();
 	g("e41").style.backgroundColor = Upgrade(5).canBuy() ? '#aaa' : '#444';
 	g("e42").innerText = Upgrade(5).currentEffect();
@@ -56,9 +56,18 @@ let update = function(){
 	g("e55").style.display = Dopamine.netPerSecond().eq(0) ? 'none' : 'inline-block';
 	g("e56").style.display = Upgrade(6).level() == 0 ? 'none' : 'inline-block';
 	g("e57").innerText = Happiness.produceable().format(true);
-	g("e58").style.display = Upgrade(6).level() == 0 ? 'none' : 'block';
+	g("e58").style.display = Happiness.shouldDisplayProduceable() ? 'block' : 'none';
 	g("e59").style.display = Upgrade(4).atMaxLevel() && Upgrade(5).atMaxLevel() ? 'none' : 'inline-block';
 	g("e60").style.display = Upgrade(4).atMaxLevel() && Upgrade(5).atMaxLevel() ? 'none' : 'inline-block';
+	g("e61").style.display = Prestige.canSee() ? 'inline-block' : 'none';
+	g("e62").style.display = Emotion.canSee() ? 'block' : 'none';
+	g("e63").innerText = Emotion.amount().format(true);
+	g("e64").style.display = Prestige.canGain() ? 'inline-block' : 'none';
+	g("e65").innerText = Prestige.gain().format(true);
+	g("e66").innerText = Prestige.timesTotal().format(true);
+	g("e67").innerText = Prestige.perSecond().format(true);
+	g("e68").innerText = Emotion.multiplier().format(true);
+	g("e69").innerText = timeFormat(player.stats.timeInExperience);
 
 	g("e25").style.display = Upgrade(0).atMaxLevel() ? 'none' : 'inline-block';
 	g("e26").style.display = Upgrade(1).atMaxLevel() ? 'none' : 'inline-block';

@@ -6,6 +6,9 @@
 :root {
 	--background-color: black;
 	--text-color: white;
+	--serotonin-color: #f0f;
+	--dopamine-color: #ff0;
+	--happiness-color: #0ff;
 }
 
 * {
@@ -31,13 +34,13 @@ div {
 button {
 	border: none;
 	padding: 2px 8px;
-	margin: 0 5px;
 	cursor: pointer;
 	font-family: Typewriter;
 }
 
 .clickable {
 	background: #aaa;
+	margin: 0 4px;
 }
 
 button:focus {
@@ -49,7 +52,7 @@ button:focus {
 }
 
 .tab-row {
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 
 .tab-header {
@@ -58,19 +61,27 @@ button:focus {
 }
 
 .serotonin {
-	color: #f0f;
+	color: var(--serotonin-color);
 }
 
 .dopamine {
-	color: #ff0;
+	color: var(--dopamine-color);
 }
 
 .happiness {
-	color: #0ff;
+	color: var(--happiness-color);
+}
+
+.emotion {
+	color: #0f0;
 }
 
 #upgrades > div {
 	margin-bottom: 16px;
+}
+
+#e64 {
+	background-color: #9dc5ed;
 }
 
 .options-btns button {
