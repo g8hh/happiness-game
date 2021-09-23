@@ -1,0 +1,91 @@
+@font-face {
+  font-family: Typewriter;
+  src: url('MonospaceTypewriter.ttf');
+}
+
+:root {
+	--background-color: black;
+	--text-color: white;
+	--serotonin-color: #f0f;
+	--dopamine-color: #ff0;
+	--happiness-color: #0ff;
+}
+
+* {
+	box-sizing: border-box;
+	user-select: none;
+}
+
+html {
+	font-family: Typewriter;
+	font-size: 14px;
+}
+
+body {
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+div {
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+button {
+	border: none;
+	padding: 2px 8px;
+	cursor: pointer;
+	font-family: Typewriter;
+}
+
+.clickable {
+	background: #aaa;
+	margin: 0 4px;
+}
+
+button:focus {
+	outline: 1px auto black;
+}
+
+#body {
+	display: none;
+}
+
+.tab-row {
+	margin-bottom: 5px;
+}
+
+.tab-header {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.serotonin {
+	color: var(--serotonin-color);
+}
+
+.dopamine {
+	color: var(--dopamine-color);
+}
+
+.happiness {
+	color: var(--happiness-color);
+}
+
+.emotion {
+	color: #0f0;
+}
+
+#upgrades > div {
+	margin-bottom: 16px;
+}
+
+#e64 {
+	background-color: #9dc5ed;
+}
+
+.options-btns button {
+	width: 150px;
+	height: 75px;
+	margin: 5px;
+}

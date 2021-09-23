@@ -1,0 +1,11 @@
+body,html{background-color:white !important;color:black !important;}
+div{background-color:#ddd !important;}
+#leftColumn,#rightColumn{background-color:white !important;}
+select, option{background-color:#ccc !important;}
+button{background-color:#bbb !important; color:black !important;}
+.float{color:green;}
+.floatdown{color:lightcoral;}
+#experiencegain{background-color: #ddd !important;}
+.auto:hover{color:grey !important;text-shadow: none;}
+.upgrade:hover{color:grey !important;text-shadow: none;}
+#you button:hover{background-color:white !important;}

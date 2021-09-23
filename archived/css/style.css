@@ -1,0 +1,134 @@
+*{user-select:none;font-size:16px;font-family:monospace;}
+*, *::before, *::after{box-sizing:border-box;}
+
+@namespace url('http://www.w3.org/1999/xhtml');
+@namespace m url('http://www.w3.org/1998/Math/MathML');
+
+body, m|mtext {font-family: Latin Modern;}
+m|math, .math {font-family: Latin Modern Math;}
+
+b{display:block;text-decoration:underline;padding-top:10px;padding-left:20px;}
+body{margin:auto;width:1200px;background-color:grey;color:white;display:none;}
+
+.tooltip:hover{display:none;}
+
+#header{text-align:center;padding:10px;margin-bottom:10px;background:#444;}
+#header span{margin-right:50px;text-decoration:underline;}
+#header .span{text-decoration:none;}
+#header .span:hover{text-decoration:underline;cursor:pointer;}
+
+#leftColumn{float:left;}
+#rightColumn{float:right;}
+.tooltip{display:none;background-color:black;color:#fff;text-align:center;padding:5px 0;border-radius:6px;position:absolute;z-index:1;}
+
+#you{background:#444;padding-bottom:5px;margin-bottom:10px;width:595px;display:inline-block;}
+#you ul{margin-top:5px;padding-left:20px;list-style-type:none;}
+#you li{position:relative;}
+#gainDopamine{padding:0;position:relative;float:left;}
+#gainHappiness{margin-top:10px;margin-bottom:5px;position:relative;clear:both;float:left;}
+#gainMaxH{display:none;float:left;clear:both;position:relative;margin-top:5px;margin-bottom:5px;}
+
+#gainHappiness .tooltip{width:250px;top:35px;}
+#gainHappiness:hover .tooltip{display:block !important;}
+
+#you button{border:1px solid #555;transition:0.2s;background:#333;outline:none;cursor:pointer;padding:4px;color:white;}
+#you button:hover{color:black;background:#666;}
+
+#upgrades{background:#444;padding-bottom:10px;width:595px;margin-left:10px;margin-bottom:10px;}
+#upgrades table{width:550px;margin:auto;margin-top:10px;border-collapse: collapse}
+#upgrades td{border:1px solid #666;margin:0;width:33%;padding:3px;}
+#upgrades thead td{font-weight:bold;}
+
+#upgrades td:nth-child(1){width:250px;}
+#upgrades td:nth-child(2){width:75px;}
+#upgrades td:nth-child(3){width:150px;}
+#upgrades td:nth-child(4){width:75px;}
+
+#upgrade4{position:relative;}
+#upgrade4 .tooltip{display:none;width:150px;top:30px;left:0;}
+#upgrade4:hover .tooltip{display:block !important;}
+
+#automation{background-color:#444;width:595px;padding-bottom:10px;position:relative;}
+#automation table{width:550px;margin:auto;margin-top:10px;border-collapse: collapse}
+#automation td{border:1px solid #666;margin:0;width:33%;padding:3px;}
+#automation thead td{font-weight:bold;}
+
+#automation td:nth-child(1){width:325px;}
+#automation td:nth-child(2){width:75px;}
+#automation td:nth-child(3){width:150px;}
+
+#automation label{margin:10px;padding:10px;display:inline-block;}
+#automation input{margin:0;}
+
+#automation .disableBox{display:none;}
+#automation .disableBox div{display:inline;padding-left:25px;}
+#automation .check{display:inline;}
+
+#friends{background:#444;width:595px;margin-left:10px;padding-bottom:10px;}
+#friends button{cursor:pointer;position:relative;margin:auto;display:block;background:#666;color:white;outline:none;}
+#friends button:hover{color:black;background:#888;}
+#friendsUnlock{width:150px;position:relative;display:inline-block;left:222.5px;}
+#friendsUnlock .tooltip{display:none;width:150px;top:30px;}
+#friendsUnlock:hover .tooltip{display:block !important;}
+#friendsContent{display:none;margin-top:5px;}
+
+#friendsContent #friend{padding-left:20px;margin-bottom:10px;}
+#friendsContent table{width:95%;margin:auto;border-collapse:collapse;position:relative;margin-top:10px;}
+#friendsContent table td{padding:4px;position:relative;}
+
+#friendBar{color:black;width:95%;display:block;margin:auto;margin-top:5px;text-align:center;background:linear-gradient(90deg, #666,#666 40%,white 0%,white 100%);}
+
+#friendsContent .fhover{position:relative;}
+#friendsContent .fhover .tooltip{width:250px;left:15px;}
+#friendsContent .fhover:hover .tooltip{display:block;}
+#friendsContent .tooltip{width:200px;left:0;top:30px;text-align:center;}
+#friendsContent table td:hover .tooltip{display:block;}
+#friendsContent table td .tooltip:hover{display:none;}
+#friendsContent table td:nth-child(1){width:33%;}
+#friendsContent table td:nth-child(2){width:15%;}
+#friendsContent table td:nth-child(3){width:15%;}
+
+#friendsContent #memoryupgrades {width:95%;margin:auto;margin-top:10px;}
+
+#friendsContent #mupgrade{width:50%;padding:5px;}
+#friendsContent #mupgrade span.header{text-align:center;display:block;font-weight:bold;text-decoration: underline;}
+#friendsContent #experiencefloat{position: relative;}
+
+#friendsContent #mupgrade.left {float:left;position:relative;}
+
+#friendsContent #experiencegain {border:1px solid #555; width:90%;margin:auto;margin-top:8px;margin-bottom:8px;text-align: center;background-color:#333;cursor:pointer;border-radius:3px;transition: 0.2s}
+#friendsContent #experiencegain:hover{transition: 0.2s;color:black;}
+#friendsContent #experiencegain:active{transition: 0.2s;border: 1px #555 inset;}
+#friendsContent #rareexperience{display:none;}
+#friendsContent #rareexperiencefloat{position: relative}
+#friendsContent #rareexperiencefloat .tooltip{width:150px;top:20px;}
+#friendsContent #rareexperiencefloat:hover .tooltip{display:block;}
+
+#friendsContent #mupgrade.right{float:right;position: relative;}
+#friendsContent #mupgrade.right table {border-collapse:collapse;width:100%;margin:auto;margin-top:8px;}
+#friendsContent #mupgrade.right table td{border:1px solid #666;}
+#friendsContent #mupgrade.right table td:nth-child(1){width:10%;}
+#friendsContent #mupgrade.right table td:nth-child(1):hover .tooltip{display:block;}
+#friendsContent #mupgrade.right table td:nth-child(1) .tooltip:hover{display:none;}
+#friendsContent #mupgrade.right table td:nth-child(2){cursor:pointer;}
+#friendsContent #mupgrade.right table td:nth-child(2):hover{text-decoration:underline}
+
+#friendsContent #makefriend {display:inline-block;margin-bottom:5px;margin-left:20px;padding:4px;cursor:pointer;transition: 0.2s;}
+#friendsContent #makefriend:hover {background: #666 !important;color:black;transition:0.2s;}
+#friendsContent #makefriend:hover #makefriendprice {color:white;text-decoration:underline;transition:0.2s;}
+#friendsContent #makefriendprice {display:inline-block;padding:2px;}
+
+.auto{cursor:pointer;}
+.auto:hover{color:aqua;}
+
+.upgrade{cursor:pointer;}
+.upgrade:hover{color:#ffdead;}
+
+#options{position:relative;background:#444;width:50%;margin:auto;display:none;text-align:center;padding:10px;}
+#options li{list-style-type:none;text-align:left;margin:5px;}
+#options option, select{background-color:grey;outline:none;}
+#options input{margin:0;margin-top:5px;}
+#closeOptions{cursor:pointer;position:absolute;top:10px;right:10px;border: 2px solid black;padding:0 4px;}
+#closeOptions:hover{background-color:grey;}
+
+.float,.floatdown{display:none;}
