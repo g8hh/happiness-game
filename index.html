@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Happiness Game</title>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<link rel="icon" type="img" href="src/favicon.png"/>
+	</head>
+	<body>
+		<div id="body">
+			<div id="head">
+				<div> You have <span id="e1" class="serotonin">0.00</span> serotonin, <span id="e2" class="dopamine">0.00</span> dopamine, and <span id="e3" class="happiness">0.00</span> happiness. </div>
+				<div>
+					<span id="e61"> You need 40 emotion to prestige. </span> <br>
+					<button id="e64" class="clickable"> 
+							Prestige: gain <span id="e65">1.00</span> experience <br>
+							<span id="e69">10.4 seconds</span> (x<span id="e66">1.00</span> total, <span id="e67">1.00</span> experience/sec)
+					</button>
+				</div>
+			</div>
+			<br>
+			<div id="tabs">
+				<div class="tab-row"> 
+					<button id="btn-main" onclick="Tabs.showTab(0)"> Main </button> 
+					<button id="btn-experiences" onclick="Tabs.showTab(1)"> Experiences </button>
+				</div>
+				<div class="tab-row"> <button id="btn-options" onclick="Tabs.showTab(2)"> Options </button> </div>
+			</div>
+			<br>
+			<div class="tab">
+				<div> 
+					<div> 
+						You have <span id="e4" class="serotonin">0.00</span> serotonin, and you are gaining <span id="e5" class="serotonin">1.00</span> serotonin per second.
+						<span id="e54"> (<span id="e51" class="serotonin">+0.50</span>/s total) </span>
+					</div>
+					<div> 
+						You have <span id="e6" class="dopamine">0.00</span> dopamine, and you are gaining <span id="e7" class="dopamine">1.00</span> dopamine per click. 
+						<span id="e55"> (<span id="e52" class="dopamine">+0.50</span>/s total) </span>
+					</div>
+					<div> 
+						You have <span id="e8" class="happiness">0.00</span> happiness, and you are gaining <span id="e9" class="happiness">1.00</span> happiness per conversion. 
+						<span id="e56"> (<span id="e53" class="happiness">+0.50</span>/s total) </span>
+					</div>
+					<div> 
+						(Currently it takes <span id="e10" class="serotonin">5.00</span> serotonin and <span id="e11" class="dopamine">10.00</span> dopamine to make <span id="e12" class="happiness">1.00</span> happiness) </div> 
+					<div id="e58"> 
+						(With your current serotonin and dopamine supply you are able to make <span id="e57" class="happiness">0.00</span> happiness)
+					</div> 
+					<div id="e62">
+						(You have <span id="e63" class="emotion">0.00</span> emotion, multiplying all gains by <span id="e68"></span>)
+					</div>
+					<br>
+					<div>
+						<button onclick="Dopamine.gain()" class="clickable"> 
+							Gain dopamine <br>
+							(+<span id="e13" class="dopamine">1.00</span>)
+						</button>
+						<button id="e15" onclick="Happiness.gain()" class="clickable">
+							Gain happiness <br>
+							(+<span id="e14" class="happiness">0.00</span>)
+						</button>
+					</div>
+				</div>
+				<br>
+				<div id="upgrades">
+					<div>
+						<button id="e25" class="clickable" onclick="Upgrade(0).buy()">
+							Increase base serotonin production by +1 <br>
+							<span id="e16" class="serotonin">1.00</span> ⟶ <span id="e17" class="serotonin">2.00</span> <br>
+							Cost: <span id="e18" class="happiness">5</span> happiness <br>
+							<span id="e28">(0 / 10)</span>
+						</button>
+						<button id="e26" class="clickable" onclick="Upgrade(1).buy()">
+							Increase base dopamine per click by +1 <br>
+							<span id="e19" class="dopamine">1.00</span> ⟶ <span id="e20" class="dopamine">2.00</span> <br>
+							Cost: <span id="e21" class="serotonin">20</span> serotonin <br>
+							<span id="e29">(0 / 10)</span>
+						</button>
+						<button id="e27" class="clickable" onclick="Upgrade(2).buy()">
+							Increase happiness gain per conversion by +1 <br>
+							<span id="e22" class="happiness">1.00</span> ⟶ <span id="e23" class="happiness">2.00</span> <br>
+							Cost: <span id="e24" class="dopamine">50</span> dopamine <br>
+							<span id="e30">(0 / 10)</span>
+						</button>
+					</div>
+					<div>
+						<button id="e31" class="clickable" onclick="Upgrade(3).buy()">
+							Decrease serotonin requirement for happiness by 0.50 <br>
+							<span id="e32" class="serotonin">5.00</span> ⟶ <span id="e33" class="serotonin">4.50</span> <br>
+							Cost: <span id="e34" class="happiness">500</span> happiness <br>
+							<span id="e35">(0 / 10)</span>
+						</button>
+						<button id="e36" class="clickable" onclick="Upgrade(4).buy()">
+							Decrease dopamine requirement for happiness by 1.00 <br>
+							<span id="e37" class="dopamine">10.00</span> ⟶ <span id="e38" class="dopamine">9.00</span> <br>
+							Cost: <span id="e39" class="happiness">500</span> happiness <br>
+							<span id="e40">(0 / 10)</span>
+						</button>
+					</div> 
+					<div>
+						<button id="e41" class="clickable" onclick="Upgrade(5).buy()">
+							Automatically gain dopamine without clicking <br>
+							<span id="e42">0</span>% ⟶ <span id="e43">10</span>% of click every second <br>
+							Cost: <span id="e44" class="serotonin">1.00e3</span> serotonin <br>
+							<span id="e45">(0 / 10)</span>
+						</button>
+						<button id="e46" class="clickable" onclick="Upgrade(6).buy()">
+							Automatically gain happiness without clicking <br>
+							<span id="e47">0</span>% ⟶ <span id="e48">10</span>% of click every second <br>
+							Cost <span id="e49" class="dopamine">1.00e4</span> dopamine <br>
+							<span id="e50">(0 / 10)</span>
+						</button>
+					</div>
+				</div>
+				<div>
+					<span id="e59">(Maxing upgrades 4 and 5 means that happiness can be produced for free)</span> <br>
+					<span id="e60">(Upgrade 7 will take dopamine and serotonin until upgrade 4 and 5 are maxed)</span> <br> 
+				</div>
+			</div>
+
+			<div class="tab">
+				<div class="tab-header"> Experiences </div>
+			</div>
+
+			<div class="tab">
+				<div class="tab-header"> Options </div>
+				<br>
+				<div class="options-btns">
+					<button onclick="Saving.save()"> Save </button>
+					<button> Import </button>
+					<button> Export </button>
+					<button onclick="Saving.reset()"> Reset </button>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/decimal.min.js"></script>
+
+		<script src="js/core.js"></script>
+		<script src="js/currencies.js"></script>
+		<script src="js/upgrades.js"></script>
+		<script src="js/prestige.js"></script>
+
+		<script src="js/saving.js"></script>
+		<script src="js/tabs.js"></script>
+
+		<script src="js/update.js"></script>
+	</body>
+</html>
