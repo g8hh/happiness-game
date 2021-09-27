@@ -49,7 +49,7 @@ let Upgrade = function (i) {
 		},
 		maxLevel() {
 			return [
-				new Decimal(10), new Decimal(10), new Decimal(10),
+				ExperienceUpgrade(2).effect(), ExperienceUpgrade(2).effect(), ExperienceUpgrade(2).effect(),
 				new Decimal(10), new Decimal(10),
 				new Decimal(10), new Decimal(10),
 			][i];

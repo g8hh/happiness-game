@@ -16,6 +16,7 @@ let Serotonin = {
 			Emotion.multiplier(),
 			Experiences.multiplier(),
 			Upgrade(0).currentEffect(),
+			ExperienceUpgrades.totalLevelMultiplier(),
 		]
 		return factors.reduce((a,b) => (a.times(b)));
 	},
@@ -48,6 +49,7 @@ let Dopamine = {
 			Emotion.multiplier(),
 			Experiences.multiplier(),
 			Upgrade(1).currentEffect(),
+			ExperienceUpgrades.totalLevelMultiplier(),
 		]
 		return factors.reduce((a,b) => (a.times(b)));
 	},
@@ -81,7 +83,7 @@ let Happiness = {
 		return true
 	},
 	shouldDisplayAmounts() {
-		return this.serotoninRequirement().gt(0) && this.dopamineRequirement().gt(0);
+		return this.serotoninRequirement().gt(0) || this.dopamineRequirement().gt(0);
 	},
 	dopaminePerSecond() {
 		return this.dopamineRequirement().times(Upgrade(6).effect()/100).neg()
@@ -111,6 +113,7 @@ let Happiness = {
 			Emotion.multiplier(),
 			Experiences.multiplier(),
 			Upgrade(2).currentEffect(),
+			ExperienceUpgrades.totalLevelMultiplier(),
 		]
 		return factors.reduce((a,b) => (a.times(b)))
 	},
@@ -127,19 +130,25 @@ let Happiness = {
 
 let Emotion = {
 	amount() {
-		let factors = [
+		let amounts = [
 			Serotonin.amount().max(1).log2(),
 			Dopamine.amount().max(1).log2(),
 			Happiness.amount().max(1).log2(),
 		];
-		return new Decimal(factors.reduce((a,b) => (a+b)));
+		let baseAmount = new Decimal(amounts.reduce((a,b) => (a+b)));
+		
+		return baseAmount.times(ExperienceUpgrade(1).effect());
 	},
 	bestAmount() {
 		return player.bestEmotion;
 	},
 	multiplier() {
 		if(Upgrade(6).level() == 0) return new Decimal(1);
-		return new Decimal(1).plus(Emotion.amount().log2()/4);
+		let factors = [
+			new Decimal(1).plus(Emotion.amount().log2()/4),
+			ExperienceUpgrade(0).effect(),
+		];
+		return factors.reduce((a,b) => (a.times(b)));
 	},
 	updateBest() {
 		player.bestEmotion = player.bestEmotion.max(this.amount());

@@ -25,5 +25,6 @@ let Prestige = {
 		Happiness.setAmount(0);
 		Emotion.setBestAmount(0);
 		Upgrades.reset();
+		player.stats.timeInExperience = 0;
 	},
 };
