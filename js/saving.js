@@ -7,7 +7,8 @@ let Saving = {
 		try {
 			player = JSON.parse(atob(localStorage.getItem('happiness-save')));
 		} catch (e) {
-			// just json errors if localStorage object is empty, happens on reset or first load.
+			this.save();
+			this.load();
 		}
 		this.fixDecimals();
 		this.doOfflineTime(function() {
@@ -33,6 +34,7 @@ let Saving = {
 		player.experiences = new Decimal(player.experiences) || new Decimal(0);
 
 		player.upgrades = player.upgrades || [0, 0, 0, 0, 0, 0, 0];
+		player.experienceupgrade = player.experienceupgrade || [0,0,0];
 
 		player.stats.timeInExperience = player.stats.timeInExperience || 0;
 
@@ -41,7 +43,10 @@ let Saving = {
 	doOfflineTime(callback) {
 		let now = Date.now();
 		offlineTime = (now - player.lastUpdate)/1000;
-		if (offlineTime < 120) callback();
+		if (offlineTime < 120) {
+			callback();
+			return;
+		}
 
 		console.info("Offline time: " + offlineTime + " seconds");
 

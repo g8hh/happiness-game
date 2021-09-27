@@ -11,13 +11,19 @@ let Prestige = {
 	amount() {
 		return player.experiences;
 	},
-	newAmount() {
-		return this.gain().plus(this.amount());
-	},
 	timesTotal() {
 		return this.amount().eq(0) ? this.gain() : this.amount().div(this.gain());
 	},
 	perSecond() {
 		return this.gain().div(player.stats.timeInExperience);
+	},
+	reset() {
+		if(!this.canGain()) return;
+		Experiences.addAmount(this.gain());
+		Serotonin.setAmount(0);
+		Dopamine.setAmount(0);
+		Happiness.setAmount(0);
+		Emotion.setBestAmount(0);
+		Upgrades.reset();
 	},
 };

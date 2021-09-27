@@ -5,12 +5,16 @@ let Serotonin = {
 	addAmount(n) {
 		player.serotonin = player.serotonin.plus(n);
 	},
+	setAmount(n) {
+		player.serotonin = new Decimal(n);
+	},
 	gain(diff) {
 		this.addAmount(this.gainAmount().times(diff/1000));
 	},
 	gainAmount() {
 		let factors = [
 			Emotion.multiplier(),
+			Experiences.multiplier(),
 			Upgrade(0).currentEffect(),
 		]
 		return factors.reduce((a,b) => (a.times(b)));
@@ -27,6 +31,9 @@ let Dopamine = {
 	addAmount(n) {
 		player.dopamine = player.dopamine.plus(n);
 	},
+	setAmount(n) {
+		player.dopamine = new Decimal(n);
+	},
 	produce(diff) {
 		this.addAmount(this.produceAmount().times(diff/1000))
 	},
@@ -39,6 +46,7 @@ let Dopamine = {
 	gainAmount() {
 		let factors = [
 			Emotion.multiplier(),
+			Experiences.multiplier(),
 			Upgrade(1).currentEffect(),
 		]
 		return factors.reduce((a,b) => (a.times(b)));
@@ -55,6 +63,9 @@ let Happiness = {
 	addAmount(n) {
 		player.happiness = player.happiness.plus(n);
 	},
+	setAmount(n) {
+		player.happiness = new Decimal(n);
+	},
 	produce(diff) {
 		if (!this.canProduce()) return;
 		this.addAmount(this.gainAmount().times(Upgrade(6).effect()/100).times(diff/1000));
@@ -68,6 +79,9 @@ let Happiness = {
 		if (Upgrade(3).atMaxLevel() && Upgrade(4).atMaxLevel()) return false
 		if (Upgrade(6).level() == 0) return false
 		return true
+	},
+	shouldDisplayAmounts() {
+		return this.serotoninRequirement().gt(0) && this.dopamineRequirement().gt(0);
 	},
 	dopaminePerSecond() {
 		return this.dopamineRequirement().times(Upgrade(6).effect()/100).neg()
@@ -95,6 +109,7 @@ let Happiness = {
 	gainAmount() {
 		let factors = [
 			Emotion.multiplier(),
+			Experiences.multiplier(),
 			Upgrade(2).currentEffect(),
 		]
 		return factors.reduce((a,b) => (a.times(b)))
@@ -129,7 +144,22 @@ let Emotion = {
 	updateBest() {
 		player.bestEmotion = player.bestEmotion.max(this.amount());
 	},
+	setBestAmount(n) {
+		player.bestEmotion = new Decimal(n);
+	},
 	canSee() {
 		return Upgrade(6).level() > 0;
+	},
+};
+
+let Experiences = {
+	amount() {
+		return player.experiences;
+	},
+	addAmount(n) {
+		player.experiences = player.experiences.plus(n);
+	},
+	multiplier() {
+		return this.amount().pow(0.5).max(1);
 	},
 };

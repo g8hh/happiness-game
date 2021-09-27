@@ -11,8 +11,8 @@
 			<div id="head">
 				<div> You have <span id="e1" class="serotonin">0.00</span> serotonin, <span id="e2" class="dopamine">0.00</span> dopamine, and <span id="e3" class="happiness">0.00</span> happiness. </div>
 				<div>
-					<span id="e61"> You need 40 emotion to prestige. </span> <br>
-					<button id="e64" class="clickable"> 
+					<span id="e61"> You need <span class="emotion">40</span> emotion to prestige. </span> <br>
+					<button id="e64" class="clickable" onclick="Prestige.reset()"> 
 							Prestige: gain <span id="e65">1.00</span> experience <br>
 							<span id="e69">10.4 seconds</span> (x<span id="e66">1.00</span> total, <span id="e67">1.00</span> experience/sec)
 					</button>
@@ -41,14 +41,15 @@
 						You have <span id="e8" class="happiness">0.00</span> happiness, and you are gaining <span id="e9" class="happiness">1.00</span> happiness per conversion. 
 						<span id="e56"> (<span id="e53" class="happiness">+0.50</span>/s total) </span>
 					</div>
-					<div> 
-						(Currently it takes <span id="e10" class="serotonin">5.00</span> serotonin and <span id="e11" class="dopamine">10.00</span> dopamine to make <span id="e12" class="happiness">1.00</span> happiness) </div> 
+					<div id="e62">
+						You have <span id="e63" class="emotion">0.00</span> emotion, multiplying all gains by <span id="e68"></span>
+					</div>
+					<div id="e89"> 
+						(Currently it takes <span id="e10" class="serotonin">5.00</span> serotonin and <span id="e11" class="dopamine">10.00</span> dopamine to make <span id="e12" class="happiness">1.00</span> happiness) 
+					</div> 
 					<div id="e58"> 
 						(With your current serotonin and dopamine supply you are able to make <span id="e57" class="happiness">0.00</span> happiness)
 					</div> 
-					<div id="e62">
-						(You have <span id="e63" class="emotion">0.00</span> emotion, multiplying all gains by <span id="e68"></span>)
-					</div>
 					<br>
 					<div>
 						<button onclick="Dopamine.gain()" class="clickable"> 
@@ -120,6 +121,30 @@
 
 			<div class="tab">
 				<div class="tab-header"> Experiences </div>
+				<div> You have <span id="e70" class="experience"></span> experience, multiplying all gains by <span id="e71">1.000</span>. </div>
+				<div> You have bought <span id="e84">0</span> levels of experience upgrades, multiplying all gains by <span id="e85">1.000</span>. </div>
+				<br>
+				<div class="tab-header"> Experience upgrades </div>
+				<div id="experience-upgrades">
+					<button id="e86" class="clickable" onclick="ExperienceUpgrade(0).buy()">
+						Increase emotion multiplier by +0.250 <br>
+						<span id="e72" class="emotion">1.000</span> ⟶ <span id="e73" class="emotion">1.250</span> <br>
+						Cost: <span id="e74" class="experience">1.000</span> experience <br>
+						Level: <span id="e75">0</span>
+					</button>
+					<button id="e87" class="clickable" onclick="ExperienceUpgrade(1).buy()">
+						Increase emotion gain by +0.125 <br>
+						<span id="e76" class="emotion">1.000</span> ⟶ <span id="e77" class="emotion">1.125</span> <br>
+						Cost: <span id="e78" class="experience">1.000</span> experience <br>
+						Level: <span id="e79">0</span>
+					</button>
+					<button id="e88" class="clickable" onclick="ExperienceUpgrade(2).buy()">
+						Increase upgrades 1-3 max level by +1 <br>
+						<span id="e80">10</span> ⟶ <span id="e81">11</span> <br>
+						Cost: <span id="e82" class="experience">2.000</span> experience <br>
+						Level: <span id="e83">0</span>
+					</button>
+				</div>
 			</div>
 
 			<div class="tab">

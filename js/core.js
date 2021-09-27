@@ -1,4 +1,5 @@
 var blocked = true;
+var defined = {};
 var g = (x => document.getElementById(x));
 
 let player = {
@@ -9,6 +10,7 @@ let player = {
 	experiences: new Decimal(0),
 
 	upgrades: [0, 0, 0, 0, 0, 0, 0],
+	experienceupgrade: [0,0,0],
 
 	tab: 0,
 

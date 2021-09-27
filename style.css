@@ -76,6 +76,10 @@ button:focus {
 	color: #0f0;
 }
 
+.experience {
+	color: #f00;
+}
+
 #upgrades > div {
 	margin-bottom: 16px;
 }
@@ -88,4 +92,9 @@ button:focus {
 	width: 150px;
 	height: 75px;
 	margin: 5px;
+}
+
+#experience-upgrades > button {
+	margin: 5px;
+	padding: 5px;
 }
