@@ -1,5 +1,0 @@
-.float{text-shadow:none;width:200px;display:inline;position:absolute;color:chartreuse;margin-left:10px;animation: 1s float infinite;}
-.floatdown{text-shadow:none;width:200px;display:inline;position:absolute;color:lightcoral;margin-left:10px;animation: 1s floatdown infinite;}
-
-@keyframes float {0%{opacity:0;bottom:0;} 50%{opacity:100%;bottom:10px;} 100%{opacity:0;bottom:20px;}}
-@keyframes floatdown {0%{opacity:0;top:0;} 50%{opacity:100%;top:10px;} 100%{opacity:0;top:20px;}}
