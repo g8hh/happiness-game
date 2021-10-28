@@ -1,17 +1,16 @@
 let Tabs = {
-	list: [],
 	init() {
-		this.list = document.getElementsByClassName('tab');
-		this.showTab(player.tab);
+		this.tabList = document.querySelectorAll(".tab");
+		this.showTab(player.options.tab);
+	},
+	hideTabs() {
+		for(i=0;i<this.tabList.length;i++) {
+			this.tabList[i].style.display = "none";
+		};
 	},
 	showTab(x) {
 		this.hideTabs();
-		this.list[x].style.display = "block";
-		player.tab = x;
+		this.tabList[x].style.display = "block";
+		player.options.tab = x;
 	},
-	hideTabs() {
-		for(i=0; i<this.list.length; i++) {
-			this.list[i].style.display = "none";
-		}
-	},
-}
+};

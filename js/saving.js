@@ -1,61 +1,73 @@
 let Saving = {
-	save() {
-		data = btoa(JSON.stringify(player));
-		localStorage.setItem('happiness-save', data);
+	save(manual) {
+		let save_data = btoa(JSON.stringify(player));
+		localStorage.setItem("quarks-save", save_data);
+		if (manual) {
+			g("save-btn").innerText = "Saved!";
+			window.setTimeout(this.saveBtnReset, 1000);
+		}
+	},
+	saveBtnReset() {
+		g("save-btn").innerText = "Save";
 	},
 	load() {
-		try {
-			player = JSON.parse(atob(localStorage.getItem('happiness-save')));
-		} catch (e) {
-			// just json errors if localStorage object is empty, happens on reset or first load.
-		}
+		if (localStorage.getItem("quarks-save") === null) this.save();
+		let save_data = JSON.parse(atob(localStorage.getItem("quarks-save")));
+		player = save_data;
 		this.fixDecimals();
-		this.doOfflineTime(function() {
-			window.setInterval(gameLoop, 64);
-			window.setInterval(function() { Saving.save() }, 10000);
-			update();
-			g("body").style.display = "block";
-			blocked = false;
-			return;
-		});
+		this.doOfflineTime();
+	},
+	loadFromFile(x) {
+		if(x===null) return;
+		try {
+			let save_data = JSON.parse(atob(x));
+			player = save_data;
+			this.fixDecimals();
+			this.doOfflineTime();
+		} catch(e) {
+			alert("Save not valid!");
+		};
+	},
+	export() {
+		prompt("Copy + paste this save to elsewhere for safekeeping:", localStorage.getItem('quarks-save'));
 	},
 	reset() {
-		if(confirm("Are you sure?")) {
-			localStorage.clear();
-			location.reload();
-		};
+		if(!confirm("Are you sure?")) return
+		localStorage.clear();
+		location.reload();
 	},
 	fixDecimals() {
-		player.serotonin = new Decimal(player.serotonin);
-		player.dopamine = new Decimal(player.dopamine);
-		player.happiness = new Decimal(player.happiness);
-		player.bestEmotion = new Decimal(player.bestEmotion) || new Decimal(0);
-		player.experiences = new Decimal(player.experiences) || new Decimal(0);
-
-		player.upgrades = player.upgrades || [0, 0, 0, 0, 0, 0, 0];
-
-		player.stats.timeInExperience = player.stats.timeInExperience || 0;
-
-		player.tab = player.tab || 0;
+		player.quarks = new Decimal(player.quarks);
+		player.bestQuarks = new Decimal(player.bestQuarks);
+		player.quarkGenerators = [...Array(8)].map((_, i) => ({amount: new Decimal(player.quarkGenerators[i].amount), bought: player.quarkGenerators[i].bought}));
+		player.baryons = new Decimal(player.baryons);
+		player.fermions = new Decimal(player.fermions);
+		player.protons = new Decimal(player.protons);
+		player.neutrons = new Decimal(player.neutrons);
+		player.bestProtons = new Decimal(player.bestProtons);
+		player.totalProtons = new Decimal(player.totalProtons);
+		player.neutronGenerators = [...Array(8)].map((_, i) => ({amount: new Decimal(player.neutronGenerators[i].amount), bought: player.neutronGenerators[i].bought}));
+		player.stats.totalQuarks = new Decimal(player.stats.totalQuarks);
 	},
-	doOfflineTime(callback) {
-		let now = Date.now();
-		offlineTime = (now - player.lastUpdate)/1000;
-		if (offlineTime < 120) callback();
+	doOfflineTime() {
+		let offlineTime = Math.min((Date.now() - player.lastUpdate)/1000, 24*60*60);
+		if(offlineTime<120) Game.start();
 
-		console.info("Offline time: " + offlineTime + " seconds");
+		g("offline").innerText = (timeFormat(offlineTime));
 
-		let ticks = 2048;
+		let ticks = 4096;
+		let tickLength = offlineTime/ticks;
 		let tick = 0;
-		let tickLength = offlineTime / ticks;
 
-		while (tick <= ticks) {
+		while(tick<=ticks) {
+			offlineGameLoop(tickLength);
+			g("bar-text").innerText = tick + "/" + ticks + " ticks simulated.";
+			g("inner-bar").style.width = ((tick/ticks)*100) + "%";
 			tick++;
-			offlineLoop(tickLength);
-		};
+		}
 
-		if(tick >= ticks) {
-			callback();
-		};
+		player.stats.totalTimeWithOffline += offlineTime;
+
+		if(ticks<tick) Game.start();
 	},
 };
