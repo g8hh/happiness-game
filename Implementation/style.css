@@ -1,0 +1,210 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	font-family: monospace;
+	user-select: none;
+	--background-color: black;
+	--text-color: white;
+	--header-color: #aaa;
+	--highlight-color: #ff0;
+}
+
+html {
+	background-color: var(--background-color);
+	color: var(--text-color);
+	font-size: 14px;
+}
+
+#game {
+	margin: auto;
+	margin-top: 50px;
+	border: 1px solid var(--text-color);
+	width: 60vw;
+	overflow: auto;
+	position: relative;
+	min-width: 700px;
+}
+
+#header {
+	color: black;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#header-box {
+	border-bottom: 1px solid var(--text-color);
+	padding: 10px;
+	background: var(--header-color);
+}
+
+#header-btns {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+#stats-btn {
+	text-align: center;
+}
+
+.tab {
+	padding: 10px;
+}
+
+#cards {
+	width: 50%;
+	border-right: 1px solid var(--text-color);
+	padding: 10px;
+	float: left;
+}
+
+button {
+	border: none;
+	background-color: #ddd;
+	color: black;
+	font-family: monospace;
+	padding: 2px 6px;
+	cursor: pointer;
+}
+
+button:focus {
+	outline: 1px auto black;
+}
+
+#stats-table {
+	border-collapse: collapse;
+	margin: auto;
+	border: 1px solid black;
+}
+
+#stats-table td {
+	padding: 4px 6px;
+	text-align: center;
+}
+
+#stats-table tr:nth-child(2n-1) {
+	background: var(--header-color);
+}
+
+.options-btns {
+	text-align: center;
+	margin-bottom: 7px;
+}
+
+.options-btns > button {
+	width: 180px;
+	height: 50px;
+}
+
+#start-game, #load-game {
+	display: block;
+	margin: 10px auto;
+}
+
+#ingame-btns {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+#help-text {
+	width: 50%;
+	padding: 10px;
+	float: right;
+}
+
+#help-inner-text {
+	margin-top: 100px;
+}
+
+#notifications {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+
+.notification {
+	background: var(--text-color);
+	color: var(--background-color);
+	padding: 1px 4px;
+	border-radius: 4px;
+	margin: 1px;
+}
+
+.highlighted {
+	background: var(--highlight-color);
+}
+
+#save-game, #new-game {
+	display: none;
+}
+
+.card-container {
+	background: var(--background-color);
+	margin-bottom: 4px;
+}
+
+.card-title {
+	margin-bottom: 4px;
+	text-align: center;
+	transition: 0.5s;
+}
+
+.sub-header {
+	margin-bottom: 10px;
+}
+
+.tab-header {
+	font-weight: bold;
+	font-size: 14px;
+	margin-bottom: 4px;
+	text-align: center;
+}
+
+.card, .pile-card {
+	height: 104px;
+	width: 65px;
+	border: 1px solid var(--text-color);
+	border-radius: 4px;
+	padding: 3px 8px;
+	display: inline-block;
+	background: var(--background-color);
+	color: var(--text-color);
+}
+
+span {
+	color: white;
+}
+
+.card {
+	margin-right: -30px;
+}
+
+.pile-card {
+	margin-left: 60px;
+}
+
+.♥, .♦ { color: red; } 
+.♠, .♣ { color: var(--text-color); }
+
+.player-card:hover {
+	border: 1px dashed var(--text-color);
+	cursor: pointer;
+}
+
+.pile-card, .opponent-card {
+	background: #888;
+	color: #888;
+}
+
+#test {
+	display: block;
+	width: calc(40px*7);
+	margin: auto;
+	padding: 10px;
+}
+
