@@ -13,7 +13,6 @@ let Game = {
 	start() {
 		Update();
 		Saving.save();
-		g("offline-time").style.display = "none";
 		g("game").style.display = "block";
 		this.blocked = false;
 		window.setInterval(function() {

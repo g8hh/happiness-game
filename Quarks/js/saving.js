@@ -51,9 +51,12 @@ let Saving = {
 	},
 	doOfflineTime() {
 		let offlineTime = Math.min((Date.now() - player.lastUpdate)/1000, 24*60*60);
-		if(offlineTime<120) Game.start();
+		if(offlineTime<120) { 
+			Game.start(); 
+			return;
+		}
 
-		g("offline").innerText = (timeFormat(offlineTime));
+		console.log("Offline time: " + offlineTime);
 
 		let ticks = 4096;
 		let tickLength = offlineTime/ticks;
@@ -61,13 +64,10 @@ let Saving = {
 
 		while(tick<=ticks) {
 			offlineGameLoop(tickLength);
-			g("bar-text").innerText = tick + "/" + ticks + " ticks simulated.";
-			g("inner-bar").style.width = ((tick/ticks)*100) + "%";
 			tick++;
 		}
 
-		player.stats.totalTimeWithOffline += offlineTime;
-
-		if(ticks<tick) Game.start();
+		Notifications.createNotification("Simulated " + timeFormat(offlineTime) + " of offline time")
+		Game.start();
 	},
 };

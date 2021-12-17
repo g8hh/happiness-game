@@ -1,5 +1,6 @@
 let Baryons = {
 	canGain() {
+		if(Quarks.atLimit()) return false;
 		return (quarkGenerator(8).bought()>0) && Quarks.bestAmount.gte(this.currentReq()) && this.newGain().gt(0);
 	},
 	amount() {
@@ -27,7 +28,8 @@ let Baryons = {
 		return 16;
 	},
 	gainText() {
-		return this.amount().gt(0) ? this.currentReq().format(true) + " quarks" : 'one of Quark Generator 8';
+		if(Quarks.atLimit()) return 'the universe to have not collapsed';
+		return this.amount().gt(0) ? this.currentReq().format(true) + "atleast quarks" : 'atleast one of Quark Generator 8';
 	},
 	extraText() {
 		return this.amount().gt(0) ? 'more' : '';
@@ -40,7 +42,6 @@ let Baryons = {
 	},
 	gain() {
 		if(!this.canGain()) return;
-		if(Quarks.atLimit()) return;
 		this.addAmount(this.newGain());
 		quarkGenerators.baryonic();
 		Achievements.giveAchievement(10);

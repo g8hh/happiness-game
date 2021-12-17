@@ -4,7 +4,7 @@ let gameLoop = function() {
 	player.lastUpdate = now;
 
 	quarkGenerators.produce(diff);
-
+	neutronGenerators.produce(diff);
 	Autobuyers.tick(diff);
 
 	Update();
@@ -16,7 +16,10 @@ let gameLoop = function() {
 	player.stats.totalTimeWithOffline += diff;
 };
 
-let offlineGameLoop = function(diff) {
+let offlineGameLoop = async function(diff, tick, ticks) {
 	quarkGenerators.produce(diff);
+	neutronGenerators.produce(diff);
 	Autobuyers.tick(diff);
+
+	player.stats.totalTime
 }

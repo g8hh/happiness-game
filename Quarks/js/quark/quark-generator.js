@@ -38,6 +38,7 @@ let quarkGenerator = function(i) {
 				(i==8) ? Baryons.multiplier() : 1,
 				Fermions.multiplier(),
 				Protonic.multiplier(),
+				Neutrons.effect(),
 			];
 
 			return factors.reduce((a,b) => (a.times(b)));

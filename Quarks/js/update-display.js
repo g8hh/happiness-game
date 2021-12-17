@@ -4,6 +4,7 @@ let achievements = (() => document.querySelectorAll("#achievements tr td"))();
 let ach_name = (() => document.getElementsByClassName("ach-name"))();
 let ach_status = (() => document.getElementsByClassName("ach-status"))();
 let autobuyers = (() => document.getElementsByClassName("autobuyer"))();
+let proton_upgrades = (() => document.querySelectorAll("#proton-upgrades tr"))();
 
 let Update = function() {
 	g("e1").innerText = Quarks.amount.format(true);
@@ -42,7 +43,7 @@ let Update = function() {
 	g("e35").style.display = player.progress.fermionic ? 'block' : 'none';
 	g("e36").innerText = Fermions.amount().format(true);
 	g("e37").style.display = Fermions.canGain() ? 'none' : 'block';
-	g("e38").innerText = Fermions.requirement().format(true) + " quarks";
+	g("e38").innerText = Fermions.text();
 	g("e39").style.display = Fermions.canGain() ? 'block' : 'none';
 	g("e40").innerText = Fermions.amount().format(true);
 	g("e41").innerText = Fermions.totalGain().format(true);
@@ -63,12 +64,15 @@ let Update = function() {
 	g("e56").innerText = Protonic.peakProtonsPerSecond();
 	g("e57").style.display = Protonic.canSee() ? 'block' : 'none';
 	g("e58").style.display = Quarks.atLimit() ? 'inline' : 'none';
-	g("e59").innerText = Protons.amount().format(true);
-	g("e60").innerText = Protons.total().format(true);
+	g("e59").innerText = Protons.amount();
+	g("e60").innerText = Protons.total();
 	g("e61").innerText = Protonic.amount() == 1 ? '' : 's';
 	g("e62").innerText = Protons.multiplier().format(true);
 	g("e63").innerText = Protonic.amount();
 	g("e64").innerText = new Decimal(Protonic.multiplier()).format(true);
+	g("e65").innerText = Neutrons.amount().format(true);
+	g("e66").innerText = neutronGenerator(1).perSecond().format(true);
+	g("e67").innerText = Neutrons.effect().format(true);
 
 	g("e68").innerText = timeFormat(16);
 
@@ -76,7 +80,7 @@ let Update = function() {
 
 	g("t1").style.display = player.progress.protonic ? 'inline' : 'none';
 	g("t2").style.display = player.progress.protonic ? 'inline' : 'none';
- 
+
 	for(let i=0;i<8;i++){
 		quark_gen_table[i].style.display = (player.highestQuarkGenerator>=i) ? 'table-row' : 'none';
 		quark_gen_table[i].children[1].innerText = quarkGenerator(i+1).amount().format(true);
@@ -99,9 +103,16 @@ let Update = function() {
 
 	};
 
+	for(i=0; i<3; i++) {
+		proton_upgrades[i].children[2].innerText = protonUpgrade(i+1).effect().format(true) + " ⟶ " + protonUpgrade(i+1).nextEffect().format(true);
+		proton_upgrades[i].children[3].children[0].innerText = "Cost: " + protonUpgrade(i+1).cost() + " P";
+		protonUpgrade(i+1).canBuy() ? proton_upgrades[i].children[3].children[0].classList.remove("disabled") : proton_upgrades[i].children[3].children[0].classList.add("disabled");
+		protonUpgrade(i+1).canBuy() ? proton_upgrades[i].children[4].children[0].classList.remove("disabled") : proton_upgrades[i].children[4].children[0].classList.add("disabled");
+	};
+
 	for(let i=0;i<autobuyers.length;i++){
 		Autobuyer(i+1).canBuy() ? autobuyers[i].children[1].classList.remove("disabled") : autobuyers[i].children[1].classList.add("disabled");
-	}
+	};
 
 	Bosons.canBuy() ? g("e14").classList.remove("disabled") : g("e14").classList.add("disabled");
 	Bosons.canBuy() ? g("e15").classList.remove("disabled") : g("e15").classList.add("disabled");

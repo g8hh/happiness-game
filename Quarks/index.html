@@ -7,38 +7,29 @@
 </head>
 <body>
 	<div id="notifications"> </div>
-	<div id="offline-time">
-		<div> The game is loading, and simulating <span id="offline"></span> of offline time. </div>
-		<div> This shouldn't take longer than a few seconds. </div>
-		<div> If it does, well that's too bad.. I'm not sure how to fix it yet. </div>
-		<div id="bar">
-			<div id="inner-bar"></div>
-			<div id="bar-text">0 / 4096 ticks simulated</div>
-		</div>
-	</div>
 	<div id="game">
-		<div> 
+		<div>
 			<div> You have <span id="e1"></span> quarks. You are generating <span id="e2"></span> quarks per second. </div>
-			<div> 
+			<div>
 				<div id="e57">Reach 1.158e77 quarks to go Protonic.</div>
 				<button id="e49" onclick="Protonic.reset()">
 				Protonic: gain <span id="e50">2.000</span> protons (<span id="e51">2.000</span>x total, <span id="e52">0.000</span> ⟶ <span id="e53">2.000</span>) <br>
 				<span id="e54">2.424 hours</span>, <span id="e55">0.000</span> P/sec, <span id="e56">0.000</span> peak P/sec
-				</button> 
+				</button>
 			</div>
 		</div>
 		<br>
 		<div id="tabs">
 			<div>
-				<button onclick="Tabs.showTab(0)">Quarks</button> 
-				<button onclick="Tabs.showTab(1)">Autobuyers</button> 
-				<button onclick="Tabs.showTab(5)" id="t1">Quark Challenges</button>
+				<button id="quark-btn" onclick="Tabs.showTab(0)">Quarks</button>
 				<button onclick="Tabs.showTab(6)" id="t2">Protons</button>
+				<button onclick="Tabs.showTab(5)" id="t1">Quark Challenges</button>
+				<button id="autobuyer-btn" onclick="Tabs.showTab(1)">Autobuyers</button>
 			</div>
 			<div>
-				<button onclick="Tabs.showTab(2)">Statistics</button> 
+				<button onclick="Tabs.showTab(2)">Statistics</button>
 				<button onclick="Tabs.showTab(3)">Achievements</button>
-				<button onclick="Tabs.showTab(4)">Options</button> 
+				<button onclick="Tabs.showTab(4)">Options</button>
 			</div>
 		</div>
 
@@ -56,7 +47,7 @@
 					<button id="e17" onclick="Game.maxAll()">Max All</button>
 				</div>
 				<div>
-					You have <span id="e11">0</span> bosons, multiplying all quark generators by <span id="e12">1.000</span>x (<span id="e13">2.000</span>x per boson) 
+					You have <span id="e11">0</span> bosons, multiplying all quark generators by <span id="e12">1.000</span>x (<span id="e13">2.000</span>x per boson)
 					<button id="e14" onclick="Bosons.buy(1)">Cost: 1.845e19</button> <button id="e15" onclick="Bosons.buyMax()">Buy Max</button> <button id="e16" onclick="Autobuyer(9).toggleActive()">Auto: Off</button>
 				</div>
 				<br>
@@ -137,7 +128,7 @@
 				<br>
 				<div>
 					<div> You have a <span id="e9">1.000</span> baryon multiplier multiplying Quark Generator 8 by its amount. </div>
-					<div id="e26"> You need atleast <span id="e25">one of Quark Generator 8</span> to gain <span id="e44"></span> Baryons. </div>
+					<div id="e26"> You need <span id="e25">one of Quark Generator 8</span> to gain <span id="e44"></span> Baryons. </div>
 					<div id="e27"> <button onclick="Baryons.gain()">
 						Baryonic sacrifice: <span id="e28">1.000</span> ⟶ <span id="e29">2.000</span> <br>
 						(+<span id="e30">1.000</span>, <span id="e31">2.000</span>x)
@@ -146,7 +137,7 @@
 
 				<div id="e46">
 					<div> You have a <span id="e36">1.000</span> fermion multiplier multiplying all Quark Generators by its amount. </div>
-					<div id="e37"> You need atleast <span id="e38"></span> to gain <span id="e45"></span> Fermions. </div>
+					<div id="e37"> You need <span id="e38"></span> to gain <span id="e45"></span> Fermions. </div>
 					<div id="e39"> <button onclick="Fermions.gain()">
 						Fermionic prestige: <span id="e40">1.000</span> ⟶ <span id="e41">2.000</span> <br>
 						(+<span id="e42">1.000</span>, <span id="e43">2.000</span>x)
@@ -158,16 +149,16 @@
 		<div class="tab">
 			<div class="tab-header">Autobuyers</div>
 			<div> You have <span id="e22">0</span> autobuyers. </div>
-			<div id="e24"> 
+			<div id="e24">
 				<div id="slow-autobuyer-info"> Slow autobuyers will trigger at most every <span id="e68">16.000 seconds</span>. </div>
 				<div> All unlocked slow autobuyers will trigger in <span id="e23">16 seconds</span>. </div>
 				<div> Make all autobuyers trigger every <input id="autobuy-timer" type="number" onchange="Autobuyers.updateTimer(this.value)"> seconds. </div>
 				<br>
-				<div> 
-					<button onclick="Autobuyers.allOn()">Turn all autobuyers on</button> 
-					<button onclick="Autobuyers.allOff()">Turn all autobuyers off</button> 
-					<button onclick="Autobuyers.allOnOff()">Turn all autobuyers on/off</button> 
-					<button onclick="Autobuyers.allToggle()">Toggle all autobuyers</button> 
+				<div>
+					<button onclick="Autobuyers.allOn()">Turn all autobuyers on</button>
+					<button onclick="Autobuyers.allOff()">Turn all autobuyers off</button>
+					<button onclick="Autobuyers.allOnOff()">Turn all autobuyers on/off</button>
+					<button onclick="Autobuyers.allToggle()">Toggle all autobuyers</button>
 				</div>
 			</div>
 			<div class="autobuyer-container">
@@ -356,12 +347,12 @@
 		<div class="tab">
 			<div class="tab-header">Options</div>
 			<br>
-			<div class="options-btns"> 
+			<div class="options-btns">
 				<button onclick="Saving.save(true)" id="save-btn"> Save </button>
 				<button onclick="Saving.loadFromFile(prompt('Enter save: '))"> Load </button>
 				<button onclick="Saving.export()"> Export </button>
 			</div>
-			<div class="options-btns"> 
+			<div class="options-btns">
 				<button onclick="Theme.setTheme()" id="theme-btn"> Theme: Dark </button>
 				<button onclick="Hotkeys.toggleActive()" id="hotkey-btn"> Hotkeys: Enabled </button>
 				<button onclick="Saving.reset()"> RESET THE GAME </button>
@@ -371,14 +362,12 @@
 			</div>
 			<br>
 			<div class="tab-header"> Hotkey List </div>
-			<div> 	
+			<div>
 					1-8: Buy max of quark generator 1-8 respectively, Shift 1-8: Buy single of Quark generator 1-8 respectively<br>
-					M: Max all, Shift+M: Single-buy all Quark generators, A: Toggle autobuyers <br> 
-					Shift+B: Buy Max Bosons, B: Baryonic reset, F: Fermionic reset, P: Protonic reset 
+					M: Max all, Shift+M: Single-buy all Quark generators, A: Toggle autobuyers <br>
+					Shift+B: Buy Max Bosons, B: Baryonic reset, F: Fermionic reset, P: Protonic reset
 			</div>
-
 			<br>
-
 			<div class="tab-header"> Credits </div>
 			<div> This game uses <a href="https://github.com/Patashu/break_infinity.js">break_infinity.js</a> to represent numbers greater than 2^(2^10), under an <a href="https://github.com/Patashu/break_infinity.js/blob/master/LICENSE">MIT license</a>. </div>
 			<div> Game heavily inspired by <a href="https://dan-simon.github.io/misc/fe000000/">FE000000</a>, credit to dan-simon for clarification on certain JS mechanics and general re-use of his code and ideas. </div>
@@ -386,23 +375,61 @@
 
 		<div class="tab">
 			<div class="tab-header">Quark Challenges</div>
+			<div> You have completed <span id="e69"> 0 </span> quark challenges. </div>
+			<div> Your quark challenge completions are giving a <span id="e70">1.000</span>x multiplier to all quark generators. </div>
+			<div> Reach protonic while in the challenge to complete it. </div>
+			<div id="quark-challenges">
+				<div class="uncompleted">
+					Quark challenge 1 <br>
+					All quark generators are multiplied by a constant that increases from 0 to 1 over 16 seconds. Purchasing anything resets the constant to 0. <br><br>
+					Reward: Quark generator 1 autobuyer <br><br>
+					<button> Start challenge </button>
+				</div>
+				<div class="uncompleted">
+					Quark challenge 2 <br>
+					Quark generator 1's multiplier is heavily decreased, but slowly increases over time spent in this challenge. Fermionic prestige resets this multiplier. <br><br>
+					Reward: Quark generator 2 autobuyer <br><br>
+					<button> Start challenge </button>
+				</div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
 		</div>
 
 		<div class="tab">
 			<div class="tab-header">Protonic</div>
-			<div> You have <span id="e59">0.000</span> protons (P). <button>Max Upgrades</button> <button>Max Generators</button> <button>Max All</button> </div> 
+			<div> You have <span id="e59">0.000</span> protons (P). 
+				<button id="e71">Max Upgrades</button> 
+				<button id="e72">Max Generators</button> 
+				<button id="e73">Max All</button> 
+			</div>
 			<div> You have made a total of <span id="e60">0.000</span> protons, multiplying all Neutron generators by <span id="e62">0.000</span>x. </div>
 			<div> You have gone Protonic <span id="e63">0</span> time<span id="e61"></span>, multiplying all Quark generators by <span id="e64">2.000</span>x. </div>
 			<div> You have <span id="e65">0.000</span> neutrons (N). You are gaining <span id="e66">0.000</span> neutrons per second. </div>
 			<div> Your neutrons are multiplying all quark generators by their amount^0.500, currently <span id="e67">1.000</span>x. </div>
 			<br>
 			<div class="tab-header">Protonic Upgrades</div>
-			<table class="upgrade-table">
+			<table id="proton-upgrades" class="upgrade-table">
+				<tr>
+					<td> Increase the neutron effect exponent: </td>
+					<td> +0.125 </td>
+					<td> 0.500 ⟶ 0.625 </td>
+					<td> <button>Cost: 8 P</button> </td>
+					<td> <button>Max</button> </td>
+				</tr>
 				<tr>
 					<td> Increase the base multiplier per boson: </td>
 					<td> +0.250 </td>
 					<td> 2.000 ⟶ 2.250 </td>
-					<td> <button>Cost: 8 P</button> </td>
+					<td> <button>Cost: 16 P</button> </td>
 					<td> <button>Max</button> </td>
 				</tr>
 				<tr>
@@ -410,13 +437,6 @@
 					<td> +0.500 </td>
 					<td> 1.000 ⟶ 1.500 </td>
 					<td> <button>Cost: 32 P</button> </td>
-					<td> <button>Max</button> </td>
-				</tr>
-				<tr>
-					<td> Increase the neutron effect exponent: </td>
-					<td> +0.125 </td>
-					<td> 0.500 ⟶ 0.625 </td>
-					<td> <button>Cost: 16 P</button> </td>
 					<td> <button>Max</button> </td>
 				</tr>
 			</table> <br>
@@ -427,8 +447,8 @@
 					<td>0.000</td>
 					<td>0.000/s</td>
 					<td>1.000x</td>
-					<td><button>Cost: 2 P</button></td>
-					<td><button>Max</button></td>
+					<td><button onclick="neutronGenerator(1).buy()">Cost: 2 P</button></td>
+					<td><button onclick="neutronGenerator(1).buyMax()">Max</button></td>
 					<td><button>Auto: Off</button></td>
 				</tr>
 				<tr>
@@ -436,8 +456,8 @@
 					<td>0.000</td>
 					<td>0.000/s</td>
 					<td>1.000x</td>
-					<td><button>Cost: 24 P</button></td>
-					<td><button>Max</button></td>
+					<td><button onclick="neutronGenerator(2).buy()">Cost: 24 P</button></td>
+					<td><button onclick="neutronGenerator(2).buyMax()">Max</button></td>
 					<td><button>Auto: Off</button></td>
 				</tr>
 				<tr>
@@ -445,8 +465,8 @@
 					<td>0.000</td>
 					<td>0.000/s</td>
 					<td>1.000x</td>
-					<td><button>Cost: 24 P</button></td>
-					<td><button>Max</button></td>
+					<td><button onclick="neutronGenerator(3).buy()">Cost: 24 P</button></td>
+					<td><button onclick="neutronGenerator(3).buyMax()">Max</button></td>
 					<td><button>Auto: Off</button></td>
 				</tr>
 				<tr>
@@ -454,8 +474,8 @@
 					<td>0.000</td>
 					<td>0.000/s</td>
 					<td>1.000x</td>
-					<td><button>Cost: 24 P</button></td>
-					<td><button>Max</button></td>
+					<td><button onclick="neutronGenerator(4).buy()">Cost: 24 P</button></td>
+					<td><button onclick="neutronGenerator(4).buyMax()">Max</button></td>
 					<td><button>Auto: Off</button></td>
 				</tr>
 				<tr>
@@ -463,8 +483,8 @@
 					<td>0.000</td>
 					<td>0.000/s</td>
 					<td>1.000x</td>
-					<td><button>Cost: 24 P</button></td>
-					<td><button>Max</button></td>
+					<td><button onclick="neutronGenerator(5).buy()">Cost: 24 P</button></td>
+					<td><button onclick="neutronGenerator(5).buyMax()">Max</button></td>
 					<td><button>Auto: Off</button></td>
 				</tr>
 				<tr>
@@ -472,8 +492,8 @@
 					<td>0.000</td>
 					<td>0.000/s</td>
 					<td>1.000x</td>
-					<td><button>Cost: 24 P</button></td>
-					<td><button>Max</button></td>
+					<td><button onclick="neutronGenerator(6).buy()">Cost: 24 P</button></td>
+					<td><button onclick="neutronGenerator(6).buyMax()">Max</button></td>
 					<td><button>Auto: Off</button></td>
 				</tr>
 				<tr>
@@ -481,8 +501,8 @@
 					<td>0.000</td>
 					<td>0.000/s</td>
 					<td>1.000x</td>
-					<td><button>Cost: 24 P</button></td>
-					<td><button>Max</button></td>
+					<td><button onclick="neutronGenerator(7).buy()">Cost: 24 P</button></td>
+					<td><button onclick="neutronGenerator(7).buyMax()">Max</button></td>
 					<td><button>Auto: Off</button></td>
 				</tr>
 				<tr>
@@ -490,19 +510,41 @@
 					<td>0.000</td>
 					<td>0.000/s</td>
 					<td>1.000x</td>
-					<td><button>Cost: 24 P</button></td>
-					<td><button>Max</button></td>
+					<td><button onclick="neutronGenerator(8).buy()">Cost: 24 P</button></td>
+					<td><button onclick="neutronGenerator(8).buyMax()">Max</button></td>
 					<td><button>Auto: Off</button></td>
 				</tr>
 			</table>
 		</div>
 	</div>
 
+		<script src='js/decimal.min.js'> </script>
+		<script src="js/defined.js"> </script>
+		<script src='js/player.js'> </script>
+		<script src='js/format.js'> </script>
+		<script src='js/game.js'> </script>
+		<script src='js/saving.js'> </script>
+		<script src='js/loop.js'> </script>
+		<script src='js/tabs.js'> </script>
+		<script src='js/theme.js'> </script>
+		<script src='js/hotkeys.js'> </script>
+		<script src='js/autobuyers.js'> </script>
+		<script src='js/notifications.js'> </script>
+		<script src='js/achievements.js'> </script>
 
+		<script src='js/quark/quarks.js'> </script>
+		<script src='js/quark/quark-generator.js'> </script>
+		<script src='js/quark/bosons.js'> </script>
+		<script src='js/quark/baryons.js'> </script>
+		<script src='js/quark/fermions.js'> </script>
 
-	<div id="scripts">
-		<script src="js/script-loader.js"></script>
-	</div>
+		<script src='js/protonic/protons.js'> </script>
+		<script src='js/protonic/protonic.js'> </script>
+		<script src='js/protonic/proton-upgrades.js'> </script>
+		<script src='js/protonic/neutron-generator.js'> </script>
+		<script src='js/protonic/neutrons.js'> </script>
+
+		<script src='js/update-display.js'> </script>
 
 </body>
 </html>

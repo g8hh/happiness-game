@@ -70,26 +70,8 @@ button {
 	margin: 0 3px;
 }
 
-#tabs > div:nth-child(1) > button:nth-child(1) {
-	background-color: #ff0;
-}
-
-#tabs > div:nth-child(1) > button:nth-child(2) {
-	background-color: #ff0;
-}
-
-#tabs > div:nth-child(1) > button:nth-child(3) {
-	background-color: #f0f;
-}
-
-#tabs > div:nth-child(1) > button:nth-child(4) {
-	background-color: #f0f;
-}
-
-#tabs > div:nth-child(1) > button:nth-child(5) {
-	background-color: #0ff;
-}
-
+#quark-btn, #autobuyer-btn { background-color: #ff0; }
+#t1, #t2 { background-color: #f0f; }
 
 button:focus {
 	outline: 1px auto black;
@@ -208,4 +190,26 @@ button:focus {
 	border-collapse: separate;
 	border-spacing: 34px 4px;
 	margin: auto;
+}
+
+#quark-challenges {
+	display: grid;
+	grid-template-columns: 425px 425px;
+	justify-content: center;
+}
+
+#quark-challenges > div {
+	border: 1px solid var(--text-color);
+	width: 400px;
+	height: 220px;
+	margin: 5px;
+	padding: 5px;
+}
+
+.uncompleted {
+	background: radial-gradient(red, var(--background-color));
+}
+
+.completed {
+	background: radial-gradient(lime, var(--background-color));
 }

@@ -45,6 +45,7 @@ let Protonic = {
 		Baryons.setAmount(0);
 		Fermions.setAmount(0);
 		Autobuyers.resetSlow();
+		Neutrons.setAmount(1);
 
 		player.highestQuarkGenerator = 0;
 		player.progress.protonic = true;

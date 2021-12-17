@@ -47,6 +47,7 @@ let Bosons = {
   	},
   	canBuy(n) {
   		n = (n===undefined) ? 1 : n;
+		if(Quarks.atLimit()) return false;
   		return Quarks.amount.gte(this.costFor(n));
   	},
   	buy(n) {
