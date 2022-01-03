@@ -20,6 +20,10 @@ div#body {
 	overflow: hidden;
 }
 
+div#link {
+	margin-bottom: 10px;
+}
+
 #header {
 	text-align: center;
 	padding: 5px;
