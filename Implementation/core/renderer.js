@@ -16,7 +16,9 @@ class Renderer {
 				ele.classList.add("card");												// add card class for styling
 				ele.classList.add("player-card");										// add player-card class for further styling 
 				ele.classList.add(card.suit);											// add the suit for colouring
-				ele.onclick = (() => Game.callback(card, 'player'));					// add a callback for when it is clicked				
+				if(card == Game.player.held_card) ele.classList.add('bold');
+				ele.onclick = (() => Game.callback(card, 'player'));					// add a callback for when it is clicked	
+				ele.oncontextmenu = (() => {Game.player.swap_card(card); return false});
 				ele.innerHTML = card.suit + "<br>" + card.value;						// set the text to display what card it is 
 				this.player.appendChild(ele);											// append it to the drawing space
 			}

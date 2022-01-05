@@ -14,10 +14,10 @@ class Rummy {
 		Saving.clear_game();
 	}
 	load_game(data) {
-		this.player = new Player(data.player.cards);
-		this.opponent = new Opponent(data.opponent.cards);
-		this.pickup = data.pickup;
-		this.pile = data.pile;
+		this.player = new Player(data.player.cards.map((x) => (new Card(x.id))));
+		this.opponent = new Opponent(data.opponent.cards.map((x) => (new Card(x.id))));
+		this.pickup = data.pickup.map((x) => (new Card(x.id)));
+		this.pile = data.pile.map((x) => (new Card(x.id)));
 		this.state = data.state;
 		this.time_started = data.time_started;
 		this.time_played = data.time_played;
@@ -92,6 +92,7 @@ class Rummy {
 			this.render()
 			this.opponent.generate_move();
 			Statistics.stats.totalCards++;
+			if(!Game.player.cards.includes(Game.player.held_card)) Game.player.held_card = '';
 		}
 	}
 };

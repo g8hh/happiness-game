@@ -2,6 +2,7 @@ class Player {
 	constructor(cards) {
 		this.cards = cards;
 		this.name = 'player';
+		this.held_card = '';
 	}
 	add_card(card) {
 		this.cards.push(card);
@@ -47,7 +48,6 @@ class Player {
 		this.sort_by_suit();
 		this.sort_by_value();
 	}
-	
 	valid_runs() { 
 		let completed_runs = this.raw_valid_runs();
 		
@@ -146,5 +146,29 @@ class Player {
 		
 		values = values.filter(x => x.length>2);
 		return values;
+	}
+	
+	swap_card(card) {
+		if(this.held_card == '') { 
+			this.held_card = card;
+			Game.render();
+		} else if(this.held_card instanceof Card) {
+			if(this.held_card == card) {
+				this.held_card = '';
+				Game.render();
+				return;
+			} else {
+				this.swap(this.held_card, card);
+				this.held_card = '';
+				Game.render();
+			}
+		}
+	}
+	
+	swap(card1, card2) {
+		let index1 = this.cards.indexOf(card1);
+		let index2 = this.cards.indexOf(card2);
+		
+		[this.cards[index1], this.cards[index2]] = [this.cards[index2], this.cards[index1]];
 	}
 };

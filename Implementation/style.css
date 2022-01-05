@@ -27,6 +27,7 @@ html {
 	overflow: auto;
 	position: relative;
 	min-width: 700px;
+	border-radius: 5px;
 }
 
 #header {
@@ -196,6 +197,10 @@ span {
 	cursor: pointer;
 }
 
+.bold {
+	outline: 1px auto black;
+}
+
 .pile-card, .opponent-card {
 	background: #888;
 	color: #888;
@@ -203,7 +208,6 @@ span {
 
 #test {
 	display: block;
-	width: calc(40px*7);
 	margin: auto;
 	padding: 10px;
 }
