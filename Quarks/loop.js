@@ -14,13 +14,13 @@ let gameLoop = function(diff, doUpdate, isOnline) {
 	}
 	isOnline = isOnline ?? true;
 
-	player.quarks = player.quarks.plus(Accelerator.quarksPerSecond() * diff);
-	player.accelerator.protons = player.accelerator.protons.plus(Accelerator.elementPerSecond('proton').times(diff));
-	player.accelerator.neutrons = player.accelerator.neutrons.plus(Accelerator.elementPerSecond('neutron').times(diff));
-	player.accelerator.electrons = player.accelerator.electrons.plus(Accelerator.elementPerSecond('electron').times(diff));
-	player.accelerator.hydrogen = player.accelerator.hydrogen.plus(Hydrogen.perSecond().times(diff));
+	player.quarks = player.quarks.plus(Elements.quarksPerSecond() * diff);
+	player.elements.protons = player.elements.protons.plus(Elements.elementPerSecond('proton').times(diff));
+	player.elements.neutrons = player.elements.neutrons.plus(Elements.elementPerSecond('neutron').times(diff));
+	player.elements.electrons = player.elements.electrons.plus(Elements.elementPerSecond('electron').times(diff));
+	player.elements.hydrogen = player.elements.hydrogen.plus(Hydrogen.perSecond().times(diff));
 	
-	Accelerator.autobuy();
+	Elements.autobuy();
 
 	Statistics.update(diff);
 

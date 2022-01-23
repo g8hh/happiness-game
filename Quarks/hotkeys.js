@@ -3,13 +3,13 @@ let Hotkeys = {
 		if(!player.options.hotkeys) return;
  		switch(event.key) {
 			case 'p':
-				Accelerator.createElement('proton');
+				Elements.createElement('proton');
 				break;
 			case 'n':
-				Accelerator.createElement('neutron');
+				Elements.createElement('neutron');
 				break;
 			case 'e':
-				Accelerator.createElement('electron');
+				Elements.createElement('electron');
 				break;
 			case 'h':
 				Hydrogen.gain();

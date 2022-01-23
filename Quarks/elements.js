@@ -1,16 +1,16 @@
-let Accelerator = {
+let Elements = {
 	unlocked() {
-		return player.accelerator.unlocked;
+		return player.elements.unlocked;
 	},
 	particlesUnlocked() {
-		return player.accelerator.particlesUnlocked;
+		return player.elements.particlesUnlocked;
 	},
 	canUnlock() {
 		return player.quarks.gte(10);
 	},
 	unlock() {
 		if(!this.canUnlock()) return;
-		player.accelerator.unlocked = true;
+		player.elements.unlocked = true;
 		player.quarks = player.quarks.minus(10);
 		Achievements.give(0);
 	},
@@ -25,27 +25,27 @@ let Accelerator = {
 	},
 	unlockParticles() {
 		if(!this.canUnlockParticles()) return;
-		player.accelerator.particlesUnlocked = true;
+		player.elements.particlesUnlocked = true;
 		Achievements.give(6);
 	},
 	setAutobuy(value) {
 		if(!typeof value === 'bool') return;
-		player.accelerator.elementUpgradeAutobuy = value;
+		player.elements.elementUpgradeAutobuy = value;
 	},
 	createElement(type) {
 		if(type === 'proton') {
 			if(player.quarks.lt(3)) return;
-			player.accelerator.protons = player.accelerator.protons.plus(this.elementGain('proton'));
+			player.elements.protons = player.elements.protons.plus(this.elementGain('proton'));
 			player.stats.totalProtons = player.stats.totalProtons.plus(this.elementGain('proton'));
 			player.quarks = player.quarks.minus(3);
 		} else if (type === 'neutron') {
 			if(player.quarks.lt(3)) return;
-			player.accelerator.neutrons = player.accelerator.neutrons.plus(this.elementGain('neutron'));
+			player.elements.neutrons = player.elements.neutrons.plus(this.elementGain('neutron'));
 			player.stats.totalNeutrons = player.stats.totalNeutrons.plus(this.elementGain('neutron'));
 			player.quarks = player.quarks.minus(3);
 		} else if (type === 'electron') {
 			if(player.quarks.lt(1)) return;
-			player.accelerator.electrons = player.accelerator.electrons.plus(this.elementGain('electron'));
+			player.elements.electrons = player.elements.electrons.plus(this.elementGain('electron'));
 			player.stats.totalElectrons = player.stats.totalElectrons.plus(this.elementGain('electron'));
 			player.quarks = player.quarks.minus(1);
 		} else {
@@ -58,7 +58,7 @@ let Accelerator = {
 		// to ensure a.times(b) works while reducing the lists.
 		if(type === 'proton') {
 			let factors = [
-				new Decimal(1), player.accelerator.protons.plus(1).log2() / 16 + 1,
+				new Decimal(1), player.elements.protons.plus(1).log2() / 16 + 1,
 				this.multiplier('neutron'), neutronUpgrades.effect(0),
 				Hydrogen.multiplier(),
 			];
@@ -71,7 +71,7 @@ let Accelerator = {
 			return mult.pow(powFactors.reduce((a,b) => a.times(b)));
 		} else if (type === 'neutron') {
 			let factors = [
-				new Decimal(1), player.accelerator.neutrons.plus(1).log2() / 16 + 1,
+				new Decimal(1), player.elements.neutrons.plus(1).log2() / 16 + 1,
 				Hydrogen.multiplier(),
 			];
 			let powFactors = [
@@ -82,7 +82,7 @@ let Accelerator = {
 			return mult.pow(powFactors.reduce((a,b) => a.times(b)));
 		} else if(type === 'electron') {
 			let factors = [
-				new Decimal(1), player.accelerator.electrons.plus(1).log2() / 16 + 1,
+				new Decimal(1), player.elements.electrons.plus(1).log2() / 16 + 1,
 				this.multiplier('neutron'), neutronUpgrades.effect(1), electronUpgrades.effect(0),
 				Hydrogen.multiplier(),
 			];
@@ -120,12 +120,12 @@ let Accelerator = {
 		}
 	},
 	resetElementCounts() {
-		player.accelerator.protons = new Decimal(0);
-		player.accelerator.neutrons = new Decimal(0);
-		player.accelerator.electrons = new Decimal(0);
+		player.elements.protons = new Decimal(0);
+		player.elements.neutrons = new Decimal(0);
+		player.elements.electrons = new Decimal(0);
 	},
 	totalElements() {
-		return player.accelerator.protons.plus(player.accelerator.neutrons).plus(player.accelerator.electrons);
+		return player.elements.protons.plus(player.elements.neutrons).plus(player.elements.electrons);
 	},
 	quarksPerSecond() {
 		let factors = [
@@ -156,7 +156,7 @@ let Accelerator = {
 		}
 	},
 	autobuy() {
-		if(!hydrogenUpgrade(3).atMaxLevel() || !player.accelerator.elementUpgradeAutobuy) return;
+		if(!hydrogenUpgrade(3).atMaxLevel() || !player.elements.elementUpgradeAutobuy) return;
 		elementUpgrades.buyAll();
 	},
 };
@@ -184,9 +184,9 @@ let elementUpgrades = {
 	reset() {
 		let passiveGain = hydrogenUpgrade(4).atMaxLevel();
 		let upgradeGain = hydrogenUpgrade(5).atMaxLevel();
-		player.accelerator.protonUpgrades = [upgradeGain,upgradeGain,upgradeGain,passiveGain];
-		player.accelerator.neutronUpgrades = [upgradeGain,upgradeGain,upgradeGain,passiveGain];
-		player.accelerator.electronUpgrades = [upgradeGain,upgradeGain,upgradeGain,passiveGain];
+		player.elements.protonUpgrades = [upgradeGain,upgradeGain,upgradeGain,passiveGain];
+		player.elements.neutronUpgrades = [upgradeGain,upgradeGain,upgradeGain,passiveGain];
+		player.elements.electronUpgrades = [upgradeGain,upgradeGain,upgradeGain,passiveGain];
 	},
 	buyAll() {
 		for(i=0;i<4;i++){
@@ -201,22 +201,22 @@ let protonUpgrade = function(i) {
 	if(Game.defined.protonUpgrade) return protonUpgrades.get(i);
 	return {
 		bought() {
-			return player.accelerator.protonUpgrades[i];
+			return player.elements.protonUpgrades[i];
 		},
 		canSee() {
 			if(i==0 && !this.bought()) return true;
 			return !this.bought() && protonUpgrade(i-1).bought();
 		},
 		canBuy() {
-			return player.accelerator.protons.gte(this.cost()) && !this.bought();
+			return player.elements.protons.gte(this.cost()) && !this.bought();
 		},
 		cost() {
 			return elementUpgradeCosts[i];
 		},
 		buy() {
 			if(!this.canBuy()) return;
-			player.accelerator.protons = player.accelerator.protons.minus(this.cost());
-			player.accelerator.protonUpgrades[i] = true;
+			player.elements.protons = player.elements.protons.minus(this.cost());
+			player.elements.protonUpgrades[i] = true;
 			Achievements.give(1);
 			Achievements.give(3);
 			Achievements.give(5);
@@ -255,22 +255,22 @@ let neutronUpgrade = function(i) {
 	if(Game.defined.neutronUpgrade) return neutronUpgrades.get(i);
 	return {
 		bought() {
-			return player.accelerator.neutronUpgrades[i];
+			return player.elements.neutronUpgrades[i];
 		},
 		canSee() {
 			if(i==0 && !this.bought()) return true;
 			return !this.bought() && neutronUpgrade(i-1).bought();
 		},
 		canBuy() {
-			return player.accelerator.neutrons.gte(this.cost()) && !this.bought();;
+			return player.elements.neutrons.gte(this.cost()) && !this.bought();;
 		},
 		cost() {
 			return elementUpgradeCosts[i];
 		},
 		buy() {
 			if(!this.canBuy()) return;
-			player.accelerator.neutrons = player.accelerator.neutrons.minus(this.cost());
-			player.accelerator.neutronUpgrades[i] = true;
+			player.elements.neutrons = player.elements.neutrons.minus(this.cost());
+			player.elements.neutronUpgrades[i] = true;
 			Achievements.give(1);
 			Achievements.give(3);
 			Achievements.give(5);
@@ -297,22 +297,22 @@ let electronUpgrade = function(i) {
 	if(Game.defined.electronUpgrade) return electronUpgrades.get(i);
 	return {
 		bought() {
-			return player.accelerator.electronUpgrades[i];
+			return player.elements.electronUpgrades[i];
 		},
 		canSee() {
 			if(i==0 && !this.bought()) return true;
 			return !this.bought() && electronUpgrade(i-1).bought();
 		},
 		canBuy() {
-			return player.accelerator.electrons.gte(this.cost()) && !this.bought();;
+			return player.elements.electrons.gte(this.cost()) && !this.bought();;
 		},
 		cost() {
 			return elementUpgradeCosts[i];
 		},
 		buy() {
 			if(!this.canBuy()) return;
-			player.accelerator.electrons = player.accelerator.electrons.minus(this.cost());
-			player.accelerator.electronUpgrades[i] = true;
+			player.elements.electrons = player.elements.electrons.minus(this.cost());
+			player.elements.electronUpgrades[i] = true;
 			Achievements.give(1);
 			Achievements.give(3);
 			Achievements.give(5);
@@ -322,7 +322,7 @@ let electronUpgrade = function(i) {
 
 let electronUpgrades = {
 	list: [...Array(4)].map((_,i) => electronUpgrade(i)),
-	effects: [2, 1.1, () => (Accelerator.multiplier('electron'))],
+	effects: [2, 1.1, () => (Elements.multiplier('electron'))],
 	get(i) {
 		return this.list[i];
 	},
@@ -342,27 +342,27 @@ Game.defined.electronUpgrade = true;
 
 let Hydrogen = {
 	amount() {
-		return player.accelerator.hydrogen;
+		return player.elements.hydrogen;
 	},
 	perSecond() {
-		if(!hydrogenUpgrade(6).atMaxLevel()) return;
+		if(!hydrogenUpgrade(6).atMaxLevel()) return new Decimal(0);
 		return this.gainAmount().times(0.1);
 	},
 	gain() {
 		if(!this.canGain()) return;
-		player.accelerator.hydrogen = player.accelerator.hydrogen.add(this.gainAmount());
+		player.elements.hydrogen = player.elements.hydrogen.add(this.gainAmount());
 		player.stats.totalHydrogen = player.stats.totalHydrogen.add(this.gainAmount());
-		Accelerator.resetElementCounts();
+		Elements.resetElementCounts();
 		elementUpgrades.reset();
 		player.quarks = new Decimal(0);
 		Achievements.give(7);
 		Achievements.give(9);
 	},
 	canGain() {
-		return Accelerator.particlesUnlocked() && elementUpgrades.allBought();
+		return Elements.particlesUnlocked() && elementUpgrades.allBought();
 	},
 	gainAmount() {
-		return Decimal.times(Accelerator.totalElements().max(1).log2() / 8, hydrogenUpgrade(1).effect());
+		return Decimal.times(Elements.totalElements().max(1).log2() / 8, hydrogenUpgrade(1).effect());
 	},
 	gainMultiplier() {
 		return Decimal.div(this.gainAmount(), this.amount().eq(0) ? 1 : this.amount());
@@ -376,7 +376,7 @@ let hydrogenUpgrade = function(i) {
 	if(Game.defined.hydrogenUpgrade) return hydrogenUpgrades.get(i);
 	return {
 		bought() {
-			return player.accelerator.hydrogenUpgrades[i];
+			return player.elements.hydrogenUpgrades[i];
 		},
 		visible() {
 			// Only for hydrogen upgrade 4, 5, and 6
@@ -402,15 +402,15 @@ let hydrogenUpgrade = function(i) {
 			return this.cost().times(this.costIncrease().pow(n).minus(1)).div(this.costIncrease().minus(1));
 		},
 		maxBuyable() {
-			return Math.min(Math.floor(Decimal.log(player.accelerator.hydrogen.times(this.costIncrease().minus(1)).div(this.cost()).plus(1),this.costIncrease())),this.maxLevel()-this.bought());
+			return Math.min(Math.floor(Decimal.log(player.elements.hydrogen.times(this.costIncrease().minus(1)).div(this.cost()).plus(1),this.costIncrease())),this.maxLevel()-this.bought());
 		},
 		canBuy(n) {
-			return player.accelerator.hydrogen.gte(this.costFor(n)) && this.bought()+n <= this.maxLevel();
+			return player.elements.hydrogen.gte(this.costFor(n)) && this.bought()+n <= this.maxLevel();
 		},
 		buy(n) {
 			if(!this.canBuy(n)) return;
-			player.accelerator.hydrogen = player.accelerator.hydrogen.sub(this.costFor(n));
-			player.accelerator.hydrogenUpgrades[i]+=n;
+			player.elements.hydrogen = player.elements.hydrogen.sub(this.costFor(n));
+			player.elements.hydrogenUpgrades[i]+=n;
 			Achievements.give(7);
 		},
 		buyMax() {

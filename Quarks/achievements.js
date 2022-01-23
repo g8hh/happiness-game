@@ -1,9 +1,9 @@
 let Achievements = {
 	criteria: [
-		() => (player.accelerator.unlocked), () => (elementUpgrades.anyBought()),
+		() => (player.elements.unlocked), () => (elementUpgrades.anyBought()),
 		() => (player.stats.totalQuarks.gte(2**16)), () => (elementUpgrades.hasPassive(false)),
-		() => (Accelerator.quarksPerSecond().gte(100)), () => (elementUpgrades.hasPassive(true)),
-		() => (player.accelerator.particlesUnlocked), () => (player.accelerator.hydrogen.gt(0)),
+		() => (Elements.quarksPerSecond().gte(100)), () => (elementUpgrades.hasPassive(true)),
+		() => (player.elements.particlesUnlocked), () => (player.elements.hydrogen.gt(0)),
 		() => (hydrogenUpgrade(4).atMaxLevel()), () => (player.stats.totalHydrogen.gte(2**16)),
 	],
 	names: [

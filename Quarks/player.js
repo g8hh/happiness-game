@@ -1,6 +1,6 @@
 let player = {
 	quarks: new Decimal(0),
-	accelerator: {
+	elements: {
 		unlocked: false,
 		particlesUnlocked: false,
 		protons: new Decimal(0),
@@ -49,10 +49,10 @@ let player = {
 
 let Statistics = {
 	update(diff) {
-		player.stats.totalQuarks = player.stats.totalQuarks.plus(Accelerator.quarksPerSecond() * diff);
-		player.stats.totalProtons = player.stats.totalProtons.plus(Accelerator.elementPerSecond('proton').times(diff));
-		player.stats.totalNeutrons = player.stats.totalNeutrons.plus(Accelerator.elementPerSecond('neutron').times(diff));
-		player.stats.totalElectrons = player.stats.totalElectrons.plus(Accelerator.elementPerSecond('electron').times(diff));
+		player.stats.totalQuarks = player.stats.totalQuarks.plus(Elements.quarksPerSecond() * diff);
+		player.stats.totalProtons = player.stats.totalProtons.plus(Elements.elementPerSecond('proton').times(diff));
+		player.stats.totalNeutrons = player.stats.totalNeutrons.plus(Elements.elementPerSecond('neutron').times(diff));
+		player.stats.totalElectrons = player.stats.totalElectrons.plus(Elements.elementPerSecond('electron').times(diff));
 		player.stats.totalTime += diff;
 	},
 };

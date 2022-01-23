@@ -16,7 +16,8 @@
 		<script src="main.js"></script>
 		<script src="loop.js"></script>
 		<script src="tabs.js"></script>
-		<script src="accelerator.js"></script>
+		<script src="elements.js"></script>
+		<script src="stars.js"></script>
 	</head>
 	<body>
 		<div id="notifications"></div>
@@ -27,23 +28,24 @@
 			<div> <button onclick="Saving.speedUpOfflineTime()">Speed up offline time</button> </div>
 		</div>
 		<div id="main" style="display: none">
-			<div> You have <span id="e0">0</span> quarks. </div> <br>
+			<div> You have <span id="e0">0</span> quarks. </div>
+			<div id="b23">Reach <span id="e57"></span> hydrogen to unlock stars.</div><br>
 			<div id="tab-btns">
 				<span> <button id="main-tab-btn" onclick="Tabs.showTab('main')"> Main </button> </span>
 				<span> <button onclick="Tabs.showTab('options')"> Options </button> <button onclick="Tabs.showTab('statistics')"> Statistics </button> <button onclick="Tabs.showTab('achievements')">Achievements</button></span>
 			</div> <br>
 			<div id="main-tab" style="display:none">
 				<div> You have <span id="e1">0</span> quarks. You are gaining <span id="e7">0</span> quark<span id="e15"></span> per second. </div>
-				<div id="b19">Automatically buy element upgrades: <input id="e46" type="checkbox" onchange="Accelerator.setAutobuy(this.checked)"> </div>
+				<div id="b19">Automatically buy element upgrades: <input id="e46" type="checkbox" onchange="Elements.setAutobuy(this.checked)"> </div>
 				<br>
-				<div><button id="b0" onclick="Accelerator.unlock()">Unlock elements <br> 10 quarks</button></div>
+				<div><button id="b0" onclick="Elements.unlock()">Unlock elements <br> 10 quarks</button></div>
 				<div id="b1">
 					<div class="accelerator-table">
 						<div>
-							<div class='tab-header'>Protons</div>
+							<div class='tab-subheader'>Protons</div>
 							<div>You have <span id="e4">0</span> protons<span id="e18"></span>,</div>
 							<div>multiplying quark gain by <span id="e8">1.000</span>.</div>
-							<div><button id="e11" onclick="Accelerator.createElement('proton')">Create a proton out of 3 quarks</button></div>
+							<div><button id="e11" onclick="Elements.createElement('proton')">Create a proton out of 3 quarks</button></div>
 							<br><div>
 								<button id="b2" onclick="protonUpgrade(0).buy()">Multiply quark gain by 2.000<br>100 protons</button>
 								<button id="b3" onclick="protonUpgrade(1).buy()">Raise quark gain to ^1.200<br>500 protons</button>
@@ -52,10 +54,10 @@
 							</div>
 						</div>
 						<div>
-							<div class="tab-header">Neutrons</div>
+							<div class="tab-subheader">Neutrons</div>
 							<div>You have <span id="e5">0</span> neutrons<span id="e19"></span>,</div>
 							<div>multiplying other multipliers by <span id="e9">1.000</span>.</div>
-							<div><button id="e12" onclick="Accelerator.createElement('neutron')">Create a neutron out of 3 quarks</button></div>
+							<div><button id="e12" onclick="Elements.createElement('neutron')">Create a neutron out of 3 quarks</button></div>
 							<br><div>
 								<button id="b5" onclick="neutronUpgrade(0).buy()">Multiply other multipliers by 2.000<br>100 neutrons</button>
 								<button id="b6" onclick="neutronUpgrade(1).buy()">Raise all multipliers to ^1.050<br>500 neutrons</button>
@@ -64,10 +66,10 @@
 							</div>
 						</div>
 						<div>
-							<div class="tab-header">Electrons</div>
+							<div class="tab-subheader">Electrons</div>
 							<div>You have <span id="e6">0</span> electrons<span id="e21"></span>,</div>
 							<div>multiplying other element gain by <span id="e10">1.000</span>.</div>
-							<div><button id="e13" onclick="Accelerator.createElement('electron')">Create an electron out of 1 quark</button></div>
+							<div><button id="e13" onclick="Elements.createElement('electron')">Create an electron out of 1 quark</button></div>
 							<br><div>
 								<button id="b10" onclick="electronUpgrade(0).buy()">Multiply electron multiplier by 2.000<br>100 electrons</button>
 								<button id="b11" onclick="electronUpgrade(1).buy()">Raise other element gain to ^1.100<br>500 electrons</button>
@@ -76,7 +78,7 @@
 							</div>
 						</div>
 					</div>
-					<div><button id="b14" onclick="Accelerator.unlockParticles()">Unlock elements<br><span id="e22">0</span>/<span id="e23">0</span> total particles</button></div>
+					<div><button id="b14" onclick="Elements.unlockParticles()">Unlock elements<br><span id="e22">0</span>/<span id="e23">0</span> total particles</button></div>
 					<div id="b15">
 						<br><div class="tab-header">Particles</div>
 						<div>You have <span id="e25">0.000</span> hydrogen particles, multiplying all element effects by <span id="e26">1.000</span>.</div>
