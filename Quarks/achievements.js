@@ -4,7 +4,7 @@ let Achievements = {
 		() => (player.stats.totalQuarks.gte(2**16)), () => (elementUpgrades.hasPassive(false)),
 		() => (Accelerator.quarksPerSecond().gte(100)), () => (elementUpgrades.hasPassive(true)),
 		() => (player.accelerator.particlesUnlocked), () => (player.accelerator.hydrogen.gt(0)),
-		() => (hydrogenUpgrade(4).atMaxLevel()), () => (player.accelerator.hydrogen.gte(2**16)),
+		() => (hydrogenUpgrade(4).atMaxLevel()), () => (player.stats.totalHydrogen.gte(2**16)),
 	],
 	names: [
 		'The beginning', 'Getting an upgrade', 'Start of an era', 'This is getting better', 'Real speed',

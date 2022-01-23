@@ -160,6 +160,10 @@ let Saving = {
 		player.stats.totalTime = player.stats.totalTime ?? 0;
 		player.stats.onlineTime = player.stats.onlineTime ?? 0;
 		player.stats.totalQuarks = new Decimal(player.stats.totalQuarks) ?? new Decimal(0);
+		player.stats.totalProtons = new Decimal(player.stats.totalProtons) ?? new Decimal(0);
+		player.stats.totalNeutrons = new Decimal(player.stats.totalNeutrons) ?? new Decimal(0);
+		player.stats.totalElectrons = new Decimal(player.stats.totalElectrons) ?? new Decimal(0);
+		player.stats.totalHydrogen = new Decimal(player.stats.totalHydrogen) ?? new Decimal(0);
 		player.achievements = player.achievements ?? [...Array(8)].map((x) => false);
 		player.tab = player.tab ?? 'main';
 		player.lastUpdate = player.lastUpdate ?? Date.now();

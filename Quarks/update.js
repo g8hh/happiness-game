@@ -63,6 +63,11 @@ function update() {
 	e[49].innerText = formatInt(Achievements.multiplier());
 	e[50].innerText = formatInt(Decimal.pow(2,16));
 	e[51].innerText = formatInt(Decimal.pow(2,16));
+	e[52].innerText = formatInt(player.stats.totalProtons);
+	e[53].innerText = formatInt(player.stats.totalNeutrons);
+	e[54].innerText = formatInt(player.stats.totalElectrons);
+	e[55].innerText = formatInt(hydrogenUpgrade(6).cost())+" H";
+	e[56].innerText = formatInt(Hydrogen.perSecond());
 
 	e[11].style.backgroundColor = player.quarks.gte(3) ? '#aaa' : '#666';
 	e[12].style.backgroundColor = player.quarks.gte(3) ? '#aaa' : '#666';
@@ -77,6 +82,7 @@ function update() {
 	e[44].style.backgroundColor = hydrogenUpgrade(3).canBuy(1) ? '#aaa' : '#666';
 	e[45].style.backgroundColor = hydrogenUpgrade(4).canBuy(1) ? '#aaa' : '#666';
 	e[47].style.backgroundColor = hydrogenUpgrade(5).canBuy(1) ? '#aaa' : '#666';
+	e[55].style.backgroundColor = hydrogenUpgrade(6).canBuy(1) ? '#aaa' : '#666';
 	b[0].style.backgroundColor = Accelerator.canUnlock() ? '#aaa' : '#666';
 	b[2].style.backgroundColor = protonUpgrade(0).canBuy() ? '#aaa' : '#666';
 	b[3].style.backgroundColor = protonUpgrade(1).canBuy() ? '#aaa' : '#666';
@@ -110,7 +116,9 @@ function update() {
 	b[15].style.display = Accelerator.particlesUnlocked() ? '' : 'none';
 	b[16].style.display = hydrogenUpgrade(2).atMaxLevel() ? 'none' : '';
 	b[17].style.display = hydrogenUpgrade(3).atMaxLevel() ? 'none' : '';
-	b[18].style.display = hydrogenUpgrade(4).atMaxLevel() ? 'none' : '';
+	b[18].style.display = hydrogenUpgrade(4).visible() ? '' : 'none';
 	b[19].style.display = hydrogenUpgrade(3).atMaxLevel() ? '' : 'none';
 	b[20].style.display = hydrogenUpgrade(5).visible() ? '' : 'none';
+	b[21].style.display = hydrogenUpgrade(6).visible() ? '' : 'none';
+	b[22].style.display = hydrogenUpgrade(6).atMaxLevel() ? '' : 'none';
 }

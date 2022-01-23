@@ -79,7 +79,8 @@
 					<div><button id="b14" onclick="Accelerator.unlockParticles()">Unlock elements<br><span id="e22">0</span>/<span id="e23">0</span> total particles</button></div>
 					<div id="b15">
 						<br><div class="tab-header">Particles</div>
-						<div>You have <span id="e25">0.000</span> hydrogen particles, multiplying all element effects by <span id="e26">1.000</span></div><br>
+						<div>You have <span id="e25">0.000</span> hydrogen particles, multiplying all element effects by <span id="e26">1.000</span>.</div>
+						<div id="b22">You are gaining <span id="e56"></span> hydrogen per second.</div><br>
 						<div><button id="e27" onclick="Hydrogen.gain()">
 							Reset all elements and gain hydrogen<br>
 							(+<span id="e24">0.000</span> hydrogen, x<span id="e28">1.000</span> amount)</button>
@@ -131,6 +132,13 @@
 										<td><button id="e47" onclick="hydrogenUpgrade(5).buy(1)"></button></td>
 										<td></td>
 									</tr>
+									<tr id="b21">
+										<td>Passively gain 10% of hydrogen on gain:</td>
+										<td></td>
+										<td></td>
+										<td><button id="e55" onclick="hydrogenUpgrade(6).buy(1)"></button></td>
+										<td></td>
+									</tr>
 								</table>
 							</div> 
 							<div style='display:none'>
@@ -145,6 +153,7 @@
 				<div> You have spent <span id="e2"> </span> in this game (including time offline). </div>
 				<div> You have spent <span id="e3"> </span> in this game. </div> <br>
 				<div> You have made a total of <span id="e14">0</span> quarks. </div>
+				<div> You have made a total of <span id="e52"></span> protons, <span id="e53"></span> neutrons, and <span id="e54"></span> electrons. </div>
 			</div>
 			<div id="achievements-tab" style="display:none">
 				<div class="tab-header"> Achievements </div>
@@ -159,16 +168,16 @@
 				</div><br>
 				<table id="achievement-table">
 					<tr>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock elements</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Buy any element upgrade</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Make more than <span id="e50"></span> total quarks</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Passively generate any element</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain more than 100 quarks per second</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Passively generate all elements</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock particles</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain hydrogen</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock autobuyers for element upgrades</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain more than <span id="e51"></span> hydrogen</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock elements.</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Buy any element upgrade.</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Make more than <span id="e50"></span> total quarks.</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Passively generate any element.</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain more than 100 quarks per second.</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Passively generate all elements.</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock particles.</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain hydrogen.</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock autobuyers for element upgrades.</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Have more than <span id="e51"></span> total hydrogen.</span></td>
 					</tr>
 				</table>
 			</div>

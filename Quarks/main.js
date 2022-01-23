@@ -1,7 +1,7 @@
 let Game = {
 	start() {
 		player.lastUpdate = Date.now();
-		updateDisplayPageSetup()
+		updateDisplayPageSetup();
 		update();
 		Notation.init();
 		Options.init();

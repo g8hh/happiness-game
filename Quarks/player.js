@@ -37,8 +37,22 @@ let player = {
 		totalTime: 0,
 		onlineTime: 0,
 		totalQuarks: new Decimal(0),
+		totalProtons: new Decimal(0),
+		totalNeutrons: new Decimal(0),
+		totalElectrons: new Decimal(0),
+		totalHydrogen: new Decimal(0),
 	},
 	achievements: [...Array(8)].map((x) => false),
 	tab: 'main',
 	lastUpdate: Date.now(),
+};
+
+let Statistics = {
+	update(diff) {
+		player.stats.totalQuarks = player.stats.totalQuarks.plus(Accelerator.quarksPerSecond() * diff);
+		player.stats.totalProtons = player.stats.totalProtons.plus(Accelerator.elementPerSecond('proton').times(diff));
+		player.stats.totalNeutrons = player.stats.totalNeutrons.plus(Accelerator.elementPerSecond('neutron').times(diff));
+		player.stats.totalElectrons = player.stats.totalElectrons.plus(Accelerator.elementPerSecond('electron').times(diff));
+		player.stats.totalTime += diff;
+	},
 };

@@ -18,11 +18,14 @@ let gameLoop = function(diff, doUpdate, isOnline) {
 	player.accelerator.protons = player.accelerator.protons.plus(Accelerator.elementPerSecond('proton').times(diff));
 	player.accelerator.neutrons = player.accelerator.neutrons.plus(Accelerator.elementPerSecond('neutron').times(diff));
 	player.accelerator.electrons = player.accelerator.electrons.plus(Accelerator.elementPerSecond('electron').times(diff));
+	player.accelerator.hydrogen = player.accelerator.hydrogen.plus(Hydrogen.perSecond().times(diff));
 	
 	Accelerator.autobuy();
 
-	player.stats.totalQuarks = player.stats.totalQuarks.plus(Accelerator.quarksPerSecond() * diff);
-	player.stats.totalTime += diff;
+	Statistics.update(diff);
+
+	Achievements.give(2);
+	Achievements.give(4);
 
 	if(doUpdate) update();
 	if(isOnline) player.stats.onlineTime += diff;
