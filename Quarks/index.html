@@ -92,55 +92,13 @@
 							<div>
 								<div class='tab-subheader'>Hydrogen upgrades</div>
 								<table>
-									<tr>
-										<td>Multiplier to all element gains:</td>
-										<td>+0.500</td>
-										<td><span id="e32">1.000</span> ⟶ <span id="e33">1.500</span></td>
-										<td><button id="e34" onclick="hydrogenUpgrade(0).buy(1)">1 H</button></td>
-										<td><button id="e35" onclick="hydrogenUpgrade(0).buyMax()">Max</button></td>
-									</tr>
-									<tr>
-										<td>Multiplier to hydrogen gain:</td>
-										<td>+1.000</td>
-										<td><span id="e36">1.000</span> ⟶ <span id="e37">2.000</span></td>
-										<td><button id="e38" onclick="hydrogenUpgrade(1).buy(1)">1 H</button></td>
-										<td><button id="e39" onclick="hydrogenUpgrade(1).buyMax()">Max</button></td>
-									</tr>
-									<tr id="b16">
-										<td>Increase passive element gains:</td>
-										<td>+10.000</td>
-										<td><span id="e40">10.000</span> ⟶ <span id="e41">20.000</span></td>
-										<td><button id="e42" onclick="hydrogenUpgrade(2).buy(1)"></button></td>
-										<td><button id="e43" onclick="hydrogenUpgrade(2).buyMax()">Max</button></td>										
-									</tr>
-									<tr id="b17">
-										<td>Autobuyer for element upgrades:</td>
-										<td></td>
-										<td></td>
-										<td><button id="e44" onclick="hydrogenUpgrade(3).buy(1)"></button></td>
-										<td></td>
-									</tr>
-									<tr id="b18">
-										<td>Keep passive gain on hydrogen gain:</td>
-										<td></td>
-										<td></td>
-										<td><button id="e45" onclick="hydrogenUpgrade(4).buy(1)"></button></td>
-										<td></td>
-									</tr>
-									<tr id='b20'>
-										<td>Keep all upgrades on hydrogen gain:</td>
-										<td></td>
-										<td></td>
-										<td><button id="e47" onclick="hydrogenUpgrade(5).buy(1)"></button></td>
-										<td></td>
-									</tr>
-									<tr id="b21">
-										<td>Passively gain 10% of hydrogen on gain:</td>
-										<td></td>
-										<td></td>
-										<td><button id="e55" onclick="hydrogenUpgrade(6).buy(1)"></button></td>
-										<td></td>
-									</tr>
+									<tr><td>Multiplier to all element gains:</td><td>+0.500</td><td><span id="e32">1.000</span> ⟶ <span id="e33">1.500</span></td><td><button id="e34" onclick="hydrogenUpgrade(0).buy(1)">1 H</button></td><td><button id="e35" onclick="hydrogenUpgrade(0).buyMax()">Max</button></td></tr>
+									<tr><td>Multiplier to hydrogen gain:</td><td>+1.000</td><td><span id="e36">1.000</span> ⟶ <span id="e37">2.000</span></td><td><button id="e38" onclick="hydrogenUpgrade(1).buy(1)">1 H</button></td><td><button id="e39" onclick="hydrogenUpgrade(1).buyMax()">Max</button></td></tr>
+									<tr id="b16"<td>Increase passive element gains:</td<td>+10.000</td<td><span id="e40">10.000</span> ⟶ <span id="e41">20.000</span></td<td><button id="e42" onclick="hydrogenUpgrade(2).buy(1)"></button></td<td><button id="e43" onclick="hydrogenUpgrade(2).buyMax()">Max</button></td>									</tr>
+									<tr id="b17"><td>Autobuyer for element upgrades:</td><td></td><td></td><td><button id="e44" onclick="hydrogenUpgrade(3).buy(1)"></button></td><td></td></tr>
+									<tr id="b18"><td>Keep passive gain on hydrogen gain:</td><td></td><td></td><td><button id="e45" onclick="hydrogenUpgrade(4).buy(1)"></button></td><td></td></tr>
+									<tr id='b20'><td>Keep all upgrades on hydrogen gain:</td><td></td><td></td><td><button id="e47" onclick="hydrogenUpgrade(5).buy(1)"></button></td><td></td></tr>
+									<tr id="b21"><td>Passively gain 10% of hydrogen on gain:</td><td></td><td></td><td><button id="e55" onclick="hydrogenUpgrade(6).buy(1)"></button></td><td></td>tr>
 								</table>
 							</div> 
 							<div style='display:none'>
@@ -215,8 +173,12 @@
 				<div class="options-btns">
 					<div>
 						<div>Notification options:</div>
-						<div>Saving: <select id="notification-options-saving" onchange="Options.setSavingNotifications(this.value)"><option>Always notify</option><option>Manual saves only</option><option>Never notify</option></select> <span class="tooltip">(?)<span class="tooltiptext">Always notify will notify for automatic saves too, every 10 seconds.</span></span> </div>
+						<div>Saving: <select id="notification-options-saving" onchange="Options.setSavingNotifications(this.value)"><option>Always notify</option><option>Manual saves only</option><option>Never notify</option></select> <span class="tooltip">(?)<span class="tooltiptext">Always notify will notify for automatic saves too, every <span id="e58">10 seconds</span>.</span></span> </div>
 						<div>Achievements: <select id="notification-options-achievements" onchange="Options.setAchievementNotifications(this.value)"><option>Always</option><option>Never</option></select></div>
+					</div>
+					<div>
+						<div>Auto-save timer: <input id="autosave-timer" type="number" min="10" onchange="Options.setAutosaveTimer(this.value)"></div>
+						<div>(Minimum of 10 seconds)</div>
 					</div>
 				</div><br>
 				<div><span class="tab-subheader">Hotkeys: </span> P: Gain protons, N: Gain neutrons, E: Gain electrons, H: Gain hydrogen. </div><br>

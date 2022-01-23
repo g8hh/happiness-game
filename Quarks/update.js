@@ -68,7 +68,8 @@ function update() {
 	e[54].innerText = formatInt(player.stats.totalElectrons);
 	e[55].innerText = formatInt(hydrogenUpgrade(6).cost())+" H";
 	e[56].innerText = formatInt(Hydrogen.perSecond());
-	e[57].innerText = formatInt(2.5e5);
+	e[57].innerText = formatInt(Stars.requirement());
+	e[58].innerText = timeFormat(player.options.autosaveTimer);
 
 	e[11].style.backgroundColor = player.quarks.gte(3) ? '#aaa' : '#666';
 	e[12].style.backgroundColor = player.quarks.gte(3) ? '#aaa' : '#666';

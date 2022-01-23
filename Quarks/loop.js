@@ -1,4 +1,5 @@
 let blocked = true;
+let lastSave = Date.now();
 
 let blockableGameLoop = function() {
 	if(!blocked) {
@@ -8,7 +9,7 @@ let blockableGameLoop = function() {
 
 let gameLoop = function(diff, doUpdate, isOnline) {
 	if(typeof diff !== 'number') {
-		let now = Date.now();
+		var now = Date.now();
 		diff = (now - player.lastUpdate)/1e3;
 		player.lastUpdate = now;
 	}
@@ -27,6 +28,10 @@ let gameLoop = function(diff, doUpdate, isOnline) {
 	Achievements.give(2);
 	Achievements.give(4);
 
+	if((now - lastSave)/1e3 > player.options.autosaveTimer) {
+		Saving.save(false);
+		lastSave = now;
+	}
 	if(doUpdate) update();
 	if(isOnline) player.stats.onlineTime += diff;
 }

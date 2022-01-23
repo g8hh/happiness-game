@@ -11,7 +11,6 @@ let Game = {
 		document.getElementById("main").style.display = "";
 		blocked = false;
 		setInterval(() => (blockableGameLoop()), 64);
-		setInterval(() => (Saving.save()), 10000);
 		addEventListener('keydown', (e) => (Hotkeys.callback(e)));
 	},
 	defined: {},

@@ -32,6 +32,7 @@ let player = {
 		achievementMultiplier: true,
 		viewCompletedRows: true,
 		viewQuestionRows: true,
+		autosaveTimer: 10,
 	},
 	stats: {
 		totalTime: 0,
