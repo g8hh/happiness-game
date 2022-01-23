@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Quarks</title>
+		<meta charset='UTF-8'>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<script src="decimal.min.js"></script>
+		<script src="notifications.js"></script>
+		<script src="achievements.js"></script>
+		<script src="options.js"></script>
+		<script src="update.js"></script>
+		<script src="saving.js"></script>
+		<script src="player.js"></script>
+		<script src="format.js"></script>
+		<script src="hotkeys.js"></script>
+		<script src="main.js"></script>
+		<script src="loop.js"></script>
+		<script src="tabs.js"></script>
+		<script src="accelerator.js"></script>
+	</head>
+	<body>
+		<div id="notifications"></div>
+		<div id="loading">
+			<div> The game is loading, and simulating offline time. </div>
+			<div> <span id="tick">0</span> / <span id="ticks">4096</span> ticks simulated. <br> <span id="time"></span> spent simulating ticks. </div> 
+			<div id="bar"><div id="inner-bar"></div></div> <br>
+			<div> <button onclick="Saving.speedUpOfflineTime()">Speed up offline time</button> </div>
+		</div>
+		<div id="main" style="display: none">
+			<div> You have <span id="e0">0</span> quarks. </div> <br>
+			<div id="tab-btns">
+				<span> <button id="main-tab-btn" onclick="Tabs.showTab('main')"> Main </button> </span>
+				<span> <button onclick="Tabs.showTab('options')"> Options </button> <button onclick="Tabs.showTab('statistics')"> Statistics </button> <button onclick="Tabs.showTab('achievements')">Achievements</button></span>
+			</div> <br>
+			<div id="main-tab" style="display:none">
+				<div> You have <span id="e1">0</span> quarks. You are gaining <span id="e7">0</span> quark<span id="e15"></span> per second. </div>
+				<div id="b19">Automatically buy element upgrades: <input id="e46" type="checkbox" onchange="Accelerator.setAutobuy(this.checked)"> </div>
+				<br>
+				<div><button id="b0" onclick="Accelerator.unlock()">Unlock elements <br> 10 quarks</button></div>
+				<div id="b1">
+					<div class="accelerator-table">
+						<div>
+							<div class='tab-header'>Protons</div>
+							<div>You have <span id="e4">0</span> protons<span id="e18"></span>,</div>
+							<div>multiplying quark gain by <span id="e8">1.000</span>.</div>
+							<div><button id="e11" onclick="Accelerator.createElement('proton')">Create a proton out of 3 quarks</button></div>
+							<br><div>
+								<button id="b2" onclick="protonUpgrade(0).buy()">Multiply quark gain by 2.000<br>100 protons</button>
+								<button id="b3" onclick="protonUpgrade(1).buy()">Raise quark gain to ^1.200<br>500 protons</button>
+								<button id="b4" onclick="protonUpgrade(2).buy()">Raise proton multiplier ^1.500<br><span id='e29'>2500</span> protons</button>
+								<button id="b8" onclick="protonUpgrade(3).buy()">Passively gain 10% of your protons on gain<br><span id="e16">2.500e3</span> protons</button>
+							</div>
+						</div>
+						<div>
+							<div class="tab-header">Neutrons</div>
+							<div>You have <span id="e5">0</span> neutrons<span id="e19"></span>,</div>
+							<div>multiplying other multipliers by <span id="e9">1.000</span>.</div>
+							<div><button id="e12" onclick="Accelerator.createElement('neutron')">Create a neutron out of 3 quarks</button></div>
+							<br><div>
+								<button id="b5" onclick="neutronUpgrade(0).buy()">Multiply other multipliers by 2.000<br>100 neutrons</button>
+								<button id="b6" onclick="neutronUpgrade(1).buy()">Raise all multipliers to ^1.050<br>500 neutrons</button>
+								<button id="b7" onclick="neutronUpgrade(2).buy()">Multiply all element gain by 2.000<br><span id='e30'>2500</span> neutrons</button>
+								<button id="b9" onclick="neutronUpgrade(3).buy()">Passively gain 10% of your neutrons on gain<br><span id="e17">2.500e3</span> neutrons</button>
+							</div>
+						</div>
+						<div>
+							<div class="tab-header">Electrons</div>
+							<div>You have <span id="e6">0</span> electrons<span id="e21"></span>,</div>
+							<div>multiplying other element gain by <span id="e10">1.000</span>.</div>
+							<div><button id="e13" onclick="Accelerator.createElement('electron')">Create an electron out of 1 quark</button></div>
+							<br><div>
+								<button id="b10" onclick="electronUpgrade(0).buy()">Multiply electron multiplier by 2.000<br>100 electrons</button>
+								<button id="b11" onclick="electronUpgrade(1).buy()">Raise other element gain to ^1.100<br>500 electrons</button>
+								<button id="b12" onclick="electronUpgrade(2).buy()">Electron multiplier affects electron gain<br><span id='e31'>200</span> electrons</button>
+								<button id="b13" onclick="electronUpgrade(3).buy()">Passively gain 10% of your electrons on gain<br><span id="e20">2.500e3</span> electrons</button>
+							</div>
+						</div>
+					</div>
+					<div><button id="b14" onclick="Accelerator.unlockParticles()">Unlock elements<br><span id="e22">0</span>/<span id="e23">0</span> total particles</button></div>
+					<div id="b15">
+						<br><div class="tab-header">Particles</div>
+						<div>You have <span id="e25">0.000</span> hydrogen particles, multiplying all element effects by <span id="e26">1.000</span></div><br>
+						<div><button id="e27" onclick="Hydrogen.gain()">
+							Reset all elements and gain hydrogen<br>
+							(+<span id="e24">0.000</span> hydrogen, x<span id="e28">1.000</span> amount)</button>
+							<div></div>
+						</div><br>
+						<div class='hydrogen-upgrades'>
+							<div>
+								<div class='tab-subheader'>Hydrogen upgrades</div>
+								<table>
+									<tr>
+										<td>Multiplier to all element gains:</td>
+										<td>+0.500</td>
+										<td><span id="e32">1.000</span> ⟶ <span id="e33">1.500</span></td>
+										<td><button id="e34" onclick="hydrogenUpgrade(0).buy(1)">1 H</button></td>
+										<td><button id="e35" onclick="hydrogenUpgrade(0).buyMax()">Max</button></td>
+									</tr>
+									<tr>
+										<td>Multiplier to hydrogen gain:</td>
+										<td>+1.000</td>
+										<td><span id="e36">1.000</span> ⟶ <span id="e37">2.000</span></td>
+										<td><button id="e38" onclick="hydrogenUpgrade(1).buy(1)">1 H</button></td>
+										<td><button id="e39" onclick="hydrogenUpgrade(1).buyMax()">Max</button></td>
+									</tr>
+									<tr id="b16">
+										<td>Increase passive element gains:</td>
+										<td>+10.000</td>
+										<td><span id="e40">10.000</span> ⟶ <span id="e41">20.000</span></td>
+										<td><button id="e42" onclick="hydrogenUpgrade(2).buy(1)"></button></td>
+										<td><button id="e43" onclick="hydrogenUpgrade(2).buyMax()">Max</button></td>										
+									</tr>
+									<tr id="b17">
+										<td>Autobuyer for element upgrades:</td>
+										<td></td>
+										<td></td>
+										<td><button id="e44" onclick="hydrogenUpgrade(3).buy(1)"></button></td>
+										<td></td>
+									</tr>
+									<tr id="b18">
+										<td>Keep passive gain on hydrogen gain:</td>
+										<td></td>
+										<td></td>
+										<td><button id="e45" onclick="hydrogenUpgrade(4).buy(1)"></button></td>
+										<td></td>
+									</tr>
+									<tr id='b20'>
+										<td>Keep all upgrades on hydrogen gain:</td>
+										<td></td>
+										<td></td>
+										<td><button id="e47" onclick="hydrogenUpgrade(5).buy(1)"></button></td>
+										<td></td>
+									</tr>
+								</table>
+							</div> 
+							<div style='display:none'>
+								<span class='tab-subheader'>Particle accelerator</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="options-tab" style="display:none">
+				<div class="tab-header"> Options </div> <br>
+				<div class="options-btns">
+					<button onclick="Saving.save(true)"> Save </button>
+					<button onclick="Saving.load(true)"> Load </button>
+					<button onclick="Saving.export()"> Export </button>
+				</div>
+				<div class="options-btns">
+					<button id="hotkeys-btn" onclick="Options.setHotkeys(this.innerText)"> Hotkeys: Enabled </button>
+					<button id="theme-btn" onclick="Options.setTheme(this.innerText)"> Theme: Dark </button>
+					<button onclick="Saving.reset()"> RESET THE GAME </button>
+				</div>
+				<div class="options-btns">
+					<div>
+						<div> Notation: <select id="notation-selection" onchange="Notation.set(this.value)"><option> Scientific </option><option> Engineering </option><option> Logarithm </option><option> Brackets </option><option> Infinity </option></select> </div>
+						<div> Normal precision: <input id="norm-precision" min="0" max="10" type="number" onchange="Notation.setNormalPrecision(this.value)"> </div>
+						<div> Higher precision: <input id="high-precision" min="0" max="10" type="number" onchange="Notation.setHigherPrecision(this.value)"> </div>
+					</div>
+					<div>
+						<div> Simulate offline time: <input id='simulate-time-setting' type='checkbox' onchange="Options.setOfflineTime(this.checked)"> </div>
+						<div> Offline ticks: <input id='simulate-time-ticks' type='number' min='16' max='65536' onchange="Options.setOfflineTicks(this.value)"> </div>
+						<div> (Can be between 16 and 65536 ticks) </div>
+					</div>
+					<div>
+						<div> Time format: <select id="time-format-setting" onchange="Notation.setTimeFormat(this.value)"> <option>D:H:M:S</option><option>Seconds</option><option>Largest unit</option></select></div>
+						<div> Notation on times: <input id='notations-on-time' type='checkbox' onchange='Notation.setNotationOnTime(this.checked)'> </div>
+						<div> Commas on exponents: <input id='commas-on-exponents' type='checkbox' onchange="Notation.setCommasOnExponents(this.checked)"> </div>
+					</div>
+				</div>
+				<div class="options-btns">
+					<div>
+						<div>Notification options:</div>
+						<div>Saving: <select id="notification-options-saving" onchange="Options.setSavingNotifications(this.value)"><option>Always notify</option><option>Manual saves only</option><option>Never notify</option></select> <span class="tooltip">(?)<span class="tooltiptext">Always notify will notify for automatic saves too, every 10 seconds.</span></span> </div>
+						<div>Achievements: <select id="notification-options-achievements" onchange="Options.setAchievementNotifications(this.value)"><option>Always</option><option>Never</option></select></div>
+					</div>
+				</div><br>
+				<div><span class="tab-subheader">Hotkeys: </span> P: Gain protons, N: Gain neutrons, E: Gain electrons, H: Gain hydrogen </div>
+			</div>
+			<div id="statistics-tab" style="display:none">
+				<div class="tab-header"> Statistics </div> <br>
+				<div> You have spent <span id="e2"> </span> in this game (including time offline). </div>
+				<div> You have spent <span id="e3"> </span> in this game. </div> <br>
+				<div> You have made a total of <span id="e14">0</span> quarks. </div>
+			</div>
+			<div id="achievements-tab" style="display:none">
+				<div class="tab-header"> Achievements </div>
+				<div> You have unlocked <span id="e48"></span> achievements. </div>
+				<div> Your achievement completions are multiplying all element gains by <span id="e49"></span>. </div>
+				<div> View achievements up to <input id="achievement-view" type="number" min="0" value="2" onchange="Options.setAchievementVisibility(this.value)"> beyond currently unlocked. </div>
+				<br>
+				<div><button>Achievement multiplier: Active</button> <button>Hide completed rows: Off</button> <button>Hide all question mark rows: Off</button></div><br>
+				<table id="achievement-table">
+					<tr>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock elements</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Buy any element upgrade</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Make more than <span id="e50"></span> total quarks</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Passively generate any element</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain more than 100 quarks per second</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Passively generate all elements</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock particles</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain hydrogen</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock autobuyers for element upgrades</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain more than <span id="e51"></span> hydrogen</span></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,185 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--background-color: black;
+	--text-color: white;
+	background-color: var(--background-color);
+	color: var(--text-color);
+	font-family: 'Courier', monospace;
+	min-width: 800px;
+}
+
+div {
+	text-align: center;
+}
+
+#loading, #main {
+	margin: 5px;
+}
+
+#bar {
+	width: 400px;
+	height: 30px;
+	margin: auto;
+	position: relative;
+	border: 1px solid var(--text-color);
+}
+
+#inner-bar {
+	position: absolute;
+	height: 28px;
+	width: 0%;
+	background-color: lime;
+}
+
+button {
+	border: none;
+	font-family: inherit;
+	padding: 2px 6px;
+	cursor: pointer;
+	font-size: inherit;
+	margin-bottom: 4px;
+	background-color: #AAA;
+}
+
+button:focus {
+	outline: 1px auto black;
+}
+
+input, option, select {
+	font-family: inherit;
+}
+
+#main-tab-btn {
+	background-color: #0F0 !important;
+}
+
+.tab-header {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.tab-subheader {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.options-btns {
+	margin-bottom: 6px;
+}
+
+.options-btns > button {
+	width: 280px;
+	height: 90px;
+}
+
+.options-btns > div {
+	width: 280px;
+	height: 90px;
+	border: 1px solid var(--text-color);
+	margin: auto;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 4px;
+	font-size: 0.9em;
+}
+
+.options-btns > div input[type=number] {
+	width: 60px;
+}
+
+.options-btns > div > div {
+	margin-bottom: 4px;
+}
+
+#notifications {
+	position: absolute;
+	top: 6px;
+	left: 6px;
+}
+
+.notification {
+	background: white;
+	padding: 2px 6px;
+	border-radius: 4px;
+	color: var(--background-color);
+	background: var(--text-color);
+	margin-bottom: 4px;
+	cursor: default;
+}
+
+.tooltip {
+  position: relative;
+  cursor: default;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 260px;
+  background-color:var(--text-color);
+  color: var(--background-color);
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  padding: 2px 6px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -125px;
+  opacity: 0;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.invisible:hover .tooltiptext  {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.accelerator-table {
+	margin: auto;
+}
+
+.accelerator-table > div {
+	display: inline-block;
+	width: 500px;
+	vertical-align: top;
+}
+
+.accelerator-table > div > div {
+	margin-bottom: 5px;
+}
+
+.hydrogen-upgrades {
+	margin: auto;
+}
+
+.hydrogen-upgrades > div table {
+	border-collapse: separate;
+	margin: auto;
+	border-spacing: 32px 1px;
+}
+
+#achievement-table {
+	border-collapse: collapse;
+	margin: auto;
+}
+
+.locked {
+	background: radial-gradient(var(--background-color), red) !important;
+}
+
+#achievement-table td {
+	width: 100px;
+	height: 100px;
+	border: 1px solid var(--text-color);
+	vertical-align: top;
+	background: radial-gradient(var(--background-color), lime);
+}

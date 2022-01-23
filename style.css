@@ -1,11 +1,15 @@
 * {
 	box-sizing: border-box;
 	font-family: "Courier", monospace;
-	font-size: 16px;
+	font-size: 16pt;
 }
 
 body {
 	background: #eee;
+}
+
+div#header > span {
+	cursor: default;
 }
 
 div#body {
@@ -17,7 +21,6 @@ div#body {
 	width: 60vw;
 	min-width: 500px;
 	background: white;
-	overflow: hidden;
 }
 
 div#link {
@@ -30,7 +33,20 @@ div#link {
 	padding-bottom: 0;
 }
 
-.right {
+.hidden-link {
+	text-decoration: none;
+	color: black;
+}
+
+.txt-shadow {
+	transition: 0.25s;
+}
+
+.txt-shadow:hover {
+	text-shadow: 1px 1px 5px black;
+}
+
+.right, #hover {
 	float: right;
 }
 
