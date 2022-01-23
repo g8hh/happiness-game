@@ -37,7 +37,7 @@ let Saving = {
 				Game.start();
 				return;
 			};
-			this.simulateTime(offlineTime,true, () => (Game.start));
+			this.simulateTime(offlineTime,true, () => (Game.start()));
 		}
 	},
 	async export() {
