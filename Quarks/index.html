@@ -140,6 +140,38 @@
 					</div>
 				</div>
 			</div>
+			<div id="statistics-tab" style="display:none">
+				<div class="tab-header"> Statistics </div> <br>
+				<div> You have spent <span id="e2"> </span> in this game (including time offline). </div>
+				<div> You have spent <span id="e3"> </span> in this game. </div> <br>
+				<div> You have made a total of <span id="e14">0</span> quarks. </div>
+			</div>
+			<div id="achievements-tab" style="display:none">
+				<div class="tab-header"> Achievements </div>
+				<div> You have unlocked <span id="e48"></span> achievements. </div>
+				<div> Your achievement completions are multiplying all element gains by <span id="e49"></span>. </div>
+				<div> View achievements up to <input id="achievement-view" type="number" min="0" value="2" onchange="Options.setAchievementVisibility(this.value)"> beyond currently unlocked. </div>
+				<br>
+				<div>
+					<button id="achievement-multiplier-btn" onclick="Options.setAchievementMultiplier(this.innerText)">Achievement multiplier: Active</button>
+					<button id="achievement-completedrows-btn" onclick="Options.setAchievementCompletedRows(this.innerText)">Hide completed rows: Off</button>
+					<button id="achievement-questionrows-btn" onclick="Options.setAchievementQuestionRows(this.innerText)">Hide question mark rows: Off</button>
+				</div><br>
+				<table id="achievement-table">
+					<tr>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock elements</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Buy any element upgrade</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Make more than <span id="e50"></span> total quarks</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Passively generate any element</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain more than 100 quarks per second</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Passively generate all elements</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock particles</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain hydrogen</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock autobuyers for element upgrades</span></td>
+						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain more than <span id="e51"></span> hydrogen</span></td>
+					</tr>
+				</table>
+			</div>
 			<div id="options-tab" style="display:none">
 				<div class="tab-header"> Options </div> <br>
 				<div class="options-btns">
@@ -176,35 +208,8 @@
 						<div>Achievements: <select id="notification-options-achievements" onchange="Options.setAchievementNotifications(this.value)"><option>Always</option><option>Never</option></select></div>
 					</div>
 				</div><br>
-				<div><span class="tab-subheader">Hotkeys: </span> P: Gain protons, N: Gain neutrons, E: Gain electrons, H: Gain hydrogen </div>
-			</div>
-			<div id="statistics-tab" style="display:none">
-				<div class="tab-header"> Statistics </div> <br>
-				<div> You have spent <span id="e2"> </span> in this game (including time offline). </div>
-				<div> You have spent <span id="e3"> </span> in this game. </div> <br>
-				<div> You have made a total of <span id="e14">0</span> quarks. </div>
-			</div>
-			<div id="achievements-tab" style="display:none">
-				<div class="tab-header"> Achievements </div>
-				<div> You have unlocked <span id="e48"></span> achievements. </div>
-				<div> Your achievement completions are multiplying all element gains by <span id="e49"></span>. </div>
-				<div> View achievements up to <input id="achievement-view" type="number" min="0" value="2" onchange="Options.setAchievementVisibility(this.value)"> beyond currently unlocked. </div>
-				<br>
-				<div><button>Achievement multiplier: Active</button> <button>Hide completed rows: Off</button> <button>Hide all question mark rows: Off</button></div><br>
-				<table id="achievement-table">
-					<tr>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock elements</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Buy any element upgrade</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Make more than <span id="e50"></span> total quarks</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Passively generate any element</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain more than 100 quarks per second</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Passively generate all elements</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock particles</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain hydrogen</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock autobuyers for element upgrades</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain more than <span id="e51"></span> hydrogen</span></td>
-					</tr>
-				</table>
+				<div><span class="tab-subheader">Hotkeys: </span> P: Gain protons, N: Gain neutrons, E: Gain electrons, H: Gain hydrogen. </div><br>
+				<div><span class="tab-subheader">Credits: </span> dan-simon for help with JS and taking inspiration from FE000000 for style. </div>
 			</div>
 		</div>
 	</body>

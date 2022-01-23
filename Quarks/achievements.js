@@ -29,7 +29,9 @@ let Achievements = {
 		this.update();
 	},
 	multiplier() {
-		return Decimal.pow(2, this.unlocked()/10);
+		// Have to return a decimal 1 here because some other factor list relies on the first
+		// value being a decimal, which happens to be the achievement multiplier.
+		return player.options.achievementMultiplier ? Decimal.pow(2, this.unlocked()/10) : new Decimal(1);
 	},
 
 	init() {

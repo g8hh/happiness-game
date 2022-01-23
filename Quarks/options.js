@@ -5,6 +5,9 @@ let Options = {
 		document.getElementById("notification-options-saving").value = player.options.saveNotifications;
 		document.getElementById("notification-options-achievements").value = player.options.achievementNotifications;
 		document.getElementById("achievement-view").value = player.options.viewAchievements;
+		document.getElementById("achievement-multiplier-btn").innerText = "Achievement multiplier: " + (player.options.achievementMultiplier ? 'Active' : 'Inactive');
+		document.getElementById("achievement-completedrows-btn").innerText = "Hide completed rows: " + (player.options.viewCompletedRows ? 'Off' : 'On');
+		document.getElementById("achievement-questionrows-btn").innerText = "Hide question mark rows: " + (player.options.viewQuestionRows ? 'Off' : 'On');
 		document.getElementById('hotkeys-btn').innerText = "Hotkeys: " + (player.options.hotkeys ? 'Enabled' : 'Disabled');
 		document.getElementById("theme-btn").innerText = "Theme: " + player.options.theme;
 		this.rootElement.style.setProperty('--background-color', player.options.theme === 'Light' ? 'white' : 'black');
@@ -45,6 +48,24 @@ let Options = {
 		if(typeof value !== 'string') return;
 		player.options.viewAchievements = Math.max(0,value);
 		Achievements.update();
+	},
+	setAchievementMultiplier(value) {
+		if(typeof value !== 'string') return;
+		value = value.replace("Achievement multiplier: ","");
+		player.options.achievementMultiplier = (value==='Active' ? false : true);
+		document.getElementById("achievement-multiplier-btn").innerText = "Achievement multiplier: " + (player.options.achievementMultiplier ? 'Active' : 'Inactive');
+	},
+	setAchievementCompletedRows(value) {
+		if(typeof value !== 'string') return;
+		value = value.replace("Hide completed rows: ","");
+		player.options.viewCompletedRows = (value==='Off' ? false : true);
+		document.getElementById("achievement-completedrows-btn").innerText = "Hide completed rows: " + (player.options.viewCompletedRows ? 'Off' : 'On');
+	},
+	setAchievementQuestionRows(value) {
+		if(typeof value !== 'string') return;
+		value = value.replace("Hide question mark rows: ","");
+		player.options.viewQuestionRows = (value==='Off' ? false : true);
+		document.getElementById("achievement-questionrows-btn").innerText = "Hide question mark rows: " + (player.options.viewQuestionRows ? 'Off' : 'On');
 	},
 	shouldNotify(type, manualSave) {
 		if(type === 'save') {

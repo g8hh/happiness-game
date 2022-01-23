@@ -29,6 +29,9 @@ let player = {
 		saveNotifications: 'Manual saves only',
 		achievementNotifications: 'Always',
 		viewAchievements: 2,
+		achievementMultiplier: true,
+		viewCompletedRows: true,
+		viewQuestionRows: true,
 	},
 	stats: {
 		totalTime: 0,
