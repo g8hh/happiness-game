@@ -6,6 +6,7 @@ let Options = {
 		document.getElementById("notification-options-achievements").value = player.options.achievementNotifications;
 		document.getElementById("achievement-view").value = player.options.viewAchievements;
 		document.getElementById("autosave-timer").value = player.options.autosaveTimer;
+		document.getElementById("autosave").checked = player.options.autosave;
 		document.getElementById("achievement-multiplier-btn").innerText = "Achievement multiplier: " + (player.options.achievementMultiplier ? 'Active' : 'Inactive');
 		document.getElementById("achievement-completedrows-btn").innerText = "Hide completed rows: " + (player.options.viewCompletedRows ? 'Off' : 'On');
 		document.getElementById("achievement-questionrows-btn").innerText = "Hide question mark rows: " + (player.options.viewQuestionRows ? 'Off' : 'On');
@@ -36,6 +37,10 @@ let Options = {
 		value = value.replace("Hotkeys: ","");
 		player.options.hotkeys = value === "Enabled" ? false : true;
 		document.getElementById('hotkeys-btn').innerText = "Hotkeys: " + (player.options.hotkeys ? 'Enabled' : 'Disabled');
+	},
+	setAutosave(bool) {
+		if(typeof bool !== 'boolean') return;
+		player.options.autosave = bool;
 	},
 	setAutosaveTimer(value) {
 		if(typeof value !== 'string') return;

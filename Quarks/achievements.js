@@ -43,6 +43,7 @@ let Achievements = {
 			this.has(i) ? this.container.children[0].children[i].classList.remove('locked') : this.container.children[0].children[i].classList.add('locked')
 			this.visible(i) ? this.container.children[0].children[i].classList.remove('invisible') : this.container.children[0].children[i].classList.add('invisible')
 			this.container.children[0].children[i].children[0].innerText = this.visible(i) ? this.name(i) : '???';
+			this.container.children[0].children[i].children[2].innerText = this.has(i) ? '(unlocked)' : '(locked)';
 		}
 	},
 };

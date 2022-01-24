@@ -92,13 +92,25 @@
 							<div>
 								<div class='tab-subheader'>Hydrogen upgrades</div>
 								<table>
-									<tr><td>Multiplier to all element gains:</td><td>+0.500</td><td><span id="e32">1.000</span> ⟶ <span id="e33">1.500</span></td><td><button id="e34" onclick="hydrogenUpgrade(0).buy(1)">1 H</button></td><td><button id="e35" onclick="hydrogenUpgrade(0).buyMax()">Max</button></td></tr>
-									<tr><td>Multiplier to hydrogen gain:</td><td>+1.000</td><td><span id="e36">1.000</span> ⟶ <span id="e37">2.000</span></td><td><button id="e38" onclick="hydrogenUpgrade(1).buy(1)">1 H</button></td><td><button id="e39" onclick="hydrogenUpgrade(1).buyMax()">Max</button></td></tr>
-									<tr id="b16"<td>Increase passive element gains:</td<td>+10.000</td<td><span id="e40">10.000</span> ⟶ <span id="e41">20.000</span></td<td><button id="e42" onclick="hydrogenUpgrade(2).buy(1)"></button></td<td><button id="e43" onclick="hydrogenUpgrade(2).buyMax()">Max</button></td>									</tr>
+									<tr>
+										<td>Multiplier to all element gains:</td>
+										<td>+0.500</td>
+										<td><span id="e32">1.000</span> ⟶ <span id="e33">1.500</span></td>
+										<td><button id="e34" onclick="hydrogenUpgrade(0).buy(1)">1 H</button></td>
+										<td><button id="e35" onclick="hydrogenUpgrade(0).buyMax()">Max</button></td>
+									</tr>
+									<tr>
+										<td>Multiplier to hydrogen gain:</td>
+										<td>+1.000</td>
+										<td><span id="e36">1.000</span> ⟶ <span id="e37">2.000</span></td>
+										<td><button id="e38" onclick="hydrogenUpgrade(1).buy(1)">1 H</button></td>
+										<td><button id="e39" onclick="hydrogenUpgrade(1).buyMax()">Max</button></td>
+									</tr>
+									<tr id="b16"><td>Increase passive element gains:</td><td>+10.000</td><td><span id="e40">10.000</span> ⟶ <span id="e41">20.000</span></td><td><button id="e42" onclick="hydrogenUpgrade(2).buy(1)"></button></td><td><button id="e43" onclick="hydrogenUpgrade(2).buyMax()">Max</button></td></tr>
 									<tr id="b17"><td>Autobuyer for element upgrades:</td><td></td><td></td><td><button id="e44" onclick="hydrogenUpgrade(3).buy(1)"></button></td><td></td></tr>
 									<tr id="b18"><td>Keep passive gain on hydrogen gain:</td><td></td><td></td><td><button id="e45" onclick="hydrogenUpgrade(4).buy(1)"></button></td><td></td></tr>
 									<tr id='b20'><td>Keep all upgrades on hydrogen gain:</td><td></td><td></td><td><button id="e47" onclick="hydrogenUpgrade(5).buy(1)"></button></td><td></td></tr>
-									<tr id="b21"><td>Passively gain 10% of hydrogen on gain:</td><td></td><td></td><td><button id="e55" onclick="hydrogenUpgrade(6).buy(1)"></button></td><td></td>tr>
+									<tr id="b21"><td>Passively gain 10% of hydrogen on gain:</td><td></td><td></td><td><button id="e55" onclick="hydrogenUpgrade(6).buy(1)"></button></td><td></td></tr>
 								</table>
 							</div> 
 							<div style='display:none'>
@@ -128,16 +140,16 @@
 				</div><br>
 				<table id="achievement-table">
 					<tr>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock elements.</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Buy any element upgrade.</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Make more than <span id="e50"></span> total quarks.</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Passively generate any element.</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain more than 100 quarks per second.</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Passively generate all elements.</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock particles.</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Gain hydrogen.</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Unlock autobuyers for element upgrades.</span></td>
-						<td class="locked tooltip"><span></span><span class="tooltiptext">Have more than <span id="e51"></span> total hydrogen.</span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext">Unlock elements.</span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext">Buy any element upgrade.</span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext">Make more than <span id="e50"></span> total quarks.</span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext">Passively generate any element.</span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext">Gain more than 100 quarks per second.</span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext">Passively generate all elements.</span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext">Unlock particles.</span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext">Gain hydrogen.</span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext">Unlock autobuyers for element upgrades.</span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext">Have more than <span id="e51"></span> total hydrogen.</span></td>
 					</tr>
 				</table>
 			</div>
@@ -177,6 +189,7 @@
 						<div>Achievements: <select id="notification-options-achievements" onchange="Options.setAchievementNotifications(this.value)"><option>Always</option><option>Never</option></select></div>
 					</div>
 					<div>
+						<div>Auto-save: <input id="autosave" type="checkbox" onchange="Options.setAutosave(this.checked)"> </div>
 						<div>Auto-save timer: <input id="autosave-timer" type="number" min="10" onchange="Options.setAutosaveTimer(this.value)"></div>
 						<div>(Minimum of 10 seconds)</div>
 					</div>

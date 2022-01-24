@@ -39,7 +39,7 @@ function update() {
 	e[20].innerText = formatInt(elementUpgradeCosts[3]);
 	e[21].innerText = electronUpgrades.has(3) ? ' (+' + formatInt(Elements.elementPerSecond('electron')) + '/s)' : '';
 	e[22].innerText = formatInt(Elements.totalElements());
-	e[23].innerText = formatInt(1e4);
+	e[23].innerText = formatInt(Elements.particleRequirement());
 	e[24].innerText = formatInt(Hydrogen.gainAmount());
 	e[25].innerText = formatInt(player.elements.hydrogen);
 	e[26].innerText = formatInt(Hydrogen.multiplier());
@@ -123,5 +123,5 @@ function update() {
 	b[20].style.display = hydrogenUpgrade(5).visible() ? '' : 'none';
 	b[21].style.display = hydrogenUpgrade(6).visible() ? '' : 'none';
 	b[22].style.display = hydrogenUpgrade(6).atMaxLevel() ? '' : 'none';
-	b[23].style.display = 'none';
+	b[23].style.display = hydrogenUpgrade(6).atMaxLevel() ? '' : 'none';
 }

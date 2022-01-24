@@ -177,9 +177,14 @@ input, option, select {
 }
 
 #achievement-table td {
-	width: 100px;
-	height: 100px;
+	width: 110px;
+	height: 110px;
 	border: 1px solid var(--text-color);
 	vertical-align: top;
 	background: radial-gradient(var(--background-color), lime);
+}
+
+#achievement-table td > span:nth-child(1) {
+	font-size: 1.05em;
+	font-weight: bold;
 }

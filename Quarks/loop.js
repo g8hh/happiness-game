@@ -28,7 +28,7 @@ let gameLoop = function(diff, doUpdate, isOnline) {
 	Achievements.give(2);
 	Achievements.give(4);
 
-	if((now - lastSave)/1e3 > player.options.autosaveTimer) {
+	if((now - lastSave)/1e3 > player.options.autosaveTimer && player.options.autosave) {
 		Saving.save(false);
 		lastSave = now;
 	}

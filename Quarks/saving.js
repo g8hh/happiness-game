@@ -149,6 +149,7 @@ let Saving = {
 		player.options.viewCompletedRows = player.options.viewCompletedRows ?? true;
 		player.options.viewQuestionRows = player.options.viewQuestionRows ?? true;
 		player.options.viewAchievements = player.options.viewAchievements ?? 2;
+		player.options.autosave = player.options.autosave ?? true;
 		player.options.autosaveTimer = player.options.autosaveTimer ?? 10;
 		player.format = player.format ?? {};
 		player.format.normalPrecision = player.format.normalPrecision ?? 3;

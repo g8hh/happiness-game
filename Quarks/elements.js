@@ -21,7 +21,10 @@ let Elements = {
 		return !this.particlesUnlocked() && elementUpgrades.allBought();
 	},
 	canUnlockParticles() {
-		return this.canSeeParticleBtn() && this.totalElements().gte(1e4);
+		return this.canSeeParticleBtn() && this.totalElements().gte(this.particleRequirement());
+	},
+	particleRequirement() {
+		return Decimal.pow(2, 16);
 	},
 	unlockParticles() {
 		if(!this.canUnlockParticles()) return;
@@ -111,9 +114,7 @@ let Elements = {
 				hydrogenUpgrade(0).effect(),
 			];
 			let powFactors = [
-				Achievements.multiplier(),
 				electronUpgrades.effect(1),
-				hydrogenUpgrade(0).effect(),
 			];
 			let mult = factors.reduce((a,b) => a.times(b));
 			return mult.pow(powFactors.reduce((a,b) => a.times(b)));
@@ -362,13 +363,13 @@ let Hydrogen = {
 		return Elements.particlesUnlocked() && elementUpgrades.allBought();
 	},
 	gainAmount() {
-		return Decimal.times(Elements.totalElements().max(1).log2() / 8, hydrogenUpgrade(1).effect());
+		return Decimal.times(Decimal.pow(Elements.totalElements().max(1).log2() / 8, 0.5), hydrogenUpgrade(1).effect());
 	},
 	gainMultiplier() {
 		return Decimal.div(this.gainAmount(), this.amount().eq(0) ? 1 : this.amount());
 	},
 	multiplier() {
-		return this.amount().max(1).log2() + 1;
+		return this.amount().plus(1).log2() + 1;
 	},
 };
 
