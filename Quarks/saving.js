@@ -37,6 +37,7 @@ let Saving = {
 				Game.start();
 				return;
 			};
+			Options.init();
 			this.simulateTime(offlineTime,true, () => (Game.start()));
 		}
 	},
@@ -75,6 +76,8 @@ let Saving = {
 			ticks: player.options.offlineTicks,
 			tickLength: time/player.options.offlineTicks,
 			time: 0,
+			startTime: Date.now(), 
+			totalTime: time,
 		};
 		var lastUpdate = Date.now();
 		if(showSimulation) {
@@ -114,11 +117,14 @@ let Saving = {
 		// No negative effect if it is called out of time to be fair however, so this statement is almost unneccesary.
 		if(!offlineSimulation.active) return;
 		offlineSimulation.ticks -= Math.floor((offlineSimulation.ticks - offlineSimulation.tick)/2);
+		offlineSimulation.tickLength = offlineSimulation.totalTime / offlineSimulation.ticks;
 	},
 	updateOfflineTime() {
+		document.getElementById("offline-time").innerText = timeFormat(offlineSimulation.totalTime);
 		document.getElementById("tick").innerText = offlineSimulation.tick;
 		document.getElementById("ticks").innerText = offlineSimulation.ticks;
 		document.getElementById("time").innerText = timeFormat(offlineSimulation.time);
+		document.getElementById('offline-time-estimated').innerText = timeFormat((1/(Math.max(offlineSimulation.tick,1) / offlineSimulation.ticks)) * offlineSimulation.time - (Date.now() - offlineSimulation.startTime)/1e3);
 		document.getElementById("inner-bar").style.width = offlineSimulation.tick / offlineSimulation.ticks * 100 + "%";
 	},
 	fixSave() {
@@ -126,18 +132,9 @@ let Saving = {
 		// Shouldn't technically happen because all of these variables have been added before
 		// any kind of deployment or version control so should be present in every save
 		player.quarks = new Decimal(player.quarks);
-		player.elements = player.elements ?? {};
-		player.elements.unlocked = player.elements.unlocked ?? false;
-		player.elements.particlesUnlocked = player.elements.particlesUnlocked ?? false;
-		player.elements.protons = new Decimal(player.elements.protons) ?? new Decimal(0);
-		player.elements.neutrons = new Decimal(player.elements.neutrons) ?? new Decimal(0);
-		player.elements.electrons = new Decimal(player.elements.electrons) ?? new Decimal(0);
-		player.elements.hydrogen = new Decimal(player.elements.hydrogen) ?? new Decimal(0);
-		player.elements.protonUpgrades = player.elements.protonUpgrades ?? [false,false,false,false];
-		player.elements.neutronUpgrades = player.elements.neutronUpgrades ?? [false,false,false,false];
-		player.elements.electronUpgrades = player.elements.electronUpgrades ?? [false,false,false,false];
-		player.elements.hydrogenUpgrades = player.elements.hydrogenUpgrades ?? [0,0,0,0,0,0];
-		player.elements.elementUpgradeAutobuy = player.elements.elementUpgradeAutobuy ?? true;
+		player.upgrades = player.upgrades ?? [0,0,0,0,0];
+		player.protons = new Decimal(player.protons);
+		
 		player.options = player.options ?? {};
 		player.options.simulateTime = player.options.simulateTime ?? true;
 		player.options.offlineTicks = player.options.offlineTicks ?? 4096;
@@ -162,10 +159,6 @@ let Saving = {
 		player.stats.totalTime = player.stats.totalTime ?? 0;
 		player.stats.onlineTime = player.stats.onlineTime ?? 0;
 		player.stats.totalQuarks = new Decimal(player.stats.totalQuarks) ?? new Decimal(0);
-		player.stats.totalProtons = new Decimal(player.stats.totalProtons) ?? new Decimal(0);
-		player.stats.totalNeutrons = new Decimal(player.stats.totalNeutrons) ?? new Decimal(0);
-		player.stats.totalElectrons = new Decimal(player.stats.totalElectrons) ?? new Decimal(0);
-		player.stats.totalHydrogen = new Decimal(player.stats.totalHydrogen) ?? new Decimal(0);
 		player.achievements = player.achievements ?? [...Array(8)].map((x) => false);
 		player.tab = player.tab ?? 'main';
 		player.lastUpdate = player.lastUpdate ?? Date.now();

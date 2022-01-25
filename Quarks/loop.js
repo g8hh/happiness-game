@@ -15,23 +15,14 @@ let gameLoop = function(diff, doUpdate, isOnline) {
 	}
 	isOnline = isOnline ?? true;
 
-	player.quarks = player.quarks.plus(Elements.quarksPerSecond() * diff);
-	player.elements.protons = player.elements.protons.plus(Elements.elementPerSecond('proton').times(diff));
-	player.elements.neutrons = player.elements.neutrons.plus(Elements.elementPerSecond('neutron').times(diff));
-	player.elements.electrons = player.elements.electrons.plus(Elements.elementPerSecond('electron').times(diff));
-	player.elements.hydrogen = player.elements.hydrogen.plus(Hydrogen.perSecond().times(diff));
-	
-	Elements.autobuy();
+	player.quarks = player.quarks.plus(Quarks.perSecond().times(diff));
+	player.protons = player.protons.plus(Protons.perSecond().times(diff));
 
-	Statistics.update(diff);
-
-	Achievements.give(2);
-	Achievements.give(4);
+	Statistics.update(diff, isOnline);
 
 	if((now - lastSave)/1e3 > player.options.autosaveTimer && player.options.autosave) {
 		Saving.save(false);
 		lastSave = now;
 	}
 	if(doUpdate) update();
-	if(isOnline) player.stats.onlineTime += diff;
 }

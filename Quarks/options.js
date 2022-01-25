@@ -22,7 +22,7 @@ let Options = {
 	},
 	setOfflineTicks(value) {
 		if(typeof value !== 'string') return;
-		player.options.offlineTicks = Math.min(Math.max(16, value), 65536);
+		player.options.offlineTicks = Math.min(Math.max(16, value), 16777216);
 	},
 	setTheme(value) {
 		if(typeof value !== 'string') return;

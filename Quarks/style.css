@@ -143,30 +143,6 @@ input, option, select {
 	opacity: 0;
 }
 
-.accelerator-table {
-	margin: auto;
-}
-
-.accelerator-table > div {
-	display: inline-block;
-	width: 500px;
-	vertical-align: top;
-}
-
-.accelerator-table > div > div {
-	margin-bottom: 5px;
-}
-
-.hydrogen-upgrades {
-	margin: auto;
-}
-
-.hydrogen-upgrades > div table {
-	border-collapse: separate;
-	margin: auto;
-	border-spacing: 32px 1px;
-}
-
 #achievement-table {
 	border-collapse: collapse;
 	margin: auto;
@@ -174,6 +150,11 @@ input, option, select {
 
 .locked {
 	background: radial-gradient(var(--background-color), red) !important;
+}
+
+.disabled {
+	background: #666 !important;
+	cursor: default !important;
 }
 
 #achievement-table td {
@@ -184,7 +165,82 @@ input, option, select {
 	background: radial-gradient(var(--background-color), lime);
 }
 
-#achievement-table td > span:nth-child(1) {
-	font-size: 1.05em;
+#upgrade-container .row {
+	margin-bottom: 10px;
+}
+
+#upgrade-container .row div {
+	margin: auto;
+	width: 50px;
+	height: 50px;
+	border: 1px solid var(--text-color);
+	cursor: pointer;
+	transition: 0.5s;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: top;
+}
+
+#upgrade-container .row div:hover {
+	width: 200px;
+	height: 120px;
+}
+
+.maxed {
+	background: #aaa !important;
+}
+
+#upgrade-container .row div:hover .content {
+	width: 200px;
+	height: 120px;
+	opacity: 1;
+}
+
+#upgrade-container .row div .title {
+	display: inline-block;
+	vertical-align: center;
 	font-weight: bold;
+}
+
+#upgrade-container .row div .content {
+	width: 200px;
+	height: 120px;
+	display: inline-block;
+	opacity: 0;
+	transition: 0.5s;
+}
+
+#upgrade-container .large-row div {
+	margin: auto;
+	width: 60px;
+	height: 60px;
+	border: 1px solid var(--text-color);
+	cursor: pointer;
+	transition: 0.5s;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: top;
+}
+
+#upgrade-container .large-row div .title {
+	font-weight:bold;
+}
+
+#upgrade-container .large-row div:hover {
+	width: 300px;
+	height: 150px;
+}
+
+#upgrade-container .large-row div .content {
+	width: 300px;
+	height: 150px;
+	display: inline-block;
+	opacity: 0;
+	transition: 0.5s;
+}
+
+#upgrade-container .large-row div:hover .content {
+	width: 300px;
+	height: 150px;
+	opacity: 1;
 }

@@ -36,8 +36,8 @@ let Notation = {
 };
 
 function timeFormat(time) {
+	if(time instanceof Decimal) time = time.toNumber();
 	if(player.format.timeFormat === "D:H:M:S") {
-		if(time instanceof Decimal) time = time.toNumber();
 		let seconds = (time % 60).toFixed(0);
 		let minutes = Math.floor((time/60) % 60);
 		let hours = Math.floor((time/(60*60)) % 24);
@@ -54,6 +54,7 @@ function timeFormat(time) {
 		if(player.format.notationOnTime) {
 			return formatInt(time, player.format.normalPrecision) + " seconds";
 		}
+		if(time<1e3) return time.toFixed(player.format.normalPrecision) + " seconds";
 		return getScientific(time, player.format.normalPrecision) + " seconds";
 	} else if (player.format.timeFormat === 'Largest unit') {
 		if(time > 24 * 3600) {
@@ -69,6 +70,7 @@ function timeFormat(time) {
 };
 
 function formatInt(number) {
+	if(number === '') return '';
 	return format(number, player.format.normalPrecision);
 };
 
@@ -78,6 +80,7 @@ function formatFloat(number) {
 
 function formatWhole(number) {
 	number = new Decimal(number)
+	if(number.lt(1)) return formatInt(number);
 	if(number.gt(1e3)) return formatInt(number);
 	return format(number, 0);
 };

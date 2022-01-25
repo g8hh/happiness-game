@@ -1,15 +1,12 @@
 let Achievements = {
 	criteria: [
-		() => (player.elements.unlocked), () => (elementUpgrades.anyBought()),
+		() => (player.elements.unlocked), () => (ElementUpgrades.anyBought()),
 		() => (player.stats.totalQuarks.gte(2**16)), () => (elementUpgrades.hasPassive(false)),
 		() => (Elements.quarksPerSecond().gte(100)), () => (elementUpgrades.hasPassive(true)),
 		() => (player.elements.particlesUnlocked), () => (player.elements.hydrogen.gt(0)),
 		() => (hydrogenUpgrade(4).atMaxLevel()), () => (player.stats.totalHydrogen.gte(2**16)),
 	],
-	names: [
-		'The beginning', 'Getting an upgrade', 'Start of an era', 'This is getting better', 'Real speed',
-		'This is getting even better', 'Bye bye Heisenberg', 'Gasseous', 'Realer speed', 'You\'re cool',
-	],
+	names: [...'12345678'],
 	unlocked() {
 		return player.achievements.filter((x) => (x===true)).length;
 	},

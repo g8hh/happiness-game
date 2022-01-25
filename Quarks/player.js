@@ -1,18 +1,8 @@
 let player = {
-	quarks: new Decimal(0),
-	elements: {
-		unlocked: false,
-		particlesUnlocked: false,
-		protons: new Decimal(0),
-		neutrons: new Decimal(0),
-		electrons: new Decimal(0),
-		hydrogen: new Decimal(0),
-		protonUpgrades: [false,false,false,false],
-		neutronUpgrades: [false,false,false,false],
-		electronUpgrades: [false,false,false,false],
-		hydrogenUpgrades: [0,0,0,0,0,0],
-		elementUpgradeAutobuy: true,
-	},
+	quarks: new Decimal(1),
+	upgrades: [0,0,0,0,0],
+	protons: new Decimal(0),
+
 	format: {
 		normalPrecision: 3,
 		higherPrecision: 5,
@@ -24,7 +14,7 @@ let player = {
 	options: {
 		simulateTime: true,
 		offlineTicks: 4096,
-		theme: 'Dark',
+		theme: 'Light',
 		hotkeys: true,
 		saveNotifications: 'Manual saves only',
 		achievementNotifications: 'Always',
@@ -38,11 +28,7 @@ let player = {
 	stats: {
 		totalTime: 0,
 		onlineTime: 0,
-		totalQuarks: new Decimal(0),
-		totalProtons: new Decimal(0),
-		totalNeutrons: new Decimal(0),
-		totalElectrons: new Decimal(0),
-		totalHydrogen: new Decimal(0),
+		totalQuarks: new Decimal(1),
 	},
 	achievements: [...Array(8)].map((x) => false),
 	tab: 'main',
@@ -50,11 +36,8 @@ let player = {
 };
 
 let Statistics = {
-	update(diff) {
-		player.stats.totalQuarks = player.stats.totalQuarks.plus(Elements.quarksPerSecond() * diff);
-		player.stats.totalProtons = player.stats.totalProtons.plus(Elements.elementPerSecond('proton').times(diff));
-		player.stats.totalNeutrons = player.stats.totalNeutrons.plus(Elements.elementPerSecond('neutron').times(diff));
-		player.stats.totalElectrons = player.stats.totalElectrons.plus(Elements.elementPerSecond('electron').times(diff));
+	update(diff, isOnline) {
 		player.stats.totalTime += diff;
+		player.stats.onlineTime += (isOnline ? diff : 0);
 	},
 };
