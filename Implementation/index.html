@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Rummy</title>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<link rel="shortcut icon" href="favico.png"/>
+	</head>
+	<body>
+		<div id="notifications"></div>
+		<div id="game">
+			<div id="header-box">
+				<div id="header">Rummy</div>
+				<div id="header-btns">
+					<button onclick="Tabs.set(0)"> Rummy </button>
+					<button onclick="Tabs.set(1)"> Statistics </button>
+					<button onclick="Tabs.set(2)"> How to play </button>
+					<button onclick="Tabs.set(3)"> Options </button>
+				</div>
+			</div>
+			<div class="tab" style="padding: 0">
+				<button id="start-game" onclick="Game.start_game()"> Start new game </button>
+				<button id="load-game" onclick="Saving.load()">Load game</button>
+				<div id="ingame-btns">
+					<button id="save-game" onclick="Saving.save(true)"> Save current game </button>
+					<button id="new-game" onclick="Saving.start_new_game(true)"> Start new game </button>
+				</div>
+				<div id="cards" style="display: none">
+					<div id="player-title" class="card-title"> Player cards </div>
+					<div id="player-cards" class="card-container">
+						
+					</div> 
+					<div> 
+						<button onclick="Game.player.sort_by_suit()">Sort by suit</button> 
+						<button onclick="Game.player.sort_by_value()">Sort by value</button>
+						<button onclick="Game.player.sort()">Sort by both</button>
+					</div>
+					<br>
+					<div id="pile-title" class="card-title"> Pile </div>
+					<div id="pile-cards" class="card-container">
+					
+					</div> <br>
+					<div id="opponent-title" class="card-title highlighted"> Opponent cards </div>
+					<div id="opponent-cards" class="card-container">
+						
+					</div>
+				</div>
+				<div id="help-text" style="display: none">
+					<div id="valid-runs">Valid runs: </div>
+					<div id="valid-sets">Valid sets: </div> <br>
+					<div id="overlapping-runs"></div>
+					<div id="help-inner-text"> </div>
+				</div>
+			</div>
+			<div class="tab">
+				<div class="tab-header"> Statistics </div>
+				<table id="stats-table">
+					<tr>
+						<td> Total time played </td>
+						<td id="s1"> 0:00 </td>
+					</tr>
+					<tr>
+						<td> Time in current game </td>
+						<td id="s2"> 0:00 </td>
+					</tr>
+					<tr>
+						<td> Fastest game </td>
+						<td id="s7"> 0:00 </td>
+					</tr>
+					<tr>
+						<td> Total games played </td>
+						<td id="s3"> 0 </td>
+					</tr>
+					<tr>
+						<td> Total cards picked up / discarded </td>
+						<td id="s4"> 0 </td>
+					</tr>
+					<tr>
+						<td> Player victories </td>
+						<td id="s5"> 0 </td>
+					</tr>
+					<tr>
+						<td> Opponent victories </td>
+						<td id="s6"> 0 </td>
+					</tr>
+					<tr>
+						<td> Win percentage </td>
+						<td id="s8"> </td>
+					</tr>
+				</table>
+				<br>
+				<div id="stats-btn">
+					<button onclick="Statistics.reset()">Reset statistics</button>
+				</div>
+			</div>
+			<div class="tab">
+				<div class="tab-header"> How to play </div>
+				<p> 
+					Rummy is a card game where two players take turns, with each turn consisting of the player picking up one card from the pile,
+					and choosing a card to discard from their hand. 
+					<br><br> The aim is to form two distinct melds, where a meld is a set or a run of cards.
+					<br><br> A run is atleast 3 consecutive cards of the same suit, e.g. 3-4-5 of spades, or 9-10-J-Q-K hearts.
+					<br> However, Q-K-A would not count as a valid run, as aces only count low.
+					<br><br> A set is 3 or 4 cards of the same value accross different suits, e.g. all of the 4s or three Qs.
+					<br><br> In the case where a valid run and set overlap, forming a run will take priority.
+					<br><br> The first player to form two melds wins the game.
+					<br><br> Controls: Left click to select a card to take / play. <br>Right click will initially select a card and a second right click will swap these two cards.
+				</p>
+			</div>	
+			<div class="tab">
+				<div class="tab-header"> Options </div>
+				<div class="options-btns">
+					<button id="theme-btn" onclick="Theme.toggle()"> Theme: Dark </button>
+					<button id="highlights" onclick="Game.renderer.toggle_highlighting()"> Card highlighting: Off </button>
+				</div>
+			</div>
+		</div>
+		
+		<div id="test"></div>
+
+		<script src="classes/rummy.js"></script>
+		<script src="classes/card.js"></script>
+		<script src="classes/player.js"></script>
+		<script src="classes/opponent.js"></script>
+		
+		<script src="helpers/theme.js"></script>
+		<script src="helpers/tabs.js"></script>
+		<script src="helpers/notifications.js"></script>
+		<script src="helpers/statistics.js"></script>
+		
+		<script src="core/constants.js"></script>
+		<script src="core/renderer.js"></script>
+		<script src="core/saving.js"></script>
+		<script src="core/main.js"></script>
+		<script src="core/onload.js"></script>
+	</body>
+</html>
