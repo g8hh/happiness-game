@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>夸克 - Quarks</title>
+		<meta charset='UTF-8'>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<script src="decimal.min.js"></script>
+		<script src="notifications.js"></script>
+		<script src="achievements.js"></script>
+		<script src="options.js"></script>
+		<script src="update.js"></script>
+		<script src="saving.js"></script>
+		<script src="player.js"></script>
+		<script src="format.js"></script>
+		<script src="hotkeys.js"></script>
+		<script src="main.js"></script>
+		<script src="loop.js"></script>
+		<script src="tabs.js"></script>
+		<script src="quarks.js"></script>
+		<script src="upgrades.js"></script>
+	</head>
+	<body>
+<script src="chs.js?07071443"></script>
+<script src="https://cdn.jsdelivr.net/gh/g8hh/g8hh.github.io/zh/core.js"></script>
+		<div id="notifications"></div>
+		<div id="loading">
+			<div> The game is loading, and simulating <span id="offline-time"></span> of offline time. </div>
+			<div> <span id="tick">0</span> / <span id="ticks">4096</span> ticks simulated. <br> <span id="time"></span> spent simulating ticks. </div> 
+			<div> <span id="offline-time-estimated">10 seconds</span> estimated remaining. </div>
+			<div id="bar"><div id="inner-bar"></div></div> <br>
+			<div> <button onclick="Saving.speedUpOfflineTime()">Speed up offline time</button> </div>
+		</div>
+		<div id="main" style="display: none">
+			<div> You have <span id="e0">0</span> quarks. </div><br>
+			<div id="tab-btns">
+				<span> <button id="main-tab-btn" onclick="Tabs.showTab('main')"> Main </button> </span>
+				<span> <button onclick="Tabs.showTab('options')"> Options </button> <button onclick="Tabs.showTab('statistics')"> Statistics </button> <button onclick="Tabs.showTab('achievements')">Achievements</button></span>
+			</div> <br>
+			<div id="main-tab" style="display:none">
+				<div> You have <span id="e1">0</span> quarks. <span id="b0">You are getting <span id="e7"></span> quarks per second. </div>
+				<div id="b2"> You have <span id="e13"></span> protons. You are getting <span id="e14"></span> protons per second. </div><br>
+				<div id="upgrade-container">
+					<div class="row">
+						<div id="e9">
+							<span class="title">I</span><br>
+							<span class="content">
+								<b>The Beginning</b>
+								Generates 1.000 quark per second. <br><br>
+								<button id="e6" onclick="Upgrade(1).buy(1)">Cost: 1 quark</button>
+							</span>
+						</div>
+					</div>
+					<div class="row" id="b1">
+						<div id="e10">
+							<span class="title">II</span><br>
+							<span class="content">
+								<b>Generate some more</b>
+								Multiplies quark generation by 2.000. <br><br>
+								<button id="e8" onclick="Upgrade(2).buy(1)">Cost: 50 quarks</button>
+							</span>
+						</div>
+						<div id="e12">
+							<span class="title">III</span><br>
+							<span class="content">
+								<b>New things :o</b>
+								Generates 0.001 protons per second. <br><br>
+								<button id="e11" onclick="Upgrade(3).buy(1)">Cost: 250 quarks</button>
+							</span>
+						</div>
+					</div>
+					<div class="large-row" id="b3">
+						<div id="e25">
+							<span class="title">IV</span>
+							<span class="content">
+								<b>Strong force</b><br>
+								Your protons boost quark gain. <br>
+								<span id="e18">1.000</span> 🠒 <span id="e17">2.000</span> <br>
+								Level: <span id="e19">0</span>/<span id="e15">10</span><br><br>
+								<button id="e16" onclick="Upgrade(4).buy(1)">Cost: 500 quarks</button>
+							</span>
+						</div>
+						<div id="e26">
+							<span class="title">V</span>
+							<span class="content">
+								<b>Quantum entanglement</b> <br>
+								Your protons boost proton gain. <br>
+								<span id="e20">1.000</span> 🠒 <span id="e21">2.000</span> <br>
+								Level: <span id="e22">0</span>/<span id="e23">10</span><br><br>
+								<button id="e24" onclick="Upgrade(5).buy(1)">Cost: 0.250 protons</button>
+							</span>
+						</div>
+						<div>
+							<span class="title">VI</span>
+						</div>
+						<div>
+							<span class="title">VII</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="statistics-tab" style="display:none">
+				<div class="tab-header"> Statistics </div> <br>
+				<div> You have spent <span id="e2"> </span> in this game (including time offline). </div>
+				<div> You have spent <span id="e3"> </span> in this game. </div> <br>
+			</div>
+			<div id="achievements-tab" style="display:none">
+				<div class="tab-header"> Achievements </div>
+				<div> You have unlocked <span id="e30"></span> achievements. </div>
+				<div> Your achievement completions are multiplying all element gains by <span id="e4"></span>. </div>
+				<div> View achievements up to <input id="achievement-view" type="number" min="0" value="2" onchange="Options.setAchievementVisibility(this.value)"> beyond currently unlocked. </div>
+				<br>
+				<div>
+					<button id="achievement-multiplier-btn" onclick="Options.setAchievementMultiplier(this.innerText)">Achievement multiplier: Active</button>
+					<button id="achievement-completedrows-btn" onclick="Options.setAchievementCompletedRows(this.innerText)">Hide completed rows: Off</button>
+					<button id="achievement-questionrows-btn" onclick="Options.setAchievementQuestionRows(this.innerText)">Hide question mark rows: Off</button>
+				</div><br>
+				<table id="achievement-table">
+					<tr>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext"></span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext"></span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext"></span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext"></span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext"></span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext"></span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext"></span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext"></span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext"></span></td>
+						<td class="locked tooltip"><span></span><br><span></span><span class="tooltiptext"></span></td>
+					</tr>
+				</table>
+			</div>
+			<div id="options-tab" style="display:none">
+				<div class="tab-header"> Options </div> <br>
+				<div class="options-btns">
+					<button onclick="Saving.save(true)"> Save </button>
+					<button onclick="Saving.load(true)"> Load </button>
+					<button onclick="Saving.export()"> Export </button>
+				</div>
+				<div class="options-btns">
+					<button id="hotkeys-btn" onclick="Options.setHotkeys(this.innerText)"> Hotkeys: Enabled </button>
+					<button id="theme-btn" onclick="Options.setTheme(this.innerText)"> Theme: Dark </button>
+					<button onclick="Saving.reset()"> RESET THE GAME </button>
+				</div>
+				<div class="options-btns">
+					<div>
+						<div> Notation: <select id="notation-selection" onchange="Notation.set(this.value)"><option> Scientific </option><option> Engineering </option><option> Logarithm </option><option> Brackets </option><option> Infinity </option></select> </div>
+						<div> Normal precision: <input id="norm-precision" min="0" max="10" type="number" onchange="Notation.setNormalPrecision(this.value)"> </div>
+						<div> Higher precision: <input id="high-precision" min="0" max="10" type="number" onchange="Notation.setHigherPrecision(this.value)"> </div>
+					</div>
+					<div>
+						<div> Simulate offline time: <input id='simulate-time-setting' type='checkbox' onchange="Options.setOfflineTime(this.checked)"> </div>
+						<div> Offline ticks: <input id='simulate-time-ticks' type='number' min='16' max='16777216' onchange="Options.setOfflineTicks(this.value)"> </div>
+						<div> (Can be between 16 and 16777216 ticks) </div>
+					</div>
+					<div>
+						<div> Time format: <select id="time-format-setting" onchange="Notation.setTimeFormat(this.value)"> <option>D:H:M:S</option><option>Seconds</option><option>Largest unit</option></select></div>
+						<div> Notation on times: <input id='notations-on-time' type='checkbox' onchange='Notation.setNotationOnTime(this.checked)'> </div>
+						<div> Commas on exponents: <input id='commas-on-exponents' type='checkbox' onchange="Notation.setCommasOnExponents(this.checked)"> </div>
+					</div>
+				</div>
+				<div class="options-btns">
+					<div>
+						<div>Notification options:</div>
+						<div>Saving: <select id="notification-options-saving" onchange="Options.setSavingNotifications(this.value)"><option>Always notify</option><option>Manual saves only</option><option>Never notify</option></select> <span class="tooltip">(?)<span class="tooltiptext">Always notify will notify for automatic saves too, every <span id="e5">10 seconds</span>.</span></span> </div>
+						<div>Achievements: <select id="notification-options-achievements" onchange="Options.setAchievementNotifications(this.value)"><option>Always</option><option>Never</option></select></div>
+					</div>
+					<div>
+						<div>Auto-save: <input id="autosave" type="checkbox" onchange="Options.setAutosave(this.checked)"> </div>
+						<div>Auto-save timer: <input id="autosave-timer" type="number" min="10" onchange="Options.setAutosaveTimer(this.value)"></div>
+						<div>(Minimum of 10 seconds)</div>
+					</div>
+				</div><br>
+				<div><span class="tab-subheader">Hotkeys: </span>  </div><br>
+				<div><span class="tab-subheader">Credits: </span> dan-simon for help with JS and taking inspiration from FE000000 for style. </div>
+			</div>
+		</div>
+	</body>
+</html>
+<!--客服 开始-->
+<script src="https://cdn.jsdelivr.net/gh/g8hh/g8hh.github.io/static/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/g8hh/g8hh.github.io/static/css/kf.css" type="text/css" media="screen" charset="utf-8">
+<script src="https://cdn.jsdelivr.net/gh/g8hh/g8hh.github.io/static/js/kf.js"></script>
+<!-- 客服 结束 -->
+<!--站长统计-->
+    <div style="display: none">
+        <script type="text/javascript" src="//s13.cnzz.com/z_stat.php?id=1266957935&web_id=1266957935"></script>
+    </div>
